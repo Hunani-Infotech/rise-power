@@ -27,6 +27,7 @@ export type MarketCard = {
   href: string;
   cta: string;
   image: string;
+  imageSrc?: string;
 };
 
 export type EcosystemStep = {
@@ -34,7 +35,9 @@ export type EcosystemStep = {
   title: string;
   blurb: string;
   image: string;
+  imageSrc?: string;
   caption?: string;
+  highlighted?: boolean;
 };
 
 export type FeaturedProduct = {
@@ -52,6 +55,7 @@ export type FeaturedProduct = {
   detailsHref: string;
   datasheetHref: string;
   image: string;
+  imageSrc?: string;
 };
 
 export type CapabilityStat = {
@@ -112,6 +116,7 @@ export type CaseCard = {
   stats: readonly { value: string; label: string }[];
   href: string;
   image: string;
+  imageSrc?: string;
 };
 
 export type FooterGroup = {
@@ -231,6 +236,7 @@ export const threeMarkets = {
       href: "/defense",
       cta: "EXPLORE SOLUTIONS",
       image: "Military market imagery",
+      imageSrc: "/media/markets/military.jpg",
     },
     {
       title: "Commercial",
@@ -238,6 +244,7 @@ export const threeMarkets = {
       href: "/commercial",
       cta: "EXPLORE SOLUTIONS",
       image: "Commercial market imagery",
+      imageSrc: "/media/markets/commercial.jpg",
     },
     {
       title: "Consumer",
@@ -245,6 +252,7 @@ export const threeMarkets = {
       href: "/consumer",
       cta: "EXPLORE SOLUTIONS",
       image: "Consumer market imagery",
+      imageSrc: "/media/markets/consumer.jpg",
     },
   ] satisfies readonly MarketCard[],
 };
@@ -261,30 +269,36 @@ export const productEcosystem = {
       title: "Hydrogen Supply",
       blurb: "Clean hydrogen is produced and delivered.",
       image: "Hydrogen supply",
+      imageSrc: "/media/ecosystem/01.jpg",
     },
     {
       step: "02",
       title: "Refill Station",
       blurb: "Hydrogen is safely transferred at certified stations.",
       image: "H2 refill station",
+      imageSrc: "/media/ecosystem/02.jpg",
     },
     {
       step: "03",
       title: "Plug & Play Cartridge",
       blurb: "Standardized cartridges enable rapid, tool-free swaps.",
       image: "Plug & play cartridge",
+      imageSrc: "/media/ecosystem/03.jpg",
+      highlighted: true,
     },
     {
       step: "04",
       title: "Mission Power",
       blurb: "Reliable, silent power for the toughest missions.",
       image: "Mission power unit",
+      imageSrc: "/media/ecosystem/04.jpg",
     },
     {
       step: "05",
       title: "Return & Refill",
       blurb: "Used cartridges are returned, refilled, and redeployed.",
       image: "Return & refill",
+      imageSrc: "/media/ecosystem/05.jpg",
       caption: "RENEW. REFILL. REDEPLOY.",
     },
   ] satisfies readonly EcosystemStep[],
@@ -294,6 +308,7 @@ export const productEcosystem = {
     body: "Hydrogen is converted into electricity through a chemical reaction in the fuel cell—producing only water and heat. Our cartridge-based system makes power simple, scalable, and sustainable.",
     cta: { label: "EXPLORE TECHNOLOGY", href: "/technology" } satisfies Cta,
     diagramTitle: "FUEL CELL STACK",
+    diagramImageSrc: "/media/ecosystem/fuel-cell.jpg",
     diagramLabels: [
       "HYDROGEN IN",
       "OXYGEN IN",
@@ -312,7 +327,8 @@ export const productEcosystem = {
 export const featuredProducts = {
   eyebrow: "FEATURED PRODUCTS",
   headingBefore: "POWER",
-  headingAccent: "YOU CAN DEPEND ON.",
+  headingAccent: "YOU CAN",
+  headingAfter: "DEPEND ON.",
   body: "Advanced hydrogen power systems engineered for maximum performance, minimum footprint, and zero emissions.",
   products: [
     {
@@ -335,6 +351,7 @@ export const featuredProducts = {
       detailsHref: "/products#sentinel",
       datasheetHref: "/datasheets",
       image: "SENTINEL portable power system",
+      imageSrc: "/media/products/sentinel.jpg",
     },
     {
       name: "FALCON",
@@ -356,6 +373,7 @@ export const featuredProducts = {
       detailsHref: "/products#falcon",
       datasheetHref: "/datasheets",
       image: "FALCON aerial power module",
+      imageSrc: "/media/products/falcon.jpg",
     },
     {
       name: "TITAN",
@@ -377,6 +395,7 @@ export const featuredProducts = {
       detailsHref: "/products#titan",
       datasheetHref: "/datasheets",
       image: "TITAN high power generator",
+      imageSrc: "/media/products/titan.jpg",
     },
   ] satisfies readonly FeaturedProduct[],
 };
@@ -422,12 +441,12 @@ export const capabilities = {
           body: "High efficiency power generation.",
         },
         {
-          title: "POWER MANAGEMENT SYSTEM",
-          body: "Intelligent control and system protection.",
-        },
-        {
           title: "HYDROGEN IN",
           body: "Clean hydrogen supply.",
+        },
+        {
+          title: "POWER MANAGEMENT SYSTEM",
+          body: "Intelligent control and system protection.",
         },
         {
           title: "BATTERY BUFFER",
@@ -601,6 +620,7 @@ export const capabilities = {
     },
   ] satisfies readonly CapabilityTab[],
   diagramImage: "Capabilities engineering diagram",
+  diagramImageSrc: "/media/capabilities/engineering.jpg",
 };
 
 export const missionDeployments = {
@@ -768,6 +788,7 @@ export const whyHydrogenWins = {
     },
   ] satisfies readonly BenefitItem[],
   image: "Hydrogen vs diesel comparison",
+  imageSrc: "/media/why-hydrogen/comparison.jpg",
 };
 
 export const customerPartners = {
@@ -787,6 +808,7 @@ export const customerPartners = {
       ],
       href: "/resources",
       image: "Defense procurement case",
+      imageSrc: "/media/cases/defense.jpg",
     },
     {
       category: "TELECOM OPERATOR",
@@ -799,6 +821,7 @@ export const customerPartners = {
       ],
       href: "/resources",
       image: "Telecom operator case",
+      imageSrc: "/media/cases/telecom.jpg",
     },
     {
       category: "MINING COMPANY",
@@ -811,6 +834,7 @@ export const customerPartners = {
       ],
       href: "/resources",
       image: "Mining company case",
+      imageSrc: "/media/cases/mining.jpg",
     },
     {
       category: "EMERGENCY SERVICES",
@@ -823,6 +847,7 @@ export const customerPartners = {
       ],
       href: "/resources",
       image: "Emergency services case",
+      imageSrc: "/media/cases/emergency.jpg",
     },
   ] satisfies readonly CaseCard[],
   partnerHeading: "PARTNERING WITH INNOVATORS AND INDUSTRY LEADERS",
@@ -851,6 +876,7 @@ export const closingCta = {
     { title: "MISSION READY", subtitle: "Proven. Reliable. Always ready." },
   ] satisfies readonly HeroChip[],
   image: "Closing CTA mission landscape",
+  imageSrc: "/media/cta/closing.jpg",
 };
 
 export const footer = {
