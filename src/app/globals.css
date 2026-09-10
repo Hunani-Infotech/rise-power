@@ -33,7 +33,7 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-dim: var(--accent-dim);
   --font-sans: var(--font-barlow);
-  --font-display: var(--font-condensed);
+  --font-display: var(--font-rajdhani);
 }
 
 html {
@@ -50,8 +50,13 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display), var(--font-barlow), sans-serif;
+  font-family: var(--font-rajdhani), var(--font-barlow), sans-serif;
+  font-weight: 700;
   text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-rajdhani), var(--font-barlow), sans-serif;
 }
 
 ::selection {

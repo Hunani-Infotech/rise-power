@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Barlow, Rajdhani } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/content";
@@ -36,8 +36,9 @@ const barlow = Barlow({
   weight: ["400", "500", "600", "700"],
 });
 
-const display = Barlow_Condensed({
-  variable: "--font-condensed",
+/** Display headings match the Figma mockup (Rajdhani Bold family). */
+const rajdhani = Rajdhani({
+  variable: "--font-rajdhani",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
 });
@@ -63,7 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${barlow.variable} ${display.variable} h-full antialiased`}
+      className={`${barlow.variable} ${rajdhani.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <script

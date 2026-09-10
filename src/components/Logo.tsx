@@ -8,37 +8,34 @@ export function Logo({ className = "" }: LogoProps) {
   return (
     <Link
       href="/"
-      aria-label="Rise Mission Power home"
+      aria-label="Rise Power home"
       className={`flex items-center gap-2.5 ${className}`}
     >
+      <span className="font-display text-lg font-bold tracking-[0.2em] uppercase sm:text-xl">
+        Rise
+      </span>
       <svg
-        viewBox="0 0 64 64"
-        className="h-10 w-10 shrink-0 text-current"
+        viewBox="0 0 40 44"
+        className="h-8 w-7 shrink-0 text-current sm:h-9 sm:w-8"
         fill="none"
         aria-hidden="true"
       >
-        <circle cx="32" cy="32" r="30" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="32" cy="22" r="5.5" fill="currentColor" />
-        <path
-          d="M10 46 L22 30 L30 40 L40 24 L54 46"
+        <polygon
+          points="20,2 37,12 37,32 20,42 3,32 3,12"
           stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
+          strokeWidth="1.5"
         />
-        <path
-          d="M10 46 H54"
+        <line
+          x1="20"
+          y1="10"
+          x2="20"
+          y2="34"
           stroke="currentColor"
-          strokeWidth="1.2"
-          opacity="0.7"
+          strokeWidth="1.5"
         />
       </svg>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-lg font-semibold tracking-[0.14em] uppercase sm:text-xl">
-          Rise
-        </span>
-        <span className="mt-0.5 text-[10px] font-medium tracking-[0.16em] uppercase opacity-80">
-          Mission Power
-        </span>
+      <span className="font-display text-lg font-bold tracking-[0.2em] uppercase sm:text-xl">
+        Power
       </span>
     </Link>
   );
