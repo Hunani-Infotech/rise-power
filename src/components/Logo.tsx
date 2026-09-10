@@ -8,12 +8,12 @@ export function Logo({ className = "" }: LogoProps) {
   return (
     <Link
       href="/"
-      aria-label="Rise Power home"
-      className={`flex items-center gap-3 ${className}`}
+      aria-label="Rise Mission Power home"
+      className={`flex items-center gap-2.5 ${className}`}
     >
       <svg
         viewBox="0 0 64 64"
-        className="h-10 w-10 shrink-0 text-accent"
+        className="h-10 w-10 shrink-0 text-current"
         fill="none"
         aria-hidden="true"
       >
@@ -32,8 +32,13 @@ export function Logo({ className = "" }: LogoProps) {
           opacity="0.7"
         />
       </svg>
-      <span className="font-display text-base font-semibold tracking-[0.18em] text-foreground uppercase whitespace-nowrap sm:text-lg">
-        Rise Power
+      <span className="flex flex-col leading-none">
+        <span className="font-display text-lg font-semibold tracking-[0.14em] uppercase sm:text-xl">
+          Rise
+        </span>
+        <span className="mt-0.5 text-[10px] font-medium tracking-[0.16em] uppercase opacity-80">
+          Mission Power
+        </span>
       </span>
     </Link>
   );

@@ -4,11 +4,10 @@ import type { ReactNode } from "react";
 type Variant = "primary" | "secondary" | "ghost";
 
 const variants: Record<Variant, string> = {
-  primary:
-    "bg-accent text-background hover:bg-accent-hover active:bg-accent-dim",
+  primary: "bg-forest text-cream hover:bg-ink active:bg-sage-dark",
   secondary:
-    "border border-accent text-accent hover:bg-accent hover:text-background",
-  ghost: "text-foreground/80 hover:text-accent",
+    "border border-sage bg-transparent text-sage hover:bg-sage hover:text-cream",
+  ghost: "text-foreground/80 hover:text-sage",
 };
 
 type ButtonProps = {
@@ -28,7 +27,7 @@ export function Button({
   type = "button",
   onClick,
 }: ButtonProps) {
-  const classes = `inline-flex min-h-12 items-center justify-center px-7 text-sm font-semibold tracking-wide transition-colors duration-200 ${variants[variant]} ${className}`;
+  const classes = `inline-flex min-h-12 items-center justify-center px-7 text-sm font-semibold tracking-normal transition-colors duration-200 ${variants[variant]} ${className}`;
 
   if (href) {
     return (

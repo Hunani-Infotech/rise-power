@@ -11,7 +11,7 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
         className="pointer-events-none absolute inset-0 opacity-30"
         style={{
           background:
-            "radial-gradient(ellipse 70% 80% at 15% 20%, rgba(198,162,78,0.18), transparent 55%)",
+            "radial-gradient(ellipse 70% 80% at 15% 20%, rgba(110,127,66,0.22), transparent 55%)",
         }}
         aria-hidden="true"
       />
