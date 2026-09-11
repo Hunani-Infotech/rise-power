@@ -9,9 +9,13 @@ type StatGaugeProps = {
   size?: number;
 };
 
-const ARC_GREEN = "#7a9a3a";
+const PRIMARY_GREEN = "#689d2d";
+const ARC_GREEN = "#689d2d";
+const UNIT_GRAY = "#6b6b6b";
 const TICK_GREY = "#c8c4b8";
 const ANIM_MS = 1100;
+const TICK_COUNT = 100;
+const DEFAULT_SIZE = 184;
 
 function polar(cx: number, cy: number, r: number, angleDeg: number) {
   const rad = (angleDeg * Math.PI) / 180;
@@ -48,7 +52,7 @@ export function StatGauge({
   value,
   unit,
   percent = 72,
-  size = 158,
+  size = DEFAULT_SIZE,
 }: StatGaugeProps) {
   const target = Math.min(100, Math.max(0, percent));
   const rootRef = useRef<HTMLDivElement>(null);
@@ -103,25 +107,26 @@ export function StatGauge({
   const cx = size / 2;
   const cy = size / 2;
   const tickOuter = size * 0.48;
-  const tickInner = size * 0.42;
+  const tickMinorInner = size * 0.435;
+  const tickMajorInner = size * 0.418;
   const arcR = size * 0.365;
   const startAngle = -90;
   const endAngle = startAngle + (sweep / 100) * 360;
   const tip = polar(cx, cy, arcR, endAngle);
-  const tickCount = 60;
   const compactValue = value.length > 4;
-  const compactSize = size < 140;
+  const compactSize = size < 150;
 
   return (
     <div
       ref={rootRef}
-      className="relative grid aspect-square w-full max-w-[158px] place-items-center"
+      className="relative grid aspect-square w-full max-w-[184px] place-items-center"
     >
       <svg
         width="100%"
         height="100%"
         viewBox={`0 0 ${size} ${size}`}
         className="absolute inset-0"
+        shapeRendering="geometricPrecision"
         aria-hidden
       >
         <defs>
@@ -132,7 +137,7 @@ export function StatGauge({
             width="260%"
             height="260%"
           >
-            <feGaussianBlur stdDeviation="2.5" result="blur" />
+            <feGaussianBlur stdDeviation="2.2" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -140,11 +145,13 @@ export function StatGauge({
           </filter>
         </defs>
 
-        {Array.from({ length: tickCount }, (_, i) => {
-          const angle = -90 + (i / tickCount) * 360;
-          const a = polar(cx, cy, tickInner, angle);
+        {Array.from({ length: TICK_COUNT }, (_, i) => {
+          const angle = -90 + (i / TICK_COUNT) * 360;
+          const major = i % 10 === 0;
+          const mid = !major && i % 5 === 0;
+          const inner = major ? tickMajorInner : mid ? size * 0.426 : tickMinorInner;
+          const a = polar(cx, cy, inner, angle);
           const b = polar(cx, cy, tickOuter, angle);
-          const major = i % 5 === 0;
           return (
             <line
               key={i}
@@ -153,9 +160,9 @@ export function StatGauge({
               x2={b.x}
               y2={b.y}
               stroke={TICK_GREY}
-              strokeWidth={major ? 1.35 : 0.9}
-              strokeLinecap="round"
-              opacity={major ? 0.85 : 0.55}
+              strokeWidth={major ? 1.05 : mid ? 0.75 : 0.55}
+              strokeLinecap="butt"
+              opacity={major ? 0.9 : mid ? 0.7 : 0.5}
             />
           );
         })}
@@ -166,7 +173,7 @@ export function StatGauge({
           r={arcR}
           fill="none"
           stroke="#e8e4da"
-          strokeWidth={size * 0.028}
+          strokeWidth={size * 0.024}
         />
 
         {sweep > 0.5 && (
@@ -174,18 +181,18 @@ export function StatGauge({
             d={describeArc(cx, cy, arcR, startAngle, endAngle)}
             fill="none"
             stroke={ARC_GREEN}
-            strokeWidth={size * 0.038}
+            strokeWidth={size * 0.034}
             strokeLinecap="round"
           />
         )}
 
         {sweep > 0.5 && (
           <g filter={`url(#${glowId})`}>
-            <circle cx={tip.x} cy={tip.y} r={size * 0.028} fill={ARC_GREEN} />
+            <circle cx={tip.x} cy={tip.y} r={size * 0.026} fill={ARC_GREEN} />
             <circle
               cx={tip.x}
               cy={tip.y}
-              r={size * 0.014}
+              r={size * 0.012}
               fill="#c5db7a"
               opacity={0.95}
             />
@@ -196,27 +203,30 @@ export function StatGauge({
       <div
         className="relative z-[1] grid place-items-center rounded-full bg-white"
         style={{
-          width: "58%",
-          height: "58%",
-          boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.03)",
+          width: "56%",
+          height: "56%",
         }}
       >
         <div className="flex flex-col items-center justify-center px-1 text-center">
           <span
-            className={`font-display leading-none font-bold tracking-tight text-[#1a1c16] ${
+            className={`font-display leading-none font-bold tracking-tight ${
               compactValue
                 ? compactSize
-                  ? "text-[1.15rem]"
-                  : "text-[1.25rem] sm:text-[1.55rem]"
+                  ? "text-[1.35rem]"
+                  : "text-[1.75rem] sm:text-[2.25rem]"
                 : compactSize
-                  ? "text-[1.4rem]"
-                  : "text-[clamp(1.45rem,4.2vw,2.05rem)]"
+                  ? "text-[1.65rem]"
+                  : "text-[clamp(1.85rem,4.6vw,2.65rem)]"
             }`}
+            style={{ color: PRIMARY_GREEN }}
           >
             {value}
           </span>
           {unit ? (
-            <span className="mt-1 font-display text-[10px] leading-none font-semibold tracking-[0.14em] text-[#1a1c16] uppercase sm:text-[11px]">
+            <span
+              className="mt-1.5 font-display text-[12px] leading-none font-semibold tracking-[0.16em] uppercase sm:text-[13px]"
+              style={{ color: UNIT_GRAY }}
+            >
               {unit}
             </span>
           ) : null}

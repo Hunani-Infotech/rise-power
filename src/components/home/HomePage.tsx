@@ -38,6 +38,7 @@ import { FeaturedProductRow } from "./FeaturedProductRow";
 import { FuelCellDiagram } from "./FuelCellDiagram";
 import { MarketCard } from "./MarketCard";
 import { PerformanceMetricCard } from "./PerformanceMetricCard";
+import { PerformanceWaveBg } from "./PerformanceWaveBg";
 import { SectionSkeleton } from "./SectionSkeleton";
 
 const CapabilitiesTabs = dynamic(
@@ -200,69 +201,28 @@ export function HomePage() {
         className={`relative overflow-hidden ${sectionY}`}
         style={{ background: "#fafaf8" }}
       >
-        {/* Decorative green dotted wave mesh — left + right, fades center */}
-        <div
-          className="pointer-events-none absolute inset-x-0 top-[8%] h-[42%] select-none"
-          aria-hidden
-        >
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 1440 420"
-            preserveAspectRatio="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <pattern
-                id="perf-dot-mesh"
-                width="14"
-                height="14"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle cx="1.5" cy="1.5" r="1.15" fill="#6e7f42" />
-              </pattern>
-              <linearGradient id="perf-dot-fade-x" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="white" stopOpacity="1" />
-                <stop offset="18%" stopColor="white" stopOpacity="0.85" />
-                <stop offset="38%" stopColor="white" stopOpacity="0" />
-                <stop offset="62%" stopColor="white" stopOpacity="0" />
-                <stop offset="82%" stopColor="white" stopOpacity="0.85" />
-                <stop offset="100%" stopColor="white" stopOpacity="1" />
-              </linearGradient>
-              <mask id="perf-dot-mask">
-                <rect width="1440" height="420" fill="url(#perf-dot-fade-x)" />
-              </mask>
-            </defs>
-            <g mask="url(#perf-dot-mask)" opacity="0.42">
-              <path
-                d="M0 210 C180 80 360 80 540 210 C720 340 900 340 1080 210 C1260 80 1380 100 1440 160 L1440 420 L0 420 Z"
-                fill="url(#perf-dot-mesh)"
-              />
-              <path
-                d="M0 140 C200 40 400 40 560 150 C740 280 920 280 1100 150 C1260 50 1360 70 1440 110 L1440 0 L0 0 Z"
-                fill="url(#perf-dot-mesh)"
-              />
-            </g>
-          </svg>
-        </div>
+        <PerformanceWaveBg />
 
         <div className={`relative z-10 ${pageInset}`}>
           <Reveal variant="up">
             <p
               className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
-              style={{ color: sage }}
+              style={{ color: "#689d2d" }}
             >
               {performanceMetrics.eyebrow}
             </p>
             <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
               {performanceMetrics.headingBefore}{" "}
-              <span style={{ color: sage }}>{performanceMetrics.headingAccent}</span>
+              <span style={{ color: "#689d2d" }}>
+                {performanceMetrics.headingAccent}
+              </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
               {performanceMetrics.body}
             </p>
           </Reveal>
           <RevealStagger
-            className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-8"
+            className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6"
             step={100}
           >
             {performanceMetrics.gauges.map((item, index) => {

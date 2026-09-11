@@ -10,11 +10,11 @@ type PerformanceMetricCardProps = {
   percent?: number;
 };
 
-const sage = "#6e7f42";
+const PRIMARY_GREEN = "#689d2d";
 
 /**
- * Beveled tech card — top corners chamfered at 45°, soft shadow.
- * Matches Frame “Built to Outperform” metrics.
+ * Beveled tech card — chamfered corners + gauge with divider icon.
+ * Matches Frame “Built to Outperform” metrics mockup.
  */
 export function PerformanceMetricCard({
   icon: Icon,
@@ -28,32 +28,44 @@ export function PerformanceMetricCard({
     <div
       className="motion-hover-lift h-full"
       style={{
-        filter: "drop-shadow(0 12px 24px rgba(22, 28, 22, 0.08))",
+        filter: "drop-shadow(0 12px 28px rgba(22, 28, 22, 0.09))",
       }}
     >
       <article
-        className="relative flex h-full flex-col items-center bg-white px-3 pt-10 pb-9 sm:px-5 sm:pt-12 sm:pb-10"
+        className="relative flex h-full min-h-[22rem] flex-col items-center bg-white px-4 pt-10 pb-9 sm:px-5 sm:pt-12 sm:pb-10 lg:min-h-[26rem]"
         style={{
           clipPath:
-            "polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 18px)",
+            "polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 16px)",
           boxShadow: "inset 0 0 0 1px #e6e3da",
         }}
       >
-        <div className="mx-auto w-full max-w-[158px]">
-          <StatGauge value={value} unit={unit} percent={percent} size={158} />
+        <div className="mx-auto w-full max-w-[184px]">
+          <StatGauge value={value} unit={unit} percent={percent} size={184} />
         </div>
 
-        <div
-          className="mt-5 grid size-9 place-items-center rounded-full border"
-          style={{ borderColor: `${sage}55` }}
-        >
-          <Icon className="size-4" strokeWidth={1.7} style={{ color: sage }} />
+        {/* Divider with icon centered on the rule */}
+        <div className="relative mt-7 mb-1 flex w-[55%] max-w-[11rem] items-center justify-center">
+          <div
+            className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2"
+            style={{ background: "#d8d4ca" }}
+            aria-hidden
+          />
+          <div
+            className="relative z-[1] grid size-8 place-items-center rounded-full bg-white"
+            style={{ boxShadow: `inset 0 0 0 1px ${PRIMARY_GREEN}55` }}
+          >
+            <Icon
+              className="size-3.5"
+              strokeWidth={1.65}
+              style={{ color: PRIMARY_GREEN }}
+            />
+          </div>
         </div>
 
-        <h3 className="mt-4 max-w-[14rem] text-center font-display text-[12px] leading-snug font-bold tracking-[0.14em] text-[#1a1c16] uppercase sm:max-w-[16rem] sm:text-[13px]">
+        <h3 className="mt-5 max-w-[14rem] text-center font-display text-[14px] leading-snug font-bold tracking-[0.14em] text-[#1a1c16] uppercase sm:max-w-[16rem] sm:text-[15px]">
           {title}
         </h3>
-        <p className="mt-2.5 max-w-[15rem] text-center text-[13px] leading-relaxed text-[#5c584e]">
+        <p className="mt-2.5 max-w-[15rem] text-center text-[14px] leading-relaxed text-[#5c584e]">
           {body}
         </p>
       </article>
