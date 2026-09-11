@@ -43,21 +43,19 @@ export function PerformanceMetricCard({
           <StatGauge value={value} unit={unit} percent={percent} size={184} />
         </div>
 
-        {/* Divider with icon centered on the rule */}
-        <div className="relative mt-7 mb-1 flex w-[55%] max-w-[11rem] items-center justify-center">
+        {/* Divider — large icon on the rule, no circular frame */}
+        <div className="relative mt-8 mb-1 flex w-[62%] max-w-[13rem] items-center justify-center">
           <div
             className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2"
             style={{ background: "#d8d4ca" }}
             aria-hidden
           />
-          <div
-            className="relative z-[1] grid size-8 place-items-center rounded-full bg-white"
-            style={{ boxShadow: `inset 0 0 0 1px ${PRIMARY_GREEN}55` }}
-          >
+          <div className="relative z-[1] bg-white px-3.5">
             <Icon
-              className="size-3.5"
-              strokeWidth={1.65}
+              className="size-9 sm:size-10"
+              strokeWidth={1.7}
               style={{ color: PRIMARY_GREEN }}
+              aria-hidden
             />
           </div>
         </div>

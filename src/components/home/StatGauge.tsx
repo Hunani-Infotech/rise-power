@@ -11,7 +11,6 @@ type StatGaugeProps = {
 
 const PRIMARY_GREEN = "#689d2d";
 const ARC_GREEN = "#689d2d";
-const UNIT_GRAY = "#6b6b6b";
 const TICK_GREY = "#c8c4b8";
 const ANIM_MS = 1100;
 const TICK_COUNT = 100;
@@ -203,20 +202,20 @@ export function StatGauge({
       <div
         className="relative z-[1] grid place-items-center rounded-full bg-white"
         style={{
-          width: "56%",
-          height: "56%",
+          width: "58%",
+          height: "58%",
         }}
       >
         <div className="flex flex-col items-center justify-center px-1 text-center">
           <span
-            className={`font-display leading-none font-bold tracking-tight ${
+            className={`font-display leading-[0.9] font-bold tracking-[-0.02em] ${
               compactValue
                 ? compactSize
-                  ? "text-[1.35rem]"
-                  : "text-[1.75rem] sm:text-[2.25rem]"
+                  ? "text-[2rem]"
+                  : "text-[2.65rem] sm:text-[3.15rem]"
                 : compactSize
-                  ? "text-[1.65rem]"
-                  : "text-[clamp(1.85rem,4.6vw,2.65rem)]"
+                  ? "text-[2.35rem]"
+                  : "text-[clamp(2.6rem,6.2vw,3.55rem)]"
             }`}
             style={{ color: PRIMARY_GREEN }}
           >
@@ -224,8 +223,12 @@ export function StatGauge({
           </span>
           {unit ? (
             <span
-              className="mt-1.5 font-display text-[12px] leading-none font-semibold tracking-[0.16em] uppercase sm:text-[13px]"
-              style={{ color: UNIT_GRAY }}
+              className={`mt-1.5 font-display leading-none font-bold uppercase ${
+                unit.length > 6
+                  ? "text-[11px] tracking-[0.14em] sm:text-[12px]"
+                  : "text-[14px] tracking-[0.18em] sm:text-[15px]"
+              }`}
+              style={{ color: PRIMARY_GREEN }}
             >
               {unit}
             </span>

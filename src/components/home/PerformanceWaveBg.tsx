@@ -1,153 +1,150 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 /**
- * Topographic / sound-wave dotted backdrop for Performance Metrics.
- * Canvas draws 6 horizontal sine-wave rows of tiny sharp dots;
- * phase advances each frame so waves visibly roll. Pauses when
- * offscreen or prefers-reduced-motion.
+ * Three.js particle wave backdrop for Performance Metrics.
+ * Port of the provided ShaderMaterial Points wave — sage-tinted,
+ * section-scoped, paused offscreen / reduced-motion.
  */
 
-const DOT_COLORS = [
-  { r: 110, g: 127, b: 66, a: 0.55 }, // #6e7f42 sage
-  { r: 104, g: 157, b: 45, a: 0.48 }, // #689d2d leaf
-  { r: 180, g: 185, b: 170, a: 0.35 }, // soft gray shimmer
-] as const;
+const particleVertex = /* glsl */ `
+attribute float scale;
+uniform float uTime;
 
-type WaveLayer = {
-  /** Vertical center as fraction of canvas height */
-  yFrac: number;
-  /** Peak amplitude as fraction of height */
-  ampFrac: number;
-  /** Wavelength in CSS px */
-  wavelength: number;
-  /** Horizontal phase speed in rad/s */
-  speed: number;
-  /** Spacing between dots along the path (CSS px) */
-  spacing: number;
-  /** Dot radius in CSS px */
-  radius: number;
-  /** Base opacity multiplier */
-  opacity: number;
-  colorIndex: number;
-  /** Extra phase offset so layers don't align */
-  phase0: number;
-};
+void main() {
+  vec3 p = position;
+  float s = scale;
 
-/** Overlapping wave rows — distinct freq/amp/speed for interference */
-const WAVES: WaveLayer[] = [
-  { yFrac: 0.28, ampFrac: 0.11, wavelength: 420, speed: 0.32, spacing: 7, radius: 1.05, opacity: 0.95, colorIndex: 0, phase0: 0 },
-  { yFrac: 0.34, ampFrac: 0.09, wavelength: 360, speed: 0.28, spacing: 8, radius: 0.95, opacity: 0.75, colorIndex: 1, phase0: 1.2 },
-  { yFrac: 0.42, ampFrac: 0.13, wavelength: 520, speed: -0.22, spacing: 7.5, radius: 1.0, opacity: 0.7, colorIndex: 0, phase0: 2.4 },
-  { yFrac: 0.48, ampFrac: 0.08, wavelength: 300, speed: 0.38, spacing: 9, radius: 0.85, opacity: 0.55, colorIndex: 2, phase0: 0.6 },
-  { yFrac: 0.55, ampFrac: 0.1, wavelength: 480, speed: -0.18, spacing: 8, radius: 0.9, opacity: 0.5, colorIndex: 1, phase0: 3.1 },
-  { yFrac: 0.62, ampFrac: 0.07, wavelength: 380, speed: 0.25, spacing: 9.5, radius: 0.8, opacity: 0.35, colorIndex: 0, phase0: 1.8 },
-];
+  p.y += (sin(p.x + uTime) * 0.5) + (cos(p.y + uTime) * 0.1) * 2.0;
+  p.x += sin(p.y + uTime) * 0.5;
 
-/**
- * Soft falloff: strongest mid-upper (behind header), fades at sides & bottom.
- */
-function opacityAt(x: number, y: number, w: number, h: number): number {
-  const nx = x / w;
-  const ny = y / h;
-  const edgeX = Math.min(nx, 1 - nx) / 0.12;
-  const fadeX = Math.min(1, Math.max(0, edgeX));
-  let fadeY: number;
-  if (ny < 0.08) fadeY = ny / 0.08;
-  else if (ny < 0.38) fadeY = 1;
-  else if (ny < 0.72) fadeY = 1 - ((ny - 0.38) / 0.34) * 0.65;
-  else fadeY = Math.max(0, 0.35 * (1 - (ny - 0.72) / 0.28));
-  return fadeX * fadeY;
+  s += (sin(p.x + uTime) * 0.5) + (cos(p.y + uTime) * 0.1) * 2.0;
+
+  vec4 mvPosition = modelViewMatrix * vec4(p, 1.0);
+  gl_PointSize = s * 15.0 * (1.0 / -mvPosition.z);
+  gl_Position = projectionMatrix * mvPosition;
 }
+`;
 
-function drawWaves(
-  ctx: CanvasRenderingContext2D,
-  cssW: number,
-  cssH: number,
-  dpr: number,
-  t: number,
-) {
-  const w = cssW * dpr;
-  const h = cssH * dpr;
-  if (w <= 0 || h <= 0) return;
+const particleFragment = /* glsl */ `
+uniform vec3 uColor;
+uniform float uOpacity;
 
-  ctx.clearRect(0, 0, w, h);
-  let budget = 1200;
+void main() {
+  // Hard circular points — reads as sharp dots, not soft blobs
+  vec2 c = gl_PointCoord - vec2(0.5);
+  if (dot(c, c) > 0.25) discard;
+  gl_FragColor = vec4(uColor, uOpacity);
+}
+`;
 
-  for (const wave of WAVES) {
-    if (budget <= 0) break;
+/** Rise mockup green ≈ #689d2d */
+const WAVE_COLOR = new THREE.Vector3(104 / 255, 157 / 255, 45 / 255);
 
-    const y0 = wave.yFrac * h;
-    const amp = wave.ampFrac * h;
-    const wavelength = wave.wavelength * dpr;
-    const k = (Math.PI * 2) / wavelength;
-    const spacing = Math.max(4 * dpr, wave.spacing * dpr);
-    const radius = Math.max(0.6, wave.radius * dpr);
-    const c = DOT_COLORS[wave.colorIndex] ?? DOT_COLORS[0];
-    const baseA = c.a * wave.opacity;
-    const wavePhase = t * wave.speed + wave.phase0;
+function buildParticleGrid(amountX: number, amountY: number, gap: number) {
+  const count = amountX * amountY;
+  const positions = new Float32Array(count * 3);
+  const scales = new Float32Array(count);
+  let i = 0;
+  let s = 0;
 
-    const count = Math.min(budget, Math.ceil(w / spacing) + 1);
-    budget -= count;
-
-    for (let i = 0; i < count; i++) {
-      const x = i * spacing;
-      // Traveling sine + slight harmonic for organic topography
-      const y =
-        y0 +
-        Math.sin(k * x + wavePhase) * amp +
-        Math.sin(k * x * 0.48 + wave.phase0 * 1.7 + wavePhase * 0.35) *
-          amp *
-          0.25;
-
-      const local = opacityAt(x, y, w, h);
-      if (local < 0.04) continue;
-
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(${c.r},${c.g},${c.b},${(baseA * local).toFixed(3)})`;
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.fill();
+  for (let ix = 0; ix < amountX; ix++) {
+    for (let iy = 0; iy < amountY; iy++) {
+      positions[i] = ix * gap - (amountX * gap) / 2;
+      positions[i + 1] = 0;
+      positions[i + 2] = iy * gap - (amountY * gap) / 2;
+      scales[s] = 1;
+      i += 3;
+      s += 1;
     }
   }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute("scale", new THREE.BufferAttribute(scales, 1));
+  return geometry;
 }
 
 export function PerformanceWaveBg() {
+  const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    const host = hostRef.current;
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!host || !canvas) return;
 
-    const ctx = canvas.getContext("2d", { alpha: true });
-    if (!ctx) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 1, 0.01, 1000);
+    camera.position.set(0, 6, 5);
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance",
+    });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    const width = host.clientWidth || 1;
+    const isNarrow = width < 768;
+    // Dense grid like the reference (200×200), scaled down on mobile for GPU cost
+    const amountX = isNarrow ? 100 : 180;
+    const amountY = isNarrow ? 80 : 140;
+    const gap = 0.3;
+
+    const geometry = buildParticleGrid(amountX, amountY, gap);
+    const material = new THREE.ShaderMaterial({
+      transparent: true,
+      depthWrite: false,
+      vertexShader: particleVertex,
+      fragmentShader: particleFragment,
+      uniforms: {
+        uTime: { value: 0 },
+        uColor: { value: WAVE_COLOR.clone() },
+        uOpacity: { value: 0.5 },
+      },
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
 
     let raf = 0;
     let running = false;
     let visible = true;
-    let reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let cssW = 0;
-    let cssH = 0;
-    let dpr = 1;
-    let phase = 0;
-    let lastTs = 0;
+    let disposed = false;
 
-    const paint = () => drawWaves(ctx, cssW, cssH, dpr, phase);
+    const resize = () => {
+      if (disposed) return;
+      const w = Math.max(1, host.clientWidth);
+      const h = Math.max(1, host.clientHeight);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h, false);
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+    };
 
-    const tick = (ts: number) => {
-      if (!running) return;
-      if (lastTs === 0) lastTs = ts;
-      const dt = Math.min(0.05, (ts - lastTs) / 1000);
-      lastTs = ts;
-      phase += dt;
-      paint();
+    const renderFrame = () => {
+      camera.lookAt(scene.position);
+      renderer.render(scene, camera);
+    };
+
+    const tick = () => {
+      if (!running || disposed) return;
+      material.uniforms.uTime.value += 0.05;
+      renderFrame();
       raf = requestAnimationFrame(tick);
     };
 
     const start = () => {
-      if (running || reduced || !visible) return;
+      if (running || reduced || disposed) return;
       running = true;
-      lastTs = 0;
       raf = requestAnimationFrame(tick);
     };
 
@@ -159,24 +156,14 @@ export function PerformanceWaveBg() {
       }
     };
 
-    const resize = () => {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      const rect = parent.getBoundingClientRect();
-      cssW = Math.max(1, Math.floor(rect.width));
-      cssH = Math.max(1, Math.floor(rect.height));
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.floor(cssW * dpr);
-      canvas.height = Math.floor(cssH * dpr);
-      canvas.style.width = `${cssW}px`;
-      canvas.style.height = `${cssH}px`;
-      paint();
-    };
-
     resize();
+    if (reduced) {
+      material.uniforms.uTime.value = 1.2;
+      renderFrame();
+    }
 
     const ro = new ResizeObserver(resize);
-    if (canvas.parentElement) ro.observe(canvas.parentElement);
+    ro.observe(host);
 
     const io = new IntersectionObserver(
       ([entry]) => {
@@ -184,19 +171,19 @@ export function PerformanceWaveBg() {
         if (visible && !reduced) start();
         else {
           stop();
-          if (visible) paint();
+          if (visible) renderFrame();
         }
       },
-      { rootMargin: "80px", threshold: 0 },
+      { rootMargin: "100px", threshold: 0 },
     );
-    io.observe(canvas);
+    io.observe(host);
 
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const onMq = () => {
-      reduced = mq.matches;
-      if (reduced) {
+      if (mq.matches) {
         stop();
-        paint();
+        material.uniforms.uTime.value = 1.2;
+        renderFrame();
       } else if (visible) {
         start();
       }
@@ -204,22 +191,31 @@ export function PerformanceWaveBg() {
     mq.addEventListener("change", onMq);
 
     if (!reduced && visible) start();
-    else paint();
 
     return () => {
+      disposed = true;
       stop();
       ro.disconnect();
       io.disconnect();
       mq.removeEventListener("change", onMq);
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+      scene.remove(particles);
     };
   }, []);
 
   return (
     <div
-      className="pointer-events-none absolute inset-x-0 top-[2%] bottom-[4%] z-0 overflow-hidden select-none"
+      ref={hostRef}
+      className="pointer-events-none absolute inset-0 z-[1] overflow-hidden select-none"
       aria-hidden
     >
-      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
+      <canvas
+        ref={canvasRef}
+        id="particleCanvas"
+        className="absolute inset-0 block h-full w-full"
+      />
     </div>
   );
 }

@@ -20,6 +20,7 @@ import {
   RadioTower,
   Shield,
   Tent,
+  AudioLines,
   Volume2,
   Weight,
 } from "lucide-react";
@@ -85,7 +86,7 @@ const sage = "#6e7f42";
 /** Hero accent from Frame 1 reference (slightly brighter olive). */
 const heroSage = "#849363";
 
-const gaugeIcons = [Volume2, Leaf, Crosshair, Weight] as const;
+const gaugeIcons = [AudioLines, Leaf, Crosshair, Weight] as const;
 const marketBadgeIcons = [Shield, Building2, Home] as const;
 const marketPointIcons = [
   [Radio, Plane, Crosshair],
@@ -203,7 +204,7 @@ export function HomePage() {
       >
         <PerformanceWaveBg />
 
-        <div className={`relative z-10 ${pageInset}`}>
+        <div className={`particle-content relative z-[2] ${pageInset}`}>
           <Reveal variant="up">
             <p
               className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
