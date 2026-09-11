@@ -214,6 +214,103 @@ h4 {
   animation: header-slide-down 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
 }
 
+@keyframes mega-menu-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mega-menu-link-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mobile-nav-drawer-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mobile-nav-accordion-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -4px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.mega-menu-panel {
+  animation: mega-menu-enter 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mega-menu-link-list > li {
+  animation: mega-menu-link-enter 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mega-menu-link-list > li:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.mega-menu-link-list > li:nth-child(2) {
+  animation-delay: 0.07s;
+}
+.mega-menu-link-list > li:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.mega-menu-link-list > li:nth-child(4) {
+  animation-delay: 0.13s;
+}
+.mega-menu-link-list > li:nth-child(5) {
+  animation-delay: 0.16s;
+}
+.mega-menu-link-list > li:nth-child(6) {
+  animation-delay: 0.19s;
+}
+.mega-menu-link-list > li:nth-child(7) {
+  animation-delay: 0.22s;
+}
+.mega-menu-link-list > li:nth-child(8) {
+  animation-delay: 0.25s;
+}
+.mega-menu-link-list > li:nth-child(n + 9) {
+  animation-delay: 0.28s;
+}
+
+.mega-menu-feature {
+  animation: mega-menu-link-enter 0.32s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.mobile-nav-drawer {
+  animation: mobile-nav-drawer-enter 0.24s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mobile-nav-accordion {
+  animation: mobile-nav-accordion-enter 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -229,7 +326,12 @@ h4 {
   .hero-animate-copy > *,
   .hero-animate-chips,
   .hero-animate-media,
-  .header-animate-in {
+  .header-animate-in,
+  .mega-menu-panel,
+  .mega-menu-link-list > li,
+  .mega-menu-feature,
+  .mobile-nav-drawer,
+  .mobile-nav-accordion {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

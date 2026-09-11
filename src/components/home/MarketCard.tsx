@@ -75,6 +75,7 @@ export function MarketCard({
               src={imageSrc}
               alt={imageLabel}
               fill
+              quality={75}
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 33vw"
             />

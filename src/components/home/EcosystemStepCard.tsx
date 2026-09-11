@@ -51,6 +51,7 @@ export function EcosystemStepCard({
               src={imageSrc}
               alt={imageLabel}
               fill
+              quality={75}
               className="object-cover"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
             />

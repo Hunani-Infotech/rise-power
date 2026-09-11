@@ -176,6 +176,7 @@ export function WhyHydrogenWins() {
                   src={imageSrc}
                   alt={image}
                   fill
+                  quality={75}
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 45vw"
                 />

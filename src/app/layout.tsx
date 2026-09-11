@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
+import type { Metadata, Viewport } from "next";
 import { Barlow, Rajdhani } from "next/font/google";
+import { DeferredAnalytics } from "@/components/DeferredAnalytics";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/content";
@@ -34,6 +34,8 @@ const barlow = Barlow({
   variable: "--font-barlow",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: true,
 });
 
 /** Display headings match the Figma mockup (Rajdhani Bold family). */
@@ -41,6 +43,8 @@ const rajdhani = Rajdhani({
   variable: "--font-rajdhani",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -60,6 +64,15 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f3f0e8" },
+    { media: "(prefers-color-scheme: dark)", color: "#6e7f42" },
+  ],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -74,7 +87,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <Analytics />
+        <DeferredAnalytics />
       </body>
     </html>
   );

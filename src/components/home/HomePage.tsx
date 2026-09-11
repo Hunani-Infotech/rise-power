@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   ArrowRight,
   Building2,
@@ -32,16 +33,52 @@ import {
   threeMarkets,
 } from "@/lib/home-content";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
-import { CapabilitiesTabs } from "./CapabilitiesTabs";
-import { ClosingCta } from "./ClosingCta";
-import { CustomersPartners } from "./CustomersPartners";
 import { EcosystemStepCard } from "./EcosystemStepCard";
 import { FeaturedProductRow } from "./FeaturedProductRow";
 import { FuelCellDiagram } from "./FuelCellDiagram";
 import { MarketCard } from "./MarketCard";
-import { MissionMap } from "./MissionMap";
 import { PerformanceMetricCard } from "./PerformanceMetricCard";
-import { WhyHydrogenWins } from "./WhyHydrogenWins";
+import { SectionSkeleton } from "./SectionSkeleton";
+
+const CapabilitiesTabs = dynamic(
+  () => import("./CapabilitiesTabs").then((m) => m.CapabilitiesTabs),
+  {
+    ssr: true,
+    loading: () => <SectionSkeleton tone="dark" className="min-h-[28rem]" />,
+  },
+);
+
+const MissionMap = dynamic(
+  () => import("./MissionMap").then((m) => m.MissionMap),
+  {
+    ssr: true,
+    loading: () => <SectionSkeleton tone="dark" className="min-h-[24rem]" />,
+  },
+);
+
+const WhyHydrogenWins = dynamic(
+  () => import("./WhyHydrogenWins").then((m) => m.WhyHydrogenWins),
+  {
+    ssr: true,
+    loading: () => <SectionSkeleton tone="cream" />,
+  },
+);
+
+const CustomersPartners = dynamic(
+  () => import("./CustomersPartners").then((m) => m.CustomersPartners),
+  {
+    ssr: true,
+    loading: () => <SectionSkeleton tone="cream" className="min-h-[32rem]" />,
+  },
+);
+
+const ClosingCta = dynamic(
+  () => import("./ClosingCta").then((m) => m.ClosingCta),
+  {
+    ssr: true,
+    loading: () => <SectionSkeleton tone="dark" className="min-h-[24rem]" />,
+  },
+);
 
 const sage = "#6e7f42";
 /** Hero accent from Frame 1 reference (slightly brighter olive). */
@@ -74,7 +111,7 @@ export function HomePage() {
           fill
           priority
           sizes="100vw"
-          quality={90}
+          quality={85}
           className="hero-animate-media object-cover object-[58%_center]"
         />
         {/* Soft grade + left copy lane so UI text stays readable over the photo */}
@@ -480,14 +517,14 @@ export function HomePage() {
       </section>
 
       {/* 6. Capabilities */}
-      <section id="capabilities" className="bg-[#141a14] text-[#f3efe4]">
+      <section id="capabilities" className="cv-auto bg-[#141a14] text-[#f3efe4]">
         <CapabilitiesTabs />
       </section>
 
       {/* 7. Mission Deployments */}
       <section
         id="mission-deployments"
-        className={`bg-[#0f140f] text-[#f3efe4] ${sectionY}`}
+        className={`cv-auto bg-[#0f140f] text-[#f3efe4] ${sectionY}`}
       >
         <div className={pageInset}>
           <Reveal variant="up">
@@ -534,13 +571,19 @@ export function HomePage() {
       </section>
 
       {/* 8. Why Hydrogen Wins */}
-      <WhyHydrogenWins />
+      <div className="cv-auto">
+        <WhyHydrogenWins />
+      </div>
 
       {/* 9. Customers & Partners */}
-      <CustomersPartners />
+      <div className="cv-auto">
+        <CustomersPartners />
+      </div>
 
       {/* 10. Closing CTA */}
-      <ClosingCta />
+      <div className="cv-auto">
+        <ClosingCta />
+      </div>
     </div>
   );
 }

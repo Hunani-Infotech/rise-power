@@ -94,6 +94,7 @@ export function FuelCellDiagram({
               src={diagramImageSrc}
               alt={diagramTitle}
               fill
+              quality={75}
               className="object-cover"
               sizes="(max-width: 768px) 80vw, 256px"
             />

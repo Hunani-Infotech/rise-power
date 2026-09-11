@@ -27,6 +27,7 @@ export function ClosingCta() {
         src={closingCta.imageSrc ?? "/media/cta/closing.jpg"}
         alt={closingCta.image}
         fill
+        quality={75}
         className="object-cover object-center"
         sizes="100vw"
         priority={false}

@@ -1,3 +1,12 @@
+import { megaNavItems } from "./nav-menu";
+
+export type {
+  MegaFeature,
+  MegaLink,
+  MegaNavItem,
+} from "./nav-menu";
+export { megaNavItems } from "./nav-menu";
+
 export type NavItem = {
   label: string;
   href: string;
@@ -142,15 +151,9 @@ export const sectionOrder = [
   "closing-cta",
 ] as const;
 
-export const navItems: readonly NavItem[] = [
-  { label: "Technology", href: "/technology" },
-  { label: "Defense", href: "/defense" },
-  { label: "Commercial", href: "/commercial" },
-  { label: "Consumer", href: "/consumer" },
-  { label: "Products", href: "/products" },
-  { label: "Resources", href: "/resources" },
-  { label: "Company", href: "/company" },
-];
+export const navItems: readonly NavItem[] = megaNavItems.map(
+  ({ label, href }) => ({ label, href }),
+);
 
 export const contactCta: Cta = {
   label: "Contact Us",

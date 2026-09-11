@@ -202,6 +202,7 @@ export function CapabilitiesTabs() {
                   src={diagramSrc}
                   alt={capabilities.diagramImage}
                   fill
+                  quality={75}
                   className="object-contain object-center p-4 sm:p-6"
                   sizes="(max-width: 1024px) 100vw, 45vw"
                 />
