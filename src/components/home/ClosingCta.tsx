@@ -10,6 +10,7 @@ import {
   VolumeX,
 } from "lucide-react";
 import { closingCta } from "@/lib/home-content";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 
 const sage = "#6e7f42";
 const cream = "#f3efe4";
@@ -36,7 +37,7 @@ export function ClosingCta() {
 
       <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
-          <div>
+          <Reveal variant="up">
             <h2 className="max-w-xl font-display text-4xl leading-[0.92] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
               {closingCta.headingBefore}
               <br />
@@ -45,9 +46,13 @@ export function ClosingCta() {
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-[#f3efe4]/80 sm:text-base">
               {closingCta.body}
             </p>
-          </div>
+          </Reveal>
 
-          <div className="border border-white/15 bg-[#0b0e0c]/55 p-6 backdrop-blur-md sm:p-8">
+          <Reveal
+            variant="right"
+            delay={120}
+            className="border border-white/15 bg-[#0b0e0c]/55 p-6 backdrop-blur-md sm:p-8"
+          >
             <p
               className="text-[11px] font-semibold tracking-[0.2em] uppercase"
               style={{ color: sage }}
@@ -63,7 +68,7 @@ export function ClosingCta() {
             <div className="mt-6 flex flex-col gap-3 lg:flex-row">
               <Link
                 href={closingCta.primaryCta.href}
-                className="inline-flex min-h-12 items-center justify-center gap-2 px-6 text-sm font-semibold tracking-wide uppercase"
+                className="motion-hover-glow inline-flex min-h-12 items-center justify-center gap-2 px-6 text-sm font-semibold tracking-wide uppercase"
                 style={{ background: sage, color: cream }}
               >
                 {closingCta.primaryCta.label}
@@ -77,10 +82,15 @@ export function ClosingCta() {
                 {closingCta.secondaryCta.label}
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:mt-16">
+        <RevealStagger
+          className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:mt-16"
+          step={80}
+          variant="up"
+          baseDelay={80}
+        >
           {closingCta.chips.map((chip, index) => {
             const Icon = chipIcons[index] ?? ShieldCheck;
             return (
@@ -106,7 +116,7 @@ export function ClosingCta() {
               </div>
             );
           })}
-        </div>
+        </RevealStagger>
       </div>
     </section>
   );

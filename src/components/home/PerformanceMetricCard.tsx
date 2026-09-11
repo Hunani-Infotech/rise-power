@@ -26,7 +26,7 @@ export function PerformanceMetricCard({
 }: PerformanceMetricCardProps) {
   return (
     <div
-      className="h-full"
+      className="motion-hover-lift h-full"
       style={{
         filter: "drop-shadow(0 12px 24px rgba(22, 28, 22, 0.08))",
       }}

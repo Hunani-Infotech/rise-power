@@ -56,7 +56,7 @@ export function MarketCard({
 }: MarketCardProps) {
   return (
     <div
-      className="h-full"
+      className="motion-hover-lift h-full"
       style={{
         filter: "drop-shadow(0 14px 28px rgba(18, 22, 18, 0.18))",
       }}

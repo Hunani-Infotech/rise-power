@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Minus, Plus } from "lucide-react";
 import { missionDeployments } from "@/lib/home-content";
+import { Reveal } from "@/components/motion/Reveal";
 import { PlaceholderMedia } from "./PlaceholderMedia";
 
 const sage = "#6e7f42";
@@ -25,7 +26,10 @@ export function MissionMap() {
 
   return (
     <div className="mt-12 grid gap-8 lg:grid-cols-[1.5fr_0.9fr] lg:items-stretch">
-      <div className="relative min-h-[22rem] overflow-hidden bg-[#0f140f] p-4 sm:p-6 lg:min-h-[28rem]">
+      <Reveal
+        variant="left"
+        className="relative min-h-[22rem] overflow-hidden bg-[#0f140f] p-4 sm:p-6 lg:min-h-[28rem]"
+      >
         <p className="mb-4 text-center text-[11px] font-semibold tracking-[0.18em] text-[#f3efe4]/55 uppercase">
           {missionDeployments.mapPrompt}
         </p>
@@ -149,9 +153,14 @@ export function MissionMap() {
             ))}
           </div>
         </div>
-      </div>
+      </Reveal>
 
-      <article className="flex flex-col overflow-hidden border border-white/10 bg-[#121812]">
+      <Reveal
+        variant="right"
+        delay={100}
+        as="article"
+        className="flex flex-col overflow-hidden border border-white/10 bg-[#121812]"
+      >
         <PlaceholderMedia label={active.image} aspect="aspect-[16/9]" />
         <div className="flex flex-1 flex-col p-5 sm:p-6">
           <p
@@ -210,7 +219,7 @@ export function MissionMap() {
             </button>
           </div>
         </div>
-      </article>
+      </Reveal>
     </div>
   );
 }

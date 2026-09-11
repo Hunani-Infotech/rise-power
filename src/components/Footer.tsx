@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { footer } from "@/lib/home-content";
+import { Reveal } from "@/components/motion/Reveal";
 
 const sage = "#6e7f42";
 const footerBg = "#0a0e0a";
@@ -73,7 +74,10 @@ function MissionFlagMark() {
 export function Footer() {
   return (
     <footer className="text-cream" style={{ background: footerBg }}>
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-6 py-16 sm:grid-cols-2 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 lg:gap-8 lg:px-10">
+      <Reveal
+        variant="fade"
+        className="mx-auto grid max-w-[1440px] gap-10 px-6 py-16 sm:grid-cols-2 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 lg:gap-8 lg:px-10"
+      >
         <div className="sm:col-span-2 lg:col-span-1">
           <Logo className="text-cream" />
           <p className="mt-4 text-sm font-semibold tracking-wide text-sage">
@@ -166,7 +170,7 @@ export function Footer() {
             </li>
           </ul>
         </div>
-      </div>
+      </Reveal>
 
       <div className="border-t border-cream/10">
         <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 px-6 py-6 text-center text-xs tracking-wide text-cream/50 lg:grid lg:grid-cols-3 lg:items-center lg:px-10 lg:text-left">

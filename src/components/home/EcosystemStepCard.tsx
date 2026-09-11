@@ -23,7 +23,7 @@ export function EcosystemStepCard({
   highlighted = false,
 }: EcosystemStepCardProps) {
   return (
-    <article className="flex flex-col">
+    <article className="motion-hover-lift flex flex-col">
       <p
         className="text-[11px] font-semibold tracking-[0.18em] uppercase"
         style={{ color: sage }}

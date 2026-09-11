@@ -23,6 +23,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { customerPartners, productUiLabels } from "@/lib/home-content";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { PlaceholderMedia } from "./PlaceholderMedia";
 
 const sage = "#6e7f42";
@@ -61,21 +62,27 @@ export function CustomersPartners() {
   return (
     <section id="customer-partners" className="w-full" style={{ background: cream }}>
       <div className="mx-auto max-w-[1440px] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
-        <p
-          className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
-          style={{ color: sage }}
-        >
-          {eyebrow}
-        </p>
-        <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight text-[#141a14] uppercase sm:text-5xl lg:text-6xl">
-          {headingBefore}{" "}
-          <span style={{ color: sage }}>{headingAccent}</span>
-        </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
-          {body}
-        </p>
+        <Reveal variant="up">
+          <p
+            className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+            style={{ color: sage }}
+          >
+            {eyebrow}
+          </p>
+          <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight text-[#141a14] uppercase sm:text-5xl lg:text-6xl">
+            {headingBefore}{" "}
+            <span style={{ color: sage }}>{headingAccent}</span>
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
+            {body}
+          </p>
+        </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+        <RevealStagger
+          className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4"
+          step={90}
+          variant="up"
+        >
           {cases.map((item, index) => {
             const CategoryIcon = categoryIcons[index] ?? Shield;
             const icons = statIcons[index] ?? statIcons[0];
@@ -83,7 +90,7 @@ export function CustomersPartners() {
             return (
               <article
                 key={item.category}
-                className="flex flex-col overflow-hidden rounded-md text-[#f3efe4]"
+                className="motion-hover-lift flex flex-col overflow-hidden rounded-md text-[#f3efe4]"
                 style={{ background: charcoal }}
               >
                 <div className="relative aspect-[16/10] w-full shrink-0">
@@ -166,39 +173,41 @@ export function CustomersPartners() {
               </article>
             );
           })}
-        </div>
+        </RevealStagger>
       </div>
 
-      <div style={{ background: partnerBarBg }}>
-        <div className="mx-auto max-w-[1440px] px-6 py-10 lg:px-10">
-          <p className="text-center font-display text-[11px] font-semibold tracking-[0.28em] text-[#4a463c] uppercase sm:text-xs">
-            {partnerHeading}
-          </p>
-          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-0">
-            {partners.map((partner, index) => {
-              const PartnerIcon = partnerIcons[index] ?? Cog;
-              const showDivider = index < partners.length - 1;
-              return (
-                <div
-                  key={partner}
-                  className={`flex items-center justify-center gap-2.5 ${
-                    showDivider ? "lg:border-r lg:border-[#c9c4b8]" : ""
-                  }`}
-                >
-                  <PartnerIcon
-                    className="size-4 shrink-0 text-[#4a463c]"
-                    strokeWidth={1.6}
-                    aria-hidden
-                  />
-                  <span className="text-[10px] font-semibold tracking-[0.14em] text-[#4a463c] uppercase sm:text-[11px]">
-                    {partner}
-                  </span>
-                </div>
-              );
-            })}
+      <Reveal variant="fade" delay={80}>
+        <div style={{ background: partnerBarBg }}>
+          <div className="mx-auto max-w-[1440px] px-6 py-10 lg:px-10">
+            <p className="text-center font-display text-[11px] font-semibold tracking-[0.28em] text-[#4a463c] uppercase sm:text-xs">
+              {partnerHeading}
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-0">
+              {partners.map((partner, index) => {
+                const PartnerIcon = partnerIcons[index] ?? Cog;
+                const showDivider = index < partners.length - 1;
+                return (
+                  <div
+                    key={partner}
+                    className={`flex items-center justify-center gap-2.5 ${
+                      showDivider ? "lg:border-r lg:border-[#c9c4b8]" : ""
+                    }`}
+                  >
+                    <PartnerIcon
+                      className="size-4 shrink-0 text-[#4a463c]"
+                      strokeWidth={1.6}
+                      aria-hidden
+                    />
+                    <span className="text-[10px] font-semibold tracking-[0.14em] text-[#4a463c] uppercase sm:text-[11px]">
+                      {partner}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

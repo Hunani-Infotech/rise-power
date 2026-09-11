@@ -16,6 +16,7 @@ import {
   Zap,
 } from "lucide-react";
 import { capabilities } from "@/lib/home-content";
+import { Reveal } from "@/components/motion/Reveal";
 import { PlaceholderMedia } from "./PlaceholderMedia";
 
 const sage = "#6e7f42";
@@ -52,7 +53,7 @@ export function CapabilitiesTabs() {
 
   return (
     <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
-      <div className="mx-auto max-w-3xl text-center">
+      <Reveal variant="up" className="mx-auto max-w-3xl text-center">
         <p
           className="text-[11px] font-semibold tracking-[0.22em] uppercase"
           style={{ color: sage }}
@@ -69,7 +70,7 @@ export function CapabilitiesTabs() {
         <p className="mt-4 text-sm leading-relaxed sm:text-base" style={{ color: muted }}>
           {capabilities.body}
         </p>
-      </div>
+      </Reveal>
 
       <div
         className="mt-10 overflow-hidden rounded-sm border border-white/10"
@@ -119,11 +120,13 @@ export function CapabilitiesTabs() {
           })}
         </div>
 
-        <div
-          role="tabpanel"
+        <Reveal
+          key={active.id}
+          variant="fade"
+          delay={40}
           className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch lg:gap-10 lg:p-10"
         >
-          <div className="flex flex-col">
+          <div role="tabpanel" className="flex flex-col">
             <p
               className="text-[11px] font-semibold tracking-[0.2em] uppercase"
               style={{ color: sage }}
@@ -256,7 +259,7 @@ export function CapabilitiesTabs() {
               ))}
             </ul>
           </div>
-        </div>
+        </Reveal>
 
         <blockquote className="flex flex-col gap-5 border-t border-white/10 px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8 sm:py-7 lg:px-10">
           <div className="flex min-w-0 items-start gap-3 sm:gap-4">

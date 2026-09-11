@@ -31,6 +31,7 @@ import {
   productEcosystem,
   threeMarkets,
 } from "@/lib/home-content";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { CapabilitiesTabs } from "./CapabilitiesTabs";
 import { ClosingCta } from "./ClosingCta";
 import { CustomersPartners } from "./CustomersPartners";
@@ -61,7 +62,7 @@ const sectionY = "py-16 sm:py-20 lg:py-24";
 
 export function HomePage() {
   return (
-    <div className="flex w-full flex-col bg-[#f3f0e8] text-[#1a1c16]">
+    <div className="flex w-full flex-col overflow-x-clip bg-[#f3f0e8] text-[#1a1c16]">
       {/* 1. HERO */}
       <section
         id="hero"
@@ -74,7 +75,7 @@ export function HomePage() {
           priority
           sizes="100vw"
           quality={90}
-          className="object-cover object-[58%_center] scale-105"
+          className="hero-animate-media object-cover object-[58%_center]"
         />
         {/* Soft grade + left copy lane so UI text stays readable over the photo */}
         <div className="absolute inset-0 bg-[#060806]/25" />
@@ -85,7 +86,7 @@ export function HomePage() {
 
         <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 pt-28 pb-20 lg:px-10 lg:pt-32 lg:pb-14">
           <div className="flex flex-1 flex-col justify-center">
-            <div className="max-w-xl lg:max-w-2xl">
+            <div className="hero-animate-copy max-w-xl lg:max-w-2xl">
               <p
                 className="font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
                 style={{ color: heroSage }}
@@ -122,7 +123,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4 sm:gap-x-8 lg:mt-0 lg:pb-2">
+          <div className="hero-animate-chips mt-10 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4 sm:gap-x-8 lg:mt-0 lg:pb-2">
             {hero.chips.map((chip, index) => {
               const Icon = heroChipIcons[index] ?? Leaf;
               return (
@@ -208,20 +209,25 @@ export function HomePage() {
         </div>
 
         <div className={`relative z-10 ${pageInset}`}>
-          <p
-            className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
-            style={{ color: sage }}
+          <Reveal variant="up">
+            <p
+              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              style={{ color: sage }}
+            >
+              {performanceMetrics.eyebrow}
+            </p>
+            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
+              {performanceMetrics.headingBefore}{" "}
+              <span style={{ color: sage }}>{performanceMetrics.headingAccent}</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
+              {performanceMetrics.body}
+            </p>
+          </Reveal>
+          <RevealStagger
+            className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-8"
+            step={100}
           >
-            {performanceMetrics.eyebrow}
-          </p>
-          <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-            {performanceMetrics.headingBefore}{" "}
-            <span style={{ color: sage }}>{performanceMetrics.headingAccent}</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
-            {performanceMetrics.body}
-          </p>
-          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-8">
             {performanceMetrics.gauges.map((item, index) => {
               const Icon = gaugeIcons[index] ?? Crosshair;
               return (
@@ -236,7 +242,7 @@ export function HomePage() {
                 />
               );
             })}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -275,20 +281,25 @@ export function HomePage() {
         />
 
         <div className={`relative z-10 ${pageInset}`}>
-          <p
-            className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
-            style={{ color: sage }}
+          <Reveal variant="up">
+            <p
+              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              style={{ color: sage }}
+            >
+              {threeMarkets.eyebrow}
+            </p>
+            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
+              {threeMarkets.headingBefore}{" "}
+              <span style={{ color: sage }}>{threeMarkets.headingAccent}</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
+              {threeMarkets.body}
+            </p>
+          </Reveal>
+          <RevealStagger
+            className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8"
+            step={100}
           >
-            {threeMarkets.eyebrow}
-          </p>
-          <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-            {threeMarkets.headingBefore}{" "}
-            <span style={{ color: sage }}>{threeMarkets.headingAccent}</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
-            {threeMarkets.body}
-          </p>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
             {threeMarkets.cards.map((item, index) => (
               <MarketCard
                 key={item.title}
@@ -302,7 +313,7 @@ export function HomePage() {
                 badgeIcon={marketBadgeIcons[index] ?? Shield}
               />
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -313,31 +324,29 @@ export function HomePage() {
         style={{ background: "#ffffff" }}
       >
         <div className={pageInset}>
-          <p
-            className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
-            style={{ color: sage }}
-          >
-            {productEcosystem.eyebrow}
-          </p>
-          <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-            {productEcosystem.headingBefore}{" "}
-            <span style={{ color: sage }}>{productEcosystem.headingAccent}</span>{" "}
-            {productEcosystem.headingAfter}
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
-            {productEcosystem.body}
-          </p>
+          <Reveal variant="up">
+            <p
+              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              style={{ color: sage }}
+            >
+              {productEcosystem.eyebrow}
+            </p>
+            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
+              {productEcosystem.headingBefore}{" "}
+              <span style={{ color: sage }}>{productEcosystem.headingAccent}</span>{" "}
+              {productEcosystem.headingAfter}
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
+              {productEcosystem.body}
+            </p>
+          </Reveal>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:mt-16 xl:grid-cols-5 xl:gap-6">
+          <RevealStagger
+            className="mt-12 grid gap-8 sm:grid-cols-2 lg:mt-16 xl:grid-cols-5 xl:gap-6 [&>*:last-child]:sm:col-span-2 [&>*:last-child]:sm:mx-auto [&>*:last-child]:sm:max-w-sm [&>*:last-child]:xl:col-span-1 [&>*:last-child]:xl:mx-0 [&>*:last-child]:xl:max-w-none"
+            step={100}
+          >
             {productEcosystem.steps.map((step, index) => (
-              <div
-                key={step.step}
-                className={`relative ${
-                  index === productEcosystem.steps.length - 1
-                    ? "sm:col-span-2 sm:mx-auto sm:max-w-sm xl:col-span-1 xl:mx-0 xl:max-w-none"
-                    : ""
-                }`}
-              >
+              <div key={step.step} className="relative h-full">
                 <EcosystemStepCard
                   step={step.step}
                   title={step.title}
@@ -357,12 +366,12 @@ export function HomePage() {
                 ) : null}
               </div>
             ))}
-          </div>
+          </RevealStagger>
 
           <div
             className="mt-16 grid gap-8 border border-[#e4e0d6] bg-[#f7f5ef]/70 p-6 sm:p-8 lg:mt-20 lg:grid-cols-3 lg:items-stretch lg:gap-10 lg:p-10"
           >
-            <div className="flex flex-col justify-center">
+            <Reveal variant="left" className="flex flex-col justify-center">
               <p
                 className="font-display text-[11px] font-semibold tracking-[0.22em] uppercase"
                 style={{ color: sage }}
@@ -383,15 +392,21 @@ export function HomePage() {
                 {productEcosystem.howItWorks.cta.label}
                 <ArrowRight className="size-4" />
               </Link>
-            </div>
+            </Reveal>
 
-            <FuelCellDiagram
-              diagramTitle={productEcosystem.howItWorks.diagramTitle}
-              diagramLabels={productEcosystem.howItWorks.diagramLabels}
-              diagramImageSrc={productEcosystem.howItWorks.diagramImageSrc}
-            />
+            <Reveal variant="scale" delay={100}>
+              <FuelCellDiagram
+                diagramTitle={productEcosystem.howItWorks.diagramTitle}
+                diagramLabels={productEcosystem.howItWorks.diagramLabels}
+                diagramImageSrc={productEcosystem.howItWorks.diagramImageSrc}
+              />
+            </Reveal>
 
-            <div className="flex flex-col justify-center bg-[#141a14] p-6 text-[#f3efe4] sm:p-7">
+            <Reveal
+              variant="right"
+              delay={200}
+              className="flex flex-col justify-center bg-[#141a14] p-6 text-[#f3efe4] sm:p-7"
+            >
               <div
                 className="grid size-11 place-items-center rounded-full border"
                 style={{ borderColor: `${sage}88` }}
@@ -419,7 +434,7 @@ export function HomePage() {
                   );
                 })}
               </ul>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -431,30 +446,36 @@ export function HomePage() {
         style={{ background: "#ffffff" }}
       >
         <div className={pageInset}>
-          <p
-            className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
-            style={{ color: sage }}
-          >
-            {featuredProducts.eyebrow}
-          </p>
-          <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-            {featuredProducts.headingBefore}{" "}
-            <span style={{ color: sage }}>
-              {featuredProducts.headingAccent}
-              {featuredProducts.headingAfter
-                ? ` ${featuredProducts.headingAfter}`
-                : ""}
-            </span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
-            {featuredProducts.body}
-          </p>
+          <Reveal variant="up">
+            <p
+              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              style={{ color: sage }}
+            >
+              {featuredProducts.eyebrow}
+            </p>
+            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
+              {featuredProducts.headingBefore}{" "}
+              <span style={{ color: sage }}>
+                {featuredProducts.headingAccent}
+                {featuredProducts.headingAfter
+                  ? ` ${featuredProducts.headingAfter}`
+                  : ""}
+              </span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
+              {featuredProducts.body}
+            </p>
+          </Reveal>
 
-          <div className="mt-12 space-y-6 lg:mt-16 lg:space-y-8">
+          <RevealStagger
+            className="mt-12 space-y-6 lg:mt-16 lg:space-y-8"
+            step={100}
+            variant="up"
+          >
             {featuredProducts.products.map((product) => (
               <FeaturedProductRow key={product.name} {...product} />
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -469,34 +490,33 @@ export function HomePage() {
         className={`bg-[#0f140f] text-[#f3efe4] ${sectionY}`}
       >
         <div className={pageInset}>
-          <p
-            className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
-            style={{ color: sage }}
-          >
-            {missionDeployments.eyebrow}
-          </p>
-          <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-            {missionDeployments.headingBefore}{" "}
-            <span style={{ color: sage }}>{missionDeployments.headingAccent}</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#f3efe4]/65 sm:text-base">
-            {missionDeployments.body}
-          </p>
+          <Reveal variant="up">
+            <p
+              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              style={{ color: sage }}
+            >
+              {missionDeployments.eyebrow}
+            </p>
+            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
+              {missionDeployments.headingBefore}{" "}
+              <span style={{ color: sage }}>{missionDeployments.headingAccent}</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#f3efe4]/65 sm:text-base">
+              {missionDeployments.body}
+            </p>
+          </Reveal>
 
           <div className="mt-12 lg:mt-16">
             <MissionMap />
           </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-3 lg:grid-cols-5">
-            {missionDeployments.stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className={`text-center lg:text-left ${
-                  index === missionDeployments.stats.length - 1
-                    ? "col-span-2 justify-self-center sm:col-span-1 sm:justify-self-auto"
-                    : ""
-                }`}
-              >
+          <RevealStagger
+            className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-3 lg:grid-cols-5 [&>*:last-child]:col-span-2 [&>*:last-child]:justify-self-center sm:[&>*:last-child]:col-span-1 sm:[&>*:last-child]:justify-self-auto"
+            step={80}
+            variant="up"
+          >
+            {missionDeployments.stats.map((stat) => (
+              <div key={stat.label} className="text-center lg:text-left">
                 <p
                   className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
                   style={{ color: sage }}
@@ -509,7 +529,7 @@ export function HomePage() {
                 <p className="mt-1 text-xs text-[#f3efe4]/50">{stat.note}</p>
               </div>
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 

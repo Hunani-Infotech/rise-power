@@ -25,7 +25,7 @@ export function Header() {
     <header
       className={
         isHome
-          ? "absolute top-0 right-0 left-0 z-50 bg-transparent text-white"
+          ? "header-animate-in absolute top-0 right-0 left-0 z-50 bg-transparent text-white"
           : "sticky top-0 z-50 border-b border-border bg-cream text-ink"
       }
     >

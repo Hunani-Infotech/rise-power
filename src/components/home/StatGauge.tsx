@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 type StatGaugeProps = {
   value: string;
   unit?: string;
@@ -7,12 +11,13 @@ type StatGaugeProps = {
 
 const ARC_GREEN = "#7a9a3a";
 const TICK_GREY = "#c8c4b8";
+const ANIM_MS = 1100;
 
 function polar(cx: number, cy: number, r: number, angleDeg: number) {
   const rad = (angleDeg * Math.PI) / 180;
   return {
-    x: cx + r * Math.cos(rad),
-    y: cy + r * Math.sin(rad),
+    x: Math.round((cx + r * Math.cos(rad)) * 1000) / 1000,
+    y: Math.round((cy + r * Math.sin(rad)) * 1000) / 1000,
   };
 }
 
@@ -35,14 +40,66 @@ function slug(input: string) {
   return input.replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-|-$/g, "") || "x";
 }
 
+function easeOutCubic(t: number) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
 export function StatGauge({
   value,
   unit,
   percent = 72,
   size = 158,
 }: StatGaugeProps) {
-  const sweep = Math.min(100, Math.max(0, percent));
-  const glowId = `gauge-tip-${slug(value)}-${slug(unit ?? "u")}-${Math.round(sweep)}`;
+  const target = Math.min(100, Math.max(0, percent));
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const node = rootRef.current;
+    if (!node) return;
+
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduced) {
+      setProgress(target);
+      return;
+    }
+
+    let raf = 0;
+    let started = false;
+
+    const run = () => {
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - start) / ANIM_MS);
+        setProgress(target * easeOutCubic(t));
+        if (t < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started) {
+          started = true;
+          run();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35, rootMargin: "0px 0px -6% 0px" },
+    );
+
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [target]);
+
+  const sweep = progress;
+  const glowId = `gauge-tip-${slug(value)}-${slug(unit ?? "u")}-${Math.round(target)}`;
   const cx = size / 2;
   const cy = size / 2;
   const tickOuter = size * 0.48;
@@ -56,7 +113,10 @@ export function StatGauge({
   const compactSize = size < 140;
 
   return (
-    <div className="relative grid aspect-square w-full max-w-[158px] place-items-center">
+    <div
+      ref={rootRef}
+      className="relative grid aspect-square w-full max-w-[158px] place-items-center"
+    >
       <svg
         width="100%"
         height="100%"
