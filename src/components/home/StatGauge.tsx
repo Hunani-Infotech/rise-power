@@ -39,7 +39,7 @@ export function StatGauge({
   value,
   unit,
   percent = 72,
-  size = 168,
+  size = 158,
 }: StatGaugeProps) {
   const sweep = Math.min(100, Math.max(0, percent));
   const glowId = `gauge-tip-${slug(value)}-${slug(unit ?? "u")}-${Math.round(sweep)}`;
@@ -53,15 +53,13 @@ export function StatGauge({
   const tip = polar(cx, cy, arcR, endAngle);
   const tickCount = 60;
   const compactValue = value.length > 4;
+  const compactSize = size < 140;
 
   return (
-    <div
-      className="relative grid place-items-center"
-      style={{ width: size, height: size }}
-    >
+    <div className="relative grid aspect-square w-full max-w-[158px] place-items-center">
       <svg
-        width={size}
-        height={size}
+        width="100%"
+        height="100%"
         viewBox={`0 0 ${size} ${size}`}
         className="absolute inset-0"
         aria-hidden
@@ -138,8 +136,8 @@ export function StatGauge({
       <div
         className="relative z-[1] grid place-items-center rounded-full bg-white"
         style={{
-          width: size * 0.58,
-          height: size * 0.58,
+          width: "58%",
+          height: "58%",
           boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.03)",
         }}
       >
@@ -147,16 +145,18 @@ export function StatGauge({
           <span
             className={`font-display leading-none font-bold tracking-tight text-[#1a1c16] ${
               compactValue
-                ? "text-[1.35rem] sm:text-[1.55rem]"
-                : "text-[1.75rem] sm:text-[2.05rem]"
+                ? compactSize
+                  ? "text-[1.15rem]"
+                  : "text-[1.25rem] sm:text-[1.55rem]"
+                : compactSize
+                  ? "text-[1.4rem]"
+                  : "text-[clamp(1.45rem,4.2vw,2.05rem)]"
             }`}
           >
             {value}
           </span>
           {unit ? (
-            <span
-              className="mt-1 font-display text-[10px] leading-none font-semibold tracking-[0.14em] text-[#1a1c16] uppercase sm:text-[11px]"
-            >
+            <span className="mt-1 font-display text-[10px] leading-none font-semibold tracking-[0.14em] text-[#1a1c16] uppercase sm:text-[11px]">
               {unit}
             </span>
           ) : null}

@@ -62,14 +62,14 @@ export function MarketCard({
       }}
     >
       <article
-        className="group relative flex h-full min-h-[28rem] flex-col overflow-hidden lg:min-h-[34rem]"
+        className="group relative flex h-full min-h-0 flex-col overflow-hidden lg:min-h-[34rem]"
         style={{
           background: cardBg,
           clipPath: cardClip,
         }}
       >
-        {/* Image ~55% */}
-        <div className="relative aspect-4/3 w-full shrink-0 grow basis-[55%]">
+        {/* Image */}
+        <div className="relative aspect-4/3 w-full shrink-0">
           {imageSrc ? (
             <Image
               src={imageSrc}

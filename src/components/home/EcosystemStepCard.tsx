@@ -36,19 +36,16 @@ export function EcosystemStepCard({
       <p className="mt-2 text-sm leading-relaxed text-[#5c584e]">{blurb}</p>
 
       <div
-        className={`relative mt-4 overflow-hidden ${highlighted ? "rounded-sm p-[2px]" : ""}`}
+        className={`relative mt-4 ${highlighted ? "rounded-sm ring-2 ring-[#6e7f42]" : ""}`}
         style={
           highlighted
             ? {
-                background: sage,
                 boxShadow: `0 0 0 1px ${sage}55, 0 12px 28px ${sage}40`,
               }
             : undefined
         }
       >
-        <div
-          className={`relative aspect-square w-full overflow-hidden ${highlighted ? "bg-white" : ""}`}
-        >
+        <div className="relative aspect-square w-full overflow-hidden">
           {imageSrc ? (
             <Image
               src={imageSrc}

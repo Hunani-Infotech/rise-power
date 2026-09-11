@@ -51,7 +51,7 @@ export function CapabilitiesTabs() {
   const diagramSrc = capabilities.diagramImageSrc;
 
   return (
-    <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 py-16 lg:px-10 lg:py-20">
+    <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
       <div className="mx-auto max-w-3xl text-center">
         <p
           className="text-[11px] font-semibold tracking-[0.22em] uppercase"
@@ -72,7 +72,7 @@ export function CapabilitiesTabs() {
       </div>
 
       <div
-        className="mt-10 overflow-hidden rounded-xl border border-white/10"
+        className="mt-10 overflow-hidden rounded-sm border border-white/10"
         style={{ background: cardBg }}
       >
         <div
@@ -90,7 +90,7 @@ export function CapabilitiesTabs() {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveId(tab.id)}
-                className={`relative flex items-center justify-center gap-2.5 px-3 py-4 text-[11px] font-semibold tracking-[0.16em] uppercase transition-colors sm:px-4 sm:py-5 ${
+                className={`relative flex min-h-11 items-center justify-center gap-2.5 px-3 py-4 text-[11px] font-semibold tracking-[0.16em] uppercase transition-colors sm:px-4 sm:py-5 ${
                   index % 2 === 1 ? "border-l border-white/10" : ""
                 } ${index > 0 ? "lg:border-l lg:border-white/10" : ""} ${
                   index >= 2 ? "border-t border-white/10 lg:border-t-0" : ""
@@ -143,7 +143,16 @@ export function CapabilitiesTabs() {
               {active.body}
             </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-4 sm:gap-x-5">
+            <Link
+              href={active.cta.href}
+              className="mt-8 inline-flex w-fit min-h-11 items-center gap-2 border px-5 py-3 text-[11px] font-semibold tracking-[0.18em] uppercase transition-colors hover:bg-[#6e7f42]/12"
+              style={{ borderColor: sage, color: sage }}
+            >
+              {active.cta.label}
+              <ArrowRight className="size-3.5" strokeWidth={2} aria-hidden />
+            </Link>
+
+            <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-7 lg:grid-cols-4 lg:gap-x-5">
               {active.stats.map((stat, i) => {
                 const StatIcon = statIcons[i % statIcons.length]!;
                 return (
@@ -181,47 +190,64 @@ export function CapabilitiesTabs() {
                 );
               })}
             </div>
-
-            <Link
-              href={active.cta.href}
-              className="mt-8 inline-flex w-fit items-center gap-2 border px-5 py-3 text-[11px] font-semibold tracking-[0.18em] uppercase transition-colors hover:bg-[#6e7f42]/12"
-              style={{ borderColor: sage, color: sage }}
-            >
-              {active.cta.label}
-              <ArrowRight className="size-3.5" strokeWidth={2} aria-hidden />
-            </Link>
           </div>
 
-          <div className="relative min-h-[18rem] overflow-hidden rounded-lg bg-[#0a0e0a] sm:min-h-[22rem] lg:min-h-full">
-            {diagramSrc ? (
-              <Image
-                src={diagramSrc}
-                alt={capabilities.diagramImage}
-                fill
-                className="object-contain object-center p-4 sm:p-6"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-              />
-            ) : (
-              <PlaceholderMedia
-                label={capabilities.diagramImage}
-                className="absolute inset-0 min-h-full"
-              />
-            )}
+          <div className="flex flex-col gap-4">
+            <div className="relative min-h-[18rem] overflow-hidden rounded-sm bg-[#0a0e0a] sm:min-h-[22rem] lg:min-h-full">
+              {diagramSrc ? (
+                <Image
+                  src={diagramSrc}
+                  alt={capabilities.diagramImage}
+                  fill
+                  className="object-contain object-center p-4 sm:p-6"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+              ) : (
+                <PlaceholderMedia
+                  label={capabilities.diagramImage}
+                  className="absolute inset-0 min-h-full"
+                />
+              )}
 
-            <ul className="pointer-events-none absolute inset-0 z-10">
-              {active.callouts.map((callout, i) => (
+              {/* Absolute overlays from md up */}
+              <ul className="pointer-events-none absolute inset-0 z-10 hidden md:block">
+                {active.callouts.map((callout, i) => (
+                  <li
+                    key={callout.title}
+                    className={`absolute max-w-[38%] ${calloutPositions[i] ?? calloutPositions[0]}`}
+                  >
+                    <p
+                      className="text-[10px] font-semibold tracking-[0.14em] uppercase"
+                      style={{ color: sage }}
+                    >
+                      {callout.title}
+                    </p>
+                    <p
+                      className="mt-0.5 text-xs leading-snug"
+                      style={{ color: "rgba(243, 239, 228, 0.75)" }}
+                    >
+                      {callout.body}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Static stack below diagram on small screens */}
+            <ul className="grid gap-3 md:hidden">
+              {active.callouts.map((callout) => (
                 <li
                   key={callout.title}
-                  className={`absolute max-w-[42%] sm:max-w-[38%] ${calloutPositions[i] ?? calloutPositions[0]}`}
+                  className="border border-white/10 px-4 py-3"
                 >
                   <p
-                    className="text-[9px] font-semibold tracking-[0.14em] uppercase sm:text-[10px]"
+                    className="text-[10px] font-semibold tracking-[0.14em] uppercase"
                     style={{ color: sage }}
                   >
                     {callout.title}
                   </p>
                   <p
-                    className="mt-0.5 text-[10px] leading-snug sm:text-xs"
+                    className="mt-1 text-xs leading-snug"
                     style={{ color: "rgba(243, 239, 228, 0.75)" }}
                   >
                     {callout.body}

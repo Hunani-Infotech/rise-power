@@ -73,8 +73,8 @@ function MissionFlagMark() {
 export function Footer() {
   return (
     <footer className="text-cream" style={{ background: footerBg }}>
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-6 py-16 sm:gap-12 lg:grid-cols-6 lg:gap-8 lg:px-10">
-        <div className="lg:col-span-1">
+      <div className="mx-auto grid max-w-[1440px] gap-10 px-6 py-16 sm:grid-cols-2 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 lg:gap-8 lg:px-10">
+        <div className="sm:col-span-2 lg:col-span-1">
           <Logo className="text-cream" />
           <p className="mt-4 text-sm font-semibold tracking-wide text-sage">
             {footer.tagline}
@@ -114,7 +114,7 @@ export function Footer() {
         ))}
 
         <div>
-          <p className="mb-4 text-xs font-semibold tracking-[0.16em] text-cream uppercase">
+          <p className="mb-4 text-xs font-semibold tracking-[0.16em] text-sage uppercase">
             {footer.newsletter.heading}
           </p>
           <p className="text-sm leading-relaxed text-cream/70">
@@ -169,12 +169,12 @@ export function Footer() {
       </div>
 
       <div className="border-t border-cream/10">
-        <div className="mx-auto grid max-w-[1440px] gap-4 px-6 py-6 text-xs tracking-wide text-cream/50 lg:grid-cols-3 lg:items-center lg:px-10">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 px-6 py-6 text-center text-xs tracking-wide text-cream/50 lg:grid lg:grid-cols-3 lg:items-center lg:px-10 lg:text-left">
           <p className="lg:justify-self-start">{footer.copyright}</p>
 
           <nav
             aria-label="Legal"
-            className="flex flex-wrap items-center gap-x-0 gap-y-2 lg:justify-self-center"
+            className="flex flex-wrap items-center justify-center gap-x-0 gap-y-2 lg:justify-self-center"
           >
             {footer.legal.map((item, index) => (
               <span key={item.href + item.label} className="inline-flex items-center">
@@ -190,7 +190,7 @@ export function Footer() {
             ))}
           </nav>
 
-          <p className="inline-flex items-center gap-2.5 lg:justify-self-end">
+          <p className="inline-flex items-center justify-center gap-2.5 lg:justify-self-end">
             <MissionFlagMark />
             <span>
               {footer.badgeBefore}{" "}

@@ -17,7 +17,6 @@ import {
   Play,
   Radio,
   RadioTower,
-  RefreshCw,
   Shield,
   Tent,
   Volume2,
@@ -41,14 +40,11 @@ import { FuelCellDiagram } from "./FuelCellDiagram";
 import { MarketCard } from "./MarketCard";
 import { MissionMap } from "./MissionMap";
 import { PerformanceMetricCard } from "./PerformanceMetricCard";
-import { PlaceholderMedia } from "./PlaceholderMedia";
 import { WhyHydrogenWins } from "./WhyHydrogenWins";
 
-const cream = "#f3f0e8";
 const sage = "#6e7f42";
 /** Hero accent from Frame 1 reference (slightly brighter olive). */
 const heroSage = "#849363";
-const forest = "#161c16";
 
 const gaugeIcons = [Volume2, Leaf, Crosshair, Weight] as const;
 const marketBadgeIcons = [Shield, Building2, Home] as const;
@@ -59,9 +55,9 @@ const marketPointIcons = [
 ] as const;
 const heroChipIcons = [Leaf, Crosshair, Volume2, Shield] as const;
 
-/** Desktop sections target ~1025px like the Figma Frame 1 export. */
-const sectionShell =
-  "flex min-h-[100svh] w-full flex-col justify-center lg:min-h-[1025px]";
+/** Shared page inset + vertical rhythm (content sections — not hero). */
+const pageInset = "mx-auto w-full max-w-[1440px] px-6 lg:px-10";
+const sectionY = "py-16 sm:py-20 lg:py-24";
 
 export function HomePage() {
   return (
@@ -87,7 +83,7 @@ export function HomePage() {
         <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-[#060806]/70 via-[#060806]/25 to-transparent" />
         <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[#060806]/55 to-transparent" />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 pt-28 pb-10 lg:px-10 lg:pt-32 lg:pb-12">
+        <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 pt-28 pb-20 lg:px-10 lg:pt-32 lg:pb-14">
           <div className="flex flex-1 flex-col justify-center">
             <div className="max-w-xl lg:max-w-2xl">
               <p
@@ -96,7 +92,7 @@ export function HomePage() {
               >
                 {hero.eyebrow}
               </p>
-              <h1 className="mt-5 font-display text-[3.25rem] leading-[0.9] font-bold tracking-[-0.02em] uppercase sm:text-7xl md:text-8xl lg:text-[6.75rem]">
+              <h1 className="mt-5 font-display text-[2.75rem] leading-[0.9] font-bold tracking-[-0.02em] uppercase sm:text-7xl md:text-8xl lg:text-[6.75rem]">
                 {hero.headlineLine1}
                 <br />
                 <span style={{ color: heroSage }}>{hero.headlineLine2}</span>
@@ -126,7 +122,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4 sm:gap-x-8 lg:mt-0 lg:pb-2">
+          <div className="mt-10 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4 sm:gap-x-8 lg:mt-0 lg:pb-2">
             {hero.chips.map((chip, index) => {
               const Icon = heroChipIcons[index] ?? Leaf;
               return (
@@ -152,7 +148,7 @@ export function HomePage() {
 
         <a
           href="#performance-metrics"
-          className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-white/75 transition-colors hover:text-white"
+          className="absolute bottom-3 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-1 text-white/75 transition-colors hover:text-white lg:flex"
           aria-label="Scroll to next section"
         >
           <Mouse className="size-5" strokeWidth={1.4} />
@@ -163,7 +159,7 @@ export function HomePage() {
       {/* 2. Performance Metrics — Built to Outperform */}
       <section
         id="performance-metrics"
-        className={`relative overflow-hidden ${sectionShell} px-6 lg:px-10`}
+        className={`relative overflow-hidden ${sectionY}`}
         style={{ background: "#fafaf8" }}
       >
         {/* Decorative green dotted wave mesh — left + right, fades center */}
@@ -211,21 +207,21 @@ export function HomePage() {
           </svg>
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-[1440px]">
+        <div className={`relative z-10 ${pageInset}`}>
           <p
             className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
             style={{ color: sage }}
           >
             {performanceMetrics.eyebrow}
           </p>
-          <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-7xl">
+          <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
             {performanceMetrics.headingBefore}{" "}
             <span style={{ color: sage }}>{performanceMetrics.headingAccent}</span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
             {performanceMetrics.body}
           </p>
-          <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-8">
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-8">
             {performanceMetrics.gauges.map((item, index) => {
               const Icon = gaugeIcons[index] ?? Crosshair;
               return (
@@ -247,7 +243,7 @@ export function HomePage() {
       {/* 3. Three Markets */}
       <section
         id="three-markets"
-        className={`relative overflow-hidden ${sectionShell} px-6 lg:px-10`}
+        className={`relative overflow-hidden ${sectionY}`}
         style={{ background: "#f7f5ef" }}
       >
         {/* Faint hex pattern on left/right edges */}
@@ -278,7 +274,7 @@ export function HomePage() {
           }}
         />
 
-        <div className="relative z-10 mx-auto w-full max-w-[1440px]">
+        <div className={`relative z-10 ${pageInset}`}>
           <p
             className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
             style={{ color: sage }}
@@ -292,7 +288,7 @@ export function HomePage() {
           <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
             {threeMarkets.body}
           </p>
-          <div className="mt-12 grid gap-5 md:grid-cols-3 lg:mt-14 lg:gap-6">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
             {threeMarkets.cards.map((item, index) => (
               <MarketCard
                 key={item.title}
@@ -313,10 +309,10 @@ export function HomePage() {
       {/* 4. Product Ecosystem */}
       <section
         id="product-ecosystem"
-        className={`${sectionShell} px-6 lg:px-10`}
+        className={sectionY}
         style={{ background: "#ffffff" }}
       >
-        <div className="mx-auto w-full max-w-[1440px]">
+        <div className={pageInset}>
           <p
             className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
             style={{ color: sage }}
@@ -332,9 +328,16 @@ export function HomePage() {
             {productEcosystem.body}
           </p>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-5 lg:gap-5">
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:mt-16 xl:grid-cols-5 xl:gap-6">
             {productEcosystem.steps.map((step, index) => (
-              <div key={step.step} className="relative">
+              <div
+                key={step.step}
+                className={`relative ${
+                  index === productEcosystem.steps.length - 1
+                    ? "sm:col-span-2 sm:mx-auto sm:max-w-sm xl:col-span-1 xl:mx-0 xl:max-w-none"
+                    : ""
+                }`}
+              >
                 <EcosystemStepCard
                   step={step.step}
                   title={step.title}
@@ -346,7 +349,7 @@ export function HomePage() {
                 />
                 {index < productEcosystem.steps.length - 1 ? (
                   <ArrowRight
-                    className="absolute top-[4.5rem] -right-3 z-10 hidden size-4 lg:block"
+                    className="absolute top-[4.5rem] -right-3 z-10 hidden size-4 xl:block"
                     strokeWidth={1.75}
                     style={{ color: "#9a9484" }}
                     aria-hidden
@@ -357,7 +360,7 @@ export function HomePage() {
           </div>
 
           <div
-            className="mt-16 grid gap-8 border border-[#e4e0d6] bg-[#f7f5ef]/70 p-6 sm:p-8 lg:mt-20 lg:grid-cols-[0.95fr_1.15fr_0.75fr] lg:items-stretch lg:gap-10 lg:p-10"
+            className="mt-16 grid gap-8 border border-[#e4e0d6] bg-[#f7f5ef]/70 p-6 sm:p-8 lg:mt-20 lg:grid-cols-3 lg:items-stretch lg:gap-10 lg:p-10"
           >
             <div className="flex flex-col justify-center">
               <p
@@ -366,7 +369,7 @@ export function HomePage() {
               >
                 {productEcosystem.howItWorks.eyebrow}
               </p>
-              <h3 className="mt-3 font-display text-3xl leading-tight font-bold tracking-tight uppercase sm:text-4xl">
+              <h3 className="mt-3 font-display text-2xl leading-tight font-bold tracking-tight uppercase sm:text-3xl lg:text-4xl">
                 {productEcosystem.howItWorks.heading}
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-[#5c584e]">
@@ -424,10 +427,10 @@ export function HomePage() {
       {/* 5. Featured Products */}
       <section
         id="featured-products"
-        className={`${sectionShell} px-6 lg:px-10`}
+        className={sectionY}
         style={{ background: "#ffffff" }}
       >
-        <div className="mx-auto w-full max-w-[1440px]">
+        <div className={pageInset}>
           <p
             className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
             style={{ color: sage }}
@@ -436,14 +439,18 @@ export function HomePage() {
           </p>
           <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
             {featuredProducts.headingBefore}{" "}
-            <span style={{ color: sage }}>{featuredProducts.headingAccent}</span>{" "}
-            {featuredProducts.headingAfter}
+            <span style={{ color: sage }}>
+              {featuredProducts.headingAccent}
+              {featuredProducts.headingAfter
+                ? ` ${featuredProducts.headingAfter}`
+                : ""}
+            </span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
             {featuredProducts.body}
           </p>
 
-          <div className="mt-12 space-y-6 lg:mt-14 lg:space-y-8">
+          <div className="mt-12 space-y-6 lg:mt-16 lg:space-y-8">
             {featuredProducts.products.map((product) => (
               <FeaturedProductRow key={product.name} {...product} />
             ))}
@@ -452,38 +459,44 @@ export function HomePage() {
       </section>
 
       {/* 6. Capabilities */}
-      <section
-        id="capabilities"
-        className={`bg-[#141a14] text-[#f3efe4] ${sectionShell}`}
-      >
+      <section id="capabilities" className="bg-[#141a14] text-[#f3efe4]">
         <CapabilitiesTabs />
       </section>
 
       {/* 7. Mission Deployments */}
       <section
         id="mission-deployments"
-        className={`bg-[#0f140f] text-[#f3efe4] ${sectionShell} px-6 lg:px-10`}
+        className={`bg-[#0f140f] text-[#f3efe4] ${sectionY}`}
       >
-        <div className="mx-auto w-full max-w-[1440px]">
+        <div className={pageInset}>
           <p
-            className="text-center text-[11px] font-semibold tracking-[0.22em] uppercase"
+            className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
             style={{ color: sage }}
           >
             {missionDeployments.eyebrow}
           </p>
-          <h2 className="mt-3 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
+          <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
             {missionDeployments.headingBefore}{" "}
             <span style={{ color: sage }}>{missionDeployments.headingAccent}</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-[#f3efe4]/65 sm:text-base">
+          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#f3efe4]/65 sm:text-base">
             {missionDeployments.body}
           </p>
 
-          <MissionMap />
+          <div className="mt-12 lg:mt-16">
+            <MissionMap />
+          </div>
 
           <div className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-3 lg:grid-cols-5">
-            {missionDeployments.stats.map((stat) => (
-              <div key={stat.label} className="text-center lg:text-left">
+            {missionDeployments.stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={`text-center lg:text-left ${
+                  index === missionDeployments.stats.length - 1
+                    ? "col-span-2 justify-self-center sm:col-span-1 sm:justify-self-auto"
+                    : ""
+                }`}
+              >
                 <p
                   className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
                   style={{ color: sage }}

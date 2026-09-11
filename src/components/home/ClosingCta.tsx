@@ -20,7 +20,7 @@ export function ClosingCta() {
   return (
     <section
       id="demo"
-      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden text-[#f3efe4] lg:min-h-[1025px]"
+      className="relative w-full overflow-hidden py-16 text-[#f3efe4] sm:py-20 lg:py-24"
     >
       <Image
         src={closingCta.imageSrc ?? "/media/cta/closing.jpg"}
@@ -34,7 +34,7 @@ export function ClosingCta() {
       <div className="absolute inset-0 bg-linear-to-r from-[#0b0e0c]/85 via-[#0b0e0c]/45 to-[#0b0e0c]/70" />
       <div className="absolute inset-0 bg-linear-to-t from-[#0b0e0c]/80 via-transparent to-[#0b0e0c]/35" />
 
-      <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 py-20 lg:px-10">
+      <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
           <div>
             <h2 className="max-w-xl font-display text-4xl leading-[0.92] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
@@ -45,34 +45,6 @@ export function ClosingCta() {
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-[#f3efe4]/80 sm:text-base">
               {closingCta.body}
             </p>
-
-            <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
-              {closingCta.chips.map((chip, index) => {
-                const Icon = chipIcons[index] ?? ShieldCheck;
-                return (
-                  <div key={chip.title} className="flex flex-col items-start gap-3">
-                    <span
-                      className="grid size-11 place-items-center rounded-full border"
-                      style={{ borderColor: `${sage}99`, color: sage }}
-                      aria-hidden
-                    >
-                      <Icon className="size-5" strokeWidth={1.6} />
-                    </span>
-                    <div>
-                      <p
-                        className="text-[11px] font-semibold tracking-[0.14em] uppercase"
-                        style={{ color: sage }}
-                      >
-                        {chip.title}
-                      </p>
-                      <p className="mt-1 text-[12px] leading-snug text-[#f3efe4]/70">
-                        {chip.subtitle}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
 
           <div className="border border-white/15 bg-[#0b0e0c]/55 p-6 backdrop-blur-md sm:p-8">
@@ -88,7 +60,7 @@ export function ClosingCta() {
             <p className="mt-3 text-sm leading-relaxed text-[#f3efe4]/75">
               {closingCta.panelBody}
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3 lg:flex-row">
               <Link
                 href={closingCta.primaryCta.href}
                 className="inline-flex min-h-12 items-center justify-center gap-2 px-6 text-sm font-semibold tracking-wide uppercase"
@@ -106,6 +78,34 @@ export function ClosingCta() {
               </Link>
             </div>
           </div>
+        </div>
+
+        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:mt-16">
+          {closingCta.chips.map((chip, index) => {
+            const Icon = chipIcons[index] ?? ShieldCheck;
+            return (
+              <div key={chip.title} className="flex flex-col items-start gap-3">
+                <span
+                  className="grid size-11 place-items-center rounded-full border"
+                  style={{ borderColor: `${sage}99`, color: sage }}
+                  aria-hidden
+                >
+                  <Icon className="size-5" strokeWidth={1.6} />
+                </span>
+                <div>
+                  <p
+                    className="text-[11px] font-semibold tracking-[0.14em] uppercase"
+                    style={{ color: sage }}
+                  >
+                    {chip.title}
+                  </p>
+                  <p className="mt-1 text-[12px] leading-snug text-[#f3efe4]/70">
+                    {chip.subtitle}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

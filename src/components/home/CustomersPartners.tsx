@@ -60,22 +60,22 @@ export function CustomersPartners() {
 
   return (
     <section id="customer-partners" className="w-full" style={{ background: cream }}>
-      <div className="mx-auto w-full max-w-[1440px] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
+      <div className="mx-auto max-w-[1440px] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
         <p
-          className="text-center text-[11px] font-semibold tracking-[0.22em] uppercase"
+          className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
           style={{ color: sage }}
         >
           {eyebrow}
         </p>
-        <h2 className="mt-3 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight text-[#141a14] uppercase sm:text-5xl lg:text-6xl">
+        <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight text-[#141a14] uppercase sm:text-5xl lg:text-6xl">
           {headingBefore}{" "}
           <span style={{ color: sage }}>{headingAccent}</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
+        <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
           {body}
         </p>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
           {cases.map((item, index) => {
             const CategoryIcon = categoryIcons[index] ?? Shield;
             const icons = statIcons[index] ?? statIcons[0];
@@ -170,21 +170,19 @@ export function CustomersPartners() {
       </div>
 
       <div style={{ background: partnerBarBg }}>
-        <div className="mx-auto w-full max-w-[1440px] px-6 py-10 lg:px-10">
-          <p className="text-center text-[11px] font-semibold tracking-[0.2em] text-[#4a463c] uppercase">
+        <div className="mx-auto max-w-[1440px] px-6 py-10 lg:px-10">
+          <p className="text-center font-display text-[11px] font-semibold tracking-[0.28em] text-[#4a463c] uppercase sm:text-xs">
             {partnerHeading}
           </p>
-          <div className="mt-6 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-0 lg:flex-nowrap">
+          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-0">
             {partners.map((partner, index) => {
               const PartnerIcon = partnerIcons[index] ?? Cog;
-              const isLast = index === partners.length - 1;
+              const showDivider = index < partners.length - 1;
               return (
                 <div
                   key={partner}
-                  className={`flex items-center gap-2.5 sm:px-4 lg:px-5 ${
-                    isLast
-                      ? ""
-                      : "sm:border-r sm:border-[#c9c4b8]"
+                  className={`flex items-center justify-center gap-2.5 ${
+                    showDivider ? "lg:border-r lg:border-[#c9c4b8]" : ""
                   }`}
                 >
                   <PartnerIcon

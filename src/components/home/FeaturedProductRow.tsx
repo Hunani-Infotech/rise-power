@@ -97,9 +97,9 @@ export function FeaturedProductRow({
   imageSrc,
 }: FeaturedProductRowProps) {
   return (
-    <article className="grid gap-0 overflow-hidden border border-[#ddd8cc] bg-white lg:grid-cols-[0.95fr_1.15fr_0.7fr_0.75fr]">
+    <article className="grid gap-0 overflow-hidden border border-[#ddd8cc] bg-white md:grid-cols-2 lg:grid-cols-[0.95fr_1.15fr_0.7fr_0.75fr]">
       {/* 1. Left copy */}
-      <div className="flex flex-col justify-center border-[#ddd8cc] p-6 sm:p-8 lg:border-r">
+      <div className="flex flex-col justify-center border-b border-[#e4e0d6] p-6 sm:p-8 lg:border-r lg:border-b-0 lg:border-[#ddd8cc]">
         <h3
           className="font-display text-3xl font-bold tracking-[0.04em] uppercase sm:text-[2rem]"
           style={{ color: sage }}
@@ -123,25 +123,25 @@ export function FeaturedProductRow({
       </div>
 
       {/* 2. Product image */}
-      <div className="relative min-h-[14rem] overflow-hidden rounded-sm border-[#ddd8cc] lg:min-h-[22rem] lg:border-r">
+      <div className="relative min-h-[12rem] overflow-hidden border-b border-[#e4e0d6] lg:min-h-[22rem] lg:border-r lg:border-b-0 lg:border-[#ddd8cc]">
         {imageSrc ? (
           <Image
             src={imageSrc}
             alt={image}
             fill
-            className="rounded-sm object-cover"
+            className="object-cover"
             sizes="(max-width: 1024px) 100vw, 35vw"
           />
         ) : (
           <PlaceholderMedia
             label={image}
-            className="absolute inset-0 min-h-full rounded-sm"
+            className="absolute inset-0 min-h-full"
           />
         )}
       </div>
 
       {/* 3. Specs column — stacked rows */}
-      <div className="flex flex-col justify-center border-[#ddd8cc] px-6 py-6 sm:px-8 lg:border-r">
+      <div className="flex flex-col justify-center border-b border-[#e4e0d6] p-6 sm:p-8 lg:border-r lg:border-b-0 lg:border-[#ddd8cc]">
         <SpecRow
           icon={Timer}
           label={productUiLabels.runtime}
@@ -165,7 +165,7 @@ export function FeaturedProductRow({
       </div>
 
       {/* 4. Dark sidebar */}
-      <div className="relative flex flex-col bg-[#141a14] p-6 text-[#f3efe4] sm:p-7">
+      <div className="relative flex flex-col bg-[#141a14] p-6 text-[#f3efe4] sm:p-8">
         <span
           className="absolute inset-y-0 right-0 w-0.5"
           style={{ background: sage }}
@@ -195,7 +195,7 @@ export function FeaturedProductRow({
         <div className="mt-6 border-t border-[#f3efe4]/15 pt-5">
           <Link
             href={datasheetHref}
-            className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] uppercase transition-opacity hover:opacity-80"
+            className="inline-flex min-h-11 items-center gap-2 text-[11px] font-semibold tracking-[0.14em] uppercase transition-opacity hover:opacity-80"
             style={{ color: sage }}
           >
             <Download className="size-4 shrink-0" strokeWidth={1.7} />

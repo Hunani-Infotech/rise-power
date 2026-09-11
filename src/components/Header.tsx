@@ -29,11 +29,13 @@ export function Header() {
           : "sticky top-0 z-50 border-b border-border bg-cream text-ink"
       }
     >
-      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-4 px-6 lg:px-10">
-        <Logo className={isHome ? "text-white" : "text-ink"} />
+      <div className="relative mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-3 overflow-hidden px-6 sm:gap-4 lg:px-10">
+        <div className="min-w-0 shrink">
+          <Logo className={isHome ? "text-white" : "text-ink"} />
+        </div>
 
         <nav
-          className="hidden items-center gap-5 lg:flex xl:gap-7"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 lg:flex xl:gap-7"
           aria-label="Primary navigation"
         >
           {navItems.map((item) => {
@@ -57,8 +59,8 @@ export function Header() {
             href={contactCta.href}
             className={
               isHome
-                ? "border border-white/70 px-4 py-2.5 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 sm:px-5"
-                : "bg-forest px-4 py-2.5 text-sm font-semibold tracking-wide text-cream uppercase transition-colors hover:bg-ink sm:px-5"
+                ? "hidden border border-white/70 px-5 py-2.5 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 lg:inline-flex"
+                : "hidden bg-forest px-5 py-2.5 text-sm font-semibold tracking-wide text-cream uppercase transition-colors hover:bg-ink lg:inline-flex"
             }
           >
             {contactCta.label}
