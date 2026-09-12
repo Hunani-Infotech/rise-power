@@ -4,13 +4,13 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight, MapPin, Minus, Plus } from "lucide-react";
 import { missionDeployments } from "@/lib/home-content";
 import { Reveal } from "@/components/motion/Reveal";
-import { PlaceholderMedia } from "./PlaceholderMedia";
 import Image from "next/image";
 
 const sage = "#6e7f42";
 
 export function MissionMap() {
   const [activeId, setActiveId] = useState(missionDeployments.defaultHotspotId);
+  const [zoom, setZoom] = useState(1);
   const index = missionDeployments.hotspots.findIndex((h) => h.id === activeId);
   const active =
     missionDeployments.hotspots[index] ?? missionDeployments.hotspots[0];
@@ -25,59 +25,30 @@ export function MissionMap() {
     if (hotspot) setActiveId(hotspot.id);
   };
 
+  const zoomIn = () => setZoom((value) => Math.min(1.5, value + 0.25));
+  const zoomOut = () => setZoom((value) => Math.max(1, value - 0.25));
+
   return (
     <div className="mt-12 grid gap-8 lg:grid-cols-[1.5fr_0.9fr] lg:items-stretch">
-      <Reveal
-        variant="left"
-        className="relative min-h-[22rem] overflow-hidden bg-[#0f140f] p-4 sm:p-6 lg:min-h-[28rem]"
-      >
+      <Reveal variant="left" className="relative min-h-[22rem] overflow-hidden bg-[#0a0e0a] p-4 sm:p-6 lg:min-h-[28rem]">
         <p className="mb-4 text-center text-[11px] font-semibold tracking-[0.18em] text-[#f3efe4]/55 uppercase">
           {missionDeployments.mapPrompt}
         </p>
-        <div className="relative min-h-[16rem] w-full flex-1 sm:min-h-[18rem] lg:min-h-[22rem]">
-          <svg
-            viewBox="0 0 640 320"
-            className="h-full w-full"
-            aria-hidden="true"
+        <div className="relative min-h-[16rem] w-full overflow-hidden border border-white/10 sm:min-h-[18rem] lg:min-h-[22rem]">
+          <div
+            className="absolute inset-0 origin-center transition-transform duration-300 ease-out"
+            style={{ transform: `scale(${zoom})` }}
           >
-            <defs>
-              <pattern
-                id="mission-map-grid"
-                width="32"
-                height="32"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M32 0H0V32"
-                  fill="none"
-                  stroke="rgba(110,127,66,0.08)"
-                  strokeWidth="1"
-                />
-              </pattern>
-            </defs>
-            <rect width="640" height="320" fill="#0a0e0a" />
-            <rect width="640" height="320" fill="url(#mission-map-grid)" />
-            <path
-              fill="#2a3226"
-              stroke="rgba(110,127,66,0.25)"
-              strokeWidth="1"
-              d="M78 86c22-18 48-28 78-24 18 2 34 14 52 12 16-2 28-16 46-14 24 2 38 22 62 26 18 4 36-8 54-4 22 6 28 28 48 36 14 6 32 2 44 12 18 14 16 40-2 54-22 16-52 8-76 18-20 8-28 28-50 34-28 8-58-6-86-4-24 2-42 18-66 16-26-2-44-22-70-24-22-2-44 10-64 2-18-6-22-26-14-42 8-18 28-18 40-32 10-12 4-32 4-46z"
+            <Image
+              src={missionDeployments.mapImageSrc}
+              alt={missionDeployments.mapImageAlt}
+              fill
+              quality={80}
+              sizes="(max-width: 1024px) 100vw, 60vw"
+              className="object-cover"
             />
-            <path
-              fill="#323a2e"
-              stroke="rgba(110,127,66,0.2)"
-              strokeWidth="1"
-              d="M318 72c28-8 54 6 80 4 22-2 40-16 62-12 26 4 40 28 64 34 16 4 34-4 48 8 18 16 8 44-10 56-26 16-58 4-84 16-18 8-26 26-48 30-32 6-62-12-90-8-18 2-32 16-52 12-16-4-22-22-18-38 6-22 30-18 44-36 10-14 4-32 4-52z"
-            />
-            <path
-              fill="#2e362a"
-              stroke="rgba(110,127,66,0.2)"
-              strokeWidth="1"
-              d="M108 188c18-4 34 8 52 8 16 0 28-12 44-8 18 4 24 20 42 24 14 4 30-2 42 8 16 14 4 36-14 42-24 8-48-6-72 0-16 4-28 18-46 16-22-2-36-20-56-24-14-4-30 4-40-8-10-14 2-30 16-38 12-6 28 0 32-20z"
-            />
-          </svg>
-
-          {missionDeployments.hotspots.map((hotspot) => {
+            <div className="absolute inset-0 bg-[#071008]/30" aria-hidden />
+            {missionDeployments.hotspots.map((hotspot) => {
             const isActive = hotspot.id === active.id;
             return (
               <button
@@ -110,12 +81,14 @@ export function MissionMap() {
                 </span>
               </button>
             );
-          })}
+            })}
+          </div>
 
-          {/* Stub zoom controls */}
           <div className="absolute right-2 bottom-2 z-10 flex flex-col overflow-hidden border border-white/15 bg-[#0f140f]/90">
             <button
               type="button"
+              onClick={zoomIn}
+              disabled={zoom >= 1.5}
               className="grid size-11 place-items-center text-[#f3efe4]/70 transition-colors hover:bg-white/5 hover:text-[#f3efe4]"
               aria-label="Zoom in"
             >
@@ -124,6 +97,8 @@ export function MissionMap() {
             <span className="h-px bg-white/15" aria-hidden />
             <button
               type="button"
+              onClick={zoomOut}
+              disabled={zoom <= 1}
               className="grid size-11 place-items-center text-[#f3efe4]/70 transition-colors hover:bg-white/5 hover:text-[#f3efe4]"
               aria-label="Zoom out"
             >
@@ -162,8 +137,17 @@ export function MissionMap() {
         as="article"
         className="flex flex-col overflow-hidden border border-white/10 bg-[#121812]"
       >
-        {/* <PlaceholderMedia label={active.image} aspect="aspect-[16/9]" /> */}
-        <Image src={missionDeployments.imageSrc} alt={missionDeployments.imageAlt} width={missionDeployments.imageWidth} height={missionDeployments.imageHeight} className="object-cover" />
+        {active.detailImageSrc ? (
+          <Image
+            src={active.detailImageSrc}
+            alt={active.image}
+            width={1000}
+            height={520}
+            quality={75}
+            className="h-44 w-full object-cover sm:h-48"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+          />
+        ) : null}
         <div className="flex flex-1 flex-col p-5 sm:pt-4 sm:pb-3 sm:pr-4 sm:pl-5">
           <p
             className="inline-flex items-center gap-1 text-[10px] font-semibold tracking-[0.18em] uppercase"

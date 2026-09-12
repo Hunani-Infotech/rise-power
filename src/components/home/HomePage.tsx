@@ -28,6 +28,9 @@ import {
   MapPinIcon,
   ClockIcon,
   CircleCheckIcon,
+  Wind,
+  Flame,
+  Zap,
 } from "lucide-react";
 import {
   featuredProducts,
@@ -53,6 +56,9 @@ const iconMap = {
   "map-pin": MapPinIcon,
   clock: ClockIcon,
   "check-circle": CircleCheckIcon,
+  wind: Wind,
+  flame: Flame,
+  zap: Zap,
 } as const;
 
 
@@ -112,7 +118,7 @@ const heroChipIcons = [Leaf, Crosshair, Volume2, Shield] as const;
 
 /** Shared page inset + vertical rhythm (content sections — not hero). */
 const pageInset = "mx-auto w-full max-w-[1440px] px-6 lg:px-10";
-const sectionY = "py-16 sm:py-20 lg:py-24";
+const sectionY = "py-14 sm:py-18 lg:py-20";
 
 export function HomePage() {
   return (
@@ -331,7 +337,7 @@ export function HomePage() {
       </section>
 
       {/* 4. Product Ecosystem */}
-      <section
+      {/* <section
         id="product-ecosystem"
         className={sectionY}
         style={{ background: "#ffffff" }}
@@ -450,7 +456,179 @@ export function HomePage() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <div className="mt-20 rounded-xl border border-[#E3DED2] bg-[#FBFAF7] p-5 sm:p-7 lg:p-8">
+        <div className="grid gap-8 xl:grid-cols-[1.25fr_3fr_1.45fr] xl:items-center">
+
+          {/* LEFT CONTENT */}
+          <Reveal variant="left" className="pr-4 xl:border-r xl:border-[#E6E1D6]">
+            <p
+              className="text-[11px] font-semibold uppercase tracking-[0.28em]"
+              style={{ color: sage }}
+            >
+              {productEcosystem.howItWorks.eyebrow}
+            </p>
+
+            <h3 className="mt-3 font-display text-[34px] leading-[0.95] font-bold uppercase">
+              Clean Hydrogen.
+              <br />
+              Endless Possibilities.
+            </h3>
+
+            <p className="mt-5 text-[14px] leading-7 text-[#5C584E]">
+              {productEcosystem.howItWorks.body}
+            </p>
+
+            <Link
+              href={productEcosystem.howItWorks.cta.href}
+              className="mt-8 inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.18em]"
+              style={{ color: sage }}
+            >
+              {productEcosystem.howItWorks.cta.label}
+              <ArrowRight className="size-4" />
+            </Link>
+          </Reveal>
+
+          {/* CENTER FLOW */}
+          <Reveal variant="scale" delay={100}>
+            <div className="flex flex-col items-center">
+
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#3B3B3B]">
+                FUEL CELL STACK
+              </p>
+
+              <div className="flex w-full items-center justify-center gap-3">
+
+                {/* Hydrogen */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex size-20 items-center justify-center rounded-full border border-[#B7C58A] bg-white">
+                    <div>
+                      <p className="text-[8px] uppercase tracking-[0.25em] text-[#6F8A3A]">
+                        Hydrogen
+                      </p>
+                      <h4 className="text-3xl font-bold text-[#6F8A3A]">H₂</h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="h-[2px] w-10 bg-[#6F8A3A]" />
+
+                {/* Fuel Cell Image */}
+                <img
+                  src={productEcosystem.howItWorks.diagramImageSrc}
+                  alt="Fuel Cell Stack"
+                  className="w-[210px] lg:w-[260px]"
+                />
+
+                <div className="h-[2px] w-10 bg-[#D5B425]" />
+
+                {/* Electricity */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex size-20 items-center justify-center rounded-full border border-[#E4D18A] bg-white">
+                    <Zap className="size-8 text-[#D5B425]" />
+                  </div>
+                  <span className="mt-2 text-[10px] font-medium uppercase tracking-[0.15em]">
+                    Electricity
+                  </span>
+                </div>
+
+                <ArrowRight className="size-5 text-[#A39C8C]" />
+
+                {/* Water */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex size-20 items-center justify-center rounded-full border border-[#9ED2E7] bg-white">
+                    <Droplets className="size-8 text-[#4AA8E8]" />
+                  </div>
+                  <span className="mt-2 text-[10px] font-medium uppercase tracking-[0.15em]">
+                    Water
+                  </span>
+                </div>
+
+                <ArrowRight className="size-5 text-[#A39C8C]" />
+
+                {/* Heat */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex size-20 items-center justify-center rounded-full border border-[#E7B39D] bg-white">
+                    <Flame className="size-8 text-[#E27B5F]" />
+                  </div>
+                  <span className="mt-2 text-[10px] font-medium uppercase tracking-[0.15em]">
+                    Heat
+                  </span>
+                </div>
+
+              </div>
+
+              {/* Legend */}
+              <div className="mt-8 w-full border-t border-[#E4E0D6] pt-5">
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-[10px] uppercase tracking-[0.16em] text-[#6A655A]">
+                  {[
+                    ["#6F8A3A", "Hydrogen In"],
+                    ["#4AA8E8", "Oxygen In"],
+                    ["#D5B425", "Electricity Out"],
+                    ["#78BCD7", "Water Out"],
+                    ["#E27B5F", "Heat"],
+                  ].map(([color, label]) => (
+                    <div key={label} className="flex items-center gap-2">
+                      <span
+                        className="size-2 rounded-full"
+                        style={{ background: color }}
+                      />
+                      {label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </Reveal>
+
+          {/* RIGHT CARD */}
+          <Reveal variant="right" delay={200}>
+            <div
+              className="relative overflow-hidden rounded-lg p-6 text-[#F4F0E6]"
+              style={{
+                background:
+                  "linear-gradient(135deg,#0F150F 0%,#121B12 65%,#172117 100%)",
+              }}
+            >
+              <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#7E8E47]/15 blur-3xl" />
+
+              <div
+                className="flex size-12 items-center justify-center rounded-full border"
+                style={{ borderColor: `${sage}66` }}
+              >
+                <Leaf className="size-5" style={{ color: sage }} />
+              </div>
+
+              <h4 className="mt-5 font-display text-2xl font-bold uppercase">
+                {productEcosystem.howItWorks.sideCard.title}
+              </h4>
+
+              <p className="mt-2 text-sm text-[#F4F0E6]/70">
+                {productEcosystem.howItWorks.sideCard.subtitle}
+              </p>
+
+              <ul className="mt-8 space-y-4 text-sm">
+                {productEcosystem.howItWorks.sideCard.bullets.map((bullet, i) => {
+                  const Icon = i === 0 ? Wind : Volume2;
+
+                  return (
+                    <li key={bullet} className="flex items-center gap-3">
+                      <Icon
+                        className="size-4 shrink-0"
+                        style={{ color: sage }}
+                      />
+                      {bullet}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </Reveal>
+
+        </div>
+      </div>
 
       {/* 5. Featured Products */}
       <section

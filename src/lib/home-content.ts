@@ -103,6 +103,7 @@ export type DeploymentHotspot = {
   stats: readonly { label: string; value: string }[];
   overview: string;
   image: string;
+  detailImageSrc?: string;
   x: number;
   y: number;
 };
@@ -655,10 +656,8 @@ export const missionDeployments = {
   body: "Rise Mission Power systems are trusted in the world’s most challenging environments and critical missions.",
   mapPrompt: "CLICK A HOTSPOT to explore mission deployments",
   legend: ["ACTIVE DEPLOYMENTS", "PAST MISSIONS"] as const,
-  imageSrc: "/media/missions/mountain.png",
-  imageAlt: "Mission map",
-  imageWidth: 1000,
-  imageHeight: 1000,
+  mapImageSrc: "/media/missions/world-map.png",
+  mapImageAlt: "Dark satellite view of the world",
   hotspots: [
     {
       id: "arctic",
@@ -729,6 +728,7 @@ export const missionDeployments = {
       overview:
         "Providing silent, zero-emission power for forward operating bases and communication relays in high-altitude, low-temperature conditions.",
       image: "Mountain deployment",
+      detailImageSrc: "/media/missions/mountain.png",
       x: 68,
       y: 34,
     },
