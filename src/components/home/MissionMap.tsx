@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Minus, Plus } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, Minus, Plus } from "lucide-react";
 import { missionDeployments } from "@/lib/home-content";
 import { Reveal } from "@/components/motion/Reveal";
 import { PlaceholderMedia } from "./PlaceholderMedia";
+import Image from "next/image";
 
 const sage = "#6e7f42";
 
@@ -161,20 +162,21 @@ export function MissionMap() {
         as="article"
         className="flex flex-col overflow-hidden border border-white/10 bg-[#121812]"
       >
-        <PlaceholderMedia label={active.image} aspect="aspect-[16/9]" />
-        <div className="flex flex-1 flex-col p-5 sm:p-6">
+        {/* <PlaceholderMedia label={active.image} aspect="aspect-[16/9]" /> */}
+        <Image src={missionDeployments.imageSrc} alt={missionDeployments.imageAlt} width={missionDeployments.imageWidth} height={missionDeployments.imageHeight} className="object-cover" />
+        <div className="flex flex-1 flex-col p-5 sm:pt-4 sm:pb-3 sm:pr-4 sm:pl-5">
           <p
-            className="text-[10px] font-semibold tracking-[0.18em] uppercase"
+            className="inline-flex items-center gap-1 text-[10px] font-semibold tracking-[0.18em] uppercase"
             style={{ color: sage }}
           >
-            {active.status}
+            <MapPin className="size-4" /> {active.status}
           </p>
-          <h3 className="mt-2 font-display text-2xl tracking-wide uppercase">
+          <h3 className="mt-0.5 font-display text-2xl tracking-wide uppercase">
             {active.title}
           </h3>
-          <p className="mt-1 text-sm text-[#f3efe4]/65">{active.subhead}</p>
+          <p className="mt-0.5 text-sm text-[#f3efe4]/65">{active.subhead}</p>
 
-          <dl className="mt-5 grid grid-cols-2 gap-4">
+          <dl className="mt-3 grid grid-cols-2 gap-3">
             {active.stats.map((stat) => (
               <div key={stat.label}>
                 <dt className="text-[10px] tracking-[0.14em] text-[#f3efe4]/45 uppercase">
@@ -190,14 +192,14 @@ export function MissionMap() {
             ))}
           </dl>
 
-          <p className="mt-5 text-[10px] font-semibold tracking-[0.16em] text-[#f3efe4]/45 uppercase">
+          <p className="mt-4 text-[10px] font-semibold tracking-[0.16em] text-[#f3efe4]/45 uppercase">
             Mission Overview
           </p>
-          <p className="mt-2 text-sm leading-relaxed text-[#f3efe4]/75">
+          <p className="mt-0.5 text-sm leading-relaxed text-[#f3efe4]/75">
             {active.overview}
           </p>
 
-          <div className="mt-auto flex items-center justify-between gap-2 pt-6">
+          <div className="mt-auto flex items-center justify-between gap-2 pt-3">
             <button
               type="button"
               onClick={() => go(-1)}
