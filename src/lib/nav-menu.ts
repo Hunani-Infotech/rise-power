@@ -408,49 +408,6 @@ export const megaNavItems: readonly MegaNavItem[] = [
   },
 
   {
-    label: "Commercial",
-    href: "/commercial",
-    links: [
-      {
-        label: "Commercial Solutions",
-        href: "/commercial",
-        description: "Reliable clean power for demanding sites.",
-      },
-      {
-        label: "Industry Applications",
-        href: "/use-cases",
-        description: "Construction, mining, telecom and remote sites.",
-      },
-      {
-        label: "TITAN™",
-        href: "/products#titan",
-        description: "High-output hydrogen generation.",
-      },
-      {
-        label: "SENTINEL™",
-        href: "/products#sentinel",
-        description: "Portable site and backup power.",
-      },
-      {
-        label: "Datasheets",
-        href: "/datasheets",
-        description: "Product specifications and technical data.",
-      },
-      {
-        label: "Request a Consultation",
-        href: "/contact",
-        description: "Find the right system for your operation.",
-      },
-    ],
-    feature: {
-      title: "Industrial Power. No Diesel.",
-      body: "Clean, reliable hydrogen power for construction, mining, telecom and other critical infrastructure.",
-      href: "/commercial",
-      cta: "Explore Commercial",
-    },
-  },
-
-  {
     label: "Consumer",
     href: "/consumer",
     // links: [

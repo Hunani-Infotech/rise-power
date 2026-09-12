@@ -257,42 +257,69 @@ export default function ProductsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#06100d]/80 via-[#06100d]/35 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#06100d]/60 via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 pt-24 pb-16 sm:min-h-[780px] lg:min-h-screen lg:px-10">
-          <div className="w-full max-w-[620px]">
-            <p className="text-xs font-semibold tracking-[0.18em] text-[#91ad46] uppercase">
-              ⌁ Product Systems
-            </p>
+        <div className="relative overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src="/media/products/product-hero.png"
+            alt="Rise Power hydrogen systems"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
 
-            <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[76px]">
-              Four Systems.
-              <br />
-              <span className="text-[#91ad46]">One Hydrogen</span>
-              <br />
-              Ecosystem.
-            </h1>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/60" />
 
-            <p className="mt-7 max-w-[540px] text-base leading-relaxed text-white/75 sm:text-lg">
-              Portable hydrogen power engineered for defense, disaster
-              response, remote operations, and critical infrastructure.
-            </p>
+          {/* Gradient for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050b0d]/95 via-[#050b0d]/70 to-[#050b0d]/30" />
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex min-h-14 items-center justify-center gap-2 bg-[#91ad46] px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-[#a4c257]"
-              >
-                Request a Briefing
-                <ArrowRight className="size-4" />
-              </Link>
+          {/* Content */}
+          <div className="relative mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 pt-24 pb-16 sm:min-h-[780px] lg:min-h-screen lg:px-10">
 
-              <Link
-                href="#product-systems"
-                className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-white/10"
-              >
-                See Products
-                <ArrowRight className="size-4" />
-              </Link>
+            <div className="w-full max-w-[620px]">
+
+              <p className="text-xs font-semibold tracking-[0.18em] text-[#91ad46] uppercase">
+                ⌁ Product Systems
+              </p>
+
+              <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[76px]">
+                Four Systems.
+                <br />
+                <span className="text-[#91ad46]">
+                  One Hydrogen
+                </span>
+                <br />
+                Ecosystem.
+              </h1>
+
+              <p className="mt-7 max-w-[540px] text-base leading-relaxed text-white/75 sm:text-lg">
+                Portable hydrogen power engineered for defense, disaster
+                response, remote operations, and critical infrastructure.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 bg-[#91ad46] px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-[#a4c257]"
+                >
+                  Request a Briefing
+                  <ArrowRight className="size-4" />
+                </Link>
+
+                <Link
+                  href="#product-systems"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-white/10"
+                >
+                  See Products
+                  <ArrowRight className="size-4" />
+                </Link>
+
+              </div>
+
             </div>
+
           </div>
         </div>
       </section>
@@ -385,7 +412,7 @@ export default function ProductsPage() {
 
                             <p className="truncate text-[12px] font-bold text-white sm:text-[13px]">
                               {value as string}
-                            </p> 
+                            </p>
 
                             <p className="mt-0.5 text-[8px] leading-tight font-medium tracking-[0.08em] text-white/55 uppercase">
                               {label as string}
@@ -415,15 +442,26 @@ export default function ProductsPage() {
       </section>
 
       {/* ENGINEERED AS A SYSTEM */}
-      <section className="bg-[#f7f6f2] py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.35fr_0.7fr] lg:gap-8 lg:px-10">
+      <section className="relative overflow-hidden bg-[#f7f6f2] py-16 sm:py-20 lg:py-24">
+
+        <Image
+          src="/media/products/product-ecosystem.png"
+          alt="Rise Power ecosystem"
+          fill
+          className="object-cover"
+        />
+
+        <div className="absolute inset-0 bg-[#f7f6f2]/70" />
+
+        <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-10 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.35fr_0.7fr] lg:gap-8 lg:px-10">
+
           {/* CONTENT */}
-          <div className="relative z-10">
+          <div>
             <p className="text-xs font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
               ⌁ One Cartridge Ecosystem
             </p>
 
-            <h2 className="mt-5 font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl">
+            <h2 className="mt-5 font-display text-5xl leading-[0.9] font-bold uppercase sm:text-6xl">
               Engineered
               <br />
               <span className="text-[#6e7f42]">As a System.</span>
@@ -431,25 +469,21 @@ export default function ProductsPage() {
 
             <p className="mt-6 max-w-[520px] text-sm leading-relaxed text-[#5c584e] sm:text-base">
               Every Rise Power product is designed as a complete system. Power
-              generation, fuel delivery, controls, and ruggedized enclosures
-              work together to deliver reliable performance across demanding
-              environments.
+              generation, fuel delivery, controls, and ruggedized enclosures work
+              together to deliver reliable performance across demanding environments.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-5">
+            <div className="mt-8 flex flex-wrap gap-5">
               <Link
                 href="/technology"
-                className="inline-flex min-h-12 items-center gap-3 border border-[#252925] px-6 text-xs font-semibold tracking-[0.12em] uppercase transition hover:bg-[#141a14] hover:text-white"
+                className="inline-flex min-h-12 items-center gap-3 border border-[#252925] px-6 text-xs font-semibold uppercase hover:bg-[#141a14] hover:text-white"
               >
-                <span className="grid size-6 place-items-center rounded-full border border-current text-[9px]">
-                  ▶
-                </span>
-                See How It Works
+                ▶ See How It Works
               </Link>
 
               <Link
                 href="/technology"
-                className="inline-flex items-center gap-3 text-xs font-semibold tracking-[0.12em] text-[#141a14] uppercase"
+                className="inline-flex items-center gap-3 text-xs font-semibold uppercase"
               >
                 Explore Technology
                 <ArrowRight className="size-4 text-[#6e7f42]" />
@@ -457,56 +491,45 @@ export default function ProductsPage() {
             </div>
           </div>
 
-          {/* SYSTEM IMAGE */}
-          <div className="relative min-h-[320px] sm:min-h-[430px] lg:min-h-[520px]">
-            <Image
-              src="/media/products/system.png"
-              alt="Rise Power hydrogen product ecosystem"
-              fill
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              quality={90}
-              className="object-contain"
-            />
-          </div>
+
+          {/* SPACE FOR BACKGROUND PRODUCT IMAGE */}
+          <div className="hidden lg:block" />
+
 
           {/* SYSTEM FLOW */}
-          <div className="relative">
-            <div className="absolute top-8 bottom-8 left-[18px] hidden w-px bg-[#8aa451] sm:block" />
-
-            <div className="space-y-3">
-              {systemFlow.map((item) => (
-                <div
-                  key={item.title}
-                  className="relative flex min-h-[92px] items-center gap-3 rounded-md border border-[#dcded8] bg-white/70 p-3"
-                >
-                  <div className="relative z-10 grid size-9 shrink-0 place-items-center rounded-full border border-[#8aa451] bg-[#f7f6f2]">
-                    <span className="size-2.5 rounded-full bg-[#6e7f42]" />
-                  </div>
-
-                  <div className="relative h-14 w-14 shrink-0 overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      sizes="56px"
-                      className="object-contain"
-                    />
-                  </div>
-
-                  <div className="min-w-0">
-                    <h3 className="text-[10px] font-bold tracking-[0.08em] text-[#20251f] uppercase sm:text-[11px]">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-1 text-[10px] leading-relaxed text-[#706e66] sm:text-[11px]">
-                      {item.body}
-                    </p>
-                  </div>
+          <div className="space-y-3">
+            {systemFlow.map((item) => (
+              <div
+                key={item.title}
+                className="flex items-center gap-3 rounded-md border border-[#dcded8] bg-white/80 p-3"
+              >
+                <div className="grid size-9 place-items-center rounded-full border border-[#8aa451]">
+                  <span className="size-2.5 rounded-full bg-[#6e7f42]" />
                 </div>
-              ))}
-            </div>
+
+                <div className="relative h-14 w-14">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+
+                <div>
+                  <h3 className="text-[11px] font-bold uppercase">
+                    {item.title}
+                  </h3>
+                  <p className="text-[10px] text-[#706e66]">
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
+
         </div>
+
       </section>
 
       {/* PRODUCT COMPARISON */}

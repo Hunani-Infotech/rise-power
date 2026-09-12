@@ -39,7 +39,7 @@ export const products = [
     tagline: "Man-portable tactical power",
     description:
       "Man portable hydrogen power in a ruggedized, field ready form factor. Unlimited runtime via 30 second cartridge swap. Under 15 lbs. Sub ambient acoustic signature for forward positions.",
-    image: "/media/hero-fallback.jpg",
+    image: "/media/products/product-sentinal.png",
     specs: [
       "Unlimited runtime via 30 second cartridge swap",
       "Under 15 lbs total system weight",
@@ -55,7 +55,7 @@ export const products = [
     tagline: "Drone range extender",
     description:
       "Plug and play hydrogen range extender for lithium polymer drones. Extends flight time to 4 plus hours, targeting 5x the range of lithium alone.",
-    image: "/media/case-studies/afghanistan-drone-wide.jpg",
+    image: "/media/products/product-falcon.png",
     specs: [
       "5x range extension over lithium batteries",
       "4 plus hours continuous airtime",
@@ -71,7 +71,7 @@ export const products = [
     tagline: "3 kW field generator",
     description:
       "A 3 kW zero emission generator built for sustained field operations. Operates silently across extreme temperature ranges with zero heat signature.",
-    image: "/media/og-image.jpg",
+    image: "/media/products/product-titan.png",
     specs: [
       "3000 W nominal power output",
       "Operates minus 20 to plus 50 degrees C",
@@ -87,7 +87,7 @@ export const products = [
     tagline: "Universal fuel logistics",
     description:
       "Universal fuel cell compatible cartridges with RFID smart monitoring. Leak proof, lightweight, and designed for rapid field replenishment.",
-    image: "/media/capabilities/engineering-development.jpg",
+    image: "/media/products/product-hydro-kit.png",
     specs: [
       "Universal fuel cell compatibility",
       "RFID enabled smart monitoring",
@@ -104,7 +104,7 @@ export const useCases = [
     title: "Defense & Security",
     description:
       "Silent portable power for bases, troops, and surveillance drones. Reduces reliance on fuel convoys. Eliminates the acoustic, thermal, and emissions signatures that compromise operational security.",
-    image: "/media/use-cases/defense-security.jpg",
+    image: "/media/use-cases/uc-grid1.png",
     howItWorks: [
       "Deploy Sentinel or Titan to forward positions",
       "Operate communications and surveillance equipment silently",
@@ -118,7 +118,7 @@ export const useCases = [
     title: "Remote Operations",
     description:
       "Sustained, reliable power in austere environments where fuel resupply is difficult and generator maintenance is impractical. Pre position cartridges and operate for days without intervention.",
-    image: "/media/case-studies/afghanistan-drone-wide.jpg",
+    image: "/media/use-cases/uc-grid2.png",
     howItWorks: [
       "Pre position fuel cartridges at remote sites",
       "Operate continuously for days without maintenance",
@@ -132,7 +132,7 @@ export const useCases = [
     title: "Disaster Response",
     description:
       "Indoor safe emergency power for shelters, medical, and communications when the grid drops. Zero exhaust enables indoor operation. Cartridges stockpile indefinitely.",
-    image: "/media/use-cases/disaster-response.jpg",
+    image: "/media/use-cases/uc-grid3.png",
     howItWorks: [
       "Pre position cartridges at emergency depots",
       "Deploy units to shelters, comms posts, and triage tents",
@@ -146,7 +146,7 @@ export const useCases = [
     title: "Critical Infrastructure",
     description:
       "Mission duration backup for data centers, command facilities, and telecom that cannot drop. Sealed indoor operation, automatic failover, and a fuel supply that does not spoil or leak.",
-    image: "/media/og-image.jpg",
+    image: "/media/use-cases/uc-grid4.png",
     howItWorks: [
       "Install in rack as primary or backup power source",
       "Failover to fuel cell within milliseconds",
