@@ -325,204 +325,351 @@ export type MegaNavItem = {
   feature?: MegaFeature;
 };
 
+
+// export const megaNavItems: readonly MegaNavItem[] = [
+//   {
+//     label: "Technology",
+//     href: "/technology",
+//     links: [
+//       {
+//         label: "Technology Overview",
+//         href: "/technology",
+//         description: "How our hydrogen power technology works.",
+//       },
+//       {
+//         label: "Hydrogen Ecosystem",
+//         href: "/#product-ecosystem",
+//         description: "From hydrogen supply to rapid cartridge refueling.",
+//       },
+//       {
+//         label: "System Capabilities",
+//         href: "/#capabilities",
+//         description: "Efficiency, durability, safety and performance.",
+//       },
+//       {
+//         label: "Featured Products",
+//         href: "/#featured-products",
+//         description: "Explore SENTINEL, FALCON and TITAN.",
+//       },
+//       {
+//         label: "Datasheets",
+//         href: "/datasheets",
+//         description: "Technical specifications and product data.",
+//       },
+//     ],
+//     feature: {
+//       title: "Silent. Zero Emissions.",
+//       body: "Hydrogen power engineered for reliable performance without diesel noise, fumes or fuel logistics.",
+//       href: "/technology",
+//       cta: "Explore Technology",
+//     },
+//   },
+
+//   {
+//     label: "Defense",
+//     href: "/defense",
+//     links: [
+//       {
+//         label: "Defense Solutions",
+//         href: "/defense",
+//         description: "Mission-ready power for demanding environments.",
+//       },
+//       {
+//         label: "Defense Applications",
+//         href: "/use-cases",
+//         description: "Tactical communications, ISR and forward operations.",
+//       },
+//       {
+//         label: "SENTINEL™",
+//         href: "/products#sentinel",
+//         description: "Portable power for field operations.",
+//       },
+//       {
+//         label: "FALCON™",
+//         href: "/products#falcon",
+//         description: "Extended endurance for UAV missions.",
+//       },
+//       {
+//         label: "Datasheets",
+//         href: "/datasheets",
+//         description: "Specifications for defense programs.",
+//       },
+//       {
+//         label: "Defense Contact",
+//         href: "/contact",
+//         description: "Talk with our defense team.",
+//       },
+//     ],
+//     feature: {
+//       title: "Power Without the Signature.",
+//       body: "Silent, zero-emission systems designed for forward positions, ISR platforms and mission-critical communications.",
+//       href: "/defense",
+//       cta: "Explore Defense",
+//     },
+//   },
+
+//   {
+//     label: "Consumer",
+//     href: "/consumer",
+//     // links: [
+//     //   {
+//     //     label: "Consumer Solutions",
+//     //     href: "/consumer",
+//     //     description: "Quiet, clean power for life beyond the grid.",
+//     //   },
+//     //   {
+//     //     label: "Camping & RV",
+//     //     href: "/use-cases",
+//     //     description: "Reliable power wherever you go.",
+//     //   },
+//     //   {
+//     //     label: "Emergency Backup",
+//     //     href: "/use-cases",
+//     //     description: "Keep essential systems powered when the grid fails.",
+//     //   },
+//     //   {
+//     //     label: "SENTINEL™",
+//     //     href: "/products#sentinel",
+//     //     description: "Compact, portable hydrogen power.",
+//     //   },
+//     //   {
+//     //     label: "Resources",
+//     //     href: "/resources",
+//     //     description: "Guides, specifications and helpful information.",
+//     //   },
+//     //   {
+//     //     label: "Contact Us",
+//     //     href: "/contact",
+//     //     description: "Find the right power solution.",
+//     //   },
+//     // ],
+//     feature: {
+//       title: "Power Beyond the Grid.",
+//       body: "Silent, emission-free hydrogen power for camping, RVs, emergency backup and off-grid living.",
+//       href: "/consumer",
+//       cta: "Explore Consumer",
+//     },
+//   },
+
+//   {
+//     label: "Products",
+//     href: "/products",
+//     links: [
+//       {
+//         label: "SENTINEL™",
+//         href: "/products#sentinel",
+//         description: "Portable hydrogen power for field operations.",
+//       },
+//       {
+//         label: "FALCON™",
+//         href: "/products#falcon",
+//         description: "Hydrogen range extension for UAV platforms.",
+//       },
+//       {
+//         label: "TITAN™",
+//         href: "/products#titan",
+//         description: "High-output hydrogen generator.",
+//       },
+//       {
+//         label: "Hydrogen Cartridge Kit",
+//         href: "/products#hydrogen-cartridge-kit",
+//         description: "Rapid-refuel cartridge system.",
+//       },
+//       // {
+//       //   label: "Datasheets",
+//       //   href: "/datasheets",
+//       //   description: "Download technical specifications.",
+//       // },
+//     ],
+//     feature: {
+//       title: "Power You Can Depend On.",
+//       body: "Explore hydrogen systems built for portable power, extended endurance and sustained mission operations.",
+//       href: "/products",
+//       cta: "View Products",
+//     },
+//   },
+
+//   {
+//     label: "Resources",
+//     href: "/resources",
+//     links: [
+//       {
+//         label: "Resource Center",
+//         href: "/resources",
+//         description: "Guides, specifications and field resources.",
+//       },
+//       {
+//         label: "Datasheets",
+//         href: "/datasheets",
+//         description: "Download product specifications.",
+//       },
+//       {
+//         label: "News & Insights",
+//         href: "/insights",
+//         description: "Latest company and industry updates.",
+//       },
+//       {
+//         label: "Applications",
+//         href: "/use-cases",
+//         description: "See how Rise Power systems are deployed.",
+//       },
+//       {
+//         label: "Investors",
+//         href: "/investors",
+//         description: "Company and growth information.",
+//       }
+//     ],
+//     feature: {
+//       title: "Resources for the Mission.",
+//       body: "Find product data, field insights and technical resources for procurement, planning and deployment.",
+//       href: "/resources",
+//       cta: "Browse Resources",
+//     },
+//   },
+
+//   {
+//     label: "Company",
+//     href: "/company",
+//     links: [
+//       {
+//         label: "About Rise Power",
+//         href: "/about",
+//         description: "Our mission, people and approach.",
+//       },
+//       {
+//         label: "Technology",
+//         href: "/technology",
+//         description: "The technology behind our systems.",
+//       },
+//       {
+//         label: "Sustainability",
+//         href: "/company",
+//         description: "Our approach to cleaner power.",
+//       },
+//       {
+//         label: "News & Insights",
+//         href: "/insights",
+//         description: "Company news and industry perspectives.",
+//       },
+//       {
+//         label: "Careers",
+//         href: "/company",
+//         description: "Join the team building mission-ready power.",
+//       },
+//       {
+//         label: "Contact Us",
+//         href: "/contact",
+//         description: "Talk to the Rise Power team.",
+//       },
+//     ],
+//     feature: {
+//       title: "Built for the Mission.",
+//       body: "Rise Power develops hydrogen systems for defense, critical infrastructure and demanding environments worldwide.",
+//       href: "/about",
+//       cta: "About Rise Power",
+//     },
+//   },
+// ];
+
+
+
 export const megaNavItems: readonly MegaNavItem[] = [
-  {
-    label: "Technology",
-    href: "/technology",
-    links: [
-      {
-        label: "Technology Overview",
-        href: "/technology",
-        description: "How our hydrogen power technology works.",
-      },
-      {
-        label: "Hydrogen Ecosystem",
-        href: "/#product-ecosystem",
-        description: "From hydrogen supply to rapid cartridge refueling.",
-      },
-      {
-        label: "System Capabilities",
-        href: "/#capabilities",
-        description: "Efficiency, durability, safety and performance.",
-      },
-      {
-        label: "Featured Products",
-        href: "/#featured-products",
-        description: "Explore SENTINEL, FALCON and TITAN.",
-      },
-      {
-        label: "Datasheets",
-        href: "/datasheets",
-        description: "Technical specifications and product data.",
-      },
-    ],
-    feature: {
-      title: "Silent. Zero Emissions.",
-      body: "Hydrogen power engineered for reliable performance without diesel noise, fumes or fuel logistics.",
-      href: "/technology",
-      cta: "Explore Technology",
-    },
-  },
-
-  {
-    label: "Defense",
-    href: "/defense",
-    links: [
-      {
-        label: "Defense Solutions",
-        href: "/defense",
-        description: "Mission-ready power for demanding environments.",
-      },
-      {
-        label: "Defense Applications",
-        href: "/use-cases",
-        description: "Tactical communications, ISR and forward operations.",
-      },
-      {
-        label: "SENTINEL™",
-        href: "/products#sentinel",
-        description: "Portable power for field operations.",
-      },
-      {
-        label: "FALCON™",
-        href: "/products#falcon",
-        description: "Extended endurance for UAV missions.",
-      },
-      {
-        label: "Datasheets",
-        href: "/datasheets",
-        description: "Specifications for defense programs.",
-      },
-      {
-        label: "Defense Contact",
-        href: "/contact",
-        description: "Talk with our defense team.",
-      },
-    ],
-    feature: {
-      title: "Power Without the Signature.",
-      body: "Silent, zero-emission systems designed for forward positions, ISR platforms and mission-critical communications.",
-      href: "/defense",
-      cta: "Explore Defense",
-    },
-  },
-
-  {
-    label: "Consumer",
-    href: "/consumer",
-    // links: [
-    //   {
-    //     label: "Consumer Solutions",
-    //     href: "/consumer",
-    //     description: "Quiet, clean power for life beyond the grid.",
-    //   },
-    //   {
-    //     label: "Camping & RV",
-    //     href: "/use-cases",
-    //     description: "Reliable power wherever you go.",
-    //   },
-    //   {
-    //     label: "Emergency Backup",
-    //     href: "/use-cases",
-    //     description: "Keep essential systems powered when the grid fails.",
-    //   },
-    //   {
-    //     label: "SENTINEL™",
-    //     href: "/products#sentinel",
-    //     description: "Compact, portable hydrogen power.",
-    //   },
-    //   {
-    //     label: "Resources",
-    //     href: "/resources",
-    //     description: "Guides, specifications and helpful information.",
-    //   },
-    //   {
-    //     label: "Contact Us",
-    //     href: "/contact",
-    //     description: "Find the right power solution.",
-    //   },
-    // ],
-    feature: {
-      title: "Power Beyond the Grid.",
-      body: "Silent, emission-free hydrogen power for camping, RVs, emergency backup and off-grid living.",
-      href: "/consumer",
-      cta: "Explore Consumer",
-    },
-  },
-
   {
     label: "Products",
     href: "/products",
     links: [
       {
-        label: "SENTINEL™",
+        label: "Sentinel™",
         href: "/products#sentinel",
-        description: "Portable hydrogen power for field operations.",
+        description: "Compact, portable power for field teams.",
       },
       {
-        label: "FALCON™",
+        label: "Falcon™",
         href: "/products#falcon",
-        description: "Hydrogen range extension for UAV platforms.",
+        description: "Extra flight time for drones and UAVs.",
       },
       {
-        label: "TITAN™",
+        label: "Titan™",
         href: "/products#titan",
-        description: "High-output hydrogen generator.",
+        description: "High-output power for bigger deployments.",
       },
       {
-        label: "Hydrogen Cartridge Kit",
-        href: "/products#hydrogen-cartridge-kit",
-        description: "Rapid-refuel cartridge system.",
+        label: "Cartridge Kit",
+        href: "/products#cartridge-kit",
+        description: "Swap fuel in seconds, no refueling truck needed.",
       },
-      // {
-      //   label: "Datasheets",
-      //   href: "/datasheets",
-      //   description: "Download technical specifications.",
-      // },
     ],
     feature: {
-      title: "Power You Can Depend On.",
-      body: "Explore hydrogen systems built for portable power, extended endurance and sustained mission operations.",
+      title: "Find the Right System",
+      body: "Compare Sentinel, Falcon and Titan side by side and see which fits your mission.",
       href: "/products",
-      cta: "View Products",
+      cta: "Compare Products",
     },
   },
 
   {
-    label: "Resources",
-    href: "/resources",
+    label: "Capabilities",
+    href: "/#capabilities",
     links: [
       {
-        label: "Resource Center",
-        href: "/resources",
-        description: "Guides, specifications and field resources.",
+        label: "Engineering",
+        href: "/#capabilities",
+        description: "How we take an idea from prototype to hardware.",
       },
       {
-        label: "Datasheets",
-        href: "/datasheets",
-        description: "Download product specifications.",
+        label: "Integration",
+        href: "/#capabilities",
+        description: "Dropping hydrogen power into your existing setup.",
       },
       {
-        label: "News & Insights",
-        href: "/insights",
-        description: "Latest company and industry updates.",
+        label: "Field Performance",
+        href: "/#capabilities",
+        description: "Tested in arctic, coastal and high-altitude conditions.",
       },
       {
-        label: "Applications",
-        href: "/use-cases",
-        description: "See how Rise Power systems are deployed.",
+        label: "Safety Systems",
+        href: "/#capabilities",
+        description: "Built-in leak detection and thermal protection.",
       },
-      {
-        label: "Investors",
-        href: "/investors",
-        description: "Company and growth information.",
-      }
     ],
     feature: {
-      title: "Resources for the Mission.",
-      body: "Find product data, field insights and technical resources for procurement, planning and deployment.",
-      href: "/resources",
-      cta: "Browse Resources",
+      title: "Built to Survive the Field",
+      body: "See the engineering and testing behind every system before it ships.",
+      href: "/#capabilities",
+      cta: "See How It's Built",
+    },
+  },
+
+  {
+    label: "Applications",
+    href: "/use-cases",
+    links: [
+      {
+        label: "Defense & Security",
+        href: "/use-cases#defense-security",
+        description: "Silent power that doesn't give away your position.",
+      },
+      {
+        label: "Remote Operations",
+        href: "/use-cases#remote-operations",
+        description: "Run for days where resupply isn't an option.",
+      },
+      {
+        label: "Disaster Response",
+        href: "/use-cases#disaster-response",
+        description: "Safe to run indoors when the grid is down.",
+      },
+      {
+        label: "Critical Infrastructure",
+        href: "/use-cases#critical-infrastructure",
+        description: "Backup power that can't afford to fail.",
+      },
+    ],
+    feature: {
+      title: "See It in Action",
+      body: "Real deployments across defense, disaster response and remote sites.",
+      href: "/use-cases",
+      cta: "Explore Applications",
     },
   },
 
@@ -531,41 +678,82 @@ export const megaNavItems: readonly MegaNavItem[] = [
     href: "/company",
     links: [
       {
-        label: "About Rise Power",
-        href: "/about",
-        description: "Our mission, people and approach.",
-      },
-      {
-        label: "Technology",
-        href: "/technology",
-        description: "The technology behind our systems.",
-      },
-      {
-        label: "Sustainability",
+        label: "About Us",
         href: "/company",
-        description: "Our approach to cleaner power.",
-      },
-      {
-        label: "News & Insights",
-        href: "/insights",
-        description: "Company news and industry perspectives.",
+        description: "Our mission, values and the team behind it.",
       },
       {
         label: "Careers",
-        href: "/company",
-        description: "Join the team building mission-ready power.",
+        href: "/company#careers",
+        description: "Help build the future of portable power.",
       },
       {
-        label: "Contact Us",
+        label: "Contact",
         href: "/contact",
-        description: "Talk to the Rise Power team.",
+        description: "Get in touch with our team.",
       },
     ],
     feature: {
-      title: "Built for the Mission.",
-      body: "Rise Power develops hydrogen systems for defense, critical infrastructure and demanding environments worldwide.",
-      href: "/about",
-      cta: "About Rise Power",
+      title: "Canadian-Built, Field-Proven",
+      body: "Designed, manufactured and tested in British Columbia.",
+      href: "/company",
+      cta: "Meet the Team",
+    },
+  },
+
+  {
+    label: "Resources",
+    href: "/resources/datasheets",
+    links: [
+      {
+        label: "Datasheets",
+        href: "/resources/datasheets",
+        description: "Full specs for every system.",
+      },
+      {
+        label: "FAQ",
+        href: "/resources/faq",
+        description: "Answers for procurement and program teams.",
+      },
+      {
+        label: "News & Insights",
+        href: "/insights/articles",
+        description: "Updates, milestones and technology deep-dives.",
+      },
+    ],
+    feature: {
+      title: "Everything You Need to Evaluate Us",
+      body: "Specs, FAQs and the latest updates in one place.",
+      href: "/resources/datasheets",
+      cta: "Browse Resources",
+    },
+  },
+
+  {
+    label: "Investors",
+    href: "/investors",
+    links: [
+      {
+        label: "Investor Deck",
+        href: "/rise-power-deck.pdf",
+        description: "Market, technology, traction and team, in one deck.",
+      },
+      {
+        label: "Company One-Pager",
+        href: "/rise-power-one-pager.pdf",
+        description: "A quick-reference overview to share with partners.",
+      },
+      {
+        label: "Press & Updates",
+        href: "/investors#press",
+        description: "Latest news and milestones.",
+      },
+    ],
+    feature: {
+      title: "Backing the Next Generation of Power",
+      body: "Qualified investors can request full data room access.",
+      href: "/investors",
+      cta: "Request a Briefing",
     },
   },
 ];
