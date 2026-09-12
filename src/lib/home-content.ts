@@ -674,6 +674,7 @@ export const missionDeployments = {
       overview:
         "Delivering silent, cold-tolerant hydrogen power for polar research posts and remote communications arrays.",
       image: "Arctic deployment",
+      detailImageSrc: "/media/missions/mountain.png",
       x: 22,
       y: 18,
     },
@@ -692,6 +693,7 @@ export const missionDeployments = {
       overview:
         "Providing zero-emission backup and tactical power for coastal stations and maritime command nodes.",
       image: "Maritime deployment",
+      detailImageSrc: "/media/missions/mountain.png",
       x: 48,
       y: 42,
     },
@@ -710,6 +712,7 @@ export const missionDeployments = {
       overview:
         "Sustaining UAV and ISR missions with lightweight hydrogen modules across arid theaters.",
       image: "Desert deployment",
+      detailImageSrc: "/media/missions/mountain.png",
       x: 58,
       y: 48,
     },
@@ -747,6 +750,7 @@ export const missionDeployments = {
       overview:
         "Supporting emergency response and critical infrastructure with silent, indoor-safe hydrogen power.",
       image: "Urban deployment",
+      detailImageSrc: "/media/missions/mountain.png",
       x: 78,
       y: 28,
     },
