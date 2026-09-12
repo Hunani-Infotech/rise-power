@@ -460,17 +460,17 @@ export function HomePage() {
 
       <section
         id="product-ecosystem"
-        className="relative overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden bg-[#fbfaf7] py-12 sm:py-14 lg:py-16"
       >
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-xs font-semibold tracking-[0.22em] uppercase sm:text-sm lg:text-base"
+              className="text-center font-display text-xs font-semibold tracking-[0.22em] uppercase sm:text-sm lg:text-[1.05rem]"
               style={{ color: sage }}
             >
               {productEcosystem.eyebrow}
             </p>
-            <h2 className="mt-4 text-center font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[5.5rem] xl:text-[6.25rem]">
+            <h2 className="mt-4 text-center font-display text-4xl leading-[0.9] font-bold tracking-tight uppercase sm:text-5xl lg:text-[4.25rem] xl:text-[4.75rem]">
               {productEcosystem.headingBefore}{" "}
               <span style={{ color: sage }}>{productEcosystem.headingAccent}</span>{" "}
               {productEcosystem.headingAfter}
@@ -507,7 +507,7 @@ export function HomePage() {
             ))}
           </RevealStagger>
 
-      <div className="mt-12 border border-[#E3DED2] bg-[#FBFAF7] p-5 sm:p-7 lg:mt-16 lg:p-8">
+      <div className="mt-10 border border-[#E3DED2] bg-[#FBFAF7] p-5 sm:p-7 lg:mt-12 lg:p-8">
         <div className="grid gap-8 xl:grid-cols-[1.25fr_3fr_1.45fr] xl:items-center">
 
           {/* LEFT CONTENT */}
@@ -564,9 +564,12 @@ export function HomePage() {
                 <div className="h-[2px] w-10 bg-[#6F8A3A]" />
 
                 {/* Fuel Cell Image */}
-                <img
+                <Image
                   src={productEcosystem.howItWorks.diagramImageSrc}
                   alt="Fuel Cell Stack"
+                  width={520}
+                  height={300}
+                  quality={80}
                   className="w-[210px] lg:w-[260px]"
                 />
 
@@ -634,31 +637,33 @@ export function HomePage() {
 
           {/* RIGHT CARD */}
           <Reveal variant="right" delay={200}>
-            <div
-              className="relative overflow-hidden rounded-lg p-6 text-[#F4F0E6]"
-              style={{
-                background:
-                  "linear-gradient(135deg,#0F150F 0%,#121B12 65%,#172117 100%)",
-              }}
-            >
-              <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#7E8E47]/15 blur-3xl" />
+            <div className="relative h-full min-h-[14rem] overflow-hidden bg-[#0f140f] p-6 text-[#F4F0E6]">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-20"
+                aria-hidden
+                style={{
+                  backgroundImage:
+                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='56' viewBox='0 0 48 56'%3E%3Cpath d='M24 2 45 14v28L24 54 3 42V14Z' fill='none' stroke='%236e7f42' stroke-width='1'/%3E%3C/svg%3E\")",
+                  backgroundSize: "48px 56px",
+                }}
+              />
 
               <div
-                className="flex size-12 items-center justify-center rounded-full border"
+                className="relative flex size-12 items-center justify-center border"
                 style={{ borderColor: `${sage}66` }}
               >
                 <Leaf className="size-5" style={{ color: sage }} />
               </div>
 
-              <h4 className="mt-5 font-display text-2xl font-bold uppercase">
+              <h4 className="relative mt-5 font-display text-2xl font-bold uppercase">
                 {productEcosystem.howItWorks.sideCard.title}
               </h4>
 
-              <p className="mt-2 text-sm text-[#F4F0E6]/70">
+              <p className="relative mt-2 text-sm text-[#F4F0E6]/70">
                 {productEcosystem.howItWorks.sideCard.subtitle}
               </p>
 
-              <ul className="mt-8 space-y-4 text-sm">
+              <ul className="relative mt-8 space-y-4 border-t border-[#6e7f42]/60 pt-5 text-sm">
                 {productEcosystem.howItWorks.sideCard.bullets.map((bullet, i) => {
                   const Icon = i === 0 ? Wind : Volume2;
 

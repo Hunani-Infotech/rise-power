@@ -26,7 +26,7 @@ export function EcosystemStepCard({
     <article
       className={`motion-hover-lift flex h-full flex-col ${
         highlighted
-          ? "border border-[#9fba66] bg-white p-4 shadow-[0_14px_32px_rgba(104,157,45,0.13)]"
+          ? "border border-[#9fba66] bg-white p-4 shadow-[0_12px_28px_rgba(104,157,45,0.12)]"
           : "pt-4"
       }`}
     >
@@ -42,7 +42,7 @@ export function EcosystemStepCard({
       <p className="mt-2 text-sm leading-relaxed text-[#5c584e]">{blurb}</p>
 
       <div className="relative mt-auto pt-5">
-        <div className="relative aspect-[5/4] w-full overflow-hidden">
+        <div className="relative aspect-[4/3] w-full overflow-hidden">
           {imageSrc ? (
             <Image
               src={imageSrc}
