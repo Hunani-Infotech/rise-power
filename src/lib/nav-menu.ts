@@ -453,38 +453,38 @@ export const megaNavItems: readonly MegaNavItem[] = [
   {
     label: "Consumer",
     href: "/consumer",
-    links: [
-      {
-        label: "Consumer Solutions",
-        href: "/consumer",
-        description: "Quiet, clean power for life beyond the grid.",
-      },
-      {
-        label: "Camping & RV",
-        href: "/use-cases",
-        description: "Reliable power wherever you go.",
-      },
-      {
-        label: "Emergency Backup",
-        href: "/use-cases",
-        description: "Keep essential systems powered when the grid fails.",
-      },
-      {
-        label: "SENTINEL™",
-        href: "/products#sentinel",
-        description: "Compact, portable hydrogen power.",
-      },
-      {
-        label: "Resources",
-        href: "/resources",
-        description: "Guides, specifications and helpful information.",
-      },
-      {
-        label: "Contact Us",
-        href: "/contact",
-        description: "Find the right power solution.",
-      },
-    ],
+    // links: [
+    //   {
+    //     label: "Consumer Solutions",
+    //     href: "/consumer",
+    //     description: "Quiet, clean power for life beyond the grid.",
+    //   },
+    //   {
+    //     label: "Camping & RV",
+    //     href: "/use-cases",
+    //     description: "Reliable power wherever you go.",
+    //   },
+    //   {
+    //     label: "Emergency Backup",
+    //     href: "/use-cases",
+    //     description: "Keep essential systems powered when the grid fails.",
+    //   },
+    //   {
+    //     label: "SENTINEL™",
+    //     href: "/products#sentinel",
+    //     description: "Compact, portable hydrogen power.",
+    //   },
+    //   {
+    //     label: "Resources",
+    //     href: "/resources",
+    //     description: "Guides, specifications and helpful information.",
+    //   },
+    //   {
+    //     label: "Contact Us",
+    //     href: "/contact",
+    //     description: "Find the right power solution.",
+    //   },
+    // ],
     feature: {
       title: "Power Beyond the Grid.",
       body: "Silent, emission-free hydrogen power for camping, RVs, emergency backup and off-grid living.",
@@ -559,12 +559,7 @@ export const megaNavItems: readonly MegaNavItem[] = [
         label: "Investors",
         href: "/investors",
         description: "Company and growth information.",
-      },
-      {
-        label: "Support",
-        href: "/contact",
-        description: "Get help from our team.",
-      },
+      }
     ],
     feature: {
       title: "Resources for the Mission.",

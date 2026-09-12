@@ -309,13 +309,14 @@ export default function InvestorsPage() {
                 </p>
 
                 <div className="mt-auto pt-8">
-                  <Link
-                    href="/contact"
+                  <a
+                    href="/media/investors/rise-power-deck.pdf"
+                    download="rise-power-deck.pdf"
                     className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-8 rounded-[4px] bg-[#58b52a] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
                   >
                     Download
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </article>
@@ -357,13 +358,14 @@ export default function InvestorsPage() {
                 </p>
 
                 <div className="mt-auto pt-8">
-                  <Link
-                    href="/contact"
+                  <a
+                    href="/media/investors/rise-power-one-pager.pdf"
+                    download="rise-power-one-pager.pdf"
                     className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-8 rounded-[4px] bg-[#58b52a] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
                   >
                     Download
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </article>
