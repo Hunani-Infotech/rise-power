@@ -117,7 +117,7 @@ const marketPointIcons = [
 const heroChipIcons = [Leaf, Crosshair, Volume2, Shield] as const;
 
 /** Shared page inset + vertical rhythm (content sections — not hero). */
-const pageInset = "mx-auto w-full max-w-[1440px] px-6 lg:px-10";
+const pageInset = "mx-auto w-full max-w-[1760px] px-6 lg:px-10";
 const sectionY = "py-14 sm:py-18 lg:py-20";
 
 export function HomePage() {
@@ -228,18 +228,18 @@ export function HomePage() {
         <div className={`particle-content relative z-[2] ${pageInset}`}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              className="text-center font-display text-xs font-semibold tracking-[0.22em] uppercase sm:text-sm lg:text-base"
               style={{ color: "#689d2d" }}
             >
               {performanceMetrics.eyebrow}
             </p>
-            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 text-center font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[5.5rem] xl:text-[6.25rem]">
               {performanceMetrics.headingBefore}{" "}
               <span style={{ color: "#689d2d" }}>
                 {performanceMetrics.headingAccent}
               </span>
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
+            <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-[#5c584e] sm:text-lg lg:text-[1.35rem]">
               {performanceMetrics.body}
             </p>
           </Reveal>
@@ -458,7 +458,56 @@ export function HomePage() {
         </div>
       </section> */}
 
-      <div className="mt-20 rounded-xl border border-[#E3DED2] bg-[#FBFAF7] p-5 sm:p-7 lg:p-8">
+      <section
+        id="product-ecosystem"
+        className="relative overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-24"
+      >
+        <div className={pageInset}>
+          <Reveal variant="up">
+            <p
+              className="text-center font-display text-xs font-semibold tracking-[0.22em] uppercase sm:text-sm lg:text-base"
+              style={{ color: sage }}
+            >
+              {productEcosystem.eyebrow}
+            </p>
+            <h2 className="mt-4 text-center font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[5.5rem] xl:text-[6.25rem]">
+              {productEcosystem.headingBefore}{" "}
+              <span style={{ color: sage }}>{productEcosystem.headingAccent}</span>{" "}
+              {productEcosystem.headingAfter}
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-[#5c584e] sm:text-lg lg:text-[1.35rem]">
+              {productEcosystem.body}
+            </p>
+          </Reveal>
+
+          <RevealStagger
+            className="mt-12 grid gap-8 sm:grid-cols-2 xl:mt-16 xl:grid-cols-5 xl:gap-6"
+            step={100}
+          >
+            {productEcosystem.steps.map((step, index) => (
+              <div key={step.step} className="relative h-full">
+                <EcosystemStepCard
+                  step={step.step}
+                  title={step.title}
+                  blurb={step.blurb}
+                  imageSrc={step.imageSrc}
+                  imageLabel={step.image}
+                  caption={step.caption}
+                  highlighted={step.highlighted}
+                />
+                {index < productEcosystem.steps.length - 1 ? (
+                  <ArrowRight
+                    className="absolute top-[4.55rem] -right-5 z-10 hidden size-6 rounded-full border border-[#7b963f] bg-[#fbfaf7] p-1 xl:block"
+                    strokeWidth={2.4}
+                    style={{ color: "#1a1c16" }}
+                    aria-hidden
+                  />
+                ) : null}
+              </div>
+            ))}
+          </RevealStagger>
+
+      <div className="mt-12 border border-[#E3DED2] bg-[#FBFAF7] p-5 sm:p-7 lg:mt-16 lg:p-8">
         <div className="grid gap-8 xl:grid-cols-[1.25fr_3fr_1.45fr] xl:items-center">
 
           {/* LEFT CONTENT */}
@@ -629,6 +678,8 @@ export function HomePage() {
 
         </div>
       </div>
+        </div>
+      </section>
 
       {/* 5. Featured Products */}
       <section

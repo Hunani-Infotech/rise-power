@@ -23,7 +23,13 @@ export function EcosystemStepCard({
   highlighted = false,
 }: EcosystemStepCardProps) {
   return (
-    <article className="motion-hover-lift flex flex-col rounded-lg">
+    <article
+      className={`motion-hover-lift flex h-full flex-col ${
+        highlighted
+          ? "border border-[#9fba66] bg-white p-4 shadow-[0_14px_32px_rgba(104,157,45,0.13)]"
+          : "pt-4"
+      }`}
+    >
       <p
         className="text-[11px] font-semibold tracking-[0.18em] uppercase"
         style={{ color: sage }}
@@ -35,17 +41,8 @@ export function EcosystemStepCard({
       </h3>
       <p className="mt-2 text-sm leading-relaxed text-[#5c584e]">{blurb}</p>
 
-      <div
-        className={`relative mt-4 ${highlighted ? "rounded-sm ring-2 ring-[#6e7f42]" : ""}`}
-        style={
-          highlighted
-            ? {
-                boxShadow: `0 0 0 1px ${sage}55, 0 12px 28px ${sage}40`,
-              }
-            : undefined
-        }
-      >
-        <div className="relative aspect-square w-full overflow-hidden">
+      <div className="relative mt-auto pt-5">
+        <div className="relative aspect-[5/4] w-full overflow-hidden">
           {imageSrc ? (
             <Image
               src={imageSrc}

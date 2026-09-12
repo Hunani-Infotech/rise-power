@@ -118,7 +118,8 @@ export function StatGauge({
   return (
     <div
       ref={rootRef}
-      className="relative grid aspect-square w-full max-w-[184px] place-items-center"
+      className="relative grid aspect-square w-full place-items-center"
+      style={{ maxWidth: size }}
     >
       <svg
         width="100%"

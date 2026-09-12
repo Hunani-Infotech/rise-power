@@ -208,7 +208,7 @@ export function PerformanceWaveBg() {
   return (
     <div
       ref={hostRef}
-      className="pointer-events-none absolute inset-0 z-[1] overflow-hidden select-none"
+      className="pointer-events-none absolute inset-0 z-[1] overflow-hidden opacity-35 select-none"
       aria-hidden
     >
       <canvas
