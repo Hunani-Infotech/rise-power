@@ -95,13 +95,7 @@ const CustomersPartners = dynamic(
   },
 );
 
-const ClosingCta = dynamic(
-  () => import("./ClosingCta").then((m) => m.ClosingCta),
-  {
-    ssr: true,
-    loading: () => <SectionSkeleton tone="dark" className="min-h-[24rem]" />,
-  },
-);
+
 
 const sage = "#6e7f42";
 /** Hero accent from Frame 1 reference (slightly brighter olive). */
@@ -813,10 +807,7 @@ export function HomePage() {
         <CustomersPartners />
       </div>
 
-      {/* 10. Closing CTA */}
-      <div className="cv-auto">
-        <ClosingCta />
-      </div>
+
     </div>
   );
 }

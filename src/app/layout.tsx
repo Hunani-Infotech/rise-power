@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow, Rajdhani } from "next/font/google";
 import { DeferredAnalytics } from "@/components/DeferredAnalytics";
+import { ClosingCta } from "@/components/home/ClosingCta";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/content";
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <Header />
         <main className="flex-1">{children}</main>
+        <ClosingCta />
         <Footer />
         <DeferredAnalytics />
       </body>

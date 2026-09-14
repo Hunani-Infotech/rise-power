@@ -138,7 +138,6 @@ import {
 } from "lucide-react";
 import { closingCta } from "@/lib/home-content";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
-import { Footer } from "../Footer";
 
 const sage = "#6e7f42";
 const cream = "#f3efe4";
