@@ -104,7 +104,7 @@ export const useCases = [
     title: "Defense & Security",
     description:
       "Silent portable power for bases, troops, and surveillance drones. Reduces reliance on fuel convoys. Eliminates the acoustic, thermal, and emissions signatures that compromise operational security.",
-    image: "/media/use-cases/uc-grid1.png",
+    image: "/media/use-cases/uc-defence.png",
     howItWorks: [
       "Deploy Sentinel or Titan to forward positions",
       "Operate communications and surveillance equipment silently",

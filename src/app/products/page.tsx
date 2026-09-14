@@ -215,27 +215,27 @@ const systemFlow = [
   {
     title: "HYDROGEN CARTRIDGE",
     body: "Clean, high-density fuel storage.",
-    image: "/media/ecosystem/cartridge.png",
+    image: "/media/products/product-e1.png",
   },
   {
     title: "FUEL CELL",
     body: "Converts hydrogen to electricity.",
-    image: "/media/ecosystem/fuel-cell.png",
+    image: "/media/products/product-e2.png",
   },
   {
     title: "POWER ELECTRONICS",
     body: "Stabilizes and optimizes power output.",
-    image: "/media/ecosystem/power-electronics.png",
+    image: "/media/products/product-e3.png",
   },
   {
     title: "SYSTEM",
     body: "Integrated, ruggedized and mission-ready.",
-    image: "/media/ecosystem/system.png",
+    image: "/media/products/product-e4.png",
   },
   {
     title: "MISSION EQUIPMENT",
     body: "Powers what matters most.",
-    image: "/media/ecosystem/mission-equipment.png",
+    image: "/media/products/product-e5.png",
   },
 ];
 
