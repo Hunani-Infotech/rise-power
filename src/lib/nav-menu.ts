@@ -703,28 +703,38 @@ export const megaNavItems: readonly MegaNavItem[] = [
 
   {
     label: "Resources",
-    href: "/datasheets",
+    href: "/resources",
     links: [
+      {
+        label: "Resource Center",
+        href: "/resources",
+        description: "Guides, specifications and field resources.",
+      },
       {
         label: "Datasheets",
         href: "/datasheets",
-        description: "Full specs for every system.",
-      },
-      {
-        label: "FAQ",
-        href: "/faq",
-        description: "Answers for procurement and program teams.",
+        description: "Download product specifications.",
       },
       {
         label: "News & Insights",
-        href: "/insights/articles",
-        description: "Updates, milestones and technology deep-dives.",
+        href: "/insights",
+        description: "Latest company and industry updates.",
       },
+      {
+        label: "Applications",
+        href: "/use-cases",
+        description: "See how Rise Power systems are deployed.",
+      },
+      {
+        label: "Investors",
+        href: "/investors",
+        description: "Company and growth information.",
+      }
     ],
     feature: {
       title: "Everything You Need to Evaluate Us",
       body: "Specs, FAQs and the latest updates in one place.",
-      href: "/resources/datasheets",
+      href: "/datasheets",
       cta: "Browse Resources",
     },
   },
