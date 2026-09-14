@@ -703,16 +703,16 @@ export const megaNavItems: readonly MegaNavItem[] = [
 
   {
     label: "Resources",
-    href: "/resources/datasheets",
+    href: "/datasheets",
     links: [
       {
         label: "Datasheets",
-        href: "/resources/datasheets",
+        href: "/datasheets",
         description: "Full specs for every system.",
       },
       {
         label: "FAQ",
-        href: "/resources/faq",
+        href: "/faq",
         description: "Answers for procurement and program teams.",
       },
       {
