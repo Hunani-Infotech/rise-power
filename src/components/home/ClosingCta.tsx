@@ -240,7 +240,7 @@ export function ClosingCta() {
             >
               <div className="border-l border-white/15 pl-0 lg:pl-10">
                 <p
-                  className="text-[10px] font-semibold tracking-[0.18em] uppercase sm:text-[11px]"
+                  className="text-[10px] font-semibold tracking-[0.18em] uppercase sm:text-[16px]"
                   style={{ color: sage }}
                 >
                   {closingCta.panelEyebrow}
@@ -257,7 +257,7 @@ export function ClosingCta() {
                 <div className="mt-6 flex max-w-[430px] flex-col gap-3">
                   <Link
                     href={closingCta.primaryCta.href}
-                    className="motion-hover-glow inline-flex min-h-14 items-center justify-center gap-3 px-6 text-sm font-semibold tracking-[0.06em] uppercase transition-transform hover:-translate-y-0.5"
+                    className="motion-hover-glow inline-flex min-h-14 items-center justify-center gap-3 px-6 text-sm font-semibold tracking-[0.06em] uppercase transition-transform hover:-translate-y-0.5 rounded-sm"
                     style={{
                       background: sage,
                       color: cream,
@@ -269,7 +269,7 @@ export function ClosingCta() {
 
                   <Link
                     href={closingCta.secondaryCta.href}
-                    className="inline-flex min-h-14 items-center justify-center gap-3 border border-[#f3efe4]/50 px-6 text-sm font-semibold tracking-[0.06em] text-[#f3efe4] uppercase transition-colors hover:bg-white/10"
+                    className="inline-flex min-h-14 items-center justify-center gap-3 border border-[#f3efe4]/50 px-6 text-sm font-semibold tracking-[0.06em] text-[#f3efe4] uppercase transition-colors hover:bg-white/10 rounded-sm"
                   >
                     {closingCta.secondaryCta.label}
                     <Download className="size-5" />

@@ -279,7 +279,7 @@ export default function ProductsPage() {
 
             <div className="w-full max-w-[620px]">
 
-              <p className="text-xs font-semibold tracking-[0.18em] text-[#91ad46] uppercase">
+              <p className="text-mm font-semibold tracking-[0.18em] text-[#91ad46] uppercase">
                 ⌁ Product Systems
               </p>
 
@@ -302,7 +302,7 @@ export default function ProductsPage() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 bg-[#91ad46] px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-[#a4c257]"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 bg-[#91ad46] px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-[#a4c257] rounded-sm"
                 >
                   Request a Briefing
                   <ArrowRight className="size-4" />
@@ -310,7 +310,7 @@ export default function ProductsPage() {
 
                 <Link
                   href="#product-systems"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-white/10"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-white/10 rounded-sm"
                 >
                   See Products
                   <ArrowRight className="size-4" />
@@ -331,7 +331,7 @@ export default function ProductsPage() {
       >
         <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-10">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-xs font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
+            <p className="text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
               ⌁ Our Product Systems
             </p>
 
@@ -374,7 +374,7 @@ export default function ProductsPage() {
                         <CategoryIcon className="size-5" strokeWidth={1.5} />
                       </span>
 
-                      <span className="text-[10px] leading-tight font-bold tracking-[0.08em] text-white uppercase">
+                      <span className="text-[14px] leading-tight font-bold tracking-[0.08em] text-white uppercase">
                         {meta.category}
                       </span>
                     </div>
@@ -457,7 +457,7 @@ export default function ProductsPage() {
 
           {/* CONTENT */}
           <div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
+            <p className="text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
               ⌁ One Cartridge Ecosystem
             </p>
 
@@ -476,7 +476,7 @@ export default function ProductsPage() {
             <div className="mt-8 flex flex-wrap gap-5">
               <Link
                 href="/technology"
-                className="inline-flex min-h-12 items-center gap-3 border border-[#252925] px-6 text-xs font-semibold uppercase hover:bg-[#141a14] hover:text-white"
+                className="inline-flex min-h-12 items-center gap-3 border border-[#252925] px-6 text-xs font-semibold uppercase hover:bg-[#141a14] hover:text-white rounded-sm"
               >
                 ▶ See How It Works
               </Link>
@@ -517,10 +517,10 @@ export default function ProductsPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-[11px] font-bold uppercase">
+                  <h3 className="text-[18px] font-bold uppercase">
                     {item.title}
                   </h3>
-                  <p className="text-[10px] text-[#706e66]">
+                  <p className="text-[13px] text-[#706e66]">
                     {item.body}
                   </p>
                 </div>
@@ -539,7 +539,7 @@ export default function ProductsPage() {
       >
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-xs font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
+            <p className="text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
               ⌁ Product Comparison
             </p>
 
@@ -635,7 +635,7 @@ export default function ProductsPage() {
 
                 {/* TABLE FOOTER */}
                 <div className="grid grid-cols-[250px_repeat(4,minmax(210px,1fr))] border-t border-white/15">
-                  <div className="bg-[#071b23] p-5">
+                  <div className="border-r border-white/15 bg-[#071b23] p-5">
                     <p className="font-display text-lg font-bold uppercase">
                       Explore More
                     </p>
@@ -652,7 +652,7 @@ export default function ProductsPage() {
                     >
                       <Link
                         href={`#${product.slug}`}
-                        className="group flex min-h-14 items-center justify-center gap-3 border border-white/25 px-4 text-xs font-bold tracking-[0.08em] uppercase transition hover:border-[#91ad46] hover:text-[#c1df29]"
+                        className="group flex min-h-14 items-center justify-center gap-3 border border-white/25 px-4 text-sm font-bold tracking-[0.08em] uppercase transition hover:border-[#91ad46] hover:text-[#c1df29] rounded-sm"
                       >
                         View Product
                         <ArrowRight className="size-5 text-[#c1df29] transition-transform group-hover:translate-x-1" />

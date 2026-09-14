@@ -4,6 +4,7 @@ import { ArrowRight, Info } from "lucide-react";
 
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/motion/Reveal";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Datasheets",
@@ -122,7 +123,7 @@ export default function DatasheetsPage() {
             <div className="flex items-center gap-4">
               <span className="h-[2px] w-12 bg-[#75a52f]" />
 
-              <p className="text-sm font-semibold tracking-[0.18em] text-[#8eb844] uppercase">
+              <p className="text-mm font-semibold tracking-[0.18em] text-[#8eb844] uppercase">
                 Resources
               </p>
             </div>
@@ -186,8 +187,8 @@ export default function DatasheetsPage() {
 
                     <div
                       className={`grid items-stretch gap-8 lg:gap-12 ${imageLeft
-                          ? "lg:grid-cols-[1.04fr_0.96fr]"
-                          : "lg:grid-cols-[0.96fr_1.04fr]"
+                        ? "lg:grid-cols-[1.04fr_0.96fr]"
+                        : "lg:grid-cols-[0.96fr_1.04fr]"
                         }`}
                     >
 
@@ -233,8 +234,8 @@ export default function DatasheetsPage() {
                         {/* Product title */}
                         <h2
                           className={`mt-6 font-display font-bold leading-[0.94] tracking-tight uppercase ${product.number === "04"
-                              ? "max-w-[650px] text-[40px] sm:text-[52px] lg:text-[58px]"
-                              : "text-[43px] sm:text-[55px] lg:text-[62px]"
+                            ? "max-w-[650px] text-[40px] sm:text-[52px] lg:text-[58px]"
+                            : "text-[43px] sm:text-[55px] lg:text-[62px]"
                             }`}
                         >
                           {product.number === "04" ? (
@@ -249,7 +250,7 @@ export default function DatasheetsPage() {
                         </h2>
 
                         {/* Description */}
-                        <p className="mt-7 max-w-[720px] text-base leading-[1.55] text-[#66717d] sm:text-lg">
+                        <p className="mt-4 max-w-[720px] text-base leading-[1.55] text-[#66717d] sm:text-lg">
                           {product.description}
                         </p>
 
@@ -257,7 +258,7 @@ export default function DatasheetsPage() {
 
                         <div className="mt-9">
 
-                          <p className="text-xs font-bold tracking-[0.18em] text-[#26313a] uppercase">
+                          <p className="text-mm font-bold tracking-[0.18em] text-[#26313a] uppercase">
                             {product.sectionTitle}
                           </p>
 
@@ -285,12 +286,22 @@ export default function DatasheetsPage() {
 
                         <div className="mt-8 grid gap-3 sm:grid-cols-2">
 
-                          <Button href="/contact">
+                          {/* <Button href="/contact" className="bg-black">
                             <span className="flex w-full items-center justify-between gap-4">
                               Request Full Datasheet
                               <ArrowRight className="size-5 shrink-0" />
                             </span>
-                          </Button>
+                          </Button> */}
+
+                          <Link
+                            href="/contact"
+                            className="inline-flex min-h-12 items-center justify-center gap-4 px-7 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm bg-[rgb(132,147,99)]"
+                          >
+                            <span className="flex w-full items-center justify-between gap-4">
+                              Request Full Datasheet
+                              <ArrowRight className="size-5 shrink-0" />
+                            </span>
+                          </Link>
 
                           <a
                             href={product.productHref}
@@ -319,4 +330,4 @@ export default function DatasheetsPage() {
 
     </main>
   );
-  }
+}

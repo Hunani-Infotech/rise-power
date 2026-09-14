@@ -150,7 +150,7 @@ export function MissionMap() {
         ) : null}
         <div className="flex flex-1 flex-col p-5 sm:pt-4 sm:pb-3 sm:pr-4 sm:pl-5">
           <p
-            className="inline-flex items-center gap-1 text-[10px] font-semibold tracking-[0.18em] uppercase"
+            className="inline-flex items-center gap-1 text-[12px] font-semibold tracking-[0.18em] uppercase"
             style={{ color: sage }}
           >
             <MapPin className="size-4" /> {active.status}
@@ -176,7 +176,7 @@ export function MissionMap() {
             ))}
           </dl>
 
-          <p className="mt-4 text-[10px] font-semibold tracking-[0.16em] text-[#f3efe4]/45 uppercase">
+          <p className="mt-4 text-[15px] font-semibold tracking-[0.16em] text-[#f3efe4]/45 uppercase">
             Mission Overview
           </p>
           <p className="mt-0.5 text-sm leading-relaxed text-[#f3efe4]/75">

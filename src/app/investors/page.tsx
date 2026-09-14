@@ -152,7 +152,7 @@ function SectionHeading({
 }) {
   return (
     <div className="mx-auto max-w-[1000px] text-center">
-      <p className="text-sm font-semibold tracking-[0.18em] text-[#4f9825] uppercase">
+      <p className="text-mm font-semibold tracking-[0.18em] text-[#4f9825] uppercase">
         {eyebrow}
       </p>
 
@@ -203,7 +203,7 @@ export default function InvestorsPage() {
 
             {/* Eyebrow */}
             <div className="flex items-center gap-4">
-              <span className="font-display text-sm font-semibold tracking-[0.2em] text-[#63ad2b] uppercase">
+              <span className="font-display text-mm font-semibold tracking-[0.2em] text-[#63ad2b] uppercase">
                 Investors
               </span>
             </div>
@@ -214,7 +214,7 @@ export default function InvestorsPage() {
             </h1>
 
             {/* Description */}
-            <p className="mt-8 max-w-[650px] text-lg leading-[1.55] text-white/90 sm:text-xl">
+            <p className="mt-4 max-w-[650px] text-lg leading-[1.55] text-white/90 sm:text-xl">
               Rise Power is raising to scale manufacturing, complete
               certification, and fulfill pilot deployments across defense,
               disaster response, and critical infrastructure. Materials and
@@ -273,7 +273,7 @@ export default function InvestorsPage() {
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
 
             {/* Investor Deck */}
-            <article className="group relative min-h-[530px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116]">
+            <article className="group relative min-h-[480px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116]">
 
               <Image
                 src="/media/investors/investor-deck.png"
@@ -285,7 +285,7 @@ export default function InvestorsPage() {
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#071116]/95 via-[#071116]/80 to-[#071116]/20" />
 
-              <div className="relative z-10 flex min-h-[530px] max-w-[620px] flex-col p-8 sm:p-10 lg:p-12">
+              <div className="relative z-10 flex min-h-[480px] max-w-[620px] flex-col p-8 sm:p-10 lg:p-12">
 
                 <div className="flex items-center gap-5">
                   <span className="font-display text-4xl font-bold leading-none text-[#58b52a]">
@@ -295,7 +295,7 @@ export default function InvestorsPage() {
                   <span className="h-px w-[130px] bg-white/30" />
                 </div>
 
-                <p className="mt-7 text-sm font-medium tracking-[0.12em] text-[#b9c4ce] uppercase">
+                <p className="mt-5 text-mm font-medium tracking-[0.12em] text-[#b9c4ce] uppercase">
                   PDF · Investor Briefing
                 </p>
 
@@ -303,12 +303,12 @@ export default function InvestorsPage() {
                   Investor Deck
                 </h3>
 
-                <p className="mt-6 max-w-[430px] text-base leading-[1.5] text-[#b7c1c9]">
+                <p className="mt-5 max-w-[430px] text-base leading-[1.5] text-[#b7c1c9]">
                   Full Rise Power investor briefing. Market sizing,
                   technology, traction, team, and use of funds.
                 </p>
 
-                <div className="mt-auto pt-8">
+                <div className="mt-auto">
                   <a
                     href="/media/investors/rise-power-deck.pdf"
                     download="rise-power-deck.pdf"
@@ -322,7 +322,7 @@ export default function InvestorsPage() {
             </article>
 
             {/* Company One-Pager */}
-            <article className="group relative min-h-[530px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116]">
+            <article className="group relative min-h-[480px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116]">
 
               <Image
                 src="/media/investors/company-one-pager.png"
@@ -334,7 +334,7 @@ export default function InvestorsPage() {
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#071116]/95 via-[#071116]/80 to-[#071116]/20" />
 
-              <div className="relative z-10 flex min-h-[530px] max-w-[620px] flex-col p-8 sm:p-10 lg:p-12">
+              <div className="relative z-10 flex min-h-[480px] max-w-[620px] flex-col p-8 sm:p-10 lg:p-12">
 
                 <div className="flex items-center gap-5">
                   <span className="font-display text-4xl font-bold leading-none text-[#58b52a]">
@@ -344,7 +344,7 @@ export default function InvestorsPage() {
                   <span className="h-px w-[130px] bg-white/30" />
                 </div>
 
-                <p className="mt-7 text-sm font-medium tracking-[0.12em] text-[#b9c4ce] uppercase">
+                <p className="mt-5 text-mm font-medium tracking-[0.12em] text-[#b9c4ce] uppercase">
                   PDF · Revenue Forecast
                 </p>
 
@@ -352,7 +352,7 @@ export default function InvestorsPage() {
                   Company One-Pager
                 </h3>
 
-                <p className="mt-6 max-w-[440px] text-base leading-[1.5] text-[#b7c1c9]">
+                <p className="mt-5 max-w-[440px] text-base leading-[1.5] text-[#b7c1c9]">
                   Revenue forecast and company overview. Quick-reference
                   summary for sharing with partners and committees.
                 </p>
@@ -377,7 +377,7 @@ export default function InvestorsPage() {
       {/* AT A GLANCE                                                           */}
       {/* ==================================================================== */}
 
-      <section className="relative overflow-hidden bg-[#fbfaf7] py-20 sm:py-24 lg:py-28">
+      <section className="relative overflow-hidden bg-[#fbfaf7] pt-0 pb-20 sm:pb-24 lg:pb-28">
 
         <ContourBackground />
 
@@ -449,7 +449,7 @@ export default function InvestorsPage() {
                 </div>
               </div>
 
-              <h3 className="mt-7 font-display text-3xl font-bold leading-none">
+              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
                 Category
               </h3>
 
@@ -480,7 +480,7 @@ export default function InvestorsPage() {
                 </div>
               </div>
 
-              <h3 className="mt-7 font-display text-3xl font-bold leading-none">
+              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
                 Stage
               </h3>
 
@@ -512,7 +512,7 @@ export default function InvestorsPage() {
                 </div>
               </div>
 
-              <h3 className="mt-7 font-display text-3xl font-bold leading-none">
+              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
                 Parent
               </h3>
 
@@ -542,7 +542,7 @@ export default function InvestorsPage() {
                 </div>
               </div>
 
-              <h3 className="mt-7 font-display text-3xl font-bold leading-none">
+              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
                 Location
               </h3>
 
@@ -568,7 +568,7 @@ export default function InvestorsPage() {
                 </div>
               </div>
 
-              <h3 className="mt-7 font-display text-3xl font-bold leading-none">
+              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
                 Use of Funds
               </h3>
 
@@ -585,7 +585,7 @@ export default function InvestorsPage() {
       {/* PRESS & UPDATES                                                       */}
       {/* ==================================================================== */}
 
-      <section className="relative overflow-hidden bg-[#fbfaf7] py-20 sm:py-24 lg:py-28">
+      <section className="relative overflow-hidden bg-[#fbfaf7] pt-0 pb-20 sm:pb-24 lg:pb-28">
 
         <ContourBackground />
 
@@ -629,7 +629,7 @@ export default function InvestorsPage() {
                   <span className="h-px w-[105px] bg-[#b9c1c7]" />
                 </div>
 
-                <h3 className="mt-5 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
+                <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
                   Rise Power Completes
                   <br />
                   Phase II Development
@@ -684,7 +684,7 @@ export default function InvestorsPage() {
                   <span className="h-px w-[105px] bg-[#b9c1c7]" />
                 </div>
 
-                <h3 className="mt-5 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
+                <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
                   Field Testing Validates
                   <br />
                   Extended Runtime
@@ -739,7 +739,7 @@ export default function InvestorsPage() {
                   <span className="h-px w-[105px] bg-[#b9c1c7]" />
                 </div>
 
-                <h3 className="mt-5 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
+                <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
                   Understanding Hydrogen
                   <br />
                   Power for Defense
@@ -794,7 +794,7 @@ export default function InvestorsPage() {
                   <span className="h-px w-[105px] bg-[#b9c1c7]" />
                 </div>
 
-                <h3 className="mt-5 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
+                <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
                   Rise Power Expands
                   <br />
                   Engineering Team

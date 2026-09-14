@@ -219,7 +219,7 @@ const sage = "#6e7f42";
 const footerBg = "#061018";
 
 function SocialIcon({ name }: { name: "LinkedIn" | "YouTube" | "X" }) {
-  const className = "h-[17px] w-[17px]";
+  const className = "h-[28px] w-[28px]";
 
   if (name === "LinkedIn") {
     return (
@@ -349,11 +349,11 @@ export function Footer() {
         <div className="lg:border-r lg:border-white/15 lg:pr-8 xl:pr-10">
           <Logo className="text-cream" />
 
-          <p className="mt-6 text-sm font-semibold text-cream">
+          <p className="mt-6 text-lg font-semibold text-cream">
             {footer.tagline}
           </p>
 
-          <p className="mt-5 max-w-[340px] text-sm leading-6 text-cream/65">
+          <p className="mt-5 max-w-[340px] text-mm leading-6 text-cream/65">
             {footer.blurb}
           </p>
 
@@ -377,7 +377,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-x-7 gap-y-10 sm:grid-cols-4 sm:gap-x-6 lg:px-2">
           {footer.groups.map((group) => (
             <div key={group.heading} className="min-w-0">
-              <p className="font-display text-sm font-semibold tracking-wide text-white uppercase">
+              <p className="font-display text-lg font-semibold tracking-wide text-white uppercase">
                 {group.heading}
               </p>
 
@@ -391,7 +391,7 @@ export function Footer() {
                   <li key={`${group.heading}-${item.label}`}>
                     <Link
                       href={item.href}
-                      className="text-[13px] leading-5 text-cream/70 transition-colors hover:text-cream"
+                      className="text-[15 px] leading-5 text-cream/70 transition-colors hover:text-cream"
                     >
                       {item.label}
                     </Link>
@@ -404,7 +404,7 @@ export function Footer() {
 
         {/* Newsletter + Contact */}
         <div className="lg:border-l lg:border-white/15 lg:pl-8 xl:pl-10">
-          <p className="font-display text-sm font-semibold tracking-wide text-white uppercase">
+          <p className="font-display text-lg font-semibold tracking-wide text-white uppercase">
             {footer.newsletter.heading}
           </p>
 
@@ -413,12 +413,12 @@ export function Footer() {
             style={{ background: sage }}
           />
 
-          <p className="mt-5 max-w-[350px] text-sm leading-6 text-cream/65">
+          <p className="mt-5 max-w-[350px] text-mm leading-6 text-cream/65">
             {footer.newsletter.body}
           </p>
 
           <form
-            className="mt-5 flex h-12 max-w-[380px] overflow-hidden border border-white/20"
+            className="mt-5 flex h-12 max-w-[380px] overflow-hidden border border-white/20 rounded-sm"
             action="#"
             method="post"
           >
@@ -431,7 +431,7 @@ export function Footer() {
               type="email"
               name="email"
               placeholder={footer.newsletter.placeholder}
-              className="min-w-0 flex-1 bg-[#0b151b] px-4 text-sm text-cream outline-none placeholder:text-cream/40 focus:border-sage"
+              className="min-w-0 flex-1 bg-[#0b151b] px-4 text-mm text-cream outline-none placeholder:text-cream/40 focus:border-sage"
             />
 
             <button
@@ -444,11 +444,11 @@ export function Footer() {
             </button>
           </form>
 
-          <ul className="mt-6 space-y-4 text-sm text-cream/70">
+          <ul className="mt-6 space-y-4 text-mm text-cream/70">
             <li>
               <a
                 href={`mailto:${footer.contact.email}`}
-                className="flex items-center gap-4 transition-colors hover:text-cream"
+                className="flex items-center gap-2 transition-colors hover:text-cream"
               >
                 <Mail className="size-[18px] shrink-0 text-sage" />
                 <span>{footer.contact.email}</span>
@@ -458,14 +458,14 @@ export function Footer() {
             <li>
               <a
                 href={footer.contact.phoneHref}
-                className="flex items-center gap-4 transition-colors hover:text-cream"
+                className="flex items-center gap-2 transition-colors hover:text-cream"
               >
                 <Phone className="size-[18px] shrink-0 text-sage" />
                 <span>{footer.contact.phone}</span>
               </a>
             </li>
 
-            <li className="flex items-center gap-4">
+            <li className="flex items-center gap-2">
               <MapPin className="size-[18px] shrink-0 text-sage" />
               <span>{footer.contact.location}</span>
             </li>
@@ -477,7 +477,7 @@ export function Footer() {
       <div className="border-t border-white/15">
         <div className="mx-auto flex w-full max-w-[1716px] flex-col gap-6 px-6 py-6 sm:px-8 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:px-10">
           {/* Copyright */}
-          <p className="text-center text-xs tracking-wide text-cream/55 lg:text-left">
+          <p className="text-center text-mm tracking-wide text-cream/55 lg:text-left">
             {footer.copyright}
           </p>
 
@@ -502,7 +502,7 @@ export function Footer() {
 
                 <Link
                   href={item.href}
-                  className="text-xs text-cream/55 transition-colors hover:text-cream"
+                  className="text-mm text-cream/55 transition-colors hover:text-cream"
                 >
                   {item.label}
                 </Link>

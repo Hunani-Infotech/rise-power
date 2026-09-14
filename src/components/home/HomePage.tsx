@@ -126,7 +126,7 @@ export function HomePage() {
       {/* 1. HERO */}
       <section
         id="hero"
-        className="relative flex min-h-[100svh] w-full flex-col overflow-hidden text-white lg:min-h-[1025px]"
+        className="relative flex min-h-[100svh] w-full flex-col overflow-hidden text-white lg:min-h-[780px]"
       >
         <Image
           src={heroImageSrc}
@@ -145,10 +145,10 @@ export function HomePage() {
         <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[#060806]/55 to-transparent" />
 
         <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 pt-28 pb-20 lg:px-10 lg:pt-32 lg:pb-14">
-          <div className="flex flex-1 flex-col justify-center">
-            <div className="hero-animate-copy max-w-xl lg:max-w-2xl">
+          <div className="flex flex-col justify-center pt-10 lg:pt-10">
+            <div className="hero-animate-copy max-w-xl lg:max-w-4xl">
               <p
-                className="font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+                className="font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
                 style={{ color: heroSage }}
               >
                 {hero.eyebrow}
@@ -164,7 +164,7 @@ export function HomePage() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Link
                   href={hero.primaryCta.href}
-                  className="inline-flex min-h-12 items-center justify-center gap-2.5 px-7 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-12 items-center justify-center gap-2.5 px-7 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm"
                   style={{ background: heroSage }}
                 >
                   <span className="grid size-5 place-items-center rounded-full border border-white/80">
@@ -174,7 +174,7 @@ export function HomePage() {
                 </Link>
                 <Link
                   href={hero.secondaryCta.href}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/75 px-7 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-white/10"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/75 px-7 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
                 >
                   {hero.secondaryCta.label}
                   <ArrowRight className="size-4" />
@@ -183,16 +183,18 @@ export function HomePage() {
             </div>
           </div>
 
-          <div className="hero-animate-chips mt-10 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4 sm:gap-x-8 lg:mt-0 lg:pb-2">
+          <div className="hero-animate-chips mt-10 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4 sm:gap-x-8 lg:mt-10 lg:pb-2">
             {hero.chips.map((chip, index) => {
               const Icon = heroChipIcons[index] ?? Leaf;
               return (
-                <div key={chip.title} className="flex items-start gap-3">
-                  <Icon
-                    className="mt-0.5 size-5 shrink-0"
-                    strokeWidth={1.6}
-                    style={{ color: heroSage }}
-                  />
+                <div key={chip.title} className="flex items-center gap-3">
+                  <div className="flex size-13 shrink-0 items-center justify-center rounded-full border border-[#849363]">
+                    <Icon
+                      className="mt-0.5 size-8 shrink-0"
+                      strokeWidth={1.6}
+                      style={{ color: heroSage }}
+                    />
+                  </div>
                   <div>
                     <p className="font-display text-xs font-bold tracking-[0.08em] text-white uppercase sm:text-sm">
                       {chip.title}
@@ -302,7 +304,7 @@ export function HomePage() {
         <div className={`relative z-10 ${pageInset}`}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              className="text-center font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
               style={{ color: sage }}
             >
               {threeMarkets.eyebrow}
@@ -345,7 +347,7 @@ export function HomePage() {
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              className="text-center font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
               style={{ color: sage }}
             >
               {productEcosystem.eyebrow}
@@ -465,7 +467,7 @@ export function HomePage() {
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-xs font-semibold tracking-[0.22em] uppercase sm:text-sm lg:text-[1.05rem]"
+              className="text-center font-display text-xs font-semibold tracking-[0.22em] uppercase sm:text-sm lg:text-[1rem]"
               style={{ color: sage }}
             >
               {productEcosystem.eyebrow}
@@ -507,31 +509,31 @@ export function HomePage() {
             ))}
           </RevealStagger>
 
-          <div className="mt-10 border border-[#E3DED2] bg-[#FBFAF7] p-5 sm:p-7 lg:mt-12 lg:p-8">
+          <div className="mt-10 border border-[#E3DED2] bg-[#FBFAF7] p-5 sm:p-7 lg:mt-12 lg:p-8 rounded-sm">
             <div className="grid gap-8 xl:grid-cols-[1.25fr_3fr_1.45fr] xl:items-center">
 
               {/* LEFT CONTENT */}
               <Reveal variant="left" className="pr-4 xl:border-r xl:border-[#E6E1D6]">
                 <p
-                  className="text-[11px] font-semibold uppercase tracking-[0.28em]"
+                  className="text-[16px] font-semibold uppercase tracking-[0.28em]"
                   style={{ color: sage }}
                 >
                   {productEcosystem.howItWorks.eyebrow}
                 </p>
 
-                <h3 className="mt-3 font-display text-[34px] leading-[0.95] font-bold uppercase">
+                <h3 className="mt-3 font-display text-[32px] leading-[0.95] font-bold uppercase">
                   Clean Hydrogen.
                   <br />
                   Endless Possibilities.
                 </h3>
 
-                <p className="mt-5 text-[14px] leading-7 text-[#5C584E]">
+                <p className="mt-2 text-[14px] leading-7 text-[#5C584E]">
                   {productEcosystem.howItWorks.body}
                 </p>
 
                 <Link
                   href={productEcosystem.howItWorks.cta.href}
-                  className="mt-8 inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.18em]"
+                  className="mt-5 inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.18em]"
                   style={{ color: sage }}
                 >
                   {productEcosystem.howItWorks.cta.label}
@@ -621,7 +623,7 @@ export function HomePage() {
 
                   {/* Legend */}
                   <div className="mx-auto mt-4 w-[90%] border-t border-[#DEDCD4] pt-3">
-                    <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-x-5">
+                    <div className="flex flex-wrap justify-start gap-x-4 gap-y-2 sm:gap-x-5">
                       {[
                         ["#6F8A3A", "HYDROGEN IN"],
                         ["#4AA8E8", "OXYGEN IN"],
@@ -631,7 +633,7 @@ export function HomePage() {
                       ].map(([color, label]) => (
                         <div
                           key={label}
-                          className="flex items-center gap-1.5 whitespace-nowrap text-[8px] font-semibold tracking-[0.08em] text-[#67645D] uppercase sm:text-[9px]"
+                          className="flex items-center gap-1.5 whitespace-nowrap text-[8px] font-semibold tracking-[0.08em] text-[#67645D] uppercase sm:text-[12px]"
                         >
                           <span
                             className="size-2 shrink-0 rounded-full"
@@ -647,7 +649,7 @@ export function HomePage() {
 
               {/* RIGHT CARD */}
               <Reveal variant="right" delay={200}>
-                <div className="relative h-full min-h-[14rem] overflow-hidden bg-[#0f140f] p-6 text-[#F4F0E6]">
+                <div className="relative h-full min-h-[14rem] overflow-hidden bg-[#0f140f] p-6 text-[#F4F0E6] rounded-xl">
                   <div
                     className="pointer-events-none absolute inset-0 opacity-20"
                     aria-hidden
@@ -657,23 +659,24 @@ export function HomePage() {
                       backgroundSize: "48px 56px",
                     }}
                   />
+                  <div className="leafbox" style={{display: "flex", gap: "20px"}}>
+                    <div
+                      className="relative flex size-12 items-center justify-center border"
+                      style={{ borderColor: `${sage}66` }}
+                    >
+                      <Leaf className="size-5" style={{ color: sage }} />
+                    </div>
+                    <div>
+                    <h4 className="relative font-display text-2xl font-bold uppercase">
+                      {productEcosystem.howItWorks.sideCard.title}
+                    </h4>
 
-                  <div
-                    className="relative flex size-12 items-center justify-center border"
-                    style={{ borderColor: `${sage}66` }}
-                  >
-                    <Leaf className="size-5" style={{ color: sage }} />
+                    <p className="relative mt-2 text-sm text-[#F4F0E6]/70">
+                      {productEcosystem.howItWorks.sideCard.subtitle}
+                    </p>
+                    </div>
                   </div>
-
-                  <h4 className="relative mt-5 font-display text-2xl font-bold uppercase">
-                    {productEcosystem.howItWorks.sideCard.title}
-                  </h4>
-
-                  <p className="relative mt-2 text-sm text-[#F4F0E6]/70">
-                    {productEcosystem.howItWorks.sideCard.subtitle}
-                  </p>
-
-                  <ul className="relative mt-8 space-y-4 border-t border-[#6e7f42]/60 pt-5 text-sm">
+                  <ul className="relative mt-5 space-y-4 border-t border-[#6e7f42]/60 pt-5 text-sm">
                     {productEcosystem.howItWorks.sideCard.bullets.map((bullet, i) => {
                       const Icon = i === 0 ? Wind : Volume2;
 
@@ -705,7 +708,7 @@ export function HomePage() {
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              className="text-center font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
               style={{ color: sage }}
             >
               {featuredProducts.eyebrow}
@@ -749,7 +752,7 @@ export function HomePage() {
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
+              className="text-center font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
               style={{ color: sage }}
             >
               {missionDeployments.eyebrow}

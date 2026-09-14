@@ -123,7 +123,7 @@ function SectionEyebrow({
       </span>
 
       <p
-        className="text-xs font-semibold tracking-[0.2em] uppercase"
+        className="text-mm font-semibold tracking-[0.2em] uppercase"
         style={{ color: sage }}
       >
         {children}
@@ -349,7 +349,7 @@ export default function UseCasesPage() {
 
                 <a
                   href="#products"
-                  className="inline-flex min-h-14 items-center justify-center gap-4 border border-white/50 px-8 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10"
+                  className="inline-flex min-h-14 items-center justify-center gap-4 border border-white/50 px-8 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
                 >
                   View Products
                   <ArrowRight className="size-5" />
@@ -403,7 +403,7 @@ export default function UseCasesPage() {
               >
                 <a
                   href={item.href}
-                  className="group relative block aspect-[1.65/1] overflow-hidden rounded-xl bg-[#101713]"
+                  className="group relative block aspect-[2.20/1] overflow-hidden rounded-xl bg-[#101713]"
                 >
                   {item.image ? (
                     <Image
@@ -411,7 +411,7 @@ export default function UseCasesPage() {
                       alt={item.title}
                       fill
                       sizes="(min-width: 1024px) 50vw, 100vw"
-                      className="image-grade-green object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                     />
                   ) : null}
 
@@ -462,7 +462,7 @@ export default function UseCasesPage() {
       {defense && (
         <section
           id={defense.slug}
-          className="relative scroll-mt-24 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-28"
+          className="relative scroll-mt-24 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-0"
         >
           <div className="mx-auto grid max-w-[1440px] gap-5 px-6 lg:grid-cols-[1fr_0.92fr] lg:px-10">
             {/* Image */}
@@ -517,7 +517,7 @@ export default function UseCasesPage() {
                   </span>
                 </h2>
 
-                <p className="mt-7 text-base leading-relaxed text-[#646c65] sm:text-lg">
+                <p className="mt-4 text-base leading-relaxed text-[#646c65] sm:text-lg">
                   Portable hydrogen power for bases, troops, communications
                   and surveillance systems. Reduce fuel-convoy dependency
                   while eliminating the acoustic, thermal and emissions
@@ -546,7 +546,7 @@ export default function UseCasesPage() {
                           style={{ color: sage }}
                         />
 
-                        <span className="text-sm leading-snug text-[#303630]">
+                        <span className="text-mm leading-snug text-[#303630]">
                           {feature.title}
                         </span>
                       </div>
@@ -604,7 +604,7 @@ export default function UseCasesPage() {
                 </span>
               </h2>
 
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#687068] sm:text-lg">
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#687068] sm:text-lg">
                 Continuous power without fuel-convoy dependency. Swap
                 cartridges and extend runtime as long as the mission
                 requires.
@@ -631,11 +631,11 @@ export default function UseCasesPage() {
                         />
                       </div>
 
-                      <span className="text-xs font-semibold tracking-[0.08em] text-[#777f77] uppercase">
+                      <span className="text-mm font-semibold tracking-[0.08em] text-[#777f77] uppercase">
                         {row.label}
                       </span>
 
-                      <span className="col-span-2 text-sm text-[#222922] sm:col-span-1">
+                      <span className="col-span-2 text-mm text-[#222922] sm:col-span-1">
                         {row.value}
                       </span>
                     </div>
@@ -693,7 +693,7 @@ export default function UseCasesPage() {
 
       <section
         id="products"
-        className="relative overflow-hidden bg-[#fbfaf7] py-20 sm:py-24 lg:py-32"
+        className="relative overflow-hidden bg-[#fbfaf7] pt-0 pb-20 sm:pb-24 lg:pb-32"
       >
         {/* Decorative lines */}
         <div
@@ -759,7 +759,7 @@ export default function UseCasesPage() {
                         ⌁
                       </span>
 
-                      <p className="text-xs font-bold tracking-[0.08em] text-[#20251f] uppercase">
+                      <p className="text-mm font-bold tracking-[0.08em] text-[#20251f] uppercase">
                         {product.eyebrow}
                       </p>
                     </div>

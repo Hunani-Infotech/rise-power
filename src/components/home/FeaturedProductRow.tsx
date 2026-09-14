@@ -99,7 +99,7 @@ export function FeaturedProductRow({
   return (
     <article
       id={name.toLowerCase()}
-      className="motion-hover-lift scroll-mt-28 grid gap-0 overflow-hidden border border-[#ddd8cc] bg-white md:grid-cols-2 lg:grid-cols-[0.95fr_1.15fr_0.7fr_0.75fr]"
+      className="motion-hover-lift scroll-mt-28 grid gap-0 overflow-hidden border border-[#ddd8cc] bg-white md:grid-cols-2 lg:grid-cols-[0.95fr_1.15fr_0.7fr_0.75fr] rounded-sm"
     >
       {/* 1. Left copy */}
       <div className="flex flex-col justify-center border-b border-[#e4e0d6] p-6 sm:p-8 lg:border-r lg:border-b-0 lg:border-[#ddd8cc]">

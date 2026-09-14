@@ -226,8 +226,8 @@ export function StatGauge({
             <span
               className={`mt-1.5 font-display leading-none font-bold uppercase ${
                 unit.length > 6
-                  ? "text-[11px] tracking-[0.14em] sm:text-[12px]"
-                  : "text-[14px] tracking-[0.18em] sm:text-[15px]"
+                  ? "text-[11px] tracking-[0.14em] sm:text-[25px]"
+                  : "text-[14px] tracking-[0.18em] sm:text-[25px]"
               }`}
               style={{ color: PRIMARY_GREEN }}
             >

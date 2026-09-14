@@ -277,7 +277,7 @@ export function CustomersPartners() {
       <div className="mx-auto w-full max-w-[1760px] px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-[76px]">
         <Reveal variant="up">
           <p
-            className="text-center font-display text-[11px] font-bold tracking-[0.24em] uppercase sm:text-xs"
+            className="text-center font-display text-[11px] font-bold tracking-[0.24em] uppercase sm:text-[16px]"
             style={{ color: sage }}
           >
             {eyebrow}
@@ -356,18 +356,18 @@ export function CustomersPartners() {
                 <div className="flex flex-1 flex-col">
                   <div className="flex flex-1 flex-col p-4 sm:p-5">
                     <div
-                      className="font-display text-[32px] font-bold leading-[0.5]"
+                      className="font-display text-[50px] font-bold leading-[0.5]"
                       style={{ color: "#8bb52e" }}
                       aria-hidden
                     >
                       “
                     </div>
 
-                    <h3 className="mt-3 min-h-[48px] font-display text-[17px] leading-[1.04] font-bold tracking-[-0.01em] text-white uppercase sm:text-[18px] lg:text-[19px]">
+                    <h3 className="mt-0 min-h-[48px] font-display text-[17px] leading-[1.04] font-bold tracking-[-0.01em] text-white uppercase sm:text-[18px] lg:text-[22px]">
                       {item.title}
                     </h3>
 
-                    <p className="mt-3 min-h-[68px] text-[12px] leading-[1.5] text-[#e9eeeb]/80 sm:text-[13px]">
+                    <p className="mt-3 min-h-[68px] text-[12px] leading-[1.5] text-[#e9eeeb]/80 sm:text-[14px]">
                       {item.body}
                     </p>
 
@@ -396,7 +396,7 @@ export function CustomersPartners() {
 
                               <div className="min-w-0 flex-1">
                                 <p
-                                  className="max-w-full text-[9px] font-bold leading-[1.05] tracking-[-0.015em] text-white sm:text-[10px] md:text-[11px]"
+                                  className="max-w-full text-[9px] font-bold leading-[1.05] tracking-[-0.015em] text-white sm:text-[10px] md:text-[12px]"
                                   style={{
                                     overflowWrap: "anywhere",
                                   }}
@@ -478,7 +478,7 @@ export function CustomersPartners() {
                       aria-hidden
                     />
 
-                    <span className="max-w-[155px] text-[10px] font-bold leading-[1.15] tracking-[0.03em] text-[#171b18] uppercase sm:text-[11px]">
+                    <span className="max-w-[155px] text-[10px] font-bold leading-[1.15] tracking-[0.03em] text-[#171b18] uppercase sm:text-[15px]">
                       {partner}
                     </span>
                   </div>

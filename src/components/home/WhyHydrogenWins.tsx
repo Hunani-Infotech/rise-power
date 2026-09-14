@@ -344,7 +344,7 @@ export function WhyHydrogenWins() {
         ------------------------------------------------- */}
         <Reveal variant="up">
           <p
-            className="text-center font-display text-[11px] font-bold tracking-[0.25em] uppercase sm:text-xs"
+            className="text-center font-display text-[11px] font-bold tracking-[0.25em] uppercase sm:text-[16px]"
             style={{ color: sage }}
           >
             {eyebrow}
@@ -445,7 +445,7 @@ export function WhyHydrogenWins() {
                     tracking-[0.04em]
                     uppercase
                     sm:text-[22px]
-                    lg:text-[24px]
+                    lg:text-[30px]
                   "
                 >
                   <span style={{ color: sage }}>
@@ -471,7 +471,7 @@ export function WhyHydrogenWins() {
                             min-h-[45px]
                             items-center
                             px-3
-                            text-[11px]
+                            text-[20px]
                             font-bold
                             tracking-[0.12em]
                             uppercase
@@ -540,7 +540,7 @@ export function WhyHydrogenWins() {
                               text-[14px]
                               font-medium
                               text-[#f1f3ef]
-                              sm:text-[15px]
+                              sm:text-[20px]
                             "
                           >
                             <Icon
@@ -565,7 +565,7 @@ export function WhyHydrogenWins() {
                               px-4
                               text-[14px]
                               font-semibold
-                              sm:text-[15px]
+                              sm:text-[20px]
                               ${
                                 isLast
                                   ? "rounded-b-none"
@@ -601,7 +601,7 @@ export function WhyHydrogenWins() {
                               text-[14px]
                               font-medium
                               text-[#edf0ed]
-                              sm:text-[15px]
+                              sm:text-[20px]
                             "
                           >
                             {row.diesel}
@@ -724,7 +724,7 @@ export function WhyHydrogenWins() {
                               font-bold
                               tracking-[0.05em]
                               uppercase
-                              sm:text-[13px]
+                              sm:text-[15px]
                             "
                             style={{ color: sage }}
                           >
@@ -801,7 +801,7 @@ export function WhyHydrogenWins() {
                       font-bold
                       tracking-[0.07em]
                       uppercase
-                      sm:text-[11px]
+                      sm:text-[16px]
                     "
                     style={{ color: "#151a17" }}
                   >

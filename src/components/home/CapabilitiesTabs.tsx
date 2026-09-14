@@ -55,7 +55,7 @@ export function CapabilitiesTabs() {
     <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
       <Reveal variant="up" className="mx-auto max-w-3xl text-center">
         <p
-          className="text-[11px] font-semibold tracking-[0.22em] uppercase"
+          className="text-[16px] font-semibold tracking-[0.22em] uppercase"
           style={{ color: sage }}
         >
           {capabilities.eyebrow}
@@ -102,7 +102,7 @@ export function CapabilitiesTabs() {
                 }`}
               >
                 <Icon
-                  className="size-4 shrink-0 sm:size-[1.125rem]"
+                  className="size-4 shrink-0 sm:size-[22px]"
                   strokeWidth={1.75}
                   style={{ color: isActive ? sage : undefined }}
                   aria-hidden
@@ -128,7 +128,7 @@ export function CapabilitiesTabs() {
         >
           <div role="tabpanel" className="flex flex-col">
             <p
-              className="text-[11px] font-semibold tracking-[0.2em] uppercase"
+              className="text-[14px] font-semibold tracking-[0.2em] uppercase"
               style={{ color: sage }}
             >
               {active.eyebrow}
@@ -148,7 +148,7 @@ export function CapabilitiesTabs() {
 
             <Link
               href={active.cta.href}
-              className="mt-8 inline-flex w-fit min-h-11 items-center gap-2 border px-5 py-3 text-[11px] font-semibold tracking-[0.18em] uppercase transition-colors hover:bg-[#6e7f42]/12"
+              className="mt-8 inline-flex w-fit min-h-11 items-center gap-2 border px-5 py-3 text-[11px] font-semibold tracking-[0.18em] uppercase transition-colors hover:bg-[#6e7f42]/12 rounded-sm"
               style={{ borderColor: sage, color: sage }}
             >
               {active.cta.label}
@@ -178,7 +178,7 @@ export function CapabilitiesTabs() {
                       {stat.value}
                     </p>
                     <p
-                      className="mt-1.5 text-[10px] font-semibold tracking-[0.16em] uppercase"
+                      className="mt-1.5 text-[12px] font-semibold tracking-[0.16em] uppercase"
                       style={{ color: sage }}
                     >
                       {stat.label}

@@ -204,7 +204,7 @@ export default function CompanyPage() {
 
                 <a
                   href="#leadership"
-                  className="inline-flex min-h-14 items-center justify-center border border-white/60 px-7 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-white hover:text-[#101820]"
+                  className="inline-flex min-h-14 items-center justify-center border border-white/60 px-7 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-white hover:text-[#101820]  rounded-sm"
                 >
                   Meet the Team
                   <ArrowRight className="ml-4 size-5" />
