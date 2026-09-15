@@ -7,9 +7,9 @@ import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   Box,
-  Cross,
-  Factory,
+  Crosshair,
   Leaf,
+  Plug,
   Quote,
   Settings,
   Shield,
@@ -26,9 +26,9 @@ const cardBg = "#0f140f";
 
 const tabIcons: Record<string, LucideIcon> = {
   engineering: Settings,
-  defense: Shield,
-  industrial: Factory,
-  emergency: Cross,
+  integration: Plug,
+  field: Crosshair,
+  safety: Shield,
 };
 
 const statIcons: LucideIcon[] = [Zap, Shield, Box, Leaf];

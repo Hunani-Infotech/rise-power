@@ -124,7 +124,7 @@ const systemMeta = [
     icon: BatteryCharging,
     stats: [
       [Clock3, "4+ HRS", "ENDURANCE"],
-      [Infinity, "UNLIMITED", "RUNTIME"],
+      [Infinity, "5×", "RANGE EXT."],
       [Leaf, "ZERO", "EMISSIONS"],
     ],
   },
@@ -133,7 +133,7 @@ const systemMeta = [
     icon: Zap,
     stats: [
       [Zap, "3 kW", "CONTINUOUS POWER"],
-      [Clock3, "72+ HRS", "RUNTIME"],
+      [Clock3, "SILENT", "OPERATION"],
       [ShieldCheck, "BUILT", "FOR THE FIELD"],
     ],
   },
@@ -141,8 +141,8 @@ const systemMeta = [
     category: "FUEL SOLUTIONS",
     icon: BatteryCharging,
     stats: [
-      [BatteryCharging, "HIGH", "ENERGY DENSITY"],
-      [ShieldCheck, "SAFE", "& RELIABLE"],
+      [BatteryCharging, "RFID", "SMART MONITOR"],
+      [ShieldCheck, "15 YR", "SHELF LIFE"],
       [Infinity, "QUICK", "SWAP SYSTEM"],
     ],
   },
@@ -290,18 +290,12 @@ export default function ProductsPage() {
               </p>
 
               <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[76px]">
-                Four Systems.
-                <br />
-                <span className="text-[#6e7f42]">
-                  One Hydrogen
-                </span>
-                <br />
-                Ecosystem.
+                Products
               </h1>
 
               <p className="mt-7 max-w-[540px] text-base leading-relaxed text-white/75 sm:text-lg">
-                Portable hydrogen power engineered for defense, disaster
-                response, remote operations, and critical infrastructure.
+                Four products. One cartridge ecosystem. Engineered for defense,
+                disaster response, remote operations, and critical backup.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -490,8 +484,9 @@ export default function ProductsPage() {
 
             <p className="mt-6 max-w-[520px] text-sm leading-relaxed text-[#5c584e] sm:text-base">
               Every Rise Power product is designed as a complete system. Power
-              generation, fuel delivery, controls, and ruggedized enclosures work
-              together to deliver reliable performance across demanding environments.
+              generation, fuel delivery, controls, and enclosure working
+              together. Integrated system design delivers better performance and
+              reliability than assembled from parts alternatives.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-5">

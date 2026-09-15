@@ -41,6 +41,7 @@ import {
   productEcosystem,
   threeMarkets,
 } from "@/lib/home-content";
+import { standards } from "@/lib/content";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { EcosystemStepCard } from "./EcosystemStepCard";
 import { FeaturedProductRow } from "./FeaturedProductRow";
@@ -221,6 +222,30 @@ export function HomePage() {
           <ChevronDown className="size-3.5 animate-bounce" strokeWidth={1.6} />
         </a>
       </section>
+
+      {/* Standards strip — live content parity */}
+      {/* <section
+        aria-label="Engineered to standards"
+        className="border-y border-[#e4e6e0] bg-[#f3f1eb]"
+      >
+        <div
+          className={`${pageInset} flex flex-col items-center gap-5 py-6 sm:flex-row sm:justify-between sm:gap-8 sm:py-7`}
+        >
+          <p className="shrink-0 text-xs font-semibold tracking-[0.22em] text-[#59615b] uppercase">
+            Engineered To
+          </p>
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:justify-end sm:gap-x-8">
+            {standards.map((label) => (
+              <li
+                key={label}
+                className="text-xs font-semibold tracking-[0.12em] text-[#252925] uppercase sm:text-[13px]"
+              >
+                {label}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section> */}
 
       {/* 2. Performance Metrics — Built to Outperform */}
       <section

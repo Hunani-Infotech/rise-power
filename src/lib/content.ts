@@ -40,7 +40,7 @@ export const products = [
     image: "/media/products/product-sentinal.png",
     specs: [
       "Unlimited runtime via 30 second cartridge swap",
-      "Under 15 lbs total system weight",
+      "Under 15 lbs total system weight (cube plus cartridge)",
       "Below 70 dB acoustic signature",
       "Plug and play cartridge refueling",
       "15 year cartridge shelf life",
@@ -52,7 +52,7 @@ export const products = [
     name: "Rise Falcon™",
     tagline: "Drone range extender",
     description:
-      "Plug and play hydrogen range extender for lithium polymer drones. Extends flight time to 4 plus hours, targeting 5x the range of lithium alone.",
+      "Plug and play hydrogen range extender for lithium polymer drones. Extends flight time to 4 plus hours, targeting 5x the range of lithium alone. Engineered for ISR, remote surveillance, and autonomous delivery.",
     image: "/media/products/product-falcon.png",
     specs: [
       "5x range extension over lithium batteries",
@@ -68,7 +68,7 @@ export const products = [
     name: "Rise Titan™",
     tagline: "3 kW field generator",
     description:
-      "A 3 kW zero emission generator built for sustained field operations. Operates silently across extreme temperature ranges with zero heat signature.",
+      "A 3 kW zero emission generator built for sustained field operations. Operates silently across extreme temperature ranges with zero heat signature. Purpose built for defense, disaster response, and remote infrastructure.",
     image: "/media/products/product-titan.png",
     specs: [
       "3000 W nominal power output",
@@ -84,7 +84,7 @@ export const products = [
     name: "Hydrogen Cartridge Kit",
     tagline: "Universal fuel logistics",
     description:
-      "Universal fuel cell compatible cartridges with RFID smart monitoring. Leak proof, lightweight, and designed for rapid field replenishment.",
+      "Universal fuel cell compatible cartridges with RFID smart monitoring. Leak proof, lightweight, and designed for rapid field replenishment. Swap a cartridge and restore full runtime without tools or specialized training.",
     image: "/media/products/product-hydro-kit.png",
     specs: [
       "Universal fuel cell compatibility",
@@ -129,7 +129,7 @@ export const useCases = [
     slug: "disaster-response",
     title: "Disaster Response",
     description:
-      "Indoor safe emergency power for shelters, medical, and communications when the grid drops. Zero exhaust enables indoor operation. Cartridges stockpile indefinitely.",
+      "Indoor safe emergency power for shelters, medical, and communications when the grid drops. Zero exhaust enables indoor operation. Cartridges stockpile indefinitely. Crews swap them in seconds without tools.",
     image: "/media/use-cases/uc-grid3.png",
     howItWorks: [
       "Pre position cartridges at emergency depots",
@@ -143,7 +143,7 @@ export const useCases = [
     slug: "critical-infrastructure",
     title: "Critical Infrastructure",
     description:
-      "Mission duration backup for data centers, command facilities, and telecom that cannot drop. Sealed indoor operation, automatic failover, and a fuel supply that does not spoil or leak.",
+      "Mission duration backup for data centers, command facilities, and telecom that cannot drop. Sealed indoor operation, automatic failover, and a fuel supply that does not spoil, leak, or require a service truck.",
     image: "/media/use-cases/uc-grid4.png",
     howItWorks: [
       "Install in rack as primary or backup power source",
@@ -187,12 +187,12 @@ export const team = [
   {
     name: "Team Member TBA",
     role: "VP Engineering",
-    bio: "Hydrogen fuel cell systems, power electronics, and ruggedized field hardware.",
+    bio: "Hydrogen fuel cell systems, power electronics, and ruggedized field hardware. Bio to be announced.",
   },
   {
     name: "Team Member TBA",
     role: "VP Programs & Business Development",
-    bio: "Defense and infrastructure programs, partnerships, and customer engagement.",
+    bio: "Defense and infrastructure programs, partnerships, and customer engagement. Bio to be announced.",
   },
 ];
 

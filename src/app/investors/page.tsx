@@ -606,7 +606,10 @@ export default function InvestorsPage() {
       {/* PRESS & UPDATES                                                       */}
       {/* ==================================================================== */}
 
-      <section className="relative overflow-hidden bg-[#fbfaf7] pt-0 pb-20 sm:pb-24 lg:pb-28">
+      <section
+        id="press"
+        className="relative overflow-hidden bg-[#fbfaf7] pt-0 pb-20 sm:pb-24 lg:pb-28"
+      >
 
         <ContourBackground />
 
@@ -625,7 +628,7 @@ export default function InvestorsPage() {
           />
 
           {/* News cards */}
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
 
             {/* 01 */}
             <article className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d9dfe3] bg-white">
@@ -672,7 +675,7 @@ export default function InvestorsPage() {
 
                 <div className="mt-auto pt-7">
                   <Link
-                    href="/resources"
+                    href="/insights/phase-ii-development-milestone"
                     className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
                   >
                     Read More
@@ -727,7 +730,7 @@ export default function InvestorsPage() {
 
                 <div className="mt-auto pt-7">
                   <Link
-                    href="/resources"
+                    href="/insights/field-testing-extended-runtime"
                     className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
                   >
                     Read More
@@ -782,7 +785,7 @@ export default function InvestorsPage() {
 
                 <div className="mt-auto pt-7">
                   <Link
-                    href="/resources"
+                    href="/insights/hydrogen-power-defense-applications"
                     className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
                   >
                     Read More
@@ -834,7 +837,61 @@ export default function InvestorsPage() {
 
                 <div className="mt-auto pt-7">
                   <Link
-                    href="/resources"
+                    href="/insights/engineering-team-expansion"
+                    className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
+                  >
+                    Read More
+                    <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* 05 */}
+            <article className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d9dfe3] bg-white">
+
+              <div className="relative aspect-[1.65/1] overflow-hidden">
+                <Image
+                  src="/media/products/cartridge-kit.jpg"
+                  alt="Rise Power hydrogen cartridge kit"
+                  fill
+                  sizes="(min-width: 1280px) 20vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+              </div>
+
+              <div className="flex flex-1 flex-col p-6 sm:p-7">
+
+                <div className="flex items-center gap-4">
+                  <span className="font-display text-2xl font-bold text-[#52a526]">
+                    05
+                  </span>
+
+                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
+                </div>
+
+                <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
+                  Cartridge Based Fuel:
+                  <br />
+                  Simplifying Hydrogen
+                  <br />
+                  Logistics
+                </h3>
+
+                <p className="mt-4 text-[11px] font-semibold tracking-[0.14em] text-[#66727d] uppercase">
+                  2025-09-12
+                  <span className="mx-2 text-[#aab1b7]">·</span>
+                  Technology
+                </p>
+
+                <p className="mt-4 text-[16px] leading-[1.4] text-[#65717d]">
+                  How a modular fuel cartridge approach solves the resupply
+                  problem in portable hydrogen deployment.
+                </p>
+
+                <div className="mt-auto pt-7">
+                  <Link
+                    href="/insights/cartridge-based-hydrogen-logistics"
                     className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
                   >
                     Read More
@@ -848,7 +905,7 @@ export default function InvestorsPage() {
           {/* View all */}
           <div className="mt-9 flex justify-center">
             <Link
-              href="/resources"
+              href="/insights"
               className="group inline-flex min-h-[58px] items-center justify-center gap-2 rounded-[5px] bg-[#849363] px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:bg-[#4d9721] hover:shadow-lg"
             >
               <span>View All Insights</span>

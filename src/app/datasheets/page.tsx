@@ -58,14 +58,14 @@ const products = [
     name: "Rise Titan™",
     image: "/media/datasheets/datasheet-3.png",
     description:
-      "High-output, scalable hydrogen power for demanding missions. Delivers continuous power in a rugged, field-ready form factor with rapid cartridge swap and minimal signature.",
+      "A 3 kW zero emission generator built for sustained field operations. Operates silently across extreme temperature ranges with zero heat signature. Purpose built for defense, disaster response, and remote infrastructure.",
     specs: [
-      ["Continuous Output", "3 kW (target)"],
-      ["Runtime", "Hours with standard cartridges"],
-      ["System Weight", "< 50 lbs (target)"],
+      ["Continuous Output", "3,000 W (target)"],
+      ["Runtime", "Unlimited with cartridge swap"],
+      ["Acoustic Signature @ 1m", "< 65 dBA"],
       ["Operating Temperature", "−20 °C to 50 °C (target)"],
-      ["Ingress Protection", "IP65 (target)"],
-      ["Cartridge Swap", "< 1 min, no tools"],
+      ["Form Factor", "Wheeled, telescoping handle"],
+      ["Output Receptacles", "2x 120 V, USB-A, USB-C, MIL connector"],
     ],
     sectionTitle: "Engineering Targets",
     productHref: "/products#titan",
@@ -76,17 +76,17 @@ const products = [
     name: "Hydrogen Cartridge Kit",
     image: "/media/datasheets/datasheet-4.png",
     description:
-      "Rugged, field-ready hydrogen cartridges designed for safe, reliable, and rapid power delivery. Optimized for use with RISE systems in demanding environments.",
+      "Universal fuel cell compatible cartridges with RFID smart monitoring. Leak proof, lightweight, and designed for rapid field replenishment. Swap a cartridge and restore full runtime without tools or specialized training.",
     specs: [
-      ["Cartridge Type", "Replaceable hydrogen cartridge"],
-      ["Hydrogen Capacity", "~300 Wh (target)"],
-      ["Form Factor", "Rugged, field-ready"],
-      ["Operating Temperature", "−20 °C to 50 °C (target)"],
-      ["Storage Temperature", "−40 °C to 60 °C (target)"],
-      ["Compatibility", "RISE systems"],
+      ["Cartridge Diameter", "6 in (152 mm)"],
+      ["Cartridge Height", "24 in (610 mm)"],
+      ["Coupler", "Stainless quick-disconnect, push-to-connect"],
+      ["Shelf Life", "Effectively indefinite"],
+      ["Pack Configuration", "4x cartridges, Pelican 1610 case"],
+      ["Transport", "Ground / air (certification in progress)"],
     ],
-    sectionTitle: "Key Specifications",
-    productHref: "/products#hydrogen-cartridge-kit",
+    sectionTitle: "Engineering Targets",
+    productHref: "/products#cartridge-kit",
     imageAlt: "Hydrogen cartridge kit with rugged Rise Power case",
   },
 ];
@@ -181,7 +181,7 @@ export default function DatasheetsPage() {
           return (
             <section
               key={product.number}
-              id={product.number === "04" ? "hydrogen-cartridge-kit" : product.number === "01" ? "sentinel" : product.number === "02" ? "falcon" : "titan"}
+              id={product.number === "04" ? "cartridge-kit" : product.number === "01" ? "sentinel" : product.number === "02" ? "falcon" : "titan"}
               className="relative overflow-hidden bg-[#fbfaf7] py-8 sm:py-12 lg:py-16"
             >
 
