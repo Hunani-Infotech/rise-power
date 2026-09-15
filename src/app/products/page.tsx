@@ -442,18 +442,6 @@ export default function ProductsPage() {
                         );
                       })}
                     </div>
-
-                    <Link
-                      href="#product-comparison"
-                      className="mt-auto flex items-center justify-between pt-4 text-[11px] font-bold tracking-[0.14em] uppercase"
-                      style={{ color: lime }}
-                    >
-                      <span>View Products</span>
-                      <ArrowRight
-                        className="size-5 transition-transform group-hover:translate-x-1"
-                        strokeWidth={1.5}
-                      />
-                    </Link>
                   </div>
                 </article>
               );
@@ -496,17 +484,17 @@ export default function ProductsPage() {
 
             <div className="mt-8 flex flex-wrap gap-5">
               <Link
-                href="/#capabilities"
+                href="/contact"
                 className="inline-flex min-h-12 items-center gap-3 border border-[#252925] px-6 text-xs font-semibold uppercase hover:bg-[#141a14] hover:text-white rounded-sm"
               >
-                ▶ See How It Works
+                Request a Briefing
               </Link>
 
               <Link
-                href="/#capabilities"
+                href="/use-cases"
                 className="inline-flex items-center gap-2 text-xs font-semibold uppercase"
               >
-                Explore Capabilities
+                See Use Cases
                 <ArrowRight className="size-4 text-[#6e7f42]" />
               </Link>
             </div>

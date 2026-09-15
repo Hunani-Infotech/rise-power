@@ -683,11 +683,6 @@ export const megaNavItems: readonly MegaNavItem[] = [
         description: "Our mission, values and the team behind it.",
       },
       {
-        label: "Careers",
-        href: "/company#careers",
-        description: "Help build the future of portable power.",
-      },
-      {
         label: "Contact",
         href: "/contact",
         description: "Get in touch with our team.",

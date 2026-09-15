@@ -310,7 +310,7 @@ export const productEcosystem = {
     eyebrow: "HOW IT WORKS",
     heading: "CLEAN HYDROGEN. ENDLESS POSSIBILITIES.",
     body: "Hydrogen is converted into electricity through a chemical reaction in the fuel cell—producing only water and heat. Our cartridge-based system makes power simple, scalable, and sustainable.",
-    cta: { label: "EXPLORE TECHNOLOGY", href: "/#capabilities" } satisfies Cta,
+    cta: { label: "SEE CAPABILITIES", href: "/#capabilities" } satisfies Cta,
     diagramTitle: "FUEL CELL STACK",
     diagramImageSrc: "/media/ecosystem/fuel-cell.png",
     diagramLabels: [
@@ -418,7 +418,7 @@ export const featuredProducts = {
         "Rapid Replenishment",
         "Mission-Critical Deployments",
       ],
-      detailsHref: "/products#hydrogen-cartridge-kit",
+      detailsHref: "/products#cartridge-kit",
       datasheetHref: "/datasheets",
       image: "Hydrogen Cartridge Kit with RFID smart monitoring",
       imageSrc: "/media/products/cartridge-kit.jpg",
@@ -438,7 +438,7 @@ export const capabilities = {
       eyebrow: "CONCEPT TO DEPLOYMENT",
       heading: "Engineering & development from concept to deployment",
       body: "From early-stage prototypes to production-ready hardware, our engineering team delivers hydrogen power systems designed for the environment where they will actually operate.",
-      cta: { label: "Learn more", href: "/#capabilities" },
+      cta: { label: "Request a Briefing", href: "/contact" },
       stats: [
         {
           value: "FUEL CELL",
@@ -486,7 +486,7 @@ export const capabilities = {
       eyebrow: "PLATFORMS. NETWORKS. INFRASTRUCTURE.",
       heading: "System integration with existing platforms and infrastructure",
       body: "Our systems are designed from the start to work within existing vehicle platforms, communications systems, and facility power networks — not as standalone replacements.",
-      cta: { label: "Learn more", href: "/#capabilities" },
+      cta: { label: "Request a Briefing", href: "/contact" },
       stats: [
         {
           value: "VEHICLE",
@@ -534,7 +534,7 @@ export const capabilities = {
       eyebrow: "LOGISTICS. TRAINING. SUPPORT.",
       heading: "Rapid field deployment with end-to-end logistics support",
       body: "Getting a system from the lab to the field requires more than good engineering. We provide logistics planning, operator training, and field service so your team can rely on hydrogen power where it matters.",
-      cta: { label: "Learn more", href: "/#capabilities" },
+      cta: { label: "Request a Briefing", href: "/contact" },
       stats: [
         {
           value: "LOGISTICS",
@@ -582,7 +582,7 @@ export const capabilities = {
       eyebrow: "ENGINEERED IN FROM DAY ONE",
       heading: "Safety & compliance engineered in from day one",
       body: "Pressure vessels, leak detection, and thermal management are designed in from the start. We work directly with the regulatory bodies relevant to defense, transport, and indoor industrial deployment.",
-      cta: { label: "Learn more", href: "/#capabilities" },
+      cta: { label: "Request a Briefing", href: "/contact" },
       stats: [
         {
           value: "PRESSURE",
@@ -881,7 +881,7 @@ export const closingCta = {
   panelBody:
     "For procurement, programs, and integration leads evaluating hydrogen power for serious deployments. We will respond with specs, runtime data, and a deployment summary tailored to your operating environment.",
   primaryCta: { label: "REQUEST A BRIEFING", href: "/contact" } satisfies Cta,
-  secondaryCta: { label: "REVIEW CAPABILITIES", href: "/#capabilities" } satisfies Cta,
+  secondaryCta: { label: "SEE USE CASES", href: "/use-cases" } satisfies Cta,
   chips: [
     { title: "ZERO EMISSIONS", subtitle: "Clean power, no compromise." },
     { title: "ULTRA QUIET", subtitle: "Engineered for stealth operations." },

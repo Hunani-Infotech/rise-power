@@ -151,64 +151,12 @@ export default function UseCasesPage() {
         item.title.toLowerCase().includes("defense"),
     ) ?? useCases[0];
 
-  const remote =
-    useCases.find(
-      (item) =>
-        item.slug === "remote-operations" ||
-        item.slug === "remote" ||
-        item.title.toLowerCase().includes("remote"),
-    ) ?? useCases[1];
-
-  const disaster =
-    useCases.find(
-      (item) =>
-        item.slug === "disaster-response" ||
-        item.slug === "disaster" ||
-        item.title.toLowerCase().includes("disaster"),
-    ) ?? useCases[2];
-
-  const infrastructure =
-    useCases.find(
-      (item) =>
-        item.slug === "critical-infrastructure" ||
-        item.slug === "infrastructure" ||
-        item.title.toLowerCase().includes("infrastructure"),
-    ) ?? useCases[3];
-
-  const overviewCases = [
-    {
-      number: "01",
-      title: "Defense & Security",
-      description:
-        "Silent portable power for bases, troops, communications, surveillance and ISR.",
-      image: defense?.image,
-      href: `#${defense?.slug ?? "defense"}`,
-    },
-    {
-      number: "02",
-      title: "Remote Operations",
-      description:
-        "Reliable power for locations where fuel resupply and maintenance are difficult.",
-      image: remote?.image,
-      href: `#${remote?.slug ?? "remote-operations"}`,
-    },
-    {
-      number: "03",
-      title: "Disaster Response",
-      description:
-        "Clean emergency power for shelters, medical operations and communications.",
-      image: disaster?.image,
-      href: `#${disaster?.slug ?? "disaster-response"}`,
-    },
-    {
-      number: "04",
-      title: "Critical Infrastructure",
-      description:
-        "Reliable backup power for communications, facilities and other critical loads.",
-      image: infrastructure?.image,
-      href: `#${infrastructure?.slug ?? "critical-infrastructure"}`,
-    },
-  ];
+  const overviewCases = useCases.map((item, index) => ({
+    number: String(index + 1).padStart(2, "0"),
+    title: item.title,
+    description: item.description,
+    image: item.image,
+  }));
 
   const productConnections = [
     {
@@ -230,7 +178,7 @@ export default function UseCasesPage() {
             product.slug.includes("cartridge") ||
             product.name.toLowerCase().includes("cartridge"),
         )?.image ?? products[3]?.image,
-      href: "/products#hydrogen-cartridge",
+      href: "/products#cartridge-kit",
     },
     {
       eyebrow: "RISE FALCON",
@@ -406,10 +354,7 @@ export default function UseCasesPage() {
                 variant="fade"
                 delay={index * 70}
               >
-                <a
-                  href={item.href}
-                  className="group relative block aspect-[2.20/1] overflow-hidden rounded-xl bg-[#101713]"
-                >
+                <div className="group relative block aspect-[2.20/1] overflow-hidden rounded-xl bg-[#101713]">
                   {item.image ? (
                     <Image
                       src={item.image}
@@ -446,16 +391,8 @@ export default function UseCasesPage() {
                         {item.description}
                       </p>
                     </div>
-
-                    <div className="flex items-center gap-2 text-sm font-semibold tracking-wide text-white uppercase">
-                      <span>Explore</span>
-                      <ArrowRight
-                        className="size-6 transition-transform duration-300 group-hover:translate-x-1"
-                        style={{ color: sage }}
-                      />
-                    </div>
                   </div>
-                </a>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -650,11 +587,11 @@ export default function UseCasesPage() {
 
               <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
                 <a
-                  href="#products"
+                  href="/products"
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
                   style={{ background: sage }}
                 >
-                  Explore Defense Solutions
+                  See Products
                   <ArrowRight className="size-5" />
                 </a>
 
