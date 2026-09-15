@@ -333,9 +333,9 @@ export default function UseCasesPage() {
               <h1 className="mt-7 font-display text-[48px] leading-[0.9] font-bold tracking-tight uppercase sm:text-[64px] lg:text-[82px] xl:text-[94px]">
                 Power Where
                 <br />
-                <span style={{ color: "#849363" }}>The Mission</span>
+                <span style={{ color: "#6e7f42" }}>The Mission</span>
                 <br />
-                <span style={{ color: "#849363" }}>Takes You.</span>
+                <span style={{ color: "#6e7f42" }}>Takes You.</span>
               </h1>
 
               <p className="mt-7 max-w-[600px] text-base leading-relaxed text-white/80 sm:text-lg lg:text-xl">

@@ -152,14 +152,14 @@ export function HomePage() {
             <div className="hero-animate-copy max-w-xl lg:max-w-4xl">
               <p
                 className="font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
-                style={{ color: heroSage }}
+                style={{ color: sage }}
               >
                 {hero.eyebrow}
               </p>
               <h1 className="mt-5 font-display text-[2.75rem] leading-[0.9] font-bold tracking-[-0.02em] uppercase sm:text-7xl md:text-8xl lg:text-[6.75rem]">
                 {hero.headlineLine1}
                 <br />
-                <span style={{ color: heroSage }}>{hero.headlineLine2}</span>
+                <span style={{ color: sage }}>{hero.headlineLine2}</span>
               </h1>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/85 sm:text-base lg:text-lg">
                 {hero.body}
@@ -234,13 +234,13 @@ export function HomePage() {
           <Reveal variant="up">
             <p
               className="text-center font-display text-xs font-semibold tracking-[0.22em] uppercase sm:text-sm lg:text-base"
-              style={{ color: "#689d2d" }}
+              style={{ color: "#6e7f42" }}
             >
               {performanceMetrics.eyebrow}
             </p>
             <h2 className="mt-4 text-center font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[5.5rem] xl:text-[6.25rem]">
               {performanceMetrics.headingBefore}{" "}
-              <span style={{ color: "#689d2d" }}>
+              <span style={{ color: "#6e7f42" }}>
                 {performanceMetrics.headingAccent}
               </span>
             </h2>

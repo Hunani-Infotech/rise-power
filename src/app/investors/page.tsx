@@ -152,7 +152,7 @@ function SectionHeading({
 }) {
   return (
     <div className="mx-auto max-w-[1000px] text-center">
-      <p className="text-mm font-semibold tracking-[0.18em] text-[#4f9825] uppercase">
+      <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
         {eyebrow}
       </p>
 
@@ -209,7 +209,7 @@ export default function InvestorsPage() {
 
             {/* Eyebrow */}
             <div className="flex items-center gap-4">
-              <span className="font-display text-mm font-semibold tracking-[0.2em] text-[#63ad2b] uppercase">
+              <span className="font-display text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
                 Investors
               </span>
             </div>
@@ -309,7 +309,7 @@ export default function InvestorsPage() {
               <div className="relative z-10 flex min-h-[480px] max-w-[620px] flex-col p-8 sm:p-10 lg:p-12">
 
                 <div className="flex items-center gap-5">
-                  <span className="font-display text-4xl font-bold leading-none text-[#58b52a]">
+                  <span className="font-display text-4xl font-bold leading-none text-[#6e7f42]">
                     01
                   </span>
 
@@ -358,7 +358,7 @@ export default function InvestorsPage() {
               <div className="relative z-10 flex min-h-[480px] max-w-[620px] flex-col p-8 sm:p-10 lg:p-12">
 
                 <div className="flex items-center gap-5">
-                  <span className="font-display text-4xl font-bold leading-none text-[#58b52a]">
+                  <span className="font-display text-4xl font-bold leading-none text-[#6e7f42]">
                     02
                   </span>
 

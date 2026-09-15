@@ -285,14 +285,14 @@ export default function ProductsPage() {
 
             <div className="w-full max-w-[620px]">
 
-              <p className="text-mm font-semibold tracking-[0.18em] text-[#91ad46] uppercase">
+              <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
                 ⌁ Product Systems
               </p>
 
               <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[76px]">
                 Four Systems.
                 <br />
-                <span className="text-[#849363]">
+                <span className="text-[#6e7f42]">
                   One Hydrogen
                 </span>
                 <br />
