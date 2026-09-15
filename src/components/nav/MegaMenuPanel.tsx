@@ -98,7 +98,7 @@ export function MegaMenuPanel({
         <div className="min-w-0">
           <div className="mb-5 flex items-center justify-between border-b border-[#dcd8ce] pb-3">
             <div>
-              <p className="text-[10px] font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
+              <p className="text-[14px] font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
                 Explore
               </p>
               <h2 className="mt-1 font-display text-xl font-bold uppercase">
@@ -109,7 +109,7 @@ export function MegaMenuPanel({
             <Link
               href={links[0]?.href ?? "#"}
               onClick={onNavigate}
-              className="hidden items-center gap-1 text-[10px] font-semibold tracking-[0.14em] text-[#6e7f42] uppercase transition-colors hover:text-[#141a14] sm:flex"
+              className="hidden items-center gap-1 text-[14px] font-semibold tracking-[0.14em] text-[#6e7f42] uppercase transition-colors hover:text-[#141a14] sm:flex"
             >
               View all
               <ArrowRight className="size-3.5" />
@@ -125,12 +125,12 @@ export function MegaMenuPanel({
                 className="group flex min-h-[70px] items-center justify-between border-b border-[#e5e1d8] py-3 transition-colors hover:bg-[#efede5]"
               >
                 <span className="min-w-0 pr-4">
-                  <span className="block text-[13px] font-semibold text-[#171b17] transition-colors group-hover:text-[#6e7f42]">
+                  <span className="block text-[18px] font-semibold text-[#171b17] transition-colors group-hover:text-[#6e7f42]">
                     {link.label}
                   </span>
 
                   {link.description && (
-                    <span className="mt-1 block max-w-[330px] text-[11px] leading-relaxed text-[#77736a]">
+                    <span className="mt-1 block max-w-[330px] text-[14px] leading-relaxed text-[#77736a]">
                       {link.description}
                     </span>
                   )}

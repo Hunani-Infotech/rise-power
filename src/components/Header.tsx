@@ -503,9 +503,8 @@ export function Header() {
             href={contactCta.href}
             className={
               isHome
-                ? "hidden border border-white/70 px-5 py-2.5 text-sm font-semibold tracking-wide text-white uppercase transition-all hover:border-white hover:bg-white/10 lg:inline-flex"
-                : "hidden bg-forest px-5 py-2.5 text-sm font-semibold tracking-wide text-cream uppercase transition-all hover:bg-ink lg:inline-flex"
-            }
+                ? "hidden border border-white/70 px-5 py-2.5 text-sm font-semibold tracking-wide text-white uppercase transition-all hover:border-white hover:bg-white/10 lg:inline-flex rounded-sm"
+                : "hidden bg-forest px-5 py-2.5 text-sm font-semibold tracking-wide text-cream uppercase transition-all hover:bg-ink lg:inline-flex rounded-sm"}
           >
             {contactCta.label}
           </Link>
