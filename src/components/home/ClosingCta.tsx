@@ -165,9 +165,21 @@ export function ClosingCta() {
           sizes="100vw"
         />
 
-        <div className="absolute inset-0 bg-[#061018]/75" />
+        {/* <div className="absolute inset-0 bg-[#061018]/75" />
         <div className="absolute inset-0 bg-linear-to-r from-[#061018]/95 via-[#061018]/60 to-[#061018]/35" />
-        <div className="absolute inset-0 bg-linear-to-t from-[#061018]/90 via-transparent to-[#061018]/25" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#061018]/90 via-transparent to-[#061018]/25" /> */}
+
+        {/* Overall dark mood */}
+        <div className="absolute inset-0 bg-[#061018]/55" />
+
+        {/* Left text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061018]/95 via-[#061018]/70 to-transparent" />
+
+        {/* Right side slight dark */}
+        <div className="absolute inset-0 bg-gradient-to-l from-[#061018]/45 via-transparent to-transparent" />
+
+        {/* Bottom cinematic fade */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#061018]/75 via-transparent to-transparent" />
 
         <div className="relative mx-auto w-full max-w-[1716px] px-6 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
           <div className="grid items-center lg:grid-cols-[1.45fr_0.7fr] lg:gap-8">
@@ -239,7 +251,7 @@ export function ClosingCta() {
             >
               <div className="border-l border-white/15 pl-0 lg:pl-10">
                 <p
-                  className="text-[10px] font-semibold tracking-[0.18em] uppercase sm:text-[16px]"
+                  className="text-[16px] font-semibold tracking-[0.18em] uppercase"
                   style={{ color: sage }}
                 >
                   {closingCta.panelEyebrow}

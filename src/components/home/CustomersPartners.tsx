@@ -277,7 +277,7 @@ export function CustomersPartners() {
       <div className="mx-auto w-full max-w-[1760px] px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-[76px]">
         <Reveal variant="up">
           <p
-            className="text-center font-display text-[11px] font-bold tracking-[0.24em] uppercase sm:text-[16px]"
+            className="text-center font-display text-[16px] font-bold tracking-[0.24em] uppercase"
             style={{ color: sage }}
           >
             {eyebrow}

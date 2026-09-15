@@ -110,10 +110,16 @@ export default function DatasheetsPage() {
         />
 
         {/* Dark gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071013]/95 via-[#071013]/75 to-[#071013]/20" />
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#071013]/95 via-[#071013]/75 to-[#071013]/20" /> */}
 
         {/* Additional bottom gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#071013]/80 to-transparent" />
+        {/* <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#071013]/80 to-transparent" /> */}
+
+        {/* Left focused cinematic gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071013]/95 via-[#071013]/35 to-transparent" />
+
+        {/* Additional bottom subtle gradient */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#071013]/45 to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 py-28 sm:min-h-[760px] lg:min-h-[820px] lg:px-10">
 
@@ -225,7 +231,7 @@ export default function DatasheetsPage() {
 
                           <span className="h-px w-12 bg-[#aeb6bd] sm:w-16" />
 
-                          <p className="text-xs font-semibold tracking-[0.18em] text-[#66717d] uppercase sm:text-sm">
+                          <p className="text-mm font-semibold tracking-[0.18em] text-[#66717d] uppercase">
                             Datasheet · Beta
                           </p>
 
@@ -295,9 +301,9 @@ export default function DatasheetsPage() {
 
                           <Link
                             href="/contact"
-                            className="inline-flex min-h-12 items-center justify-center gap-4 px-7 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm bg-[rgb(132,147,99)]"
+                            className="inline-flex min-h-12 items-center justify-center gap-4 px-7 text-xs font-semibold tracking-[0.08em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm bg-[#5f8f2f]"
                           >
-                            <span className="flex w-full items-center justify-between gap-4">
+                            <span className="flex w-full items-center justify-center gap-2">
                               Request Full Datasheet
                               <ArrowRight className="size-5 shrink-0" />
                             </span>
@@ -305,7 +311,7 @@ export default function DatasheetsPage() {
 
                           <a
                             href={product.productHref}
-                            className="inline-flex min-h-14 items-center justify-between border border-[#aeb6bd] px-6 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-all duration-200 hover:border-[#5f8f2f] hover:bg-[#5f8f2f] hover:text-white"
+                            className="inline-flex min-h-14 items-center justify-center gap-2 border border-[#aeb6bd] px-6 text-xs font-semibold tracking-[0.06em] text-[#101820] uppercase transition-all duration-200 hover:border-[#5f8f2f] hover:bg-[#5f8f2f] hover:text-white rounded-sm"
                           >
                             Product Page
                             <ArrowRight className="size-5 shrink-0" />

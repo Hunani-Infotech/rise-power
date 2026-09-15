@@ -193,9 +193,15 @@ export default function InvestorsPage() {
         />
 
         {/* Dark gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/75 to-transparent" />
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/75 to-transparent" />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/80 via-transparent to-[#071016]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/80 via-transparent to-[#071016]/20" /> */}
+
+        {/* Left focused cinematic gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/35 to-transparent" />
+
+        {/* Bottom subtle gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/45 via-transparent to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] items-center px-6 pb-20 pt-36 lg:min-h-[850px] lg:px-10">
 
@@ -224,7 +230,7 @@ export default function InvestorsPage() {
             {/* Buttons */}
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
 
-              <Link
+              {/* <Link
                 href="/contact"
                 className="group inline-flex min-h-[64px] items-center justify-center gap-7 rounded-[5px] bg-[#58a926] px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:bg-[#4b9220] hover:shadow-xl"
               >
@@ -235,6 +241,21 @@ export default function InvestorsPage() {
               <Link
                 href="#investor-materials"
                 className="group inline-flex min-h-[64px] items-center justify-center gap-7 rounded-[5px] border border-white/80 bg-transparent px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:bg-white hover:text-[#101820]"
+              >
+                <span>Download the Deck</span>
+                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link> */}
+
+              <Link
+                href="/contact"
+                className="group inline-flex min-h-[64px] items-center justify-center gap-2 px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm bg-[#849363]"
+              >
+                <span>Request a Briefing</span>
+                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="#investor-materials"
+                className="group inline-flex min-h-[64px] items-center justify-center gap-2 border border-white/80 px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
               >
                 <span>Download the Deck</span>
                 <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -312,7 +333,7 @@ export default function InvestorsPage() {
                   <a
                     href="/media/investors/rise-power-deck.pdf"
                     download="rise-power-deck.pdf"
-                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-8 rounded-[4px] bg-[#58b52a] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
+                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-2 rounded-[4px] bg-[#58b52a] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
                   >
                     Download
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
@@ -361,7 +382,7 @@ export default function InvestorsPage() {
                   <a
                     href="/media/investors/rise-power-one-pager.pdf"
                     download="rise-power-one-pager.pdf"
-                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-8 rounded-[4px] bg-[#58b52a] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
+                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-2 rounded-[4px] bg-[#58b52a] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
                   >
                     Download
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
@@ -828,7 +849,7 @@ export default function InvestorsPage() {
           <div className="mt-9 flex justify-center">
             <Link
               href="/resources"
-              className="group inline-flex min-h-[58px] items-center justify-center gap-7 rounded-[5px] bg-[#58a926] px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:bg-[#4d9721] hover:shadow-lg"
+              className="group inline-flex min-h-[58px] items-center justify-center gap-2 rounded-[5px] bg-[#58a926] px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:bg-[#4d9721] hover:shadow-lg"
             >
               <span>View All Insights</span>
               <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />

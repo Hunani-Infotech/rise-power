@@ -118,7 +118,7 @@ export function FeaturedProductRow({
         </p>
         <Link
           href={detailsHref}
-          className="mt-8 inline-flex w-fit min-h-11 items-center justify-center gap-2 border border-[#cfc9bb] bg-transparent px-5 text-sm font-semibold tracking-wide text-[#1a1c16] uppercase transition-colors hover:border-[#1a1c16]"
+          className="mt-8 inline-flex w-fit min-h-11 items-center justify-center gap-2 border border-[#cfc9bb] bg-transparent px-5 text-sm font-semibold tracking-wide text-[#1a1c16] uppercase transition-colors hover:border-[#1a1c16] rounded-sm"
         >
           {productUiLabels.viewDetails}
           <ArrowRight className="size-4" strokeWidth={1.8} />

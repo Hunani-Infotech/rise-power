@@ -269,10 +269,16 @@ export default function ProductsPage() {
           />
 
           {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/60" />
+          {/* <div className="absolute inset-0 bg-black/60" /> */}
 
           {/* Gradient for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050b0d]/95 via-[#050b0d]/70 to-[#050b0d]/30" />
+          {/* <div className="absolute inset-0 bg-gradient-to-r from-[#050b0d]/95 via-[#050b0d]/70 to-[#050b0d]/30" /> */}
+
+          {/* Left focused cinematic gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050b0d]/95 via-[#050b0d]/35 to-transparent" />
+
+          {/* Bottom subtle gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050b0d]/45 via-transparent to-transparent" />
 
           {/* Content */}
           <div className="relative mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 pt-24 pb-16 sm:min-h-[780px] lg:min-h-screen lg:px-10">
@@ -286,7 +292,7 @@ export default function ProductsPage() {
               <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[76px]">
                 Four Systems.
                 <br />
-                <span className="text-[#91ad46]">
+                <span className="text-[#849363]">
                   One Hydrogen
                 </span>
                 <br />
@@ -300,7 +306,7 @@ export default function ProductsPage() {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
 
-                <Link
+                {/* <Link
                   href="/contact"
                   className="inline-flex min-h-14 items-center justify-center gap-2 bg-[#91ad46] px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-[#a4c257] rounded-sm"
                 >
@@ -311,6 +317,21 @@ export default function ProductsPage() {
                 <Link
                   href="#product-systems"
                   className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-white/10 rounded-sm"
+                >
+                  See Products
+                  <ArrowRight className="size-4" />
+                </Link> */}
+
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 bg-[#849363] px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm"
+                >
+                  Request a Briefing
+                  <ArrowRight className="size-4" />
+                </Link>
+                <Link
+                  href="#product-systems"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
                 >
                   See Products
                   <ArrowRight className="size-4" />
@@ -483,7 +504,7 @@ export default function ProductsPage() {
 
               <Link
                 href="/technology"
-                className="inline-flex items-center gap-3 text-xs font-semibold uppercase"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase"
               >
                 Explore Technology
                 <ArrowRight className="size-4 text-[#6e7f42]" />
@@ -652,7 +673,7 @@ export default function ProductsPage() {
                     >
                       <Link
                         href={`#${product.slug}`}
-                        className="group flex min-h-14 items-center justify-center gap-3 border border-white/25 px-4 text-sm font-bold tracking-[0.08em] uppercase transition hover:border-[#91ad46] hover:text-[#c1df29] rounded-sm"
+                        className="group flex min-h-14 items-center justify-center gap-2 border border-white/25 px-4 text-sm font-bold tracking-[0.08em] uppercase transition hover:border-[#91ad46] hover:text-[#c1df29] rounded-sm"
                       >
                         View Product
                         <ArrowRight className="size-5 text-[#c1df29] transition-transform group-hover:translate-x-1" />

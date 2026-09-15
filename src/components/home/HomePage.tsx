@@ -132,11 +132,20 @@ export function HomePage() {
           className="hero-animate-media object-cover object-[58%_center]"
         />
         {/* Soft grade + left copy lane so UI text stays readable over the photo */}
-        <div className="absolute inset-0 bg-[#060806]/25" />
+        {/* <div className="absolute inset-0 bg-[#060806]/25" />
         <div className="absolute inset-0 bg-linear-to-r from-[#060806]/92 via-[#060806]/55 to-transparent lg:w-[58%] lg:via-[#060806]/72" />
         <div className="absolute inset-y-0 left-0 w-full bg-linear-to-r from-[#060806]/40 via-transparent to-transparent lg:w-[45%]" />
         <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-[#060806]/70 via-[#060806]/25 to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[#060806]/55 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[#060806]/55 to-transparent" /> */}
+
+        {/* Left focused cinematic gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#060806]/95 via-[#060806]/35 to-transparent lg:w-[60%]" />
+
+        {/* Bottom subtle cinematic fade */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#060806]/45 via-transparent to-transparent" />
+
+        {/* Top soft fade */}
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#060806]/25 to-transparent" />
 
         <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 pt-28 pb-20 lg:px-10 lg:pt-32 lg:pb-14">
           <div className="flex flex-col justify-center pt-10 lg:pt-10">
@@ -653,21 +662,21 @@ export function HomePage() {
                       backgroundSize: "48px 56px",
                     }}
                   />
-                  <div className="leafbox" style={{display: "flex", gap: "20px"}}>
+                  <div className="leafbox" style={{ display: "flex", gap: "20px" }}>
                     <div
-                      className="relative flex size-12 items-center justify-center border"
+                      className="relative flex size-12 items-center justify-center border rounded-lg"
                       style={{ borderColor: `${sage}66` }}
                     >
                       <Leaf className="size-5" style={{ color: sage }} />
                     </div>
                     <div>
-                    <h4 className="relative font-display text-2xl font-bold uppercase">
-                      {productEcosystem.howItWorks.sideCard.title}
-                    </h4>
+                      <h4 className="relative font-display text-2xl font-bold uppercase">
+                        {productEcosystem.howItWorks.sideCard.title}
+                      </h4>
 
-                    <p className="relative mt-2 text-sm text-[#F4F0E6]/70">
-                      {productEcosystem.howItWorks.sideCard.subtitle}
-                    </p>
+                      <p className="relative mt-2 text-sm text-[#F4F0E6]/70">
+                        {productEcosystem.howItWorks.sideCard.subtitle}
+                      </p>
                     </div>
                   </div>
                   <ul className="relative mt-5 space-y-4 border-t border-[#6e7f42]/60 pt-5 text-sm">

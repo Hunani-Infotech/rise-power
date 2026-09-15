@@ -344,7 +344,7 @@ export function WhyHydrogenWins() {
         ------------------------------------------------- */}
         <Reveal variant="up">
           <p
-            className="text-center font-display text-[11px] font-bold tracking-[0.25em] uppercase sm:text-[16px]"
+            className="text-center font-display text-[16px] font-bold tracking-[0.25em] uppercase"
             style={{ color: sage }}
           >
             {eyebrow}

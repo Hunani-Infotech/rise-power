@@ -314,9 +314,15 @@ export default function UseCasesPage() {
         ) : null}
 
         {/* Dark cinematic overlays */}
-        <div className="absolute inset-0 bg-[#07100d]/45" />
+        {/* <div className="absolute inset-0 bg-[#07100d]/45" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/95 via-[#07100d]/70 to-[#07100d]/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/80 via-transparent to-[#07100d]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/80 via-transparent to-[#07100d]/20" /> */}
+
+        {/* Left focused cinematic gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/95 via-[#07100d]/35 to-transparent" />
+
+        {/* Bottom subtle gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/40 via-transparent to-transparent" />
 
         {/* Content */}
         <div className="relative mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 pt-28 pb-20 sm:min-h-[780px] lg:min-h-[850px] lg:px-10">
@@ -327,9 +333,9 @@ export default function UseCasesPage() {
               <h1 className="mt-7 font-display text-[48px] leading-[0.9] font-bold tracking-tight uppercase sm:text-[64px] lg:text-[82px] xl:text-[94px]">
                 Power Where
                 <br />
-                <span style={{ color: sage }}>The Mission</span>
+                <span style={{ color: "#849363" }}>The Mission</span>
                 <br />
-                <span style={{ color: sage }}>Takes You.</span>
+                <span style={{ color: "#849363" }}>Takes You.</span>
               </h1>
 
               <p className="mt-7 max-w-[600px] text-base leading-relaxed text-white/80 sm:text-lg lg:text-xl">
@@ -340,8 +346,7 @@ export default function UseCasesPage() {
               <div className="mt-9 flex flex-wrap items-center gap-4">
                 <a
                   href="#use-cases"
-                  className="inline-flex min-h-14 items-center justify-center gap-4 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
-                  style={{ background: sage }}
+                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 bg-[#849363]"
                 >
                   Explore Use Cases
                   <ArrowRight className="size-5" />
@@ -349,7 +354,7 @@ export default function UseCasesPage() {
 
                 <a
                   href="#products"
-                  className="inline-flex min-h-14 items-center justify-center gap-4 border border-white/50 px-8 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/50 px-8 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
                 >
                   View Products
                   <ArrowRight className="size-5" />
@@ -442,7 +447,7 @@ export default function UseCasesPage() {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-4 text-sm font-semibold tracking-wide text-white uppercase">
+                    <div className="flex items-center gap-2 text-sm font-semibold tracking-wide text-white uppercase">
                       <span>Explore</span>
                       <ArrowRight
                         className="size-6 transition-transform duration-300 group-hover:translate-x-1"
@@ -504,7 +509,7 @@ export default function UseCasesPage() {
 
                   <span className="h-5 w-px bg-[#cfd4ce]" />
 
-                  <p className="text-sm font-semibold tracking-[0.08em] text-[#59615b] uppercase">
+                  <p className="text-mm font-semibold tracking-[0.08em] text-[#59615b] uppercase">
                     Defense & Security
                   </p>
                 </div>
@@ -533,8 +538,8 @@ export default function UseCasesPage() {
                       <div
                         key={feature.title}
                         className={`flex items-center gap-4 py-5 ${index < defenseFeatures.length - 1
-                            ? "border-b border-[#e1e3de]"
-                            : ""
+                          ? "border-b border-[#e1e3de]"
+                          : ""
                           } ${index === 1
                             ? "sm:border-b"
                             : ""
@@ -557,7 +562,7 @@ export default function UseCasesPage() {
                 <div className="mt-auto flex flex-col gap-6 pt-7 sm:flex-row sm:items-center">
                   <a
                     href="#deployment"
-                    className="inline-flex min-h-14 items-center justify-center gap-5 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+                    className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
                     style={{ background: sage }}
                   >
                     Explore Defense Solutions
@@ -619,8 +624,8 @@ export default function UseCasesPage() {
                     <div
                       key={row.label}
                       className={`grid grid-cols-[64px_1fr] items-center gap-3 px-5 py-4 sm:grid-cols-[68px_180px_1fr] sm:px-6 ${index !== deploymentRows.length - 1
-                          ? "border-b border-[#e3e6e1]"
-                          : ""
+                        ? "border-b border-[#e3e6e1]"
+                        : ""
                         }`}
                     >
                       <div className="flex items-center justify-center">
@@ -646,7 +651,7 @@ export default function UseCasesPage() {
               <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
                 <a
                   href="#products"
-                  className="inline-flex min-h-14 items-center justify-center gap-5 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
                   style={{ background: sage }}
                 >
                   Explore Defense Solutions
@@ -795,7 +800,7 @@ export default function UseCasesPage() {
             <div className="mt-10 flex justify-center">
               <a
                 href="/products"
-                className="group inline-flex min-h-14 items-center justify-center gap-5 rounded-md px-9 text-xs font-bold tracking-[0.1em] text-white uppercase transition-opacity hover:opacity-90"
+                className="group inline-flex min-h-14 items-center justify-center gap-2 rounded-md px-9 text-xs font-bold tracking-[0.1em] text-white uppercase transition-opacity hover:opacity-90"
                 style={{ background: sage }}
               >
                 <span>Explore All Products</span>

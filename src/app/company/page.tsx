@@ -65,8 +65,8 @@ function ContourDecoration({
     <div
       aria-hidden="true"
       className={`pointer-events-none absolute ${position === "left"
-          ? "-left-24 -top-20"
-          : "-right-24 -top-20"
+        ? "-left-24 -top-20"
+        : "-right-24 -top-20"
         } h-[330px] w-[440px] opacity-70`}
     >
       <svg
@@ -135,7 +135,7 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
       </span>
 
       <p
-        className="text-xs font-semibold tracking-[0.18em] uppercase sm:text-sm"
+        className="text-mm font-semibold tracking-[0.18em] uppercase"
         style={{ color: sage }}
       >
         {children}
@@ -167,8 +167,14 @@ export default function CompanyPage() {
         />
 
         {/* Dark cinematic gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/70 to-[#071016]/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/65 via-transparent to-[#071016]/20" />
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/70 to-[#071016]/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/65 via-transparent to-[#071016]/20" /> */}
+
+        {/* Left focused cinematic gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/30 to-transparent" />
+
+        {/* Bottom subtle gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/35 via-transparent to-transparent" />
 
         {/* Content */}
         <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] items-center px-6 pb-20 pt-32 sm:min-h-[820px] lg:min-h-[900px] lg:px-10">
@@ -184,7 +190,7 @@ export default function CompanyPage() {
                 <br />
                 Engineered.
                 <br />
-                <span style={{ color: sage }}>
+                <span style={{ color: "#849363" }}>
                   Field Validated.
                 </span>
               </h1>
@@ -196,7 +202,7 @@ export default function CompanyPage() {
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Button href="/contact">
-                  <span className="flex items-center gap-4">
+                  <span className="flex items-center gap-2">
                     Request a Briefing
                     <ArrowRight className="size-5" />
                   </span>
@@ -278,7 +284,7 @@ export default function CompanyPage() {
 
                 <div className="mt-9">
                   <Button href="/contact">
-                    <span className="flex items-center gap-5">
+                    <span className="flex items-center gap-2">
                       Request a Briefing
                       <ArrowRight className="size-5" />
                     </span>
@@ -417,7 +423,7 @@ export default function CompanyPage() {
                   {/* Information */}
                   <div className="py-2 md:py-6">
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
                       <span
                         className="font-display text-[30px] font-bold leading-none"
                         style={{ color: sage }}
@@ -471,7 +477,7 @@ export default function CompanyPage() {
                   />
                 </div>
 
-                <div className="mt-6 flex items-center gap-4">
+                <div className="mt-6 flex items-center gap-2">
                   <span
                     className="font-display text-[30px] font-bold leading-none"
                     style={{ color: sage }}
@@ -514,7 +520,7 @@ export default function CompanyPage() {
                   />
                 </div>
 
-                <div className="mt-6 flex items-center gap-4">
+                <div className="mt-6 flex items-center gap-2">
                   <span
                     className="font-display text-[30px] font-bold leading-none"
                     style={{ color: sage }}
