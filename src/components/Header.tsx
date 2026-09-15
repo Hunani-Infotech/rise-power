@@ -464,7 +464,7 @@ export function Header() {
       <div className="relative mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-3 px-6 sm:gap-4 lg:px-10">
         {/* Logo */}
         <div className="min-w-0 shrink">
-          <Logo className={isHome ? "text-white" : "text-ink"} />
+          <Logo variant={isHome ? "onDark" : "onLight"} priority />
         </div>
 
         {/* Desktop Navigation */}
