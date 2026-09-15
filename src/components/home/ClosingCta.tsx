@@ -268,9 +268,9 @@ export function ClosingCta() {
                 <div className="mt-6 flex max-w-[430px] flex-col gap-3">
                   <Link
                     href={closingCta.primaryCta.href}
-                    className="motion-hover-glow inline-flex min-h-14 items-center justify-center gap-3 px-6 text-sm font-semibold tracking-[0.06em] uppercase transition-transform hover:-translate-y-0.5 rounded-sm"
+                    className="motion-hover-glow inline-flex min-h-14 items-center justify-center gap-3 px-6 text-sm font-semibold tracking-[0.06em] uppercase transition-transform hover:-translate-y-0.5 rounded-sm bg-[#849363]"
                     style={{
-                      background: sage,
+                      // background: sage,
                       color: cream,
                     }}
                   >
