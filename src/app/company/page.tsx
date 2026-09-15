@@ -27,28 +27,28 @@ const values = [
     title: "Operator First\nEngineering",
     description:
       "Every engineering decision starts with the end user and the operating environment.",
-    image: "/media/company/value-operator.png",
+    image: "/media/company/company-v1.png",
   },
   {
     number: "02",
     title: "Safety\nEngineered In",
     description:
       "Pressure vessels, leak detection, and thermal management are designed in from day one.",
-    image: "/media/company/value-safety.png",
+    image: "/media/company/company-v2.png",
   },
   {
     number: "03",
     title: "Canadian\nManufacturing",
     description:
       "Designed, built, tested, and supported in British Columbia.",
-    image: "/media/company/value-canadian.png",
+    image: "/media/company/company-v3.png",
   },
   {
     number: "04",
     title: "Mission\nDuration",
     description:
       "Runtime measured in days. Cartridge logistics replace fuel convoys.",
-    image: "/media/company/value-mission.png",
+    image: "/media/company/company-v4.png",
   },
 ];
 
@@ -236,7 +236,7 @@ export default function CompanyPage() {
             <Reveal variant="scale">
               <div className="relative aspect-[1.08/1] overflow-hidden rounded-[7px]">
                 <Image
-                  src="/media/company/our-mission.png"
+                  src="/media/company/company-mission.png"
                   alt="Rise Power Sentinel hydrogen power system in the field"
                   fill
                   sizes="(min-width: 1024px) 52vw, 100vw"
@@ -412,7 +412,7 @@ export default function CompanyPage() {
                   {/* Portrait */}
                   <div className="relative aspect-[0.82/1] overflow-hidden rounded-[5px] bg-[#e7e7e4]">
                     <Image
-                      src="/media/company/paul-ghotra.png"
+                      src="/media/company/company-leader.png"
                       alt="Dr. Paul Ghotra"
                       fill
                       sizes="(min-width: 1024px) 36vw, 100vw"
@@ -469,7 +469,7 @@ export default function CompanyPage() {
 
                 <div className="relative aspect-[1.15/0.82] overflow-hidden rounded-[5px] bg-[#dce0df]">
                   <Image
-                    src="/media/company/team-member-02.png"
+                    src="/media/company/company-tm-1.png"
                     alt="Rise Power team member"
                     fill
                     sizes="(min-width: 1024px) 20vw, 50vw"
@@ -512,7 +512,7 @@ export default function CompanyPage() {
 
                 <div className="relative aspect-[1.15/0.82] overflow-hidden rounded-[5px] bg-[#dce0df]">
                   <Image
-                    src="/media/company/team-member-03.png"
+                    src="/media/company/company-tm-2.png"
                     alt="Rise Power team member"
                     fill
                     sizes="(min-width: 1024px) 20vw, 50vw"

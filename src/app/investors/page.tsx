@@ -184,7 +184,7 @@ export default function InvestorsPage() {
       <section className="relative min-h-[760px] overflow-hidden bg-[#101820] lg:min-h-[850px]">
 
         <Image
-          src="/media/investors/investors-hero.png"
+          src="/media/investors/investor-hero.png"
           alt="Rise Power hydrogen power system in a mountain environment"
           fill
           priority
@@ -346,7 +346,7 @@ export default function InvestorsPage() {
             <article className="group relative min-h-[480px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116]">
 
               <Image
-                src="/media/investors/company-one-pager.png"
+                src="/media/investors/investor-onepage.png"
                 alt="Rise Power company one-pager"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -410,7 +410,7 @@ export default function InvestorsPage() {
             <div className="relative h-full min-h-[660px] overflow-hidden rounded-[7px]">
 
               <Image
-                src="/media/investors/why-rise-power.png"
+                src="/media/investors/investor-why.png"
                 alt="Rise Power hydrogen power system"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
@@ -632,7 +632,7 @@ export default function InvestorsPage() {
 
               <div className="relative aspect-[1.65/1] overflow-hidden">
                 <Image
-                  src="/media/investors/news-phase-ii.png"
+                  src="/media/investors/investor-p1.png"
                   alt="Rise Power hydrogen power system"
                   fill
                   sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
@@ -687,7 +687,7 @@ export default function InvestorsPage() {
 
               <div className="relative aspect-[1.65/1] overflow-hidden">
                 <Image
-                  src="/media/investors/news-field-testing.png"
+                  src="/media/investors/investor-p2.png"
                   alt="Rise Power field testing"
                   fill
                   sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
@@ -742,7 +742,7 @@ export default function InvestorsPage() {
 
               <div className="relative aspect-[1.65/1] overflow-hidden">
                 <Image
-                  src="/media/investors/news-hydrogen-defense.png"
+                  src="/media/investors/investor-p3.png"
                   alt="Hydrogen power for defense applications"
                   fill
                   sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
@@ -797,7 +797,7 @@ export default function InvestorsPage() {
 
               <div className="relative aspect-[1.65/1] overflow-hidden">
                 <Image
-                  src="/media/investors/news-engineering-team.png"
+                  src="/media/investors/investor-p4.png"
                   alt="Rise Power engineering team and technology"
                   fill
                   sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"

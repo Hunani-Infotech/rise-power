@@ -16,7 +16,7 @@ const products = [
   {
     number: "01",
     name: "Rise Sentinel™",
-    image: "/media/datasheets/sentinel-datasheet.png",
+    image: "/media/datasheets/datasheet-1.png",
     description:
       "Man portable hydrogen power in a ruggedized, field ready form factor. Unlimited runtime via 30 second cartridge swap. Under 15 lbs. Sub ambient acoustic signature for forward positions.",
     specs: [
@@ -35,7 +35,7 @@ const products = [
   {
     number: "02",
     name: "Rise Falcon™",
-    image: "/media/datasheets/falcon-datasheet.png",
+    image: "/media/datasheets/datasheet-2.png",
     description:
       "Plug and play hydrogen range extender for lithium polymer drones. Extends flight time to 4 plus hours, targeting 5x the range of lithium alone. Engineered for ISR, remote surveillance, and autonomous delivery.",
     specs: [
@@ -56,7 +56,7 @@ const products = [
   {
     number: "03",
     name: "Rise Titan™",
-    image: "/media/datasheets/titan-datasheet.png",
+    image: "/media/datasheets/datasheet-3.png",
     description:
       "High-output, scalable hydrogen power for demanding missions. Delivers continuous power in a rugged, field-ready form factor with rapid cartridge swap and minimal signature.",
     specs: [
@@ -74,7 +74,7 @@ const products = [
   {
     number: "04",
     name: "Hydrogen Cartridge Kit",
-    image: "/media/datasheets/hydrogen-cartridge-kit-datasheet.png",
+    image: "/media/datasheets/datasheet-4.png",
     description:
       "Rugged, field-ready hydrogen cartridges designed for safe, reliable, and rapid power delivery. Optimized for use with RISE systems in demanding environments.",
     specs: [
@@ -101,7 +101,7 @@ export default function DatasheetsPage() {
 
         {/* Background image */}
         <Image
-          src="/media/datasheets/datasheets-hero.png"
+          src="/media/datasheets/datasheet-hero.png"
           alt="Rise Power hydrogen systems in a field environment"
           fill
           priority

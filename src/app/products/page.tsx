@@ -575,112 +575,122 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-lg border border-[#293a40] bg-[#07151b] text-white shadow-[0_15px_40px_rgba(0,0,0,.08)] lg:mt-14">
-            <div className="overflow-x-auto">
-              <div className="min-w-[1100px]">
-                {/* TABLE HEADER */}
-                <div className="grid grid-cols-[250px_repeat(4,minmax(210px,1fr))]">
-                  <div className="flex flex-col justify-center border-r border-white/15 bg-[#071b23] p-6">
-                    <h3 className="font-display text-2xl font-bold uppercase">
-                      Specifications
-                    </h3>
+          <div className="mt-12 overflow-x-auto lg:mt-14">
+            <div className="min-w-[1160px] text-white">
+              {/* TABLE HEADER */}
+              <div className="grid grid-cols-[240px_repeat(4,minmax(200px,1fr))]">
+                <div className="flex flex-col justify-center rounded-tl-lg border border-r-0 border-b-0 border-[#293a40] bg-[#071b23] p-6 shadow-[0_15px_40px_rgba(0,0,0,.08)]">
+                  <h3 className="font-display text-2xl font-bold uppercase">
+                    Specifications
+                  </h3>
 
-                    <p className="mt-3 max-w-[190px] text-sm leading-relaxed text-white/65">
-                      Compare key features across the Rise Power product
-                      lineup.
-                    </p>
-                  </div>
-
-                  {products.slice(0, 4).map((product) => (
-                    <div
-                      key={product.slug}
-                      className="border-r border-white/15 last:border-r-0"
-                    >
-                      <div className="relative aspect-[1.35/1] overflow-hidden">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          sizes="220px"
-                          className="object-cover"
-                        />
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#07151b] via-transparent to-transparent" />
-                      </div>
-
-                      <div className="px-4 pb-4 text-center">
-                        <h3 className="font-display text-lg font-bold uppercase">
-                          {product.name}
-                          <sup className="ml-1 text-[8px]">™</sup>
-                        </h3>
-
-                        <p className="mt-1 text-[10px] font-semibold tracking-[0.12em] text-white/75 uppercase">
-                          {product.tagline}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                  <p className="mt-3 max-w-[190px] text-sm leading-relaxed text-white/65">
+                    Compare key features across the Rise Power product
+                    lineup.
+                  </p>
                 </div>
 
-                {/* COMPARISON ROWS */}
-                {comparisonRows.map((row) => {
-                  const Icon = row.icon;
+                {products.slice(0, 4).map((product, index) => (
+                  <div
+                    key={product.slug}
+                    className={`overflow-hidden border border-b-0 border-[#293a40] bg-[#07151b] shadow-[0_15px_40px_rgba(0,0,0,.08)] ${
+                      index === 0
+                        ? "rounded-tr-lg border-l border-l-white/15"
+                        : "ml-1 rounded-t-lg"
+                    }`}
+                  >
+                    <div className="relative aspect-[1.35/1] overflow-hidden">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        sizes="220px"
+                        className="object-cover"
+                      />
 
-                  return (
-                    <div
-                      key={row.label}
-                      className="grid grid-cols-[250px_repeat(4,minmax(210px,1fr))] border-t border-white/15"
-                    >
-                      <div className="flex items-center gap-4 border-r border-white/15 bg-[#071b23] px-6 py-4">
-                        <Icon
-                          className="size-6 shrink-0 text-[#c1df29]"
-                          strokeWidth={1.5}
-                        />
-
-                        <span className="text-sm font-semibold">
-                          {row.label}
-                        </span>
-                      </div>
-
-                      {row.values.map((value, index) => (
-                        <div
-                          key={`${row.label}-${index}`}
-                          className="flex min-w-0 items-center border-r border-white/15 px-5 py-4 text-sm leading-relaxed text-white/85 last:border-r-0"
-                        >
-                          {value}
-                        </div>
-                      ))}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#07151b] via-transparent to-transparent" />
                     </div>
-                  );
-                })}
 
-                {/* TABLE FOOTER */}
-                <div className="grid grid-cols-[250px_repeat(4,minmax(210px,1fr))] border-t border-white/15">
-                  <div className="border-r border-white/15 bg-[#071b23] p-5">
-                    <p className="font-display text-lg font-bold uppercase">
-                      Explore More
-                    </p>
+                    <div className="px-4 pb-4 text-center">
+                      <h3 className="font-display text-lg font-bold uppercase">
+                        {product.name}
+                        <sup className="ml-1 text-[8px]">™</sup>
+                      </h3>
 
-                    <p className="mt-1 max-w-[180px] text-xs leading-relaxed text-white/60">
-                      Learn more about each solution and its capabilities.
-                    </p>
+                      <p className="mt-1 text-[10px] font-semibold tracking-[0.12em] text-white/75 uppercase">
+                        {product.tagline}
+                      </p>
+                    </div>
                   </div>
+                ))}
+              </div>
 
-                  {products.slice(0, 4).map((product) => (
-                    <div
-                      key={product.slug}
-                      className="border-r border-white/15 p-4 last:border-r-0"
-                    >
-                      <Link
-                        href={`#${product.slug}`}
-                        className="group flex min-h-14 items-center justify-center gap-2 border border-white/25 px-4 text-sm font-bold tracking-[0.08em] uppercase transition hover:border-[#91ad46] hover:text-[#c1df29] rounded-sm"
+              {/* COMPARISON ROWS */}
+              {comparisonRows.map((row) => {
+                const Icon = row.icon;
+
+                return (
+                  <div
+                    key={row.label}
+                    className="grid grid-cols-[240px_repeat(4,minmax(200px,1fr))]"
+                  >
+                    <div className="flex items-center gap-4 border-l border-[#293a40] border-t border-t-white/15 bg-[#071b23] px-6 py-4">
+                      <Icon
+                        className="size-6 shrink-0 text-[#c1df29]"
+                        strokeWidth={1.5}
+                      />
+
+                      <span className="text-sm font-semibold">
+                        {row.label}
+                      </span>
+                    </div>
+
+                    {row.values.map((value, index) => (
+                      <div
+                        key={`${row.label}-${index}`}
+                        className={`flex min-w-0 items-center border-t border-t-white/15 bg-[#07151b] px-5 py-4 text-sm leading-relaxed text-white/85 ${
+                          index === 0
+                            ? "border-r border-[#293a40] border-l border-l-white/15"
+                            : "ml-1 border-x border-[#293a40]"
+                        }`}
                       >
-                        View Product
-                        <ArrowRight className="size-5 text-[#c1df29] transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  ))}
+                        {value}
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+
+              {/* TABLE FOOTER */}
+              <div className="grid grid-cols-[240px_repeat(4,minmax(200px,1fr))]">
+                <div className="rounded-bl-lg border-b border-l border-[#293a40] border-t border-t-white/15 bg-[#071b23] p-5">
+                  <p className="font-display text-lg font-bold uppercase">
+                    Explore More
+                  </p>
+
+                  <p className="mt-1 max-w-[180px] text-xs leading-relaxed text-white/60">
+                    Learn more about each solution and its capabilities.
+                  </p>
                 </div>
+
+                {products.slice(0, 4).map((product, index) => (
+                  <div
+                    key={product.slug}
+                    className={`border border-t-0 border-[#293a40] border-t border-t-white/15 bg-[#07151b] p-4 ${
+                      index === 0
+                        ? "rounded-br-lg border-l border-l-white/15"
+                        : "ml-1 rounded-b-lg"
+                    }`}
+                  >
+                    <Link
+                      href={`#${product.slug}`}
+                      className="group flex min-h-14 items-center justify-center gap-2 rounded-sm border border-white/25 px-4 text-sm font-bold tracking-[0.08em] uppercase transition hover:border-[#91ad46] hover:text-[#c1df29]"
+                    >
+                      View Product
+                      <ArrowRight className="size-5 text-[#c1df29] transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
