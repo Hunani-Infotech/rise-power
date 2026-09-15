@@ -237,7 +237,7 @@ export const threeMarkets = {
     {
       title: "Military",
       points: ["Tactical communications", "UAV operations", "ISR systems"],
-      href: "/defense",
+      href: "/use-cases#defense-security",
       cta: "EXPLORE SOLUTIONS",
       image: "Military market imagery",
       imageSrc: "/media/markets/military.png",
@@ -245,7 +245,7 @@ export const threeMarkets = {
     {
       title: "Commercial",
       points: ["Construction sites", "Telecom backup", "Mining"],
-      href: "/commercial",
+      href: "/use-cases#critical-infrastructure",
       cta: "EXPLORE SOLUTIONS",
       image: "Commercial market imagery",
       imageSrc: "/media/markets/commercial.png",
@@ -253,7 +253,7 @@ export const threeMarkets = {
     {
       title: "Consumer",
       points: ["Camping", "RV power", "Emergency home backup"],
-      href: "/consumer",
+      href: "/use-cases",
       cta: "EXPLORE SOLUTIONS",
       image: "Consumer market imagery",
       imageSrc: "/media/markets/consumer.png",
@@ -310,7 +310,7 @@ export const productEcosystem = {
     eyebrow: "HOW IT WORKS",
     heading: "CLEAN HYDROGEN. ENDLESS POSSIBILITIES.",
     body: "Hydrogen is converted into electricity through a chemical reaction in the fuel cell—producing only water and heat. Our cartridge-based system makes power simple, scalable, and sustainable.",
-    cta: { label: "EXPLORE TECHNOLOGY", href: "/technology" } satisfies Cta,
+    cta: { label: "EXPLORE TECHNOLOGY", href: "/#capabilities" } satisfies Cta,
     diagramTitle: "FUEL CELL STACK",
     diagramImageSrc: "/media/ecosystem/fuel-cell.png",
     diagramLabels: [
@@ -438,7 +438,7 @@ export const capabilities = {
       eyebrow: "INNOVATION. RELIABILITY. PERFORMANCE.",
       heading: "Advanced Engineering for Superior Performance",
       body: "Our systems are designed with cutting-edge fuel cell technology, modular architecture, and rigorous testing to ensure maximum efficiency, durability, and safety.",
-      cta: { label: "EXPLORE ENGINEERING", href: "/technology" },
+      cta: { label: "EXPLORE ENGINEERING", href: "/#capabilities" },
       stats: [
         {
           value: "60%+",
@@ -491,7 +491,7 @@ export const capabilities = {
       eyebrow: "TACTICAL. SILENT. DEPLOYABLE.",
       heading: "Defense-Grade Power for Contested Environments",
       body: "Low-signature hydrogen systems built for forward operating bases, ISR platforms, and mission-critical communications.",
-      cta: { label: "EXPLORE DEFENSE", href: "/defense" },
+      cta: { label: "EXPLORE DEFENSE", href: "/use-cases#defense-security" },
       stats: [
         {
           value: "<65 dB",
@@ -544,7 +544,7 @@ export const capabilities = {
       eyebrow: "RELIABLE. SCALABLE. CLEAN.",
       heading: "Industrial Power Without Diesel Compromise",
       body: "Deploy hydrogen generators for construction, mining, and telecom sites that need continuous power with lower emissions and maintenance.",
-      cta: { label: "EXPLORE COMMERCIAL", href: "/commercial" },
+      cta: { label: "EXPLORE COMMERCIAL", href: "/use-cases#critical-infrastructure" },
       stats: [
         {
           value: "5 kW",
@@ -931,18 +931,18 @@ export const footer = {
     {
       heading: "Markets",
       links: [
-        { label: "Defense", href: "/defense" },
-        { label: "Industrial", href: "/commercial" },
-        { label: "Telecom", href: "/commercial" },
-        { label: "Emergency Response", href: "/use-cases" },
-        { label: "Engineering", href: "/technology" },
+        { label: "Defense", href: "/use-cases#defense-security" },
+        { label: "Industrial", href: "/use-cases#critical-infrastructure" },
+        { label: "Telecom", href: "/use-cases#critical-infrastructure" },
+        { label: "Emergency Response", href: "/use-cases#disaster-response" },
+        { label: "Engineering", href: "/#capabilities" },
       ],
     },
     {
       heading: "Company",
       links: [
         { label: "About Us", href: "/about" },
-        { label: "Technology", href: "/technology" },
+        { label: "Capabilities", href: "/#capabilities" },
         { label: "Sustainability", href: "/company" },
         { label: "News & Insights", href: "/insights" },
         { label: "Careers", href: "/company" },

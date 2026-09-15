@@ -496,17 +496,17 @@ export default function ProductsPage() {
 
             <div className="mt-8 flex flex-wrap gap-5">
               <Link
-                href="/technology"
+                href="/#capabilities"
                 className="inline-flex min-h-12 items-center gap-3 border border-[#252925] px-6 text-xs font-semibold uppercase hover:bg-[#141a14] hover:text-white rounded-sm"
               >
                 ▶ See How It Works
               </Link>
 
               <Link
-                href="/technology"
+                href="/#capabilities"
                 className="inline-flex items-center gap-2 text-xs font-semibold uppercase"
               >
-                Explore Technology
+                Explore Capabilities
                 <ArrowRight className="size-4 text-[#6e7f42]" />
               </Link>
             </div>
