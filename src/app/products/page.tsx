@@ -621,15 +621,20 @@ export default function ProductsPage() {
               </div>
 
               {/* COMPARISON ROWS */}
-              {comparisonRows.map((row) => {
+              {comparisonRows.map((row, rowIndex) => {
                 const Icon = row.icon;
+                const isLast = rowIndex === comparisonRows.length - 1;
 
                 return (
                   <div
                     key={row.label}
                     className="grid grid-cols-[240px_repeat(4,minmax(200px,1fr))]"
                   >
-                    <div className="flex items-center gap-4 border-l border-[#293a40] border-t border-t-white/15 bg-[#071b23] px-6 py-4">
+                    <div
+                      className={`flex items-center gap-4 border-l border-[#293a40] border-t border-t-white/15 bg-[#071b23] px-6 py-4 ${
+                        isLast ? "rounded-bl-lg border-b border-[#293a40]" : ""
+                      }`}
+                    >
                       <Icon
                         className="size-6 shrink-0 text-[#c1df29]"
                         strokeWidth={1.5}
@@ -647,6 +652,14 @@ export default function ProductsPage() {
                           index === 0
                             ? "border-r border-[#293a40] border-l border-l-white/15"
                             : "ml-1 border-x border-[#293a40]"
+                        } ${
+                          isLast
+                            ? `border-b border-[#293a40] ${
+                                index === row.values.length - 1
+                                  ? "rounded-br-lg"
+                                  : ""
+                              }`
+                            : ""
                         }`}
                       >
                         {value}
@@ -655,38 +668,6 @@ export default function ProductsPage() {
                   </div>
                 );
               })}
-
-              {/* TABLE FOOTER */}
-              <div className="grid grid-cols-[240px_repeat(4,minmax(200px,1fr))]">
-                <div className="rounded-bl-lg border-b border-l border-[#293a40] border-t border-t-white/15 bg-[#071b23] p-5">
-                  <p className="font-display text-lg font-bold uppercase">
-                    Explore More
-                  </p>
-
-                  <p className="mt-1 max-w-[180px] text-xs leading-relaxed text-white/60">
-                    Learn more about each solution and its capabilities.
-                  </p>
-                </div>
-
-                {products.slice(0, 4).map((product, index) => (
-                  <div
-                    key={product.slug}
-                    className={`border border-t-0 border-[#293a40] border-t border-t-white/15 bg-[#07151b] p-4 ${
-                      index === 0
-                        ? "rounded-br-lg border-l border-l-white/15"
-                        : "ml-1 rounded-b-lg"
-                    }`}
-                  >
-                    <Link
-                      href={`#${product.slug}`}
-                      className="group flex min-h-14 items-center justify-center gap-2 rounded-sm border border-white/25 px-4 text-sm font-bold tracking-[0.08em] uppercase transition hover:border-[#91ad46] hover:text-[#c1df29]"
-                    >
-                      View Product
-                      <ArrowRight className="size-5 text-[#c1df29] transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
