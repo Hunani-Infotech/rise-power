@@ -606,7 +606,10 @@ export default function InvestorsPage() {
       {/* PRESS & UPDATES                                                       */}
       {/* ==================================================================== */}
 
-      <section className="relative overflow-hidden bg-[#fbfaf7] pt-0 pb-20 sm:pb-24 lg:pb-28">
+      <section
+        id="press"
+        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] pt-0 pb-20 sm:pb-24 lg:pb-28"
+      >
 
         <ContourBackground />
 

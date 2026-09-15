@@ -903,7 +903,7 @@ export const footer = {
       links: [
         { label: "Product Ecosystem", href: "/#product-ecosystem" },
         { label: "Featured Products", href: "/#featured-products" },
-        { label: "Applications", href: "/use-cases" },
+        { label: "Use Cases", href: "/use-cases" },
         { label: "Capabilities", href: "/#capabilities" },
         { label: "Mission Deployments", href: "/#mission-deployments" },
       ],

@@ -473,7 +473,10 @@ export function Header() {
           aria-label="Primary navigation"
         >
           {megaNavItems.map((item) => {
-            const routeActive = pathname.startsWith(item.href);
+            const itemPath = item.href.split("#")[0] || "/";
+            const routeActive =
+              itemPath !== "/" &&
+              (pathname === itemPath || pathname.startsWith(`${itemPath}/`));
             const isMegaActive = activeKey === item.label;
             const highlight = isMegaActive || routeActive;
 
@@ -537,6 +540,8 @@ export function Header() {
           id={panelId}
           title={activeItem.label}
           links={activeLinks}
+          feature={activeItem.feature}
+          viewAllHref={activeItem.href}
           onNavigate={closeMega}
         />
       ) : null}

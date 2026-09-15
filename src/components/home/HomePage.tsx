@@ -768,7 +768,7 @@ export function HomePage() {
       </section>
 
       {/* 6. Capabilities */}
-      <section id="capabilities" className="cv-auto bg-[#141a14] text-[#f3efe4]">
+      <section id="capabilities" className="cv-auto scroll-mt-28 bg-[#141a14] text-[#f3efe4]">
         <CapabilitiesTabs />
       </section>
 

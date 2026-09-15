@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
@@ -40,6 +40,17 @@ const calloutPositions = [
   "bottom-3 right-3 sm:bottom-5 sm:right-5 text-right",
 ] as const;
 
+function tabIdFromHash(hash: string): string | null {
+  const value = hash.replace(/^#/, "");
+  if (!value) return null;
+  if (value === "capabilities") return capabilities.tabs[0]?.id ?? null;
+  if (value.startsWith("capabilities-")) {
+    const id = value.slice("capabilities-".length);
+    return capabilities.tabs.some((tab) => tab.id === id) ? id : null;
+  }
+  return capabilities.tabs.some((tab) => tab.id === value) ? value : null;
+}
+
 export function CapabilitiesTabs() {
   const [activeId, setActiveId] = useState(
     capabilities.tabs[0]?.id ?? "engineering",
@@ -47,12 +58,26 @@ export function CapabilitiesTabs() {
   const active =
     capabilities.tabs.find((tab) => tab.id === activeId) ?? capabilities.tabs[0];
 
+  useEffect(() => {
+    const syncFromHash = () => {
+      const next = tabIdFromHash(window.location.hash);
+      if (next) setActiveId(next);
+    };
+
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+    return () => window.removeEventListener("hashchange", syncFromHash);
+  }, []);
+
   if (!active) return null;
 
   const diagramSrc = capabilities.diagramImageSrc;
 
   return (
-    <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
+    <div
+      id={`capabilities-${active.id}`}
+      className="mx-auto flex w-full max-w-[1440px] flex-1 scroll-mt-28 flex-col px-6 py-16 sm:py-20 lg:px-10 lg:py-24"
+    >
       <Reveal variant="up" className="mx-auto max-w-3xl text-center">
         <p
           className="text-[16px] font-semibold tracking-[0.22em] uppercase"
@@ -90,7 +115,16 @@ export function CapabilitiesTabs() {
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => setActiveId(tab.id)}
+                onClick={() => {
+                  setActiveId(tab.id);
+                  if (typeof window !== "undefined") {
+                    window.history.replaceState(
+                      null,
+                      "",
+                      `#capabilities-${tab.id}`,
+                    );
+                  }
+                }}
                 className={`relative flex min-h-11 items-center justify-center gap-2.5 px-3 py-4 text-[11px] font-semibold tracking-[0.16em] uppercase transition-colors sm:px-4 sm:py-5 ${
                   index % 2 === 1 ? "border-l border-white/10" : ""
                 } ${index > 0 ? "lg:border-l lg:border-white/10" : ""} ${

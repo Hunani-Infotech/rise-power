@@ -76,6 +76,7 @@ type MegaMenuPanelProps = {
   title: string;
   links: readonly MegaLink[];
   feature?: MegaFeature;
+  viewAllHref: string;
   onNavigate: () => void;
 };
 
@@ -84,6 +85,7 @@ export function MegaMenuPanel({
   title,
   links,
   feature,
+  viewAllHref,
   onNavigate,
 }: MegaMenuPanelProps) {
   return (
@@ -107,7 +109,7 @@ export function MegaMenuPanel({
             </div>
 
             <Link
-              href={links[0]?.href ?? "#"}
+              href={viewAllHref}
               onClick={onNavigate}
               className="hidden items-center gap-1 text-[14px] font-semibold tracking-[0.14em] text-[#6e7f42] uppercase transition-colors hover:text-[#141a14] sm:flex"
             >

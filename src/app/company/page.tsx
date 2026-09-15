@@ -398,7 +398,7 @@ export default function CompanyPage() {
 
       <section
         id="leadership"
-        className="relative scroll-mt-24 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-28"
+        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-28"
       >
         <ContourDecoration position="left" />
         <ContourDecoration position="right" />
