@@ -367,7 +367,7 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-2">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
             {products.slice(0, 4).map((product, index) => {
               const meta = systemMeta[index] ?? systemMeta[0];
               const CategoryIcon = meta.icon;

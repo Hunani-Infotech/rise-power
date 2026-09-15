@@ -249,7 +249,7 @@ export function HomePage() {
             </p>
           </Reveal>
           <RevealStagger
-            className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-2 lg:gap-6"
+            className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6"
             step={100}
           >
             {performanceMetrics.gauges.map((item, index) => {
