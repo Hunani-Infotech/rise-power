@@ -74,9 +74,16 @@ import Image from "next/image";
 import {
   ArrowRight,
   Box,
+  Clock3,
   Database,
+  Leaf,
+  Plane,
+  Radio,
+  Server,
   Settings2,
+  ShieldCheck,
   Target,
+  VolumeX,
 } from "lucide-react";
 
 import { Reveal } from "@/components/motion/Reveal";
@@ -137,15 +144,71 @@ function ProductArrow() {
 
 export default function UseCasesPage() {
   const defense =
-    useCases.find((item) => item.slug === "defense-security") ?? useCases[0];
+    useCases.find(
+      (item) =>
+        item.slug === "defense" ||
+        item.slug === "defense-security" ||
+        item.title.toLowerCase().includes("defense"),
+    ) ?? useCases[0];
 
-  const overviewCases = useCases.map((item, index) => ({
-    number: String(index + 1).padStart(2, "0"),
-    title: item.title,
-    description: item.description,
-    image: item.image,
-    href: `#${item.slug}`,
-  }));
+  const remote =
+    useCases.find(
+      (item) =>
+        item.slug === "remote-operations" ||
+        item.slug === "remote" ||
+        item.title.toLowerCase().includes("remote"),
+    ) ?? useCases[1];
+
+  const disaster =
+    useCases.find(
+      (item) =>
+        item.slug === "disaster-response" ||
+        item.slug === "disaster" ||
+        item.title.toLowerCase().includes("disaster"),
+    ) ?? useCases[2];
+
+  const infrastructure =
+    useCases.find(
+      (item) =>
+        item.slug === "critical-infrastructure" ||
+        item.slug === "infrastructure" ||
+        item.title.toLowerCase().includes("infrastructure"),
+    ) ?? useCases[3];
+
+  const overviewCases = [
+    {
+      number: "01",
+      title: "Defense & Security",
+      description:
+        "Silent portable power for bases, troops, communications, surveillance and ISR.",
+      image: defense?.image,
+      href: `#${defense?.slug ?? "defense"}`,
+    },
+    {
+      number: "02",
+      title: "Remote Operations",
+      description:
+        "Reliable power for locations where fuel resupply and maintenance are difficult.",
+      image: remote?.image,
+      href: `#${remote?.slug ?? "remote-operations"}`,
+    },
+    {
+      number: "03",
+      title: "Disaster Response",
+      description:
+        "Clean emergency power for shelters, medical operations and communications.",
+      image: disaster?.image,
+      href: `#${disaster?.slug ?? "disaster-response"}`,
+    },
+    {
+      number: "04",
+      title: "Critical Infrastructure",
+      description:
+        "Reliable backup power for communications, facilities and other critical loads.",
+      image: infrastructure?.image,
+      href: `#${infrastructure?.slug ?? "critical-infrastructure"}`,
+    },
+  ];
 
   const productConnections = [
     {
@@ -184,6 +247,29 @@ export default function UseCasesPage() {
         "Clean, reliable energy for commercial and industrial use.",
       image: products.find((product) => product.slug === "titan")?.image,
       href: "/products#titan",
+    },
+  ];
+
+  const defenseFeatures = [
+    {
+      icon: VolumeX,
+      title: "Silent portable power",
+    },
+    {
+      icon: Leaf,
+      title: "Zero emissions at point of use",
+    },
+    {
+      icon: Database,
+      title: "Reduced fuel logistics",
+    },
+    {
+      icon: Clock3,
+      title: "Extended mission duration",
+    },
+    {
+      icon: Plane,
+      title: "Drone ISR endurance",
     },
   ];
 
@@ -260,7 +346,7 @@ export default function UseCasesPage() {
               <div className="mt-9 flex flex-wrap items-center gap-4">
                 <a
                   href="#use-cases"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 bg-[#849363]"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 bg-[#849363]"
                 >
                   Explore Use Cases
                   <ArrowRight className="size-5" />
@@ -268,7 +354,7 @@ export default function UseCasesPage() {
 
                 <a
                   href="#products"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/50 px-8 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/50 px-8 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
                 >
                   View Products
                   <ArrowRight className="size-5" />
@@ -376,128 +462,132 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      {/* USE CASE DEEP DIVES */}
+      {/* DEFENSE & SECURITY FEATURE*/}
 
-      {useCases.map((item, index) => {
-        const number = String(index + 1).padStart(2, "0");
-        const imageFirst = index % 2 === 0;
+      {defense && (
+        <section
+          id={defense.slug}
+          className="relative scroll-mt-24 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-0"
+        >
+          <div className="mx-auto grid max-w-[1440px] gap-5 px-6 lg:grid-cols-[1fr_0.92fr] lg:px-10">
+            {/* Image */}
+            <Reveal variant="left">
+              <div className="relative aspect-[1.03/1] overflow-hidden rounded-xl bg-[#dfe4dc]">
+                <Image
+                  src={defense.image}
+                  alt={defense.title}
+                  fill
+                  sizes="(min-width: 1024px) 52vw, 100vw"
+                  className="object-cover"
+                />
 
-        return (
-          <section
-            key={item.slug}
-            id={item.slug}
-            className="relative scroll-mt-24 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-0 lg:pb-16"
-          >
-            <div className="mx-auto grid max-w-[1440px] gap-5 px-6 lg:grid-cols-[1fr_0.92fr] lg:px-10">
-              <Reveal
-                variant={imageFirst ? "left" : "right"}
-                className={imageFirst ? "" : "lg:order-2"}
-              >
-                <div className="relative aspect-[1.03/1] overflow-hidden rounded-xl bg-[#dfe4dc]">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(min-width: 1024px) 52vw, 100vw"
-                    className="object-cover"
-                  />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+            </Reveal>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                </div>
-              </Reveal>
-
-              <Reveal
-                variant={imageFirst ? "right" : "left"}
-                delay={100}
-                className={`rounded-xl border border-[#e0e3dd] bg-white ${
-                  imageFirst ? "" : "lg:order-1"
-                }`}
-              >
-                <div className="flex h-full flex-col p-7 sm:p-9 lg:p-11">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className="font-display text-2xl font-bold"
-                      style={{ color: sage }}
-                    >
-                      ⌁
-                    </span>
-
-                    <span
-                      className="font-display text-2xl font-bold"
-                      style={{ color: sage }}
-                    >
-                      {number}
-                    </span>
-
-                    <span className="h-5 w-px bg-[#cfd4ce]" />
-
-                    <p className="text-mm font-semibold tracking-[0.08em] text-[#59615b] uppercase">
-                      {item.title}
-                    </p>
-                  </div>
-
-                  <h2 className="mt-7 font-display text-4xl leading-[0.92] font-bold tracking-tight uppercase sm:text-5xl">
-                    {item.title}
-                  </h2>
-
-                  <p className="mt-4 text-base leading-relaxed text-[#646c65] sm:text-lg">
-                    {item.description}
-                  </p>
-
-                  <p
-                    className="mt-8 text-xs font-semibold tracking-[0.18em] uppercase"
+            {/* Content */}
+            <Reveal
+              variant="right"
+              delay={100}
+              className="rounded-xl border border-[#e0e3dd] bg-white"
+            >
+              <div className="flex h-full flex-col p-7 sm:p-9 lg:p-11">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="font-display text-2xl font-bold"
                     style={{ color: sage }}
                   >
-                    How It Works
+                    ⌁
+                  </span>
+
+                  <span
+                    className="font-display text-2xl font-bold"
+                    style={{ color: sage }}
+                  >
+                    01
+                  </span>
+
+                  <span className="h-5 w-px bg-[#cfd4ce]" />
+
+                  <p className="text-mm font-semibold tracking-[0.08em] text-[#59615b] uppercase">
+                    Defense & Security
                   </p>
+                </div>
 
-                  <ol className="mt-4 space-y-3 border-y border-[#e1e3de] py-5">
-                    {item.howItWorks.map((step, stepIndex) => (
-                      <li
-                        key={step}
-                        className="flex gap-4 text-sm leading-relaxed text-[#303630] sm:text-base"
+                <h2 className="mt-7 font-display text-4xl leading-[0.92] font-bold tracking-tight uppercase sm:text-5xl">
+                  Silent Power
+                  <br />
+                  <span style={{ color: sage }}>
+                    For the Forward Edge.
+                  </span>
+                </h2>
+
+                <p className="mt-4 text-base leading-relaxed text-[#646c65] sm:text-lg">
+                  Portable hydrogen power for bases, troops, communications
+                  and surveillance systems. Reduce fuel-convoy dependency
+                  while eliminating the acoustic, thermal and emissions
+                  signatures that compromise operational security.
+                </p>
+
+                {/* Feature list */}
+                <div className="mt-7 grid border-y border-[#e1e3de] sm:grid-cols-2">
+                  {defenseFeatures.map((feature, index) => {
+                    const Icon = feature.icon;
+
+                    return (
+                      <div
+                        key={feature.title}
+                        className={`flex items-center gap-4 py-5 ${index < defenseFeatures.length - 1
+                          ? "border-b border-[#e1e3de]"
+                          : ""
+                          } ${index === 1
+                            ? "sm:border-b"
+                            : ""
+                          }`}
                       >
-                        <span
-                          className="w-7 shrink-0 font-display font-bold"
+                        <Icon
+                          className="size-8 shrink-0"
+                          strokeWidth={1.5}
                           style={{ color: sage }}
-                        >
-                          {String(stepIndex + 1).padStart(2, "0")}
+                        />
+
+                        <span className="text-mm leading-snug text-[#303630]">
+                          {feature.title}
                         </span>
-                        {step}
-                      </li>
-                    ))}
-                  </ol>
-
-                  <div className="mt-auto flex flex-col gap-6 pt-7 sm:flex-row sm:items-center">
-                    <a
-                      href="/contact"
-                      className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
-                      style={{ background: sage }}
-                    >
-                      Contact Us
-                      <ArrowRight className="size-5" />
-                    </a>
-
-                    <div>
-                      <p className="text-[11px] font-semibold tracking-[0.16em] text-[#8a9089] uppercase">
-                        Featured Products
-                      </p>
-
-                      <div className="mt-2 flex items-center gap-3 text-sm font-semibold uppercase">
-                        <span>SENTINEL</span>
-                        <span style={{ color: sage }}>|</span>
-                        <span>FALCON</span>
-                        <span style={{ color: sage }}>|</span>
-                        <span>TITAN</span>
                       </div>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-auto flex flex-col gap-6 pt-7 sm:flex-row sm:items-center">
+                  <a
+                    href="#deployment"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+                    style={{ background: sage }}
+                  >
+                    Explore Defense Solutions
+                    <ArrowRight className="size-5" />
+                  </a>
+
+                  <div>
+                    <p className="text-[11px] font-semibold tracking-[0.16em] text-[#8a9089] uppercase">
+                      Featured Products
+                    </p>
+
+                    <div className="mt-2 flex items-center gap-3 text-sm font-semibold uppercase">
+                      <span>SENTINEL</span>
+                      <span style={{ color: sage }}>|</span>
+                      <span>FALCON</span>
+                      <span style={{ color: sage }}>|</span>
+                      <span>TITAN</span>
                     </div>
                   </div>
                 </div>
-              </Reveal>
-            </div>
-          </section>
-        );
-      })}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* REPRESENTATIVE DEPLOYMENT*/}
 
@@ -561,7 +651,7 @@ export default function UseCasesPage() {
               <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
                 <a
                   href="#products"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
                   style={{ background: sage }}
                 >
                   Explore Defense Solutions
@@ -710,7 +800,7 @@ export default function UseCasesPage() {
             <div className="mt-10 flex justify-center">
               <a
                 href="/products"
-                className="group inline-flex min-h-14 items-center justify-center gap-2 rounded-md px-9 text-xs font-bold tracking-[0.1em] text-white uppercase transition-opacity hover:opacity-90"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-9 text-xs font-bold tracking-[0.1em] text-white uppercase transition-opacity hover:opacity-90"
                 style={{ background: sage }}
               >
                 <span>Explore All Products</span>

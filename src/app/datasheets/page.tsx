@@ -58,14 +58,14 @@ const products = [
     name: "Rise Titan™",
     image: "/media/datasheets/datasheet-3.png",
     description:
-      "A 3 kW zero emission generator built for sustained field operations. Operates silently across extreme temperature ranges with zero heat signature. Purpose built for defense, disaster response, and remote infrastructure.",
+      "High-output, scalable hydrogen power for demanding missions. Delivers continuous power in a rugged, field-ready form factor with rapid cartridge swap and minimal signature.",
     specs: [
-      ["Continuous Output", "3,000 W (target)"],
-      ["Runtime", "Unlimited with cartridge swap"],
-      ["Acoustic Signature @ 1m", "< 65 dBA"],
+      ["Continuous Output", "3 kW (target)"],
+      ["Runtime", "Hours with standard cartridges"],
+      ["System Weight", "< 50 lbs (target)"],
       ["Operating Temperature", "−20 °C to 50 °C (target)"],
-      ["Form Factor", "Wheeled, telescoping handle"],
-      ["Output Receptacles", "2x 120 V, USB-A, USB-C, MIL connector"],
+      ["Ingress Protection", "IP65 (target)"],
+      ["Cartridge Swap", "< 1 min, no tools"],
     ],
     sectionTitle: "Engineering Targets",
     productHref: "/products#titan",
@@ -76,17 +76,17 @@ const products = [
     name: "Hydrogen Cartridge Kit",
     image: "/media/datasheets/datasheet-4.png",
     description:
-      "Universal fuel cell compatible cartridges with RFID smart monitoring. Leak proof, lightweight, and designed for rapid field replenishment. Swap a cartridge and restore full runtime without tools or specialized training.",
+      "Rugged, field-ready hydrogen cartridges designed for safe, reliable, and rapid power delivery. Optimized for use with RISE systems in demanding environments.",
     specs: [
-      ["Cartridge Diameter", "6 in (152 mm)"],
-      ["Cartridge Height", "24 in (610 mm)"],
-      ["Coupler", "Stainless quick-disconnect, push-to-connect"],
-      ["Shelf Life", "Effectively indefinite"],
-      ["Pack Configuration", "4x cartridges, Pelican 1610 case"],
-      ["Transport", "Ground / air (certification in progress)"],
+      ["Cartridge Type", "Replaceable hydrogen cartridge"],
+      ["Hydrogen Capacity", "~300 Wh (target)"],
+      ["Form Factor", "Rugged, field-ready"],
+      ["Operating Temperature", "−20 °C to 50 °C (target)"],
+      ["Storage Temperature", "−40 °C to 60 °C (target)"],
+      ["Compatibility", "RISE systems"],
     ],
-    sectionTitle: "Engineering Targets",
-    productHref: "/products#cartridge-kit",
+    sectionTitle: "Key Specifications",
+    productHref: "/products#hydrogen-cartridge-kit",
     imageAlt: "Hydrogen cartridge kit with rugged Rise Power case",
   },
 ];
@@ -181,7 +181,7 @@ export default function DatasheetsPage() {
           return (
             <section
               key={product.number}
-              id={product.number === "04" ? "cartridge-kit" : product.number === "01" ? "sentinel" : product.number === "02" ? "falcon" : "titan"}
+              id={product.number === "04" ? "hydrogen-cartridge-kit" : product.number === "01" ? "sentinel" : product.number === "02" ? "falcon" : "titan"}
               className="relative overflow-hidden bg-[#fbfaf7] py-8 sm:py-12 lg:py-16"
             >
 
@@ -311,7 +311,7 @@ export default function DatasheetsPage() {
 
                           <a
                             href={product.productHref}
-                            className="inline-flex min-h-14 items-center justify-center gap-2 border border-[#aeb6bd] px-6 text-xs font-semibold tracking-[0.06em] text-[#101820] uppercase transition-all duration-200 hover:border-[#5f8f2f] hover:bg-[#5f8f2f] hover:text-white rounded-sm"
+                            className="inline-flex min-h-12 items-center justify-center gap-2 border border-[#aeb6bd] px-6 text-xs font-semibold tracking-[0.06em] text-[#101820] uppercase transition-all duration-200 hover:border-[#5f8f2f] rounded-sm"
                           >
                             Product Page
                             <ArrowRight className="size-5 shrink-0" />

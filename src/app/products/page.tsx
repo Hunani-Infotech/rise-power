@@ -124,7 +124,7 @@ const systemMeta = [
     icon: BatteryCharging,
     stats: [
       [Clock3, "4+ HRS", "ENDURANCE"],
-      [Infinity, "5×", "RANGE EXT."],
+      [Infinity, "UNLIMITED", "RUNTIME"],
       [Leaf, "ZERO", "EMISSIONS"],
     ],
   },
@@ -133,7 +133,7 @@ const systemMeta = [
     icon: Zap,
     stats: [
       [Zap, "3 kW", "CONTINUOUS POWER"],
-      [Clock3, "SILENT", "OPERATION"],
+      [Clock3, "72+ HRS", "RUNTIME"],
       [ShieldCheck, "BUILT", "FOR THE FIELD"],
     ],
   },
@@ -141,8 +141,8 @@ const systemMeta = [
     category: "FUEL SOLUTIONS",
     icon: BatteryCharging,
     stats: [
-      [BatteryCharging, "RFID", "SMART MONITOR"],
-      [ShieldCheck, "15 YR", "SHELF LIFE"],
+      [BatteryCharging, "HIGH", "ENERGY DENSITY"],
+      [ShieldCheck, "SAFE", "& RELIABLE"],
       [Infinity, "QUICK", "SWAP SYSTEM"],
     ],
   },
@@ -290,12 +290,18 @@ export default function ProductsPage() {
               </p>
 
               <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[76px]">
-                Products
+                Four Systems.
+                <br />
+                <span className="text-[#6e7f42]">
+                  One Hydrogen
+                </span>
+                <br />
+                Ecosystem.
               </h1>
 
               <p className="mt-7 max-w-[540px] text-base leading-relaxed text-white/75 sm:text-lg">
-                Four products. One cartridge ecosystem. Engineered for defense,
-                disaster response, remote operations, and critical backup.
+                Portable hydrogen power engineered for defense, disaster
+                response, remote operations, and critical infrastructure.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -318,14 +324,14 @@ export default function ProductsPage() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 bg-[#849363] px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 bg-[#849363] px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm"
                 >
                   Request a Briefing
                   <ArrowRight className="size-4" />
                 </Link>
                 <Link
                   href="#product-systems"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
                 >
                   See Products
                   <ArrowRight className="size-4" />
@@ -484,9 +490,8 @@ export default function ProductsPage() {
 
             <p className="mt-6 max-w-[520px] text-sm leading-relaxed text-[#5c584e] sm:text-base">
               Every Rise Power product is designed as a complete system. Power
-              generation, fuel delivery, controls, and enclosure working
-              together. Integrated system design delivers better performance and
-              reliability than assembled from parts alternatives.
+              generation, fuel delivery, controls, and ruggedized enclosures work
+              together to deliver reliable performance across demanding environments.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-5">
@@ -621,20 +626,15 @@ export default function ProductsPage() {
               </div>
 
               {/* COMPARISON ROWS */}
-              {comparisonRows.map((row, rowIndex) => {
+              {comparisonRows.map((row) => {
                 const Icon = row.icon;
-                const isLast = rowIndex === comparisonRows.length - 1;
 
                 return (
                   <div
                     key={row.label}
                     className="grid grid-cols-[240px_repeat(4,minmax(200px,1fr))]"
                   >
-                    <div
-                      className={`flex items-center gap-4 border-l border-[#293a40] border-t border-t-white/15 bg-[#071b23] px-6 py-4 ${
-                        isLast ? "rounded-bl-lg border-b border-[#293a40]" : ""
-                      }`}
-                    >
+                    <div className="flex items-center gap-4 border-l border-[#293a40] border-t border-t-white/15 bg-[#071b23] px-6 py-4">
                       <Icon
                         className="size-6 shrink-0 text-[#c1df29]"
                         strokeWidth={1.5}
@@ -652,14 +652,6 @@ export default function ProductsPage() {
                           index === 0
                             ? "border-r border-[#293a40] border-l border-l-white/15"
                             : "ml-1 border-x border-[#293a40]"
-                        } ${
-                          isLast
-                            ? `border-b border-[#293a40] ${
-                                index === row.values.length - 1
-                                  ? "rounded-br-lg"
-                                  : ""
-                              }`
-                            : ""
                         }`}
                       >
                         {value}
@@ -668,6 +660,38 @@ export default function ProductsPage() {
                   </div>
                 );
               })}
+
+              {/* TABLE FOOTER */}
+              <div className="grid grid-cols-[240px_repeat(4,minmax(200px,1fr))]">
+                <div className="rounded-bl-lg border-b border-l border-[#293a40] border-t border-t-white/15 bg-[#071b23] p-5">
+                  <p className="font-display text-lg font-bold uppercase">
+                    Explore More
+                  </p>
+
+                  <p className="mt-1 max-w-[180px] text-xs leading-relaxed text-white/60">
+                    Learn more about each solution and its capabilities.
+                  </p>
+                </div>
+
+                {products.slice(0, 4).map((product, index) => (
+                  <div
+                    key={product.slug}
+                    className={`border border-t-0 border-[#293a40] border-t border-t-white/15 bg-[#07151b] p-4 ${
+                      index === 0
+                        ? "rounded-br-lg border-l border-l-white/15"
+                        : "ml-1 rounded-b-lg"
+                    }`}
+                  >
+                    <Link
+                      href={`#${product.slug}`}
+                      className="group flex min-h-12 items-center justify-center gap-2 rounded-sm border border-white/25 px-4 text-sm font-bold tracking-[0.08em] uppercase transition hover:border-[#91ad46] hover:text-[#c1df29]"
+                    >
+                      View Product
+                      <ArrowRight className="size-5 text-[#c1df29] transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

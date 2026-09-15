@@ -268,7 +268,7 @@ export function ClosingCta() {
                 <div className="mt-6 flex max-w-[430px] flex-col gap-3">
                   <Link
                     href={closingCta.primaryCta.href}
-                    className="motion-hover-glow inline-flex min-h-14 items-center justify-center gap-3 px-6 text-sm font-semibold tracking-[0.06em] uppercase transition-transform hover:-translate-y-0.5 rounded-sm bg-[#849363]"
+                    className="motion-hover-glow inline-flex min-h-12 items-center justify-center gap-3 px-6 text-sm font-semibold tracking-[0.06em] uppercase transition-transform hover:-translate-y-0.5 rounded-sm bg-[#849363]"
                     style={{
                       // background: sage,
                       color: cream,
@@ -280,7 +280,7 @@ export function ClosingCta() {
 
                   <Link
                     href={closingCta.secondaryCta.href}
-                    className="inline-flex min-h-14 items-center justify-center gap-3 border border-[#f3efe4]/50 px-6 text-sm font-semibold tracking-[0.06em] text-[#f3efe4] uppercase transition-colors hover:bg-white/10 rounded-sm"
+                    className="inline-flex min-h-12 items-center justify-center gap-3 border border-[#f3efe4]/50 px-6 text-sm font-semibold tracking-[0.06em] text-[#f3efe4] uppercase transition-colors hover:bg-white/10 rounded-sm"
                   >
                     {closingCta.secondaryCta.label}
                     <Download className="size-5" />

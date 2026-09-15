@@ -218,7 +218,7 @@ export default function CompanyPage() {
 
                 <a
                   href="/contact"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 bg-[#849363]"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 bg-[#849363]"
                 >
                   Request a Briefing
                   <ArrowRight className="size-5" />
@@ -226,7 +226,7 @@ export default function CompanyPage() {
 
                 <a
                   href="#leadership"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/50 px-7 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/50 px-7 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
                 >
                   Meet the Team
                   <ArrowRight className="size-5" />
@@ -307,7 +307,7 @@ export default function CompanyPage() {
                   </Button> */}
                   <a
                     href="/contact"
-                    className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 bg-[#849363]"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 bg-[#849363]"
                   >
                     Request a Briefing
                     <ArrowRight className="size-5" />
