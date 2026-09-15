@@ -301,7 +301,7 @@ export default function DatasheetsPage() {
 
                           <Link
                             href="/contact"
-                            className="inline-flex min-h-12 items-center justify-center gap-4 px-7 text-xs font-semibold tracking-[0.08em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm bg-[#5f8f2f]"
+                            className="inline-flex min-h-12 items-center justify-center gap-4 px-7 text-xs font-semibold tracking-[0.08em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm bg-[#849363]"
                           >
                             <span className="flex w-full items-center justify-center gap-2">
                               Request Full Datasheet

@@ -333,7 +333,7 @@ export default function InvestorsPage() {
                   <a
                     href="/media/investors/rise-power-deck.pdf"
                     download="rise-power-deck.pdf"
-                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-2 rounded-[4px] bg-[#58b52a] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
+                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-2 rounded-[4px] bg-[#849363] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
                   >
                     Download
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
@@ -382,7 +382,7 @@ export default function InvestorsPage() {
                   <a
                     href="/media/investors/rise-power-one-pager.pdf"
                     download="rise-power-one-pager.pdf"
-                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-2 rounded-[4px] bg-[#58b52a] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
+                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-2 rounded-[4px] bg-[#849363] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:bg-[#4d9d22]"
                   >
                     Download
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
@@ -849,7 +849,7 @@ export default function InvestorsPage() {
           <div className="mt-9 flex justify-center">
             <Link
               href="/resources"
-              className="group inline-flex min-h-[58px] items-center justify-center gap-2 rounded-[5px] bg-[#58a926] px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:bg-[#4d9721] hover:shadow-lg"
+              className="group inline-flex min-h-[58px] items-center justify-center gap-2 rounded-[5px] bg-[#849363] px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:bg-[#4d9721] hover:shadow-lg"
             >
               <span>View All Insights</span>
               <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />

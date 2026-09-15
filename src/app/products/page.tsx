@@ -367,7 +367,7 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-2">
             {products.slice(0, 4).map((product, index) => {
               const meta = systemMeta[index] ?? systemMeta[0];
               const CategoryIcon = meta.icon;
@@ -472,7 +472,7 @@ export default function ProductsPage() {
           className="object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#f7f6f2]/70" />
+        <div className="absolute inset-0 bg-[#f7f6f2]/10" />
 
         <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-10 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.35fr_0.7fr] lg:gap-8 lg:px-10">
 

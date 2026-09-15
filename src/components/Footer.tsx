@@ -437,8 +437,8 @@ export function Footer() {
             <button
               type="submit"
               aria-label="Subscribe"
-              className="inline-flex w-12 shrink-0 items-center justify-center text-cream transition-opacity hover:opacity-85"
-              style={{ background: sage }}
+              className="inline-flex w-12 shrink-0 items-center justify-center text-cream transition-opacity hover:opacity-85 bg-[#849363]"
+              // style={{ background: sage }}
             >
               <ArrowRight className="size-5" />
             </button>
