@@ -478,7 +478,7 @@ export default function UseCasesPage() {
                   alt={defense.title}
                   fill
                   sizes="(min-width: 1024px) 52vw, 100vw"
-                  className="image-grade-green object-cover"
+                  className="object-cover"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
@@ -684,7 +684,7 @@ export default function UseCasesPage() {
                   alt="Representative forward operating base deployment"
                   fill
                   sizes="(min-width: 1024px) 55vw, 100vw"
-                  className="image-grade-green object-cover"
+                  className="object-cover"
                 />
               ) : null}
 
@@ -747,7 +747,7 @@ export default function UseCasesPage() {
                         alt={product.eyebrow}
                         fill
                         sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-                        className="image-grade-green object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                       />
                     ) : null}
 

@@ -210,7 +210,7 @@ export default function DatasheetsPage() {
                           alt={product.imageAlt}
                           fill
                           sizes="(min-width: 1024px) 55vw, 100vw"
-                          className="image-grade-green object-cover"
+                          className="object-cover"
                         />
 
                       </div>

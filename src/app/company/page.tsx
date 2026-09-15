@@ -240,7 +240,7 @@ export default function CompanyPage() {
                   alt="Rise Power Sentinel hydrogen power system in the field"
                   fill
                   sizes="(min-width: 1024px) 52vw, 100vw"
-                  className="image-grade-green object-cover"
+                  className="object-cover"
                 />
               </div>
             </Reveal>
@@ -359,7 +359,7 @@ export default function CompanyPage() {
                       alt={value.title.replace("\n", " ")}
                       fill
                       sizes="(min-width: 1024px) 25vw, 50vw"
-                      className="image-grade-green object-cover"
+                      className="object-cover"
                     />
                   </div>
                 </article>
@@ -473,7 +473,7 @@ export default function CompanyPage() {
                     alt="Rise Power team member"
                     fill
                     sizes="(min-width: 1024px) 20vw, 50vw"
-                    className="image-grade-green object-cover"
+                    className="object-cover"
                   />
                 </div>
 
@@ -516,7 +516,7 @@ export default function CompanyPage() {
                     alt="Rise Power team member"
                     fill
                     sizes="(min-width: 1024px) 20vw, 50vw"
-                    className="image-grade-green object-cover"
+                    className="object-cover"
                   />
                 </div>
 
