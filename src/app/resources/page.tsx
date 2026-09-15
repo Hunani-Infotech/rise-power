@@ -24,8 +24,11 @@ export default function ResourcesPage() {
           <Link href="/insights" className="text-sage underline-offset-2 hover:underline">
             News & Insights
           </Link>{" "}
-          for updates from the field. For a tailored briefing, reach out via
-          Contact Us.
+          for updates from the field. For a tailored briefing,{" "}
+          <Link href="/contact" className="text-sage underline-offset-2 hover:underline">
+            Request a Briefing
+          </Link>
+          .
         </p>
       </section>
     </>

@@ -116,14 +116,14 @@ const systemMeta = [
     stats: [
       [Zap, "<65 dBA", "QUIET OPERATION"],
       [Leaf, "ZERO", "EMISSIONS"],
-      [Weight, "<15 kg", "LIGHTWEIGHT"],
+      [Weight, "<15 lbs", "LIGHTWEIGHT"],
     ],
   },
   {
     category: "DRONE POWER",
     icon: BatteryCharging,
     stats: [
-      [Clock3, "8+ HRS", "ENDURANCE"],
+      [Clock3, "4+ HRS", "ENDURANCE"],
       [Infinity, "UNLIMITED", "RUNTIME"],
       [Leaf, "ZERO", "EMISSIONS"],
     ],
@@ -163,8 +163,8 @@ const comparisonRows = [
     label: "Power Output",
     icon: Zap,
     values: [
-      "<65 dBA (quiet operation)",
-      "8+ hrs (extended flight)",
+      "Man-portable tactical output",
+      "4+ hrs (extended flight)",
       "3 kW (continuous power)",
       "High energy density",
     ],
@@ -173,9 +173,9 @@ const comparisonRows = [
     label: "Runtime",
     icon: Clock3,
     values: [
-      "Multiple mission hours",
-      "8+ hours",
-      "72+ hours",
+      "Unlimited with cartridge swap",
+      "4+ hours",
+      "Sustained field runtime",
       "N/A (fuel supply)",
     ],
   },
@@ -183,7 +183,7 @@ const comparisonRows = [
     label: "Weight",
     icon: Weight,
     values: [
-      "<15 kg (lightweight)",
+      "<15 lbs (lightweight)",
       "Optimized for UAV integration",
       "Built for the field",
       "Compact & portable",

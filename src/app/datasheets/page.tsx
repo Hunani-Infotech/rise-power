@@ -60,7 +60,7 @@ const products = [
     description:
       "High-output, scalable hydrogen power for demanding missions. Delivers continuous power in a rugged, field-ready form factor with rapid cartridge swap and minimal signature.",
     specs: [
-      ["Continuous Output", "5 kW (target)"],
+      ["Continuous Output", "3 kW (target)"],
       ["Runtime", "Hours with standard cartridges"],
       ["System Weight", "< 50 lbs (target)"],
       ["Operating Temperature", "−20 °C to 50 °C (target)"],

@@ -87,7 +87,7 @@ export type CapabilityTab = {
   cta: Cta;
   stats: readonly CapabilityStat[];
   callouts: readonly CapabilityCallout[];
-  quote: {
+  quote?: {
     text: string;
     name: string;
     role: string;
@@ -157,7 +157,7 @@ export const navItems: readonly NavItem[] = megaNavItems.map(
 );
 
 export const contactCta: Cta = {
-  label: "Contact Us",
+  label: "Request a Briefing",
   href: "/contact",
 };
 
@@ -180,8 +180,8 @@ export const hero = {
   headlineLine1: "MISSION POWER.",
   headlineLine2: "ANYWHERE.",
   body: "Silent hydrogen power systems engineered for defense, critical infrastructure, and off-grid operations.",
-  primaryCta: { label: "Watch Mission Film", href: "#demo" } satisfies Cta,
-  secondaryCta: { label: "Explore Products", href: "/products" } satisfies Cta,
+  primaryCta: { label: "Request a Briefing", href: "/contact" } satisfies Cta,
+  secondaryCta: { label: "See Capabilities", href: "/#capabilities" } satisfies Cta,
   chips: [
     { title: "Zero Emissions", subtitle: "At point of use" },
     { title: "30-Second", subtitle: "Cartridge Swap" },
@@ -199,8 +199,8 @@ export const performanceMetrics = {
   gauges: [
     {
       value: "<65",
-      unit: "dB",
-      title: "ACOUSTIC SIGNATURE",
+      unit: "dBA",
+      title: "ACOUSTIC SIGNATURE AT 1M",
       body: "Ultra-quiet operation for stealth and safety.",
       percent: 75,
     },
@@ -219,10 +219,10 @@ export const performanceMetrics = {
       percent: 88,
     },
     {
-      value: "<15",
+      value: "<50",
       unit: "lbs",
       title: "PORTABLE SYSTEM WEIGHT",
-      body: "Lightweight, durable, mission-ready.",
+      body: "Portable system weight target.",
       percent: 60,
     },
   ] satisfies readonly PerformanceGauge[],
@@ -479,11 +479,6 @@ export const capabilities = {
           body: "Instant power support and peak shaving.",
         },
       ],
-      quote: {
-        text: "Rise Mission Power’s engineering excellence ensures our operations stay powered, anywhere, in any condition.",
-        name: "COL. MATTHEW HARRISON",
-        role: "Program Manager, U.S. Defense Logistics Agency",
-      },
     },
     {
       id: "defense",
@@ -532,11 +527,6 @@ export const capabilities = {
           body: "Zero exhaust at the point of use.",
         },
       ],
-      quote: {
-        text: "Silent cartridge power changes how we posture forward positions—no generator noise, no fuel convoy risk.",
-        name: "COL. MATTHEW HARRISON",
-        role: "Program Manager, U.S. Defense Logistics Agency",
-      },
     },
     {
       id: "industrial",
@@ -547,7 +537,7 @@ export const capabilities = {
       cta: { label: "EXPLORE COMMERCIAL", href: "/use-cases#critical-infrastructure" },
       stats: [
         {
-          value: "5 kW",
+          value: "3 kW",
           label: "HIGH OUTPUT",
           body: "Titan-class continuous power.",
         },
@@ -585,11 +575,6 @@ export const capabilities = {
           body: "Cartridge logistics beat fuel trucks.",
         },
       ],
-      quote: {
-        text: "We replaced diesel generators with cartridge systems and cut downtime without sacrificing output.",
-        name: "COL. MATTHEW HARRISON",
-        role: "Program Manager, U.S. Defense Logistics Agency",
-      },
     },
     {
       id: "emergency",
@@ -638,11 +623,6 @@ export const capabilities = {
           body: "Pre-position cartridges at depots.",
         },
       ],
-      quote: {
-        text: "Quiet, emission-free power lets responders focus on people—not generator fumes or noise.",
-        name: "COL. MATTHEW HARRISON",
-        role: "Program Manager, U.S. Defense Logistics Agency",
-      },
     },
   ] satisfies readonly CapabilityTab[],
   diagramImage: "Capabilities engineering diagram",
@@ -651,28 +631,28 @@ export const capabilities = {
 
 export const missionDeployments = {
   eyebrow: "MISSION DEPLOYMENTS",
-  headingBefore: "PROVEN. DEPLOYED.",
-  headingAccent: "WORLDWIDE.",
-  body: "Rise Mission Power systems are trusted in the world’s most challenging environments and critical missions.",
-  mapPrompt: "CLICK A HOTSPOT to explore mission deployments",
-  legend: ["ACTIVE DEPLOYMENTS", "PAST MISSIONS"] as const,
+  headingBefore: "ENGINEERED FOR THE FIELD.",
+  headingAccent: "VALIDATED IN IT.",
+  body: "Rise Power systems are designed for austere environments—validated across coastal British Columbia, arctic, and high-altitude conditions.",
+  mapPrompt: "CLICK A HOTSPOT to explore operating environments",
+  legend: ["ACTIVE ENVIRONMENTS", "FIELD CONDITIONS"] as const,
   mapImageSrc: "/media/missions/world-map.png",
   mapImageAlt: "Dark satellite view of the world",
   hotspots: [
     {
       id: "arctic",
       label: "ARCTIC",
-      status: "ACTIVE DEPLOYMENT",
+      status: "FIELD CONDITION",
       title: "ARCTIC REGION",
       subhead: "Cold-weather operations in extreme polar conditions.",
       stats: [
-        { label: "MISSION DURATION", value: "96+ HOURS" },
-        { label: "ENVIRONMENT", value: "-40°C to 10°C" },
-        { label: "SYSTEM DEPLOYED", value: "SENTINEL™" },
-        { label: "PERSONNEL SUPPORTED", value: "80+" },
+        { label: "FOCUS", value: "COLD-WEATHER OPS" },
+        { label: "ENVIRONMENT", value: "ARCTIC RANGE" },
+        { label: "SYSTEM FIT", value: "SENTINEL™" },
+        { label: "PRIORITY", value: "LOW SIGNATURE" },
       ],
       overview:
-        "Delivering silent, cold-tolerant hydrogen power for polar research posts and remote communications arrays.",
+        "Silent portable power for cold-weather communications and forward positions where diesel logistics and acoustic signature are constraints.",
       image: "Arctic deployment",
       detailImageSrc: "/media/missions/mountain.png",
       x: 22,
@@ -681,17 +661,17 @@ export const missionDeployments = {
     {
       id: "maritime",
       label: "MARITIME",
-      status: "ACTIVE DEPLOYMENT",
-      title: "MARITIME REGION",
-      subhead: "Shipboard and coastal power for austere maritime missions.",
+      status: "FIELD CONDITION",
+      title: "COASTAL / MARITIME",
+      subhead: "Salt, moisture, and coastal validation environments.",
       stats: [
-        { label: "MISSION DURATION", value: "120+ HOURS" },
-        { label: "ENVIRONMENT", value: "Salt-air, high humidity" },
-        { label: "SYSTEM DEPLOYED", value: "TITAN™" },
-        { label: "PERSONNEL SUPPORTED", value: "200+" },
+        { label: "FOCUS", value: "COASTAL BC" },
+        { label: "ENVIRONMENT", value: "SALT / MOISTURE" },
+        { label: "SYSTEM FIT", value: "TITAN™" },
+        { label: "PRIORITY", value: "FIELD RUGGED" },
       ],
       overview:
-        "Providing zero-emission backup and tactical power for coastal stations and maritime command nodes.",
+        "Field-validated for coastal British Columbia conditions—sealed against dust and salt spray for mission duration where commercial hardware fails.",
       image: "Maritime deployment",
       detailImageSrc: "/media/missions/mountain.png",
       x: 48,
@@ -700,14 +680,14 @@ export const missionDeployments = {
     {
       id: "desert",
       label: "DESERT",
-      status: "ACTIVE DEPLOYMENT",
+      status: "FIELD CONDITION",
       title: "DESERT REGION",
       subhead: "High-heat desert operations with dust and thermal stress.",
       stats: [
-        { label: "MISSION DURATION", value: "60+ HOURS" },
-        { label: "ENVIRONMENT", value: "5°C to 50°C" },
-        { label: "SYSTEM DEPLOYED", value: "FALCON™" },
-        { label: "PERSONNEL SUPPORTED", value: "120+" },
+        { label: "FOCUS", value: "HEAT / DUST" },
+        { label: "ENVIRONMENT", value: "−20°C TO +50°C" },
+        { label: "SYSTEM FIT", value: "FALCON™" },
+        { label: "PRIORITY", value: "UAV ENDURANCE" },
       ],
       overview:
         "Sustaining UAV and ISR missions with lightweight hydrogen modules across arid theaters.",
@@ -719,17 +699,17 @@ export const missionDeployments = {
     {
       id: "mountain",
       label: "MOUNTAIN",
-      status: "ACTIVE DEPLOYMENT",
-      title: "MOUNTAIN REGION",
+      status: "FIELD CONDITION",
+      title: "HIGH ALTITUDE",
       subhead: "High-altitude operations in extreme terrain.",
       stats: [
-        { label: "MISSION DURATION", value: "72+ HOURS" },
-        { label: "ENVIRONMENT", value: "-25°C to 45°C" },
-        { label: "SYSTEM DEPLOYED", value: "TITAN™" },
-        { label: "PERSONNEL SUPPORTED", value: "150+" },
+        { label: "FOCUS", value: "ALTITUDE" },
+        { label: "ENVIRONMENT", value: "HIGH TERRAIN" },
+        { label: "SYSTEM FIT", value: "TITAN™" },
+        { label: "PRIORITY", value: "SILENT POWER" },
       ],
       overview:
-        "Providing silent, zero-emission power for forward operating bases and communication relays in high-altitude, low-temperature conditions.",
+        "Providing silent, zero-emission power for forward operating bases and communication relays in high-altitude conditions.",
       image: "Mountain deployment",
       detailImageSrc: "/media/missions/mountain.png",
       x: 68,
@@ -738,14 +718,14 @@ export const missionDeployments = {
     {
       id: "urban",
       label: "URBAN",
-      status: "ACTIVE DEPLOYMENT",
-      title: "URBAN REGION",
-      subhead: "Dense urban operations with strict emissions and noise limits.",
+      status: "FIELD CONDITION",
+      title: "URBAN / SHELTER",
+      subhead: "Dense environments with strict emissions and noise limits.",
       stats: [
-        { label: "MISSION DURATION", value: "48+ HOURS" },
-        { label: "ENVIRONMENT", value: "Indoor / outdoor" },
-        { label: "SYSTEM DEPLOYED", value: "SENTINEL™" },
-        { label: "PERSONNEL SUPPORTED", value: "300+" },
+        { label: "FOCUS", value: "INDOOR-SAFE" },
+        { label: "ENVIRONMENT", value: "INDOOR / OUTDOOR" },
+        { label: "SYSTEM FIT", value: "SENTINEL™" },
+        { label: "PRIORITY", value: "ZERO EXHAUST" },
       ],
       overview:
         "Supporting emergency response and critical infrastructure with silent, indoor-safe hydrogen power.",
@@ -757,11 +737,10 @@ export const missionDeployments = {
   ] satisfies readonly DeploymentHotspot[],
   defaultHotspotId: "mountain",
   stats: [
-    { value: "25+", label: "Countries", note: "Active Deployments", icon: "globe", },
-    { value: "150+", label: "Deployment Sites", note: "Worldwide", icon: "map-pin" },
-    { value: "500,000+", label: "Mission Hours", note: "Delivered", icon: "clock" },
-    { value: "0", label: "Mission Failures", note: "Reliability You Can Trust", icon: "check-circle" },
-    { value: "24/7", label: "Mission Ready", note: "Anywhere. Anytime.", icon: "globe" },
+    { value: "<65", label: "dBA", note: "Acoustic Signature at 1m", icon: "globe" },
+    { value: "0", label: "Emissions", note: "Zero Exhaust at Point of Use", icon: "map-pin" },
+    { value: "∞", label: "Runtime", note: "Unlimited with Cartridge Swap", icon: "clock" },
+    { value: "<50", label: "lbs", note: "Portable System Weight Target", icon: "check-circle" },
   ] as const,
 };
 
@@ -826,59 +805,59 @@ export const whyHydrogenWins = {
 
 export const customerPartners = {
   eyebrow: "CUSTOMERS & PARTNERS",
-  headingBefore: "PROVEN IN THE FIELD.",
-  headingAccent: "TRUSTED BY LEADERS.",
-  body: "Rise Mission Power systems are deployed by forward-thinking organizations that demand reliability, performance, and zero compromises.",
+  headingBefore: "BUILT FOR OPERATORS.",
+  headingAccent: "FIELD REQUIREMENTS FIRST.",
+  body: "Rise Power systems are engineered for organizations that need silent, zero-emission power for defense, infrastructure, and emergency missions.",
   cases: [
     {
-      category: "DEFENSE PROCUREMENT",
+      category: "DEFENSE & SECURITY",
       title: "Powering Mission Critical Operations",
-      body: "Supplied modular hydrogen generators for tactical communications and ISR operations across remote deployments.",
+      body: "Modular hydrogen generators for tactical communications and ISR operations across remote deployments.",
       stats: [
-        { value: "18+ MONTHS", label: "Continuous Deployment" },
-        { value: "99.98% UPTIME", label: "Mission Reliability" },
-        { value: "0 EMISSIONS", label: "Zero Detectable Signature" },
+        { value: "SILENT", label: "Low Acoustic Signature" },
+        { value: "0 EMISSIONS", label: "At Point of Use" },
+        { value: "30 SEC", label: "Cartridge Swap" },
       ],
-      href: "/resources",
+      href: "/use-cases#defense-security",
       image: "Defense procurement case",
       imageSrc: "/media/cases/defense.png",
     },
     {
-      category: "TELECOM OPERATOR",
+      category: "CRITICAL INFRASTRUCTURE",
       title: "Reliable Backup Power Anywhere, Anytime",
-      body: "Deployed hydrogen power systems to ensure uninterrupted network uptime in off-grid and disaster-prone areas.",
+      body: "Hydrogen power systems for uninterrupted network uptime in off-grid and disaster-prone areas.",
       stats: [
-        { value: "250+ SITES", label: "Deployed" },
-        { value: "100% NETWORK UPTIME", label: "During Outages" },
-        { value: "Zero FUEL DELIVERIES", label: "On-Site" },
+        { value: "ZERO EXHAUST", label: "Clean Site Power" },
+        { value: "SILENT", label: "Backup Operation" },
+        { value: "CARTRIDGE", label: "Logistics Ready" },
       ],
-      href: "/resources",
+      href: "/use-cases#critical-infrastructure",
       image: "Telecom operator case",
       imageSrc: "/media/cases/telecom.png",
     },
     {
-      category: "MINING COMPANY",
+      category: "REMOTE OPERATIONS",
       title: "Clean Power for Extreme Environments",
-      body: "Delivered robust, low-maintenance power solutions for electrified drilling and site infrastructure.",
+      body: "Robust, low-maintenance power solutions for austere sites where diesel logistics are a liability.",
       stats: [
-        { value: "30% LOWER TCO", label: "vs Diesel" },
-        { value: "70% LESS MAINTENANCE", label: "Downtime Reduced" },
-        { value: "Built TOUGH", label: "For Harsh Sites" },
+        { value: "LOW MAINT.", label: "Fewer Moving Parts" },
+        { value: "FIELD READY", label: "Rugged Form Factor" },
+        { value: "3 kW", label: "Titan Continuous Output" },
       ],
-      href: "/resources",
+      href: "/use-cases#remote-operations",
       image: "Mining company case",
       imageSrc: "/media/cases/mining.png",
     },
     {
-      category: "EMERGENCY SERVICES",
-      title: "Rapid Response. Power That Saves Lives.",
-      body: "Provided instant, quiet, and emission-free power for field hospitals and emergency response operations.",
+      category: "DISASTER RESPONSE",
+      title: "Rapid Response. Indoor-Safe Power.",
+      body: "Quiet, emission-free power for field hospitals, shelters, and emergency response operations.",
       stats: [
-        { value: "<60 sec POWER UP", label: "Rapid Deployment" },
-        { value: "Silent OPERATION", label: "Low Acoustic" },
-        { value: "1000+ LIVES SUPPORTED", label: "In Critical Situations" },
+        { value: "INDOOR-SAFE", label: "Zero Exhaust" },
+        { value: "SILENT", label: "Low Acoustic" },
+        { value: "RAPID", label: "Field Deployment" },
       ],
-      href: "/resources",
+      href: "/use-cases#disaster-response",
       image: "Emergency services case",
       imageSrc: "/media/cases/emergency.png",
     },
@@ -886,27 +865,27 @@ export const customerPartners = {
   partnerHeading: "PARTNERING WITH INNOVATORS AND INDUSTRY LEADERS",
   partners: [
     "ENGINEERED FOR RELIABILITY",
-    "TRUSTED BY INDUSTRY LEADERS",
-    "PROVEN IN REAL MISSIONS",
-    "GLOBAL REACH, LOCAL SUPPORT",
-    "BUILT ON PARTNERSHIP. DRIVEN BY RESULTS",
+    "CANADIAN-ENGINEERED. FIELD-VALIDATED.",
+    "SILENT. ZERO-EMISSION. MISSION READY.",
+    "BUILT FOR OPERATORS.",
+    "A CIMTECH GREEN ENERGY COMPANY",
   ] as const,
 };
 
 export const closingCta = {
-  headingBefore: "POWER YOUR MISSION.",
-  headingAccent: "ANYWHERE. ANYTIME.",
-  body: "Rise Mission Power delivers silent, zero-emission hydrogen power systems built for the world's toughest environments.",
-  panelEyebrow: "READY TO POWER WHAT MATTERS?",
-  panelHeading: "Let’s Build Your Mission Advantage.",
-  panelBody: "Talk to our team to find the right power solution for your operations.",
-  primaryCta: { label: "REQUEST A DEMO", href: "/contact" } satisfies Cta,
-  secondaryCta: { label: "DOWNLOAD BROCHURE", href: "/datasheets" } satisfies Cta,
+  headingBefore: "REQUEST A",
+  headingAccent: "CAPABILITY BRIEFING.",
+  body: "For procurement, programs, and integration leads—specs, runtime data, and deployment summary on request.",
+  panelEyebrow: "READY TO DISCUSS YOUR REQUIREMENTS?",
+  panelHeading: "Request a capability briefing.",
+  panelBody: "Talk to our team about matching the right Rise Power system to your mission.",
+  primaryCta: { label: "REQUEST A BRIEFING", href: "/contact" } satisfies Cta,
+  secondaryCta: { label: "REVIEW CAPABILITIES", href: "/#capabilities" } satisfies Cta,
   chips: [
     { title: "ZERO EMISSIONS", subtitle: "Clean power, no compromise." },
     { title: "ULTRA QUIET", subtitle: "Engineered for stealth operations." },
     { title: "RAPID REFUEL", subtitle: "30-second cartridge exchange." },
-    { title: "MISSION READY", subtitle: "Proven. Reliable. Always ready." },
+    { title: "MISSION READY", subtitle: "Canadian-engineered. Field-validated." },
   ] satisfies readonly HeroChip[],
   image: "Closing CTA mission landscape",
   imageSrc: "/media/cta/closing.png",
@@ -965,10 +944,10 @@ export const footer = {
     placeholder: "Enter your email address",
   },
   contact: {
-    email: "info@risemissionpower.com",
-    phone: "+1 (833) 747-4387",
-    phoneHref: "tel:+18337474387",
-    location: "Austin, Texas, USA",
+    email: "info@risepower.com",
+    phone: "+1 (604) 807-4850",
+    phoneHref: "tel:+16048074850",
+    location: "CIMtech Green Energy · 17942 55 Avenue · Surrey, BC V3S 6C8",
   },
   social: [
     { label: "LinkedIn", href: "#" },
@@ -980,7 +959,7 @@ export const footer = {
     { label: "Terms of Use", href: "/terms" },
     { label: "Cookies Policy", href: "/privacy" },
   ] satisfies readonly NavItem[],
-  copyright: "© 2026 Rise Mission Power. All rights reserved.",
-  badgeBefore: "BUILT FOR THE MISSION.",
-  badgeAccent: "TRUSTED EVERYWHERE.",
+  copyright: "© 2026 Rise Power, Inc. All rights reserved.",
+  badgeBefore: "CANADIAN-ENGINEERED.",
+  badgeAccent: "FIELD-VALIDATED.",
 };

@@ -262,41 +262,43 @@ export function CapabilitiesTabs() {
           </div>
         </Reveal>
 
-        <blockquote className="flex flex-col gap-5 border-t border-white/10 px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8 sm:py-7 lg:px-10">
-          <div className="flex min-w-0 items-start gap-3 sm:gap-4">
-            <Quote
-              className="mt-0.5 size-8 shrink-0 sm:size-10"
-              strokeWidth={1.5}
-              style={{ color: sage }}
-              aria-hidden
-            />
-            <p
-              className="text-base leading-relaxed italic sm:text-lg"
-              style={{ color: text }}
-            >
-              {active.quote.text}
-            </p>
-          </div>
-          <footer className="flex shrink-0 items-center gap-3 sm:max-w-[16rem]">
-            <Shield
-              className="size-8 shrink-0"
-              strokeWidth={1.5}
-              style={{ color: sage }}
-              aria-hidden
-            />
-            <div>
-              <p
-                className="text-sm font-semibold tracking-[0.12em] uppercase"
+        {active.quote ? (
+          <blockquote className="flex flex-col gap-5 border-t border-white/10 px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8 sm:py-7 lg:px-10">
+            <div className="flex min-w-0 items-start gap-3 sm:gap-4">
+              <Quote
+                className="mt-0.5 size-8 shrink-0 sm:size-10"
+                strokeWidth={1.5}
                 style={{ color: sage }}
+                aria-hidden
+              />
+              <p
+                className="text-base leading-relaxed italic sm:text-lg"
+                style={{ color: text }}
               >
-                {active.quote.name}
-              </p>
-              <p className="mt-1 text-xs leading-snug" style={{ color: muted }}>
-                {active.quote.role}
+                {active.quote.text}
               </p>
             </div>
-          </footer>
-        </blockquote>
+            <footer className="flex shrink-0 items-center gap-3 sm:max-w-[16rem]">
+              <Shield
+                className="size-8 shrink-0"
+                strokeWidth={1.5}
+                style={{ color: sage }}
+                aria-hidden
+              />
+              <div>
+                <p
+                  className="text-sm font-semibold tracking-[0.12em] uppercase"
+                  style={{ color: sage }}
+                >
+                  {active.quote.name}
+                </p>
+                <p className="mt-1 text-xs leading-snug" style={{ color: muted }}>
+                  {active.quote.role}
+                </p>
+              </div>
+            </footer>
+          </blockquote>
+        ) : null}
       </div>
     </div>
   );

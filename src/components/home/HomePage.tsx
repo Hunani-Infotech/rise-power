@@ -774,7 +774,7 @@ export function HomePage() {
           </div>
 
           <RevealStagger
-            className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-3 lg:grid-cols-5 [&>*:last-child]:col-span-2 [&>*:last-child]:justify-self-center sm:[&>*:last-child]:col-span-1 sm:[&>*:last-child]:justify-self-auto"
+            className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-2 lg:grid-cols-4"
             step={80}
             variant="up"
           >
