@@ -127,9 +127,9 @@ export default function DatasheetsPage() {
 
             {/* Eyebrow */}
             <div className="flex items-center gap-4">
-              <span className="h-[2px] w-12 bg-[#75a52f]" />
+              <span className="h-[2px] w-12 bg-[#6e7f42]" />
 
-              <p className="text-mm font-semibold tracking-[0.18em] text-[#8eb844] uppercase">
+              <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
                 Resources
               </p>
             </div>

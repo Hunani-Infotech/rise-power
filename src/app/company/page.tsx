@@ -136,7 +136,7 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
 
       <p
         className="text-mm font-semibold tracking-[0.18em] uppercase"
-        style={{ color: sage }}
+        style={{ color: "#6e7f42"}}
       >
         {children}
       </p>
@@ -190,7 +190,7 @@ export default function CompanyPage() {
                 <br />
                 Engineered.
                 <br />
-                <span style={{ color: "#849363" }}>
+                <span style={{ color: "#6e7f42" }}>
                   Field Validated.
                 </span>
               </h1>

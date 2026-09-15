@@ -672,7 +672,7 @@ export function Header() {
             <Link
               href={contactCta.href}
               onClick={() => setOpen(false)}
-              className="flex min-h-12 items-center justify-center bg-forest px-5 py-3 text-center text-sm font-semibold tracking-wide text-cream uppercase transition-colors hover:bg-ink"
+              className="flex min-h-12 items-center justify-center bg-[#849363] px-5 py-3 text-center text-sm font-semibold tracking-wide text-cream uppercase transition-colors hover:bg-ink rounded-sm"
             >
               {contactCta.label}
             </Link>
