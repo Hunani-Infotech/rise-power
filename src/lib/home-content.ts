@@ -94,20 +94,6 @@ export type CapabilityTab = {
   };
 };
 
-export type DeploymentHotspot = {
-  id: string;
-  label: string;
-  status: string;
-  title: string;
-  subhead: string;
-  stats: readonly { label: string; value: string }[];
-  overview: string;
-  image: string;
-  detailImageSrc?: string;
-  x: number;
-  y: number;
-};
-
 export type ComparisonRow = {
   metric: string;
   hydrogen: string;
@@ -127,6 +113,17 @@ export type CaseCard = {
   href: string;
   image: string;
   imageSrc?: string;
+};
+
+export type GroupCompanyCard = {
+  name: string;
+  body?: string;
+  image: string;
+  imageSrc: string;
+  href: string;
+  cta: string;
+  external?: boolean;
+  featured?: boolean;
 };
 
 export type FooterGroup = {
@@ -149,6 +146,7 @@ export const sectionOrder = [
   "mission-deployments",
   "why-hydrogen-wins",
   "customer-partners",
+  "businesses-companies",
   "closing-cta",
 ] as const;
 
@@ -631,117 +629,41 @@ export const capabilities = {
 
 export const missionDeployments = {
   eyebrow: "MISSION DEPLOYMENTS",
-  headingBefore: "ENGINEERED FOR THE FIELD.",
-  headingAccent: "VALIDATED IN IT.",
-  body: "Rise Power systems are designed for austere environments—validated across coastal British Columbia, arctic, and high-altitude conditions.",
-  mapPrompt: "CLICK A HOTSPOT to explore operating environments",
-  legend: ["ACTIVE ENVIRONMENTS", "FIELD CONDITIONS"] as const,
+  headingBefore: "PROVEN. DEPLOYED.",
+  headingAccent: "WORLDWIDE.",
+  body: "Rise Mission Power systems are trusted in the world's most challenging environments and critical missions.",
   mapImageSrc: "/media/missions/world-map.png",
   mapImageAlt: "Dark satellite view of the world",
-  hotspots: [
-    {
-      id: "arctic",
-      label: "ARCTIC",
-      status: "FIELD CONDITION",
-      title: "ARCTIC REGION",
-      subhead: "Cold-weather operations in extreme polar conditions.",
-      stats: [
-        { label: "FOCUS", value: "COLD-WEATHER OPS" },
-        { label: "ENVIRONMENT", value: "ARCTIC RANGE" },
-        { label: "SYSTEM FIT", value: "SENTINEL™" },
-        { label: "PRIORITY", value: "LOW SIGNATURE" },
-      ],
-      overview:
-        "Silent portable power for cold-weather communications and forward positions where diesel logistics and acoustic signature are constraints.",
-      image: "Arctic deployment",
-      detailImageSrc: "/media/missions/mountain.png",
-      x: 22,
-      y: 18,
-    },
-    {
-      id: "maritime",
-      label: "MARITIME",
-      status: "FIELD CONDITION",
-      title: "COASTAL / MARITIME",
-      subhead: "Salt, moisture, and coastal validation environments.",
-      stats: [
-        { label: "FOCUS", value: "COASTAL BC" },
-        { label: "ENVIRONMENT", value: "SALT / MOISTURE" },
-        { label: "SYSTEM FIT", value: "TITAN™" },
-        { label: "PRIORITY", value: "FIELD RUGGED" },
-      ],
-      overview:
-        "Field-validated for coastal British Columbia conditions—sealed against dust and salt spray for mission duration where commercial hardware fails.",
-      image: "Maritime deployment",
-      detailImageSrc: "/media/missions/mountain.png",
-      x: 48,
-      y: 42,
-    },
-    {
-      id: "desert",
-      label: "DESERT",
-      status: "FIELD CONDITION",
-      title: "DESERT REGION",
-      subhead: "High-heat desert operations with dust and thermal stress.",
-      stats: [
-        { label: "FOCUS", value: "HEAT / DUST" },
-        { label: "ENVIRONMENT", value: "−20°C TO +50°C" },
-        { label: "SYSTEM FIT", value: "FALCON™" },
-        { label: "PRIORITY", value: "UAV ENDURANCE" },
-      ],
-      overview:
-        "Sustaining UAV and ISR missions with lightweight hydrogen modules across arid theaters.",
-      image: "Desert deployment",
-      detailImageSrc: "/media/missions/mountain.png",
-      x: 58,
-      y: 48,
-    },
-    {
-      id: "mountain",
-      label: "MOUNTAIN",
-      status: "FIELD CONDITION",
-      title: "HIGH ALTITUDE",
-      subhead: "High-altitude operations in extreme terrain.",
-      stats: [
-        { label: "FOCUS", value: "ALTITUDE" },
-        { label: "ENVIRONMENT", value: "HIGH TERRAIN" },
-        { label: "SYSTEM FIT", value: "TITAN™" },
-        { label: "PRIORITY", value: "SILENT POWER" },
-      ],
-      overview:
-        "Providing silent, zero-emission power for forward operating bases and communication relays in high-altitude conditions.",
-      image: "Mountain deployment",
-      detailImageSrc: "/media/missions/mountain.png",
-      x: 68,
-      y: 34,
-    },
-    {
-      id: "urban",
-      label: "URBAN",
-      status: "FIELD CONDITION",
-      title: "URBAN / SHELTER",
-      subhead: "Dense environments with strict emissions and noise limits.",
-      stats: [
-        { label: "FOCUS", value: "INDOOR-SAFE" },
-        { label: "ENVIRONMENT", value: "INDOOR / OUTDOOR" },
-        { label: "SYSTEM FIT", value: "SENTINEL™" },
-        { label: "PRIORITY", value: "ZERO EXHAUST" },
-      ],
-      overview:
-        "Supporting emergency response and critical infrastructure with silent, indoor-safe hydrogen power.",
-      image: "Urban deployment",
-      detailImageSrc: "/media/missions/mountain.png",
-      x: 78,
-      y: 28,
-    },
-  ] satisfies readonly DeploymentHotspot[],
-  defaultHotspotId: "mountain",
-  stats: [
-    { value: "<65", label: "dBA", note: "Acoustic Signature at 1m", icon: "globe" },
-    { value: "0", label: "Emissions", note: "Zero Exhaust at Point of Use", icon: "map-pin" },
-    { value: "∞", label: "Runtime", note: "Unlimited with Cartridge Swap", icon: "clock" },
-    { value: "<50", label: "lbs", note: "Portable System Weight Target", icon: "check-circle" },
-  ] as const,
+  comingSoon: {
+    mapPrompt: "INTERACTIVE FIELD MAP — IN DEVELOPMENT",
+    badge: "STATUS: COMING SOON",
+    panelTitle: "COMING SOON",
+    panelBody:
+      "An interactive map of active deployments and past missions is being built for this section.",
+    legend: ["ACTIVE DEPLOYMENTS", "PAST MISSIONS"] as const,
+    previewNodes: [
+      { label: "ARCTIC", x: 22, y: 18 },
+      { label: "MARITIME", x: 48, y: 42 },
+      { label: "DESERT", x: 58, y: 48 },
+      { label: "MOUNTAIN", x: 68, y: 34 },
+      { label: "URBAN", x: 78, y: 28 },
+    ] as const,
+    status: "IN DEVELOPMENT",
+    title: "GLOBAL MISSION MAP",
+    subhead: "Explore theaters, environments, and field-validated systems.",
+    detailImageSrc: "/media/missions/mountain.png",
+    detailImageAlt: "Rise Power system in mountain terrain",
+    stats: [
+      { label: "THEATERS", value: "5+" },
+      { label: "ENVIRONMENTS", value: "EXTREME" },
+      { label: "SYSTEMS", value: "FULL LINE" },
+      { label: "STATUS", value: "SOON" },
+    ] as const,
+    overviewLabel: "WHAT'S AHEAD",
+    overview:
+      "Hotspot briefings for arctic, desert, mountain, urban, and maritime deployments—with mission duration, environment range, and system fit for each theater.",
+    cta: { label: "REQUEST A BRIEFING", href: "/contact" } satisfies Cta,
+  },
 };
 
 export const whyHydrogenWins = {
@@ -870,6 +792,32 @@ export const customerPartners = {
     "BUILT FOR OPERATORS.",
     "A CIMTECH GREEN ENERGY COMPANY",
   ] as const,
+};
+
+export const businessesCompanies = {
+  eyebrow: "BUSINESSES & COMPANIES",
+  headingBefore: "ENGINEERED IN CANADA.",
+  headingAccent: "DEPLOYED WORLDWIDE.",
+  body: "Rise Mission Power is part of a Canadian advanced manufacturing group—bringing precision engineering, hydrogen innovation, and field-validated power systems to defense and critical missions.",
+  companies: [
+    {
+      name: "CIMtech Green Energy",
+      image: "CIMtech Green Energy precision manufacturing",
+      imageSrc: "/media/capabilities/engineering.jpg",
+      href: "https://www.cimtechgreenenergy.com",
+      cta: "Visit CIMtech Green Energy",
+      external: true,
+    },
+    {
+      name: "Rise Mission Power",
+      body: "Portable hydrogen fuel cell systems for defense, disaster response, and off-grid operations—silent, zero-emission, and mission-ready.",
+      image: "Rise Mission Power field deployment",
+      imageSrc: "/media/use-cases/uc-defence.png",
+      href: "/products",
+      cta: "Explore Rise Mission Power",
+      featured: true,
+    },
+  ] satisfies readonly GroupCompanyCard[],
 };
 
 export const closingCta = {

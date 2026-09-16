@@ -23,14 +23,7 @@ import {
   AudioLines,
   Volume2,
   Weight,
-  Icon,
-  GlobeIcon,
-  MapPinIcon,
-  ClockIcon,
-  CircleCheckIcon,
   Wind,
-  Flame,
-  Zap,
 } from "lucide-react";
 import {
   featuredProducts,
@@ -50,19 +43,6 @@ import { MarketCard } from "./MarketCard";
 import { PerformanceMetricCard } from "./PerformanceMetricCard";
 import { PerformanceWaveBg } from "./PerformanceWaveBg";
 import { SectionSkeleton } from "./SectionSkeleton";
-
-
-const iconMap = {
-  globe: GlobeIcon,
-  "map-pin": MapPinIcon,
-  clock: ClockIcon,
-  "check-circle": CircleCheckIcon,
-  wind: Wind,
-  flame: Flame,
-  zap: Zap,
-} as const;
-
-
 
 const CapabilitiesTabs = dynamic(
   () => import("./CapabilitiesTabs").then((m) => m.CapabilitiesTabs),
@@ -93,6 +73,14 @@ const CustomersPartners = dynamic(
   {
     ssr: true,
     loading: () => <SectionSkeleton tone="cream" className="min-h-[32rem]" />,
+  },
+);
+
+const BusinessesCompanies = dynamic(
+  () => import("./BusinessesCompanies").then((m) => m.BusinessesCompanies),
+  {
+    ssr: true,
+    loading: () => <SectionSkeleton tone="cream" className="min-h-[28rem]" />,
   },
 );
 
@@ -797,37 +785,6 @@ export function HomePage() {
           <div className="mt-12 lg:mt-16">
             <MissionMap />
           </div>
-
-          <RevealStagger
-            className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-2 lg:grid-cols-4"
-            step={80}
-            variant="up"
-          >
-            {missionDeployments.stats.map((stat) => {
-              const StatIcon = iconMap[stat.icon];
-
-              return (
-                <div key={stat.label} className="text-center lg:text-left">
-                  <span className="flex items-center justify-center gap-5">
-                    <StatIcon className="size-10 shrink-0" style={{ color: "#689d2d" }} />
-                    <div className="flex flex-col items-start justify-center">
-                      <p className="font-display text-4xl font-bold tracking-tight sm:text-5xl text-start leading-none">
-                        {stat.value}
-                      </p>
-                      <div className="flex flex-col text-start leading-none">
-                        <p className="text-xs font-semibold tracking-[0.16em] uppercase">
-                          {stat.label}
-                        </p>
-                        <p className="text-xs text-[#f3efe4]/50 text-start">
-                          {stat.note}
-                        </p>
-                      </div>
-                    </div>
-                  </span>
-                </div>
-              );
-            })}
-          </RevealStagger>
         </div>
       </section>
 
@@ -840,6 +797,9 @@ export function HomePage() {
       <div className="cv-auto">
         <CustomersPartners />
       </div>
+
+      {/* 10. Businesses & Companies */}
+      <BusinessesCompanies />
 
 
     </div>
