@@ -121,7 +121,7 @@ export function CapabilitiesTabs() {
                     window.history.replaceState(
                       null,
                       "",
-                      `#capabilities-${tab.id}`,
+                      `#${tab.id}`,
                     );
                   }
                 }}

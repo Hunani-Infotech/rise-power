@@ -26,7 +26,7 @@ export function MissionMap() {
             fill
             quality={80}
             sizes="(max-width: 1024px) 100vw, 60vw"
-            className="object-cover opacity-40"
+            className="scale-[1.45] object-cover object-[32%_38%] opacity-40"
           />
           <div
             className="absolute inset-0 bg-[#071008]/55"
@@ -45,24 +45,33 @@ export function MissionMap() {
           />
 
           {/* Soft status nodes — visual echo of hotspots, non-interactive */}
-          {comingSoon.previewNodes.map((node) => (
-            <span
-              key={node.label}
-              className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center"
-              style={{ left: `${node.x}%`, top: `${node.y}%` }}
-              aria-hidden
-            >
-              <span className="relative grid size-11 place-items-center">
-                <span
-                  className="block size-2.5 rounded-full opacity-70 ring-4 ring-[#6e7f42]/25"
-                  style={{ background: sage }}
-                />
+          {comingSoon.previewNodes.map((node) => {
+            const isPeripheral = node.label === "INDIA";
+            return (
+              <span
+                key={node.label}
+                className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center"
+                style={{
+                  left: `${node.x}%`,
+                  top: `${node.y}%`,
+                  opacity: isPeripheral ? 0.55 : 1,
+                }}
+                aria-hidden
+              >
+                <span className="relative grid size-11 place-items-center">
+                  <span
+                    className={`block rounded-full ring-4 ring-[#6e7f42]/25 ${
+                      isPeripheral ? "size-2 opacity-60" : "size-2.5 opacity-70"
+                    }`}
+                    style={{ background: sage }}
+                  />
+                </span>
+                <span className="hidden text-[10px] font-semibold tracking-[0.14em] text-[#f3efe4]/45 uppercase sm:block">
+                  {node.label}
+                </span>
               </span>
-              <span className="hidden text-[10px] font-semibold tracking-[0.14em] text-[#f3efe4]/45 uppercase sm:block">
-                {node.label}
-              </span>
-            </span>
-          ))}
+            );
+          })}
 
           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
             <span

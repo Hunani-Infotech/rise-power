@@ -44,14 +44,6 @@ import { PerformanceMetricCard } from "./PerformanceMetricCard";
 import { PerformanceWaveBg } from "./PerformanceWaveBg";
 import { SectionSkeleton } from "./SectionSkeleton";
 
-const CapabilitiesTabs = dynamic(
-  () => import("./CapabilitiesTabs").then((m) => m.CapabilitiesTabs),
-  {
-    ssr: true,
-    loading: () => <SectionSkeleton tone="dark" className="min-h-[28rem]" />,
-  },
-);
-
 const MissionMap = dynamic(
   () => import("./MissionMap").then((m) => m.MissionMap),
   {
@@ -755,12 +747,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 6. Capabilities */}
-      <section id="capabilities" className="cv-auto scroll-mt-28 bg-[#141a14] text-[#f3efe4]">
-        <CapabilitiesTabs />
-      </section>
-
-      {/* 7. Mission Deployments */}
+      {/* 6. Mission Deployments */}
       <section
         id="mission-deployments"
         className={`cv-auto bg-[#0f140f] text-[#f3efe4] ${sectionY}`}
@@ -788,7 +775,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 8. Why Hydrogen Wins */}
+      {/* 7. Why Hydrogen Wins */}
       <div className="cv-auto">
         <WhyHydrogenWins />
       </div>

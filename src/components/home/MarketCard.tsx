@@ -119,10 +119,13 @@ export function MarketCard({
 
           <Link
             href={href}
-            className="mt-auto flex w-full items-center justify-between pt-6 text-[11px] font-semibold tracking-[0.16em] text-[#d8d4c8] uppercase transition-colors group-hover:text-white sm:text-xs"
+            className="group/cta mt-auto -mx-5 -mb-5 flex w-[calc(100%+2.5rem)] items-center justify-between border-t border-white/10 px-5 py-4 text-[11px] font-semibold tracking-[0.16em] text-white uppercase transition-colors duration-200 hover:border-[#6e7f42]/40 hover:bg-[#6e7f42] hover:text-[#121612] sm:-mx-6 sm:-mb-6 sm:w-[calc(100%+3rem)] sm:px-6 sm:text-xs"
           >
             <span>{cta}</span>
-            <ArrowRight className="size-4 shrink-0" strokeWidth={1.8} style={{ color: sage }} />
+            <ArrowRight
+              className="size-4 shrink-0 text-[#6e7f42] transition-transform duration-200 group-hover/cta:translate-x-1 group-hover/cta:text-[#121612]"
+              strokeWidth={1.8}
+            />
           </Link>
         </div>
       </article>

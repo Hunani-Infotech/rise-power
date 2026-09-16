@@ -56,33 +56,33 @@ export const megaNavItems: readonly MegaNavItem[] = [
 
   {
     label: "Capabilities",
-    href: "/#capabilities",
+    href: "/capabilities",
     links: [
       {
         label: "Engineering",
-        href: "/#capabilities-engineering",
+        href: "/capabilities#engineering",
         description: "From early-stage prototypes to production-ready hardware.",
       },
       {
         label: "Integration",
-        href: "/#capabilities-integration",
+        href: "/capabilities#integration",
         description: "Works with existing platforms and infrastructure.",
       },
       {
         label: "Field",
-        href: "/#capabilities-field",
+        href: "/capabilities#field",
         description: "Rapid field deployment with end-to-end logistics support.",
       },
       {
         label: "Safety",
-        href: "/#capabilities-safety",
+        href: "/capabilities#safety",
         description: "Safety and compliance engineered in from day one.",
       },
     ],
     feature: {
       title: "Our Capabilities",
       body: "Engineering, integration, field deployment, and safety — built for real operating environments.",
-      href: "/#capabilities",
+      href: "/capabilities",
       cta: "See Capabilities",
     },
   },
