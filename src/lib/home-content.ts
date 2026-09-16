@@ -625,88 +625,166 @@ export const capabilities = {
   diagramImageSrc: "/media/capabilities/engineering.png",
 };
 
-export type PlannedTheater = {
+export type DeploymentHotspot = {
   id: string;
   label: string;
+  status: string;
   title: string;
-  body: string;
-  focus: string;
+  subhead: string;
+  stats: readonly { label: string; value: string; icon: "clock" | "thermometer" | "package" | "users" }[];
+  overview: string;
+  image: string;
+  detailImageSrc?: string;
+  x: number;
+  y: number;
+};
+
+export type DeploymentStat = {
+  value: string;
+  label: string;
+  note: string;
+  icon: "globe" | "map-pin" | "shield" | "zap" | "flag";
 };
 
 export const missionDeployments = {
   eyebrow: "COMING SOON",
   headingBefore: "Deployments —",
   headingAccent: "Coming Soon",
-  body: "Field deployment tracking is not live yet. This section will share mission map details as programs go into the field.",
+  body: "Field deployment tracking is not live yet. Explore the environments Rise systems are engineered for—mission map details will publish as programs go into the field.",
+  mapPrompt: "CLICK A HOTSPOT to explore operating environments",
+  legend: ["PLANNED THEATERS", "ENVIRONMENT PROFILES"] as const,
   mapImageSrc: "/media/missions/world-map.png",
-  mapImageAlt: "World map focused on North America and Europe, with India visible",
-  comingSoon: {
-    mapPrompt: "INTERACTIVE FIELD MAP — IN DEVELOPMENT",
-    legend: ["PLANNED COVERAGE", "NOT YET LIVE"] as const,
-    previewNodes: [
-      { label: "CANADA", x: 14, y: 24 },
-      { label: "U.S.", x: 20, y: 40 },
-      { label: "U.K.", x: 42, y: 28 },
-      { label: "GERMANY", x: 50, y: 30 },
-      { label: "E. EUROPE", x: 58, y: 32 },
-      { label: "INDIA", x: 86, y: 48 },
-    ] as const,
-    status: "COMING SOON",
-    title: "GLOBAL MISSION MAP",
-    subhead: "Theater briefings and environment profiles will publish here when ready.",
-    detailImageSrc: "/media/missions/mountain.png",
-    detailImageAlt: "Rise Power system in mountain terrain",
-    stats: [
-      { label: "THEATERS", value: "TBD" },
-      { label: "ENVIRONMENTS", value: "TBD" },
-      { label: "SYSTEMS", value: "FULL LINE" },
-      { label: "STATUS", value: "SOON" },
-    ] as const,
-    overviewLabel: "WHAT'S AHEAD",
-    overview:
-      "Planned hotspot briefings for arctic, desert, mountain, urban, and maritime environments—with mission duration, operating range, and system fit for each theater once field programs begin.",
-    cta: { label: "REQUEST A BRIEFING", href: "/contact" } satisfies Cta,
-  },
-  theatersHeading: "Operating Environments",
-  theatersBody:
-    "Profiles for the environments Rise systems are engineered for. Field mission data will appear here when programs go live.",
-  theaters: [
+  mapImageAlt: "Dark satellite view of the world",
+  defaultHotspotId: "mountain",
+  hotspots: [
     {
       id: "arctic",
       label: "ARCTIC",
-      title: "Cold-weather ops",
-      body: "Silent power for polar posts and remote arrays in extreme low temperatures.",
-      focus: "−40°C to 10°C",
-    },
-    {
-      id: "desert",
-      label: "DESERT",
-      title: "High-heat ops",
-      body: "Dust-tolerant modules built for arid theaters and thermal stress.",
-      focus: "5°C to 50°C",
-    },
-    {
-      id: "mountain",
-      label: "MOUNTAIN",
-      title: "High-altitude ops",
-      body: "Compact systems for forward posts and relays in rugged terrain.",
-      focus: "−25°C to 45°C",
-    },
-    {
-      id: "urban",
-      label: "URBAN",
-      title: "Dense-area ops",
-      body: "Indoor-safe, low-signature power for infrastructure and response teams.",
-      focus: "Indoor / outdoor",
+      status: "ENVIRONMENT PROFILE",
+      title: "ARCTIC REGION",
+      subhead: "Cold-weather operations in extreme polar conditions.",
+      stats: [
+        { label: "RUNTIME CAPABILITY", value: "96+ HOURS", icon: "clock" },
+        { label: "ENVIRONMENT", value: "-40°C to 10°C", icon: "thermometer" },
+        { label: "TARGET SYSTEM", value: "SENTINEL™", icon: "package" },
+        { label: "DESIGN SUPPORT", value: "80+", icon: "users" },
+      ],
+      overview:
+        "Silent, cold-tolerant hydrogen power engineered for polar research posts and remote communications arrays. Field mission data will appear here when programs go live.",
+      image: "Arctic operating environment",
+      detailImageSrc: "/media/missions/mountain.png",
+      x: 18,
+      y: 22,
     },
     {
       id: "maritime",
       label: "MARITIME",
-      title: "Coastal & shipboard",
-      body: "Salt-air resilient backup for coastal stations and command nodes.",
-      focus: "High humidity",
+      status: "ENVIRONMENT PROFILE",
+      title: "MARITIME REGION",
+      subhead: "Shipboard and coastal power for austere maritime missions.",
+      stats: [
+        { label: "RUNTIME CAPABILITY", value: "120+ HOURS", icon: "clock" },
+        { label: "ENVIRONMENT", value: "Salt-air, humidity", icon: "thermometer" },
+        { label: "TARGET SYSTEM", value: "TITAN™", icon: "package" },
+        { label: "DESIGN SUPPORT", value: "200+", icon: "users" },
+      ],
+      overview:
+        "Zero-emission backup and tactical power engineered for coastal stations and maritime command nodes. Field mission data will appear here when programs go live.",
+      image: "Maritime operating environment",
+      detailImageSrc: "/media/missions/mountain.png",
+      x: 36,
+      y: 50,
     },
-  ] satisfies readonly PlannedTheater[],
+    {
+      id: "desert",
+      label: "DESERT",
+      status: "ENVIRONMENT PROFILE",
+      title: "DESERT REGION",
+      subhead: "High-heat desert operations with dust and thermal stress.",
+      stats: [
+        { label: "RUNTIME CAPABILITY", value: "60+ HOURS", icon: "clock" },
+        { label: "ENVIRONMENT", value: "5°C to 50°C", icon: "thermometer" },
+        { label: "TARGET SYSTEM", value: "FALCON™", icon: "package" },
+        { label: "DESIGN SUPPORT", value: "120+", icon: "users" },
+      ],
+      overview:
+        "Lightweight hydrogen modules engineered to sustain UAV and ISR missions across arid theaters. Field mission data will appear here when programs go live.",
+      image: "Desert operating environment",
+      detailImageSrc: "/media/missions/mountain.png",
+      x: 46,
+      y: 54,
+    },
+    {
+      id: "mountain",
+      label: "MOUNTAIN",
+      status: "ENVIRONMENT PROFILE",
+      title: "MOUNTAIN REGION",
+      subhead: "High-altitude operations in extreme terrain.",
+      stats: [
+        { label: "RUNTIME CAPABILITY", value: "72+ HOURS", icon: "clock" },
+        { label: "ENVIRONMENT", value: "-25°C to 45°C", icon: "thermometer" },
+        { label: "TARGET SYSTEM", value: "TITAN™", icon: "package" },
+        { label: "DESIGN SUPPORT", value: "150+", icon: "users" },
+      ],
+      overview:
+        "Silent, zero-emission power engineered for forward bases and communication relays in high-altitude conditions. Field mission data publishes here when programs go live.",
+      image: "Mountain operating environment",
+      detailImageSrc: "/media/missions/mountain.png",
+      x: 54,
+      y: 36,
+    },
+    {
+      id: "urban",
+      label: "URBAN",
+      status: "ENVIRONMENT PROFILE",
+      title: "URBAN REGION",
+      subhead: "Dense urban operations with strict emissions and noise limits.",
+      stats: [
+        { label: "RUNTIME CAPABILITY", value: "48+ HOURS", icon: "clock" },
+        { label: "ENVIRONMENT", value: "Indoor / outdoor", icon: "thermometer" },
+        { label: "TARGET SYSTEM", value: "SENTINEL™", icon: "package" },
+        { label: "DESIGN SUPPORT", value: "300+", icon: "users" },
+      ],
+      overview:
+        "Silent, indoor-safe hydrogen power engineered for emergency response and critical infrastructure. Field mission data will appear here when programs go live.",
+      image: "Urban operating environment",
+      detailImageSrc: "/media/missions/mountain.png",
+      x: 60,
+      y: 30,
+    },
+  ] satisfies readonly DeploymentHotspot[],
+  stats: [
+    {
+      value: "5",
+      label: "Environments",
+      note: "Engineered For",
+      icon: "globe",
+    },
+    {
+      value: "—",
+      label: "Field Sites",
+      note: "Tracking Soon",
+      icon: "map-pin",
+    },
+    {
+      value: "—",
+      label: "Mission Hours",
+      note: "Tracking Soon",
+      icon: "shield",
+    },
+    {
+      value: "Full",
+      label: "Product Line",
+      note: "Systems Ready",
+      icon: "zap",
+    },
+    {
+      value: "24/7",
+      label: "Mission Ready",
+      note: "Request a Briefing",
+      icon: "flag",
+    },
+  ] satisfies readonly DeploymentStat[],
 };
 
 export const whyHydrogenWins = {

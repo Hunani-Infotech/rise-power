@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { AppLink } from "@/components/nav/AppLink";
 import type { MegaLink, MegaNavItem } from "@/lib/nav-menu";
 
 export type NavMegaItemProps = {
@@ -38,33 +38,35 @@ export function NavMegaItem({
 
   if (!hasLinks) {
     return (
-      <Link
+      <AppLink
         href={item.href}
         className={className}
         onMouseEnter={onActivate}
+        onFocus={onActivate}
       >
         {item.label}
-      </Link>
+      </AppLink>
     );
   }
 
   return (
-    <Link
+    <AppLink
       href={item.href}
-      className={`inline-flex items-center gap-1 ${className}`}
+      className={`inline-flex items-center gap-0.5 ${className}`}
       onMouseEnter={onActivate}
+      onFocus={onActivate}
       aria-expanded={isActive}
       aria-haspopup="true"
       aria-controls={isActive ? panelId : undefined}
     >
-      {item.label}
+      <span>{item.label}</span>
       <ChevronDown
-        className={`size-3.5 shrink-0 transition-transform duration-200 ${
+        className={`size-3 shrink-0 opacity-80 transition-transform duration-200 ${
           isActive ? "rotate-180" : ""
         } ${chevronClassName}`}
-        strokeWidth={1.75}
+        strokeWidth={2}
         aria-hidden="true"
       />
-    </Link>
+    </AppLink>
   );
 }

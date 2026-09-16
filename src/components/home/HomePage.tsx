@@ -742,26 +742,26 @@ export function HomePage() {
       {/* 6. Deployments — Coming Soon */}
       <section
         id="mission-deployments"
-        className={`cv-auto scroll-mt-28 bg-[#0f140f] text-[#f3efe4] ${sectionY}`}
+        className={`cv-auto scroll-mt-28 bg-[#f3f0e8] text-[#1a1c16] ${sectionY}`}
       >
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
+              className="text-center font-display text-[13px] font-semibold tracking-[0.28em] uppercase sm:text-[15px]"
               style={{ color: sage }}
             >
               {missionDeployments.eyebrow}
             </p>
-            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-[3.75rem]">
               {missionDeployments.headingBefore}{" "}
               <span style={{ color: sage }}>{missionDeployments.headingAccent}</span>
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#f3efe4]/65 sm:text-base">
+            <p className="mx-auto mt-5 max-w-3xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
               {missionDeployments.body}
             </p>
           </Reveal>
 
-          <div className="mt-12 lg:mt-16">
+          <div className="mt-10 lg:mt-14">
             <MissionMap />
           </div>
         </div>

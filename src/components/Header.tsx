@@ -462,61 +462,72 @@ export function Header() {
 
   return (
     <header className={headerSurface} onMouseLeave={closeMega}>
-      <div className="relative mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-3 px-6 sm:gap-4 lg:px-10">
+      <div className="mx-auto flex h-[4.75rem] w-full max-w-[1600px] items-center gap-3 px-4 sm:px-6 lg:gap-4 lg:px-6 xl:px-8">
         {/* Logo */}
-        <div className="min-w-0 shrink">
-          <Logo variant={isHome ? "onDark" : "onLight"} priority />
+        <div className="shrink-0">
+          <Logo
+            variant={isHome ? "onDark" : "onLight"}
+            priority
+            className="[&_img]:h-8 [&_img]:max-w-[160px] sm:[&_img]:h-9 sm:[&_img]:max-w-[190px] xl:[&_img]:h-10 xl:[&_img]:max-w-[220px]"
+          />
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation — xl+ only so 9 items never collide with logo/CTA */}
         <nav
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 lg:flex xl:gap-7"
+          className="hidden min-w-0 flex-1 items-center justify-center xl:flex"
           aria-label="Primary navigation"
         >
-          {megaNavItems.map((item) => {
-            const itemPath = item.href.split("#")[0] || "/";
-            const routeActive =
-              itemPath !== "/" &&
-              (pathname === itemPath || pathname.startsWith(`${itemPath}/`));
-            const isMegaActive = activeKey === item.label;
-            const highlight = isMegaActive || routeActive;
+          <ul className="flex items-center justify-center gap-x-1 2xl:gap-x-3">
+            {megaNavItems.map((item) => {
+              const itemPath = item.href.split("#")[0] || "/";
+              const routeActive =
+                itemPath !== "/" &&
+                (pathname === itemPath || pathname.startsWith(`${itemPath}/`));
+              const isMegaActive = activeKey === item.label;
+              const highlight = isMegaActive || routeActive;
 
-            return (
-              <NavMegaItem
-                key={item.label}
-                item={item}
-                isActive={isMegaActive}
-                panelId={panelId}
-                onActivate={() => {
-                  setActiveKey(item.label);
-                  setIsVisible(true);
-                }}
-                className={`text-[12px] font-medium tracking-[0.14em] uppercase transition-colors xl:text-[13px] ${highlight ? activeColor : linkColor
-                  } ${isMegaActive
-                    ? "underline decoration-sage decoration-2 underline-offset-8"
-                    : ""
-                  }`}
-              />
-            );
-          })}
+              return (
+                <li key={item.label} className="shrink-0">
+                  <NavMegaItem
+                    item={item}
+                    isActive={isMegaActive}
+                    panelId={panelId}
+                    onActivate={() => {
+                      setActiveKey(item.label);
+                      setIsVisible(true);
+                    }}
+                    className={`whitespace-nowrap rounded-sm px-1.5 py-2 text-[11px] font-semibold tracking-[0.1em] uppercase transition-colors 2xl:px-2 2xl:text-[12px] 2xl:tracking-[0.12em] ${
+                      highlight ? activeColor : linkColor
+                    } ${
+                      isMegaActive
+                        ? "underline decoration-sage decoration-2 underline-offset-[10px]"
+                        : ""
+                    }`}
+                  />
+                </li>
+              );
+            })}
+          </ul>
         </nav>
 
         {/* Right Actions */}
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3 xl:ml-0">
           <Link
             href={contactCta.href}
             className={
               isHome
-                ? "hidden border border-white/70 px-5 py-2.5 text-sm font-semibold tracking-wide text-white uppercase transition-all hover:border-white hover:bg-white/10 lg:inline-flex rounded-sm"
-                : "hidden bg-forest px-5 py-2.5 text-sm font-semibold tracking-wide text-cream uppercase transition-all hover:bg-ink lg:inline-flex rounded-sm"}
+                ? "hidden border border-white/70 px-3.5 py-2 text-[11px] font-semibold tracking-[0.12em] text-white uppercase transition-all hover:border-white hover:bg-white/10 xl:inline-flex rounded-sm"
+                : "hidden bg-forest px-3.5 py-2 text-[11px] font-semibold tracking-[0.12em] text-cream uppercase transition-all hover:bg-ink xl:inline-flex rounded-sm"
+            }
           >
             {contactCta.label}
           </Link>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile / tablet Menu Button — used below xl where the full 9-item nav won't fit */}
           <button
-            className={`flex min-h-11 min-w-11 items-center justify-center lg:hidden ${isHome ? "text-white" : "text-ink"
-              }`}
+            className={`flex min-h-11 min-w-11 items-center justify-center xl:hidden ${
+              isHome ? "text-white" : "text-ink"
+            }`}
             aria-expanded={open}
             aria-controls="site-menu"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -553,8 +564,8 @@ export function Header() {
           id="site-menu"
           className={
             isHome
-              ? "mobile-nav-drawer flex max-h-[min(80vh,640px)] flex-col border-t border-white/15 bg-[#07100d]/97 backdrop-blur-xl lg:hidden"
-              : "mobile-nav-drawer flex max-h-[min(80vh,640px)] flex-col border-t border-border bg-cream lg:hidden"
+              ? "mobile-nav-drawer flex max-h-[min(80vh,640px)] flex-col border-t border-white/15 bg-[#07100d]/97 backdrop-blur-xl xl:hidden"
+              : "mobile-nav-drawer flex max-h-[min(80vh,640px)] flex-col border-t border-border bg-cream xl:hidden"
           }
         >
           <nav
