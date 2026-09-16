@@ -636,10 +636,12 @@ export type DeploymentHotspot = {
   overview: string;
   image: string;
   detailImageSrc?: string;
-  /** WGS84 longitude (−180…180) for equirectangular map placement */
-  lon: number;
-  /** WGS84 latitude (−90…90) for equirectangular map placement */
-  lat: number;
+  /**
+   * Pin position as % of world-map.png (image-calibrated — this art is not
+   * equirectangular / WGS84-aligned).
+   */
+  x: number;
+  y: number;
 };
 
 export type DeploymentStat = {
@@ -679,9 +681,9 @@ export const missionDeployments = {
         "Silent, cold-tolerant hydrogen power engineered for polar research posts and remote communications arrays. Field mission data will appear here when programs go live.",
       image: "Arctic operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      // Nunavut, Canadian Arctic Archipelago
-      lon: -95.0,
-      lat: 72.0,
+      // Northern Canada — calibrated to world-map.png light/land mass
+      x: 29.5,
+      y: 15.0,
     },
     {
       id: "maritime",
@@ -700,9 +702,9 @@ export const missionDeployments = {
         "Zero-emission backup and tactical power engineered for coastal stations and maritime command nodes. Field mission data will appear here when programs go live.",
       image: "Maritime operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      // Lisbon / western Portugal (on land, not mid-Atlantic)
-      lon: -8.6,
-      lat: 39.4,
+      // Western Iberia / Portugal — on land in this map art
+      x: 51.0,
+      y: 37.5,
     },
     {
       id: "desert",
@@ -721,9 +723,9 @@ export const missionDeployments = {
         "Lightweight hydrogen modules engineered to sustain UAV and ISR missions across arid theaters. Field mission data will appear here when programs go live.",
       image: "Desert operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      // Central Algerian Sahara
-      lon: 3.0,
-      lat: 26.5,
+      // Algerian Sahara landmass on this map art
+      x: 53.0,
+      y: 46.5,
     },
     {
       id: "mountain",
@@ -742,9 +744,9 @@ export const missionDeployments = {
         "Silent, zero-emission power engineered for forward bases and communication relays in high-altitude conditions. Field mission data publishes here when programs go live.",
       image: "Mountain operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      // Swiss Alps (Bernese Oberland)
-      lon: 8.0,
-      lat: 46.5,
+      // Swiss Alps cluster on this map art
+      x: 53.0,
+      y: 31.5,
     },
     {
       id: "urban",
@@ -763,9 +765,9 @@ export const missionDeployments = {
         "Silent, indoor-safe hydrogen power engineered for emergency response and critical infrastructure. Field mission data will appear here when programs go live.",
       image: "Urban operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      // Berlin, Germany
-      lon: 13.4,
-      lat: 52.5,
+      // Germany — north of Alps lights on this map art
+      x: 54.2,
+      y: 28.0,
     },
   ] satisfies readonly DeploymentHotspot[],
   stats: [

@@ -26,14 +26,6 @@ import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 const sage = "#6e7f42";
 const sageBright = "#7a9148";
 
-/** Equirectangular projection — pin % matches full world-map.png */
-function projectLonLat(lon: number, lat: number) {
-  return {
-    x: ((lon + 180) / 360) * 100,
-    y: ((90 - lat) / 180) * 100,
-  };
-}
-
 function coverSize(
   stageW: number,
   stageH: number,
@@ -49,6 +41,61 @@ function coverSize(
     return { width: stageW, height: stageW / imgRatio };
   }
   return { width: stageH * imgRatio, height: stageH };
+}
+
+/** Pan map so the focus pin sits in the visible center (left of the detail panel). */
+function mapPanOffset({
+  stageW,
+  stageH,
+  surfaceW,
+  surfaceH,
+  focusXPct,
+  focusYPct,
+  zoom,
+  hasPanel,
+}: {
+  stageW: number;
+  stageH: number;
+  surfaceW: number;
+  surfaceH: number;
+  focusXPct: number;
+  focusYPct: number;
+  zoom: number;
+  hasPanel: boolean;
+}) {
+  if (stageW <= 0 || stageH <= 0 || surfaceW <= 0 || surfaceH <= 0) {
+    return { x: 0, y: 0 };
+  }
+
+  const panelReserve = hasPanel && stageW >= 1024 ? Math.min(400, stageW * 0.32) : 0;
+  const targetX = (stageW - panelReserve) * 0.5;
+  const targetY = stageH * 0.48;
+
+  const focusX = (focusXPct / 100) * surfaceW;
+  const focusY = (focusYPct / 100) * surfaceH;
+
+  let x = targetX - focusX * zoom;
+  let y = targetY - focusY * zoom;
+
+  const scaledW = surfaceW * zoom;
+  const scaledH = surfaceH * zoom;
+  const minX = stageW - scaledW - 40;
+  const maxX = 40;
+  const minY = stageH - scaledH - 40;
+  const maxY = 40;
+
+  if (scaledW > stageW) {
+    x = Math.min(maxX, Math.max(minX, x));
+  } else {
+    x = (stageW - scaledW) / 2;
+  }
+  if (scaledH > stageH) {
+    y = Math.min(maxY, Math.max(minY, y));
+  } else {
+    y = (stageH - scaledH) / 2;
+  }
+
+  return { x, y };
 }
 
 const hotspotStatIcons = {
@@ -70,7 +117,7 @@ export function MissionMap() {
   const [activeId, setActiveId] = useState<string | null>(
     missionDeployments.defaultHotspotId,
   );
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] = useState(1.15);
   const stageRef = useRef<HTMLDivElement>(null);
   const [stage, setStage] = useState({ w: 0, h: 0 });
 
@@ -80,6 +127,22 @@ export function MissionMap() {
   const active = index >= 0 ? missionDeployments.hotspots[index] : null;
   const mapAspect = missionDeployments.mapAspect;
   const surface = coverSize(stage.w, stage.h, mapAspect.width, mapAspect.height);
+
+  // Focus the active pin; otherwise hold a Europe/Atlantic overview framing
+  const focusPoint = active
+    ? { x: active.x, y: active.y }
+    : { x: 52, y: 34 };
+
+  const pan = mapPanOffset({
+    stageW: stage.w,
+    stageH: stage.h,
+    surfaceW: surface.width,
+    surfaceH: surface.height,
+    focusXPct: focusPoint.x,
+    focusYPct: focusPoint.y,
+    zoom,
+    hasPanel: Boolean(active),
+  });
 
   useEffect(() => {
     const el = stageRef.current;
@@ -108,8 +171,8 @@ export function MissionMap() {
     if (hotspot) setActiveId(hotspot.id);
   };
 
-  const zoomIn = () => setZoom((value) => Math.min(1.6, value + 0.2));
-  const zoomOut = () => setZoom((value) => Math.max(1, value - 0.2));
+  const zoomIn = () => setZoom((value) => Math.min(1.75, value + 0.15));
+  const zoomOut = () => setZoom((value) => Math.max(1, value - 0.15));
 
   return (
     <div className="space-y-6 lg:space-y-8">
@@ -118,17 +181,17 @@ export function MissionMap() {
         className="overflow-hidden rounded-[1.25rem] bg-[#0a0e12] text-[#f3efe4] shadow-[0_28px_70px_rgba(10,14,10,0.2)]"
       >
         <div className="relative lg:min-h-[40rem] xl:min-h-[42rem]">
-          {/* Map plane — object-cover surface with lat/lon pins locked to geography */}
+          {/* Map plane — cover surface, lat/lon pins, pan to keep active pin centered */}
           <div
             ref={stageRef}
             className="relative h-[22rem] overflow-hidden sm:h-[28rem] lg:absolute lg:inset-0 lg:h-auto"
           >
             <div
-              className="absolute top-1/2 left-1/2 origin-center transition-transform duration-300 ease-out"
+              className="absolute top-0 left-0 origin-top-left will-change-transform transition-transform duration-500 ease-out"
               style={{
                 width: surface.width || "100%",
                 height: surface.height || "100%",
-                transform: `translate(-50%, -50%) scale(${zoom})`,
+                transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
               }}
             >
               <Image
@@ -146,7 +209,6 @@ export function MissionMap() {
 
               {surface.width > 0
                 ? missionDeployments.hotspots.map((hotspot) => {
-                    const { x, y } = projectLonLat(hotspot.lon, hotspot.lat);
                     const isActive = hotspot.id === active?.id;
                     return (
                       <button
@@ -154,7 +216,7 @@ export function MissionMap() {
                         type="button"
                         onClick={() => setActiveId(hotspot.id)}
                         className="absolute z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center outline-none"
-                        style={{ left: `${x}%`, top: `${y}%` }}
+                        style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
                         aria-label={`${hotspot.label} — ${hotspot.location}`}
                         aria-pressed={isActive}
                       >
@@ -225,7 +287,7 @@ export function MissionMap() {
               <button
                 type="button"
                 onClick={zoomIn}
-                disabled={zoom >= 1.6}
+                disabled={zoom >= 1.75}
                 className="grid size-10 place-items-center text-white/70 transition-colors hover:bg-white/5 hover:text-white disabled:opacity-35"
                 aria-label="Zoom in"
               >
@@ -281,7 +343,10 @@ export function MissionMap() {
                   <h3 className="mt-1.5 font-display text-[1.65rem] leading-none font-bold tracking-wide uppercase">
                     {active.title}
                   </h3>
-                  <p className="mt-1 text-[11px] font-semibold tracking-[0.16em] text-white/45 uppercase">
+                  <p
+                    className="mt-1 text-[11px] font-semibold tracking-[0.16em] uppercase"
+                    style={{ color: sageBright }}
+                  >
                     {active.location}
                   </p>
                   <p className="mt-2 text-[13px] leading-snug text-white/60">

@@ -468,7 +468,6 @@ export function Header() {
           <Logo
             variant={isHome ? "onDark" : "onLight"}
             priority
-            className="[&_img]:h-8 [&_img]:max-w-[160px] sm:[&_img]:h-9 sm:[&_img]:max-w-[190px] xl:[&_img]:h-10 xl:[&_img]:max-w-[220px]"
           />
         </div>
 

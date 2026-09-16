@@ -347,7 +347,7 @@ export function Footer() {
       >
         {/* Brand */}
         <div className="lg:border-r lg:border-white/15 lg:pr-8 xl:pr-10">
-          <Logo />
+          <Logo variant="onDark" />
 
           <p className="mt-6 text-lg font-semibold text-cream">
             {footer.tagline}
