@@ -15,7 +15,7 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
-import { capabilities } from "@/lib/home-content";
+import { capabilities, type CapabilityTab } from "@/lib/home-content";
 import { Reveal } from "@/components/motion/Reveal";
 import { PlaceholderMedia } from "./PlaceholderMedia";
 
@@ -55,7 +55,7 @@ export function CapabilitiesTabs() {
   const [activeId, setActiveId] = useState(
     capabilities.tabs[0]?.id ?? "engineering",
   );
-  const active =
+  const active: CapabilityTab | undefined =
     capabilities.tabs.find((tab) => tab.id === activeId) ?? capabilities.tabs[0];
 
   useEffect(() => {
