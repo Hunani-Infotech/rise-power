@@ -155,6 +155,7 @@ export default function UseCasesPage() {
 
   const overviewCases = useCases.map((item, index) => ({
     number: String(index + 1).padStart(2, "0"),
+    slug: item.slug,
     title: item.title,
     description: item.description,
     image: item.image,
@@ -317,7 +318,7 @@ export default function UseCasesPage() {
 
       <section
         id="use-cases"
-        className="relative overflow-hidden bg-[#fbfaf7] py-20 sm:py-24 lg:py-32"
+        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-20 sm:py-24 lg:py-32"
       >
         {/* Decorative background lines */}
         <div
@@ -350,11 +351,14 @@ export default function UseCasesPage() {
           <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:gap-4">
             {overviewCases.map((item, index) => (
               <Reveal
-                key={item.number}
+                key={item.slug}
                 variant="fade"
                 delay={index * 70}
               >
-                <div className="group relative block aspect-[2.20/1] overflow-hidden rounded-xl bg-[#101713]">
+                <article
+                  id={item.slug === defense?.slug ? undefined : item.slug}
+                  className="group relative block aspect-[2.20/1] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713]"
+                >
                   {item.image ? (
                     <Image
                       src={item.image}
@@ -392,7 +396,7 @@ export default function UseCasesPage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </article>
               </Reveal>
             ))}
           </div>
@@ -404,7 +408,7 @@ export default function UseCasesPage() {
       {defense && (
         <section
           id={defense.slug}
-          className="relative scroll-mt-24 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-0"
+          className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-0"
         >
           <div className="mx-auto grid max-w-[1440px] gap-5 px-6 lg:grid-cols-[1fr_0.92fr] lg:px-10">
             {/* Image */}

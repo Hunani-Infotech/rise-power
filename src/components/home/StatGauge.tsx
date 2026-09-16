@@ -9,8 +9,8 @@ type StatGaugeProps = {
   size?: number;
 };
 
-const PRIMARY_GREEN = "#689d2d";
-const ARC_GREEN = "#689d2d";
+const PRIMARY_GREEN = "#6e7f42";
+const ARC_GREEN = "#6e7f42";
 const TICK_GREY = "#c8c4b8";
 const ANIM_MS = 1100;
 const TICK_COUNT = 100;

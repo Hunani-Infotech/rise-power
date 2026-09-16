@@ -198,7 +198,7 @@ export function ClosingCta() {
               </p>
 
               <RevealStagger
-                className="mt-9 grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-4 lg:mt-11"
+                className="mt-9 grid grid-cols-2 gap-x-5 gap-y-6 sm:grid-cols-4 sm:gap-x-4 lg:mt-11"
                 step={70}
                 variant="up"
                 baseDelay={80}
@@ -209,33 +209,42 @@ export function ClosingCta() {
                   return (
                     <div
                       key={chip.title}
-                      className="flex min-w-0 items-start gap-3"
+                      className="group relative flex min-w-0 items-start gap-3"
                     >
                       <span
-                        className="grid size-10 shrink-0 place-items-center rounded-full border"
-                        style={{
-                          borderColor: `${sage}99`,
-                          color: sage,
-                        }}
+                        className="relative grid size-10 shrink-0 place-items-center rounded-full sm:size-11"
                         aria-hidden
                       >
+                        <span
+                          className="absolute inset-0 rounded-full opacity-35 transition-opacity duration-300 group-hover:opacity-60"
+                          style={{
+                            background: `radial-gradient(circle, ${sage}40 0%, transparent 72%)`,
+                          }}
+                        />
+                        <span
+                          className="absolute inset-0 rounded-full border"
+                          style={{ borderColor: `${sage}70` }}
+                        />
+                        <span className="absolute inset-[2px] rounded-full border border-white/10 bg-[#061018]/40" />
                         <Icon
-                          className="size-[18px]"
-                          strokeWidth={1.7}
+                          className="relative size-[17px] sm:size-[18px]"
+                          strokeWidth={1.45}
+                          style={{ color: cream }}
                         />
                       </span>
 
-                      <div className="min-w-0">
-                        <p
-                          className="text-[10px] font-semibold tracking-[0.12em] uppercase sm:text-[11px]"
-                          style={{ color: sage }}
-                        >
+                      <div className="min-w-0 pt-0.5">
+                        <p className="font-display text-[12px] font-semibold tracking-[0.14em] text-white uppercase sm:text-[13px]">
                           {chip.title}
                         </p>
-
-                        <p className="mt-1 text-[11px] leading-[1.45] text-[#f3efe4]/70 sm:text-xs">
+                        <p className="mt-1 text-xs leading-[1.45] text-[#f3efe4]/68 sm:text-[13px]">
                           {chip.subtitle}
                         </p>
+                        <span
+                          className="mt-2 block h-px w-6 origin-left transition-transform duration-300 group-hover:scale-x-125"
+                          style={{ background: sage }}
+                          aria-hidden
+                        />
                       </div>
                     </div>
                   );

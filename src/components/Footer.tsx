@@ -209,9 +209,9 @@
 
 
 
-import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "./Logo";
+import { AppLink } from "@/components/nav/AppLink";
 import { footer } from "@/lib/home-content";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -358,18 +358,38 @@ export function Footer() {
           </p>
 
           <div className="mt-7 flex gap-3">
-            {footer.social.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                aria-label={item.label}
-                className="inline-flex size-11 items-center justify-center rounded-md border border-white/20 text-cream/85 transition-colors hover:border-sage hover:text-cream"
-              >
-                <SocialIcon
-                  name={item.label as "LinkedIn" | "YouTube" | "X"}
-                />
-              </a>
-            ))}
+            {footer.social.map((item) => {
+              const isPlaceholder = !item.href || item.href === "#";
+              const className =
+                "inline-flex size-11 items-center justify-center rounded-md border border-white/20 text-cream/85 transition-colors hover:border-sage hover:text-cream";
+
+              if (isPlaceholder) {
+                return (
+                  <span
+                    key={item.label}
+                    aria-label={item.label}
+                    className={className}
+                  >
+                    <SocialIcon
+                      name={item.label as "LinkedIn" | "YouTube" | "X"}
+                    />
+                  </span>
+                );
+              }
+
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  aria-label={item.label}
+                  className={className}
+                >
+                  <SocialIcon
+                    name={item.label as "LinkedIn" | "YouTube" | "X"}
+                  />
+                </a>
+              );
+            })}
           </div>
         </div>
 
@@ -389,12 +409,12 @@ export function Footer() {
               <ul className="mt-5 space-y-4">
                 {group.links.map((item) => (
                   <li key={`${group.heading}-${item.label}`}>
-                    <Link
+                    <AppLink
                       href={item.href}
-                      className="text-[15 px] leading-5 text-cream/70 transition-colors hover:text-cream"
+                      className="text-[15px] leading-5 text-cream/70 transition-colors hover:text-cream"
                     >
                       {item.label}
-                    </Link>
+                    </AppLink>
                   </li>
                 ))}
               </ul>
@@ -500,12 +520,12 @@ export function Footer() {
                   </span>
                 )}
 
-                <Link
+                <AppLink
                   href={item.href}
                   className="text-mm text-cream/55 transition-colors hover:text-cream"
                 >
                   {item.label}
-                </Link>
+                </AppLink>
               </span>
             ))}
           </nav>

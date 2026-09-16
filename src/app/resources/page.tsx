@@ -19,7 +19,10 @@ export default function ResourcesPage() {
         title="Specs, insights, and field notes."
         description="Datasheets, news, and documentation for procurement, programs, and integration leads."
       />
-      <section className="mx-auto max-w-[1440px] px-6 py-16 lg:px-10 lg:py-24">
+      <section
+        id="faqs"
+        className="mx-auto max-w-[1440px] scroll-mt-28 px-6 py-16 lg:px-10 lg:py-24"
+      >
         <Reveal variant="up">
           <p className="max-w-2xl text-base leading-relaxed text-muted lg:text-lg">
             Download product specifications from{" "}

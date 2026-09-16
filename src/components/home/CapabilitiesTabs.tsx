@@ -16,6 +16,7 @@ import {
   Zap,
 } from "lucide-react";
 import { capabilities, type CapabilityTab } from "@/lib/home-content";
+import { HASH_NAV_EVENT } from "@/components/HashScroll";
 import { Reveal } from "@/components/motion/Reveal";
 import { PlaceholderMedia } from "./PlaceholderMedia";
 
@@ -66,7 +67,13 @@ export function CapabilitiesTabs() {
 
     syncFromHash();
     window.addEventListener("hashchange", syncFromHash);
-    return () => window.removeEventListener("hashchange", syncFromHash);
+    window.addEventListener("popstate", syncFromHash);
+    window.addEventListener(HASH_NAV_EVENT, syncFromHash);
+    return () => {
+      window.removeEventListener("hashchange", syncFromHash);
+      window.removeEventListener("popstate", syncFromHash);
+      window.removeEventListener(HASH_NAV_EVENT, syncFromHash);
+    };
   }, []);
 
   if (!active) return null;
@@ -112,6 +119,7 @@ export function CapabilitiesTabs() {
             return (
               <button
                 key={tab.id}
+                id={tab.id}
                 type="button"
                 role="tab"
                 aria-selected={isActive}

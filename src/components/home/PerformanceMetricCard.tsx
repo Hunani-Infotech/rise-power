@@ -10,7 +10,7 @@ type PerformanceMetricCardProps = {
   percent?: number;
 };
 
-const PRIMARY_GREEN = "#689d2d";
+const PRIMARY_GREEN = "#6e7f42";
 
 /**
  * Beveled tech card — chamfered corners + gauge with divider icon.

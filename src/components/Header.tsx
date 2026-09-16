@@ -283,6 +283,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
+import { AppLink } from "./nav/AppLink";
 import { MegaMenuPanel } from "./nav/MegaMenuPanel";
 import { NavMegaItem } from "./nav/NavMegaItem";
 import { contactCta, megaNavItems } from "@/lib/home-content";
@@ -638,7 +639,7 @@ export function Header() {
 
                         {links.map((link) => (
                           <li key={`${link.href}-${link.label}`}>
-                            <Link
+                            <AppLink
                               href={link.href}
                               onClick={() => setOpen(false)}
                               className={`group flex min-h-12 flex-col justify-center rounded-sm px-3 py-2.5 transition-colors hover:bg-sage/10 focus-visible:bg-sage/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage ${textClass}`}
@@ -654,7 +655,7 @@ export function Header() {
                                   {link.description}
                                 </span>
                               ) : null}
-                            </Link>
+                            </AppLink>
                           </li>
                         ))}
                       </ul>

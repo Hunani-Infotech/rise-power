@@ -67,8 +67,8 @@
 
 
 
-import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { AppLink } from "@/components/nav/AppLink";
 import type { MegaFeature, MegaLink } from "@/lib/nav-menu";
 
 type MegaMenuPanelProps = {
@@ -108,19 +108,19 @@ export function MegaMenuPanel({
               </h2>
             </div>
 
-            <Link
+            <AppLink
               href={viewAllHref}
               onClick={onNavigate}
               className="hidden items-center gap-1 text-[14px] font-semibold tracking-[0.14em] text-[#6e7f42] uppercase transition-colors hover:text-[#141a14] sm:flex"
             >
               View all
               <ArrowRight className="size-3.5" />
-            </Link>
+            </AppLink>
           </div>
 
           <div className="grid gap-x-8 gap-y-1 sm:grid-cols-2">
             {links.map((link) => (
-              <Link
+              <AppLink
                 key={`${link.href}-${link.label}`}
                 href={link.href}
                 onClick={onNavigate}
@@ -142,7 +142,7 @@ export function MegaMenuPanel({
                   className="size-4 shrink-0 text-[#aaa69c] transition-all group-hover:translate-x-1 group-hover:text-[#6e7f42]"
                   strokeWidth={1.5}
                 />
-              </Link>
+              </AppLink>
             ))}
           </div>
         </div>
@@ -167,14 +167,14 @@ export function MegaMenuPanel({
               </p>
             </div>
 
-            <Link
+            <AppLink
               href={feature.href}
               onClick={onNavigate}
               className="relative mt-6 inline-flex w-fit items-center gap-2 border-b border-[#6e7f42] pb-2 text-[10px] font-semibold tracking-[0.15em] text-[#9bb65b] uppercase transition-colors hover:text-white"
             >
               {feature.cta}
               <ArrowRight className="size-3.5" />
-            </Link>
+            </AppLink>
           </div>
         )}
       </div>

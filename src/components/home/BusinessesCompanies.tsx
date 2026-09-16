@@ -15,55 +15,10 @@ function CompanyCard({
   href,
   cta,
   external,
-  featured,
 }: (typeof businessesCompanies.companies)[number]) {
   const linkProps = external
     ? { target: "_blank" as const, rel: "noopener noreferrer" }
     : {};
-
-  if (featured) {
-    return (
-      <article className="group relative min-h-[22rem] overflow-hidden rounded-2xl sm:min-h-[26rem] lg:min-h-[30rem]">
-        <Image
-          src={imageSrc}
-          alt={image}
-          fill
-          quality={80}
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          sizes="(max-width: 1024px) 100vw, 50vw"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-[#060806]/75 via-[#060806]/20 to-[#060806]/88"
-          aria-hidden
-        />
-
-        <div className="relative flex h-full min-h-[22rem] flex-col justify-between p-6 sm:min-h-[26rem] sm:p-8 lg:min-h-[30rem]">
-          <h3 className="max-w-sm font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl">
-            {name}
-          </h3>
-
-          <div>
-            {body ? (
-              <p className="max-w-md text-sm leading-relaxed text-white/85 sm:text-base">
-                {body}
-              </p>
-            ) : null}
-            <Link
-              href={href}
-              {...linkProps}
-              className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-[#f3f0e8] sm:text-xs"
-              style={{ color: sage }}
-            >
-              {cta}
-              {external ? (
-                <ArrowUpRight className="size-4" strokeWidth={1.8} aria-hidden />
-              ) : null}
-            </Link>
-          </div>
-        </div>
-      </article>
-    );
-  }
 
   return (
     <Link
@@ -76,23 +31,34 @@ function CompanyCard({
         alt={image}
         fill
         quality={80}
-        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         sizes="(max-width: 1024px) 100vw, 50vw"
       />
+
       <div
-        className="absolute inset-0 bg-gradient-to-t from-[#060806]/90 via-[#060806]/25 to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-[#060806]/92 via-[#060806]/35 to-transparent transition-[opacity,background] duration-500 group-hover:from-[#060806]/95 group-hover:via-[#060806]/50"
         aria-hidden
       />
 
-      <div className="relative flex h-full min-h-[22rem] flex-col justify-end p-6 sm:min-h-[26rem] sm:p-8 lg:min-h-[30rem]">
-        <h3 className="font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl">
+      {/* Bottom cluster stays in place — soft lift + reveal on hover */}
+      <div className="absolute inset-x-0 bottom-0 p-6 transition-transform duration-500 ease-out group-hover:-translate-y-2 group-focus-visible:-translate-y-2 sm:p-8">
+        <h3 className="max-w-sm font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl">
           {name}
         </h3>
-        <span
-          className="mt-4 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] uppercase text-white/80 transition-colors group-hover:text-white sm:text-xs"
-        >
+
+        {body ? (
+          <p className="mt-0 max-h-0 max-w-md overflow-hidden text-sm leading-relaxed text-white/85 opacity-0 transition-all duration-500 ease-out group-hover:mt-4 group-hover:max-h-32 group-hover:opacity-100 group-focus-visible:mt-4 group-focus-visible:max-h-32 group-focus-visible:opacity-100 sm:text-base">
+            {body}
+          </p>
+        ) : null}
+
+        <span className="mt-4 inline-flex min-h-11 items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-white/85 uppercase transition-all duration-500 ease-out group-hover:rounded-full group-hover:bg-white group-hover:px-5 group-hover:py-2.5 group-hover:text-[#6e7f42] group-focus-visible:rounded-full group-focus-visible:bg-white group-focus-visible:px-5 group-focus-visible:py-2.5 group-focus-visible:text-[#6e7f42] sm:text-xs">
           {cta}
-          <ArrowUpRight className="size-4" strokeWidth={1.8} aria-hidden />
+          <ArrowUpRight
+            className="size-4 shrink-0 transition-transform duration-500 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5"
+            strokeWidth={1.8}
+            aria-hidden
+          />
         </span>
       </div>
     </Link>

@@ -52,14 +52,6 @@ const MissionMap = dynamic(
   },
 );
 
-const WhyHydrogenWins = dynamic(
-  () => import("./WhyHydrogenWins").then((m) => m.WhyHydrogenWins),
-  {
-    ssr: true,
-    loading: () => <SectionSkeleton tone="cream" />,
-  },
-);
-
 const CustomersPartners = dynamic(
   () => import("./CustomersPartners").then((m) => m.CustomersPartners),
   {
@@ -470,7 +462,7 @@ export function HomePage() {
 
       <section
         id="product-ecosystem"
-        className="relative overflow-hidden bg-[#fbfaf7] py-12 sm:py-14 lg:py-16"
+        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-12 sm:py-14 lg:py-16"
       >
         <div className={pageInset}>
           <Reveal variant="up">
@@ -710,7 +702,7 @@ export function HomePage() {
       {/* 5. Featured Products */}
       <section
         id="featured-products"
-        className={sectionY}
+        className={`scroll-mt-28 ${sectionY}`}
         style={{ background: "#ffffff" }}
       >
         <div className={pageInset}>
@@ -747,10 +739,10 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 6. Mission Deployments */}
+      {/* 6. Deployments — Coming Soon */}
       <section
         id="mission-deployments"
-        className={`cv-auto bg-[#0f140f] text-[#f3efe4] ${sectionY}`}
+        className={`cv-auto scroll-mt-28 bg-[#0f140f] text-[#f3efe4] ${sectionY}`}
       >
         <div className={pageInset}>
           <Reveal variant="up">
@@ -775,12 +767,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 7. Why Hydrogen Wins */}
-      <div className="cv-auto">
-        <WhyHydrogenWins />
-      </div>
-
-      {/* 9. Customers & Partners */}
+      {/* 7. Customers & Partners */}
       <div className="cv-auto">
         <CustomersPartners />
       </div>

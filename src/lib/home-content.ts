@@ -143,7 +143,6 @@ export const sectionOrder = [
   "product-ecosystem",
   "featured-products",
   "mission-deployments",
-  "why-hydrogen-wins",
   "customer-partners",
   "businesses-companies",
   "closing-cta",
@@ -180,7 +179,7 @@ export const hero = {
   primaryCta: { label: "Watch Mission Video", href: "#demo" } satisfies Cta,
   secondaryCta: { label: "Explore Products", href: "/products" } satisfies Cta,
   chips: [
-    { title: "Systems Active", subtitle: "Field-ready deployments" },
+    { title: "Mission Ready", subtitle: "Built for the field" },
     { title: "Zero Emissions", subtitle: "At point of use" },
     { title: "30-Second", subtitle: "Cartridge Swap" },
     { title: "Silent", subtitle: "Tactical Operation" },
@@ -626,20 +625,24 @@ export const capabilities = {
   diagramImageSrc: "/media/capabilities/engineering.png",
 };
 
+export type PlannedTheater = {
+  id: string;
+  label: string;
+  title: string;
+  body: string;
+  focus: string;
+};
+
 export const missionDeployments = {
-  eyebrow: "MISSION DEPLOYMENTS",
-  headingBefore: "PROVEN. DEPLOYED.",
-  headingAccent: "WORLDWIDE.",
-  body: "Rise Mission Power systems are trusted in the world's most challenging environments and critical missions.",
+  eyebrow: "COMING SOON",
+  headingBefore: "Deployments —",
+  headingAccent: "Coming Soon",
+  body: "Field deployment tracking is not live yet. This section will share mission map details as programs go into the field.",
   mapImageSrc: "/media/missions/world-map.png",
   mapImageAlt: "World map focused on North America and Europe, with India visible",
   comingSoon: {
     mapPrompt: "INTERACTIVE FIELD MAP — IN DEVELOPMENT",
-    badge: "STATUS: COMING SOON",
-    panelTitle: "COMING SOON",
-    panelBody:
-      "An interactive map of active deployments and past missions is being built for this section.",
-    legend: ["ACTIVE DEPLOYMENTS", "PAST MISSIONS"] as const,
+    legend: ["PLANNED COVERAGE", "NOT YET LIVE"] as const,
     previewNodes: [
       { label: "CANADA", x: 14, y: 24 },
       { label: "U.S.", x: 20, y: 40 },
@@ -648,22 +651,62 @@ export const missionDeployments = {
       { label: "E. EUROPE", x: 58, y: 32 },
       { label: "INDIA", x: 86, y: 48 },
     ] as const,
-    status: "IN DEVELOPMENT",
+    status: "COMING SOON",
     title: "GLOBAL MISSION MAP",
-    subhead: "Explore theaters, environments, and field-validated systems.",
+    subhead: "Theater briefings and environment profiles will publish here when ready.",
     detailImageSrc: "/media/missions/mountain.png",
     detailImageAlt: "Rise Power system in mountain terrain",
     stats: [
-      { label: "THEATERS", value: "5+" },
-      { label: "ENVIRONMENTS", value: "EXTREME" },
+      { label: "THEATERS", value: "TBD" },
+      { label: "ENVIRONMENTS", value: "TBD" },
       { label: "SYSTEMS", value: "FULL LINE" },
       { label: "STATUS", value: "SOON" },
     ] as const,
     overviewLabel: "WHAT'S AHEAD",
     overview:
-      "Hotspot briefings for arctic, desert, mountain, urban, and maritime deployments—with mission duration, environment range, and system fit for each theater.",
+      "Planned hotspot briefings for arctic, desert, mountain, urban, and maritime environments—with mission duration, operating range, and system fit for each theater once field programs begin.",
     cta: { label: "REQUEST A BRIEFING", href: "/contact" } satisfies Cta,
   },
+  theatersHeading: "Operating Environments",
+  theatersBody:
+    "Profiles for the environments Rise systems are engineered for. Field mission data will appear here when programs go live.",
+  theaters: [
+    {
+      id: "arctic",
+      label: "ARCTIC",
+      title: "Cold-weather ops",
+      body: "Silent power for polar posts and remote arrays in extreme low temperatures.",
+      focus: "−40°C to 10°C",
+    },
+    {
+      id: "desert",
+      label: "DESERT",
+      title: "High-heat ops",
+      body: "Dust-tolerant modules built for arid theaters and thermal stress.",
+      focus: "5°C to 50°C",
+    },
+    {
+      id: "mountain",
+      label: "MOUNTAIN",
+      title: "High-altitude ops",
+      body: "Compact systems for forward posts and relays in rugged terrain.",
+      focus: "−25°C to 45°C",
+    },
+    {
+      id: "urban",
+      label: "URBAN",
+      title: "Dense-area ops",
+      body: "Indoor-safe, low-signature power for infrastructure and response teams.",
+      focus: "Indoor / outdoor",
+    },
+    {
+      id: "maritime",
+      label: "MARITIME",
+      title: "Coastal & shipboard",
+      body: "Salt-air resilient backup for coastal stations and command nodes.",
+      focus: "High humidity",
+    },
+  ] satisfies readonly PlannedTheater[],
 };
 
 export const whyHydrogenWins = {
@@ -802,6 +845,7 @@ export const businessesCompanies = {
   companies: [
     {
       name: "CIMtech Green Energy",
+      body: "Canadian advanced manufacturing for hydrogen systems—precision engineering, production capability, and field-ready energy platforms.",
       image: "CIMtech Green Energy precision manufacturing",
       imageSrc: "/media/capabilities/engineering.jpg",
       href: "https://www.cimtechgreenenergy.com",
@@ -815,7 +859,6 @@ export const businessesCompanies = {
       imageSrc: "/media/use-cases/uc-defence.png",
       href: "/products",
       cta: "Explore Rise Mission Power",
-      featured: true,
     },
   ] satisfies readonly GroupCompanyCard[],
 };
@@ -853,7 +896,7 @@ export const footer = {
         { label: "Featured Products", href: "/#featured-products" },
         { label: "Use Cases", href: "/use-cases" },
         { label: "Capabilities", href: "/capabilities" },
-        { label: "Mission Deployments", href: "/#mission-deployments" },
+        { label: "Deployments", href: "/#mission-deployments" },
       ],
     },
     {
@@ -869,11 +912,11 @@ export const footer = {
     {
       heading: "Company",
       links: [
-        { label: "About Us", href: "/about" },
+        { label: "About Us", href: "/company" },
         { label: "Capabilities", href: "/capabilities" },
         { label: "Sustainability", href: "/company" },
         { label: "News & Insights", href: "/insights" },
-        { label: "Careers", href: "/company" },
+        { label: "Careers", href: "/contact" },
       ],
     },
     {
@@ -882,7 +925,7 @@ export const footer = {
         { label: "Resource Center", href: "/resources" },
         { label: "Documentation", href: "/datasheets" },
         { label: "Service & Maintenance", href: "/contact" },
-        { label: "FAQs", href: "/resources" },
+        { label: "FAQs", href: "/resources#faqs" },
         { label: "Contact Support", href: "/contact" },
       ],
     },

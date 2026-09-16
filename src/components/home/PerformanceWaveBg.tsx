@@ -40,8 +40,8 @@ void main() {
 }
 `;
 
-/** Rise mockup green ≈ #689d2d */
-const WAVE_COLOR = new THREE.Vector3(104 / 255, 157 / 255, 45 / 255);
+/** Theme forest / sage — matches OUTPERFORM + site accent `#6e7f42` */
+const WAVE_COLOR = new THREE.Vector3(110 / 255, 127 / 255, 66 / 255);
 
 function buildParticleGrid(amountX: number, amountY: number, gap: number) {
   const count = amountX * amountY;
