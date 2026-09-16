@@ -628,6 +628,7 @@ export const capabilities = {
 export type DeploymentHotspot = {
   id: string;
   label: string;
+  location: string;
   status: string;
   title: string;
   subhead: string;
@@ -660,6 +661,7 @@ export const missionDeployments = {
     {
       id: "arctic",
       label: "ARCTIC",
+      location: "Canada",
       status: "ENVIRONMENT PROFILE",
       title: "ARCTIC REGION",
       subhead: "Cold-weather operations in extreme polar conditions.",
@@ -673,12 +675,14 @@ export const missionDeployments = {
         "Silent, cold-tolerant hydrogen power engineered for polar research posts and remote communications arrays. Field mission data will appear here when programs go live.",
       image: "Arctic operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      x: 18,
-      y: 22,
+      // Northern Canada / Arctic Archipelago
+      x: 19,
+      y: 18,
     },
     {
       id: "maritime",
       label: "MARITIME",
+      location: "Portugal",
       status: "ENVIRONMENT PROFILE",
       title: "MARITIME REGION",
       subhead: "Shipboard and coastal power for austere maritime missions.",
@@ -692,12 +696,14 @@ export const missionDeployments = {
         "Zero-emission backup and tactical power engineered for coastal stations and maritime command nodes. Field mission data will appear here when programs go live.",
       image: "Maritime operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      x: 36,
-      y: 50,
+      // Portugal / Spain Atlantic coast (Iberian Peninsula)
+      x: 43,
+      y: 42,
     },
     {
       id: "desert",
       label: "DESERT",
+      location: "Algeria",
       status: "ENVIRONMENT PROFILE",
       title: "DESERT REGION",
       subhead: "High-heat desert operations with dust and thermal stress.",
@@ -711,12 +717,14 @@ export const missionDeployments = {
         "Lightweight hydrogen modules engineered to sustain UAV and ISR missions across arid theaters. Field mission data will appear here when programs go live.",
       image: "Desert operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      x: 46,
-      y: 54,
+      // Sahara — Algeria / North Africa
+      x: 48,
+      y: 52,
     },
     {
       id: "mountain",
       label: "MOUNTAIN",
+      location: "Switzerland",
       status: "ENVIRONMENT PROFILE",
       title: "MOUNTAIN REGION",
       subhead: "High-altitude operations in extreme terrain.",
@@ -730,12 +738,14 @@ export const missionDeployments = {
         "Silent, zero-emission power engineered for forward bases and communication relays in high-altitude conditions. Field mission data publishes here when programs go live.",
       image: "Mountain operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      x: 54,
+      // Swiss Alps / Central Europe
+      x: 49,
       y: 36,
     },
     {
       id: "urban",
       label: "URBAN",
+      location: "Germany",
       status: "ENVIRONMENT PROFILE",
       title: "URBAN REGION",
       subhead: "Dense urban operations with strict emissions and noise limits.",
@@ -749,8 +759,9 @@ export const missionDeployments = {
         "Silent, indoor-safe hydrogen power engineered for emergency response and critical infrastructure. Field mission data will appear here when programs go live.",
       image: "Urban operating environment",
       detailImageSrc: "/media/missions/mountain.png",
-      x: 60,
-      y: 30,
+      // Germany / Western Europe urban corridor
+      x: 51,
+      y: 33,
     },
   ] satisfies readonly DeploymentHotspot[],
   stats: [

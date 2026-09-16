@@ -86,68 +86,68 @@ export function MissionMap() {
                 fill
                 quality={90}
                 sizes="100vw"
-                className="object-cover object-[40%_40%]"
+                className="object-cover object-[38%_38%]"
               />
               <div
                 className="absolute inset-0 bg-[#05080c]/25"
                 aria-hidden
               />
-            </div>
 
-            {missionDeployments.hotspots.map((hotspot) => {
-              const isActive = hotspot.id === active?.id;
-              return (
-                <button
-                  key={hotspot.id}
-                  type="button"
-                  onClick={() => setActiveId(hotspot.id)}
-                  className="absolute z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center outline-none"
-                  style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
-                  aria-label={hotspot.label}
-                  aria-pressed={isActive}
-                >
-                  <span className="relative grid size-16 place-items-center">
-                    <span
-                      className={`absolute rounded-full border transition-all duration-300 ${
-                        isActive
-                          ? "size-14 border-[#8fad4a]/55 opacity-100"
-                          : "size-12 border-[#8fad4a]/30 opacity-80"
-                      }`}
-                      aria-hidden
-                    />
-                    <span
-                      className={`absolute rounded-full border transition-all duration-300 ${
-                        isActive
-                          ? "size-8 border-[#8fad4a]/90 opacity-100"
-                          : "size-7 border-[#8fad4a]/50 opacity-90"
-                      }`}
-                      aria-hidden
-                    />
-                    <span
-                      className={`relative block rounded-full transition-all duration-300 ${
-                        isActive ? "size-3" : "size-2.5"
-                      }`}
-                      style={{
-                        background: sageBright,
-                        boxShadow: isActive
-                          ? "0 0 0 4px rgba(143,173,74,0.22), 0 0 18px rgba(143,173,74,0.75)"
-                          : "0 0 12px rgba(143,173,74,0.55)",
-                      }}
-                      aria-hidden
-                    />
-                  </span>
-                  <span
-                    className={`-mt-0.5 rounded px-2 py-0.5 text-[10px] font-bold tracking-[0.16em] uppercase backdrop-blur-sm transition-colors ${
-                      isActive
-                        ? "bg-[#0a0e12]/90 text-white"
-                        : "bg-[#0a0e12]/75 text-white/75"
-                    }`}
+              {missionDeployments.hotspots.map((hotspot) => {
+                const isActive = hotspot.id === active?.id;
+                return (
+                  <button
+                    key={hotspot.id}
+                    type="button"
+                    onClick={() => setActiveId(hotspot.id)}
+                    className="absolute z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center outline-none"
+                    style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
+                    aria-label={`${hotspot.label} — ${hotspot.location}`}
+                    aria-pressed={isActive}
                   >
-                    {hotspot.label}
-                  </span>
-                </button>
-              );
-            })}
+                    <span className="relative grid size-16 place-items-center">
+                      <span
+                        className={`absolute rounded-full border transition-all duration-300 ${
+                          isActive
+                            ? "size-14 border-[#8fad4a]/55 opacity-100"
+                            : "size-12 border-[#8fad4a]/30 opacity-80"
+                        }`}
+                        aria-hidden
+                      />
+                      <span
+                        className={`absolute rounded-full border transition-all duration-300 ${
+                          isActive
+                            ? "size-8 border-[#8fad4a]/90 opacity-100"
+                            : "size-7 border-[#8fad4a]/50 opacity-90"
+                        }`}
+                        aria-hidden
+                      />
+                      <span
+                        className={`relative block rounded-full transition-all duration-300 ${
+                          isActive ? "size-3" : "size-2.5"
+                        }`}
+                        style={{
+                          background: sageBright,
+                          boxShadow: isActive
+                            ? "0 0 0 4px rgba(143,173,74,0.22), 0 0 18px rgba(143,173,74,0.75)"
+                            : "0 0 12px rgba(143,173,74,0.55)",
+                        }}
+                        aria-hidden
+                      />
+                    </span>
+                    <span
+                      className={`-mt-0.5 rounded px-2 py-0.5 text-[10px] font-bold tracking-[0.16em] uppercase backdrop-blur-sm transition-colors ${
+                        isActive
+                          ? "bg-[#0a0e12]/90 text-white"
+                          : "bg-[#0a0e12]/75 text-white/75"
+                      }`}
+                    >
+                      {hotspot.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
 
             {/* Prompt */}
             <div className="absolute top-4 left-4 z-20 max-w-[15.5rem] rounded-lg border border-white/10 bg-[#0a0e12]/92 px-3.5 py-2.5 shadow-lg backdrop-blur-md sm:top-5 sm:left-5 sm:max-w-[17rem]">
@@ -222,6 +222,9 @@ export function MissionMap() {
                   <h3 className="mt-1.5 font-display text-[1.65rem] leading-none font-bold tracking-wide uppercase">
                     {active.title}
                   </h3>
+                  <p className="mt-1 text-[11px] font-semibold tracking-[0.16em] text-white/45 uppercase">
+                    {active.location}
+                  </p>
                   <p className="mt-2 text-[13px] leading-snug text-white/60">
                     {active.subhead}
                   </p>
