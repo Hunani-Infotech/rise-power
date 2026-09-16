@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Investors",
   description:
     "Investor materials, company information, milestones, and updates from Rise Power.",
-};
+  path: "/investors",
+});
 
 /* -------------------------------------------------------------------------- */
 /* Icons                                                                       */

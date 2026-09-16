@@ -88,12 +88,14 @@ import {
 
 import { Reveal } from "@/components/motion/Reveal";
 import { products, useCases } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Use Cases | Rise Mission Power",
+export const metadata: Metadata = pageMetadata({
+  title: "Use Cases",
   description:
-    "Explore how Rise Mission Power hydrogen systems support defense, remote operations, disaster response, and critical infrastructure.",
-};
+    "Explore how Rise Power hydrogen systems support defense, remote operations, disaster response, and critical infrastructure.",
+  path: "/use-cases",
+});
 
 const sage = "#6e7f42";
 const dark = "#101713";

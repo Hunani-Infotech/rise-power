@@ -3,10 +3,14 @@ import { Button } from "@/components/Button";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { team, values } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
-};
+  description:
+    "Rise Power is engineered, manufactured, and validated in British Columbia. A CIMtech Green Energy company built on 20+ years of Canadian advanced manufacturing.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

@@ -5,6 +5,7 @@ import { ClosingCta } from "@/components/home/ClosingCta";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/content";
+import { siteDescription, siteTitle } from "@/lib/seo";
 import "./globals.css";
 
 const organizationJsonLd = {
@@ -13,8 +14,9 @@ const organizationJsonLd = {
   name: site.name,
   legalName: site.legalName,
   url: site.url,
-  description:
-    "Portable hydrogen power systems for defense and critical infrastructure.",
+  logo: `${site.url}/media/brand/rise-power-logo-dark.png`,
+  image: `${site.url}/media/brand/rise-power-logo-dark.png`,
+  description: siteDescription,
   email: site.email,
   telephone: "+1-604-807-4850",
   address: {
@@ -51,17 +53,58 @@ const rajdhani = Rajdhani({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Rise Mission Power",
-    template: "%s | Rise Mission Power",
+    default: siteTitle,
+    template: `%s | ${siteTitle}`,
   },
-  description:
-    "Mobile tactical power for defense and critical missions. Portable systems built for autonomous operations—silent, clean, and mission-ready.",
+  description: siteDescription,
+  applicationName: site.name,
+  authors: [{ name: site.legalName, url: site.url }],
+  creator: site.name,
+  publisher: site.parent,
+  category: "technology",
+  keywords: [
+    "hydrogen fuel cell",
+    "portable power",
+    "tactical power",
+    "defense energy",
+    "disaster response",
+    "critical infrastructure",
+    "Rise Power",
+    "CIMtech Green Energy",
+  ],
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "Rise Mission Power",
-    description:
-      "Mobile tactical power for defense and critical missions. Portable systems built for autonomous operations—silent, clean, and mission-ready.",
-    siteName: "Rise Power",
-    images: ["/media/og-image.jpg"],
+    type: "website",
+    locale: "en_CA",
+    siteName: site.name,
+    title: siteTitle,
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
+  appleWebApp: {
+    capable: true,
+    title: site.name,
+    statusBarStyle: "black-translucent",
   },
 };
 
@@ -72,12 +115,13 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: light)", color: "#f3f0e8" },
     { media: "(prefers-color-scheme: dark)", color: "#6e7f42" },
   ],
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="en-CA"
       className={`${barlow.variable} ${rajdhani.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">

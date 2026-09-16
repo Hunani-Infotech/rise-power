@@ -5,12 +5,14 @@ import { ArrowRight, Info } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Datasheets",
   description:
     "Technical specifications and engineering targets for Rise Power hydrogen power systems.",
-};
+  path: "/datasheets",
+});
 
 const products = [
   {

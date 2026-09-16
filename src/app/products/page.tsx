@@ -102,10 +102,14 @@ import {
 } from "lucide-react";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { products } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Products",
-};
+  description:
+    "Rise Sentinel, Falcon, Titan, and hydrogen cartridge systems. Portable fuel cell power for defense, disaster response, remote operations, and critical infrastructure.",
+  path: "/products",
+});
 
 const sage = "#6e7f42";
 const lime = "#b5d13c";

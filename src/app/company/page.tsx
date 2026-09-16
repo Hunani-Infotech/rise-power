@@ -4,12 +4,14 @@ import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/motion/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Company | Rise Power",
+export const metadata: Metadata = pageMetadata({
+  title: "Company",
   description:
     "Rise Power is engineered, manufactured, and field validated in British Columbia. Discover our mission, values, and leadership.",
-};
+  path: "/company",
+});
 
 const sage = "#6e9f2f";
 const dark = "#101820";

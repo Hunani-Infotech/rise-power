@@ -3,10 +3,14 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { insights } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "News & Insights",
-};
+  description:
+    "Technical notes, runtime data, and development milestones from the Rise Power engineering team.",
+  path: "/insights",
+});
 
 export default function InsightsPage() {
   return (

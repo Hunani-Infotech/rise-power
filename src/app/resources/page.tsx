@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/motion/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Resources",
-};
+  description:
+    "Datasheets, news, and documentation for procurement, programs, and integration leads evaluating Rise Power systems.",
+  path: "/resources",
+});
 
 export default function ResourcesPage() {
   return (

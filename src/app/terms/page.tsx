@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/motion/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms",
-};
+  description:
+    "Terms of use for the Rise Power website, product specifications, and Canadian export control notices.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

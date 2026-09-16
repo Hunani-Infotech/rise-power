@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { insights } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
 type InsightPageProps = {
   params: Promise<{ slug: string }>;
@@ -17,7 +18,22 @@ export async function generateMetadata({
 }: InsightPageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = insights.find((item) => item.slug === slug);
-  return { title: article?.title ?? "Insight" };
+
+  if (!article) {
+    return pageMetadata({
+      title: "Insight",
+      description: "Rise Power news and field analysis.",
+      path: "/insights",
+    });
+  }
+
+  return pageMetadata({
+    title: article.title,
+    description: article.excerpt,
+    path: `/insights/${article.slug}`,
+    type: "article",
+    publishedTime: article.date,
+  });
 }
 
 export default async function InsightArticlePage({ params }: InsightPageProps) {
