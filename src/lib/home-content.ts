@@ -656,8 +656,8 @@ export const missionDeployments = {
   headingBefore: "Deployments —",
   headingAccent: "Coming Soon",
   body: "Field deployment tracking is not live yet. Explore the environments Rise systems are engineered for—mission map details will publish as programs go into the field.",
-  mapPrompt: "CLICK A HOTSPOT to explore operating environments",
-  legend: ["PLANNED THEATERS", "ENVIRONMENT PROFILES"] as const,
+  mapPrompt: "CLICK A HOTSPOT to explore planned operating environments",
+  legend: ["PLANNED THEATERS", "COMING SOON"] as const,
   mapImageSrc: "/media/missions/world-map.png",
   mapImageAlt: "Dark satellite view of the world",
   /** Intrinsic pixel size of world-map.png — keeps pins aligned to geography */
@@ -668,7 +668,7 @@ export const missionDeployments = {
       id: "arctic",
       label: "ARCTIC",
       location: "Canada",
-      status: "ENVIRONMENT PROFILE",
+      status: "COMING SOON",
       title: "ARCTIC REGION",
       subhead: "Cold-weather operations in extreme polar conditions.",
       stats: [
@@ -678,7 +678,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "80+", icon: "users" },
       ],
       overview:
-        "Silent, cold-tolerant hydrogen power engineered for polar research posts and remote communications arrays. Field mission data will appear here when programs go live.",
+        "Silent, cold-tolerant hydrogen power engineered for polar research posts and remote communications arrays. Live field tracking for this theater is coming soon.",
       image: "Arctic operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Northern Canada — calibrated to world-map.png light/land mass
@@ -689,7 +689,7 @@ export const missionDeployments = {
       id: "maritime",
       label: "MARITIME",
       location: "Portugal",
-      status: "ENVIRONMENT PROFILE",
+      status: "COMING SOON",
       title: "MARITIME REGION",
       subhead: "Shipboard and coastal power for austere maritime missions.",
       stats: [
@@ -699,7 +699,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "200+", icon: "users" },
       ],
       overview:
-        "Zero-emission backup and tactical power engineered for coastal stations and maritime command nodes. Field mission data will appear here when programs go live.",
+        "Zero-emission backup and tactical power engineered for coastal stations and maritime command nodes. Live field tracking for this theater is coming soon.",
       image: "Maritime operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Western Iberia / Portugal — on land in this map art
@@ -710,7 +710,7 @@ export const missionDeployments = {
       id: "desert",
       label: "DESERT",
       location: "Algeria",
-      status: "ENVIRONMENT PROFILE",
+      status: "COMING SOON",
       title: "DESERT REGION",
       subhead: "High-heat desert operations with dust and thermal stress.",
       stats: [
@@ -720,7 +720,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "120+", icon: "users" },
       ],
       overview:
-        "Lightweight hydrogen modules engineered to sustain UAV and ISR missions across arid theaters. Field mission data will appear here when programs go live.",
+        "Lightweight hydrogen modules engineered to sustain UAV and ISR missions across arid theaters. Live field tracking for this theater is coming soon.",
       image: "Desert operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Algerian Sahara landmass on this map art
@@ -731,7 +731,7 @@ export const missionDeployments = {
       id: "mountain",
       label: "MOUNTAIN",
       location: "Switzerland",
-      status: "ENVIRONMENT PROFILE",
+      status: "COMING SOON",
       title: "MOUNTAIN REGION",
       subhead: "High-altitude operations in extreme terrain.",
       stats: [
@@ -741,7 +741,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "150+", icon: "users" },
       ],
       overview:
-        "Silent, zero-emission power engineered for forward bases and communication relays in high-altitude conditions. Field mission data publishes here when programs go live.",
+        "Silent, zero-emission power engineered for forward bases and communication relays in high-altitude conditions. Live field tracking for this theater is coming soon.",
       image: "Mountain operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Swiss Alps cluster on this map art
@@ -752,7 +752,7 @@ export const missionDeployments = {
       id: "urban",
       label: "URBAN",
       location: "Germany",
-      status: "ENVIRONMENT PROFILE",
+      status: "COMING SOON",
       title: "URBAN REGION",
       subhead: "Dense urban operations with strict emissions and noise limits.",
       stats: [
@@ -762,7 +762,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "300+", icon: "users" },
       ],
       overview:
-        "Silent, indoor-safe hydrogen power engineered for emergency response and critical infrastructure. Field mission data will appear here when programs go live.",
+        "Silent, indoor-safe hydrogen power engineered for emergency response and critical infrastructure. Live field tracking for this theater is coming soon.",
       image: "Urban operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Germany — north of Alps lights on this map art
@@ -774,19 +774,19 @@ export const missionDeployments = {
     {
       value: "5",
       label: "Environments",
-      note: "Engineered For",
+      note: "Profiles Ready",
       icon: "globe",
     },
     {
-      value: "—",
+      value: "0",
       label: "Field Sites",
-      note: "Tracking Soon",
+      note: "Coming Soon",
       icon: "map-pin",
     },
     {
-      value: "—",
+      value: "0",
       label: "Mission Hours",
-      note: "Tracking Soon",
+      note: "Coming Soon",
       icon: "shield",
     },
     {
@@ -797,8 +797,8 @@ export const missionDeployments = {
     },
     {
       value: "24/7",
-      label: "Mission Ready",
-      note: "Request a Briefing",
+      label: "Briefings",
+      note: "Available Now",
       icon: "flag",
     },
   ] satisfies readonly DeploymentStat[],
