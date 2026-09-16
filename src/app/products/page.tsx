@@ -100,6 +100,7 @@ import {
   Weight,
   Zap,
 } from "lucide-react";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { products } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -251,7 +252,7 @@ export default function ProductsPage() {
           priority
           quality={90}
           sizes="100vw"
-          className="object-cover object-center"
+          className="hero-animate-media object-cover object-center"
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#06100d]/80 via-[#06100d]/35 to-transparent" />
@@ -265,7 +266,7 @@ export default function ProductsPage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="hero-animate-media object-cover"
           />
 
           {/* Dark Overlay */}
@@ -283,7 +284,7 @@ export default function ProductsPage() {
           {/* Content */}
           <div className="relative mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 pt-24 pb-16 sm:min-h-[780px] lg:min-h-screen lg:px-10">
 
-            <div className="w-full max-w-[620px]">
+            <div className="hero-animate-copy w-full max-w-[620px]">
 
               <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
                 ⌁ Product Systems
@@ -351,7 +352,7 @@ export default function ProductsPage() {
         className="scroll-mt-20 bg-[#f7f6f2] py-20 sm:py-24 lg:py-28"
       >
         <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-10">
-          <div className="mx-auto max-w-4xl text-center">
+          <Reveal variant="up" className="mx-auto max-w-4xl text-center">
             <p className="text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
               ⌁ Our Product Systems
             </p>
@@ -365,9 +366,9 @@ export default function ProductsPage() {
               A complete ecosystem of hydrogen power systems engineered for the
               world&apos;s most demanding environments.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+          <RevealStagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4" step={100}>
             {products.slice(0, 4).map((product, index) => {
               const meta = systemMeta[index] ?? systemMeta[0];
               const CategoryIcon = meta.icon;
@@ -446,7 +447,7 @@ export default function ProductsPage() {
                 </article>
               );
             })}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -465,7 +466,7 @@ export default function ProductsPage() {
         <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-10 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.35fr_0.7fr] lg:gap-8 lg:px-10">
 
           {/* CONTENT */}
-          <div>
+          <Reveal variant="left">
             <p className="text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
               ⌁ One Cartridge Ecosystem
             </p>
@@ -498,7 +499,7 @@ export default function ProductsPage() {
                 <ArrowRight className="size-4 text-[#6e7f42]" />
               </Link>
             </div>
-          </div>
+          </Reveal>
 
 
           {/* SPACE FOR BACKGROUND PRODUCT IMAGE */}
@@ -506,7 +507,7 @@ export default function ProductsPage() {
 
 
           {/* SYSTEM FLOW */}
-          <div className="space-y-3">
+          <RevealStagger className="space-y-3" step={80} variant="right">
             {systemFlow.map((item) => (
               <div
                 key={item.title}
@@ -535,7 +536,7 @@ export default function ProductsPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </RevealStagger>
 
         </div>
 
@@ -547,7 +548,7 @@ export default function ProductsPage() {
         className="scroll-mt-20 bg-[#f7f6f2] py-16 sm:py-20 lg:py-24"
       >
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
+          <Reveal variant="up" className="mx-auto max-w-4xl text-center">
             <p className="text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
               ⌁ Product Comparison
             </p>
@@ -561,9 +562,9 @@ export default function ProductsPage() {
               Compare our hydrogen power systems and find the right solution
               for your operational needs.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 overflow-x-auto lg:mt-14">
+          <Reveal variant="up" delay={80} className="mt-12 overflow-x-auto lg:mt-14">
             <div className="min-w-[1160px] text-white">
               {/* TABLE HEADER */}
               <div className="grid grid-cols-[240px_repeat(4,minmax(200px,1fr))]">
@@ -681,7 +682,7 @@ export default function ProductsPage() {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
 
           <p className="mt-4 text-center text-[10px] tracking-[0.08em] text-[#77766f] uppercase sm:hidden">
             Swipe horizontally to compare all products

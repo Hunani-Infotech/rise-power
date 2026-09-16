@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { PageHero } from "@/components/PageHero";
+import { Reveal } from "@/components/motion/Reveal";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function ContactPage() {
       />
 
       <section className="mx-auto grid max-w-[1440px] gap-16 px-6 py-16 lg:grid-cols-[1fr_1.2fr] lg:px-10 lg:py-24">
-        <div>
+        <Reveal variant="left">
           <div className="space-y-8 text-sm">
             <div>
               <p className="text-xs tracking-[0.16em] text-accent uppercase">Email</p>
@@ -44,10 +45,12 @@ export default function ContactPage() {
               </p>
             </div>
           </div>
-        </div>
-        <div className="relative border border-border bg-surface p-6 lg:p-10">
-          <ContactForm />
-        </div>
+        </Reveal>
+        <Reveal variant="right" delay={100}>
+          <div className="relative border border-border bg-surface p-6 lg:p-10">
+            <ContactForm />
+          </div>
+        </Reveal>
       </section>
     </>
   );

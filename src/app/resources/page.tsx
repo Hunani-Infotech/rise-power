@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -15,21 +16,23 @@ export default function ResourcesPage() {
         description="Datasheets, news, and documentation for procurement, programs, and integration leads."
       />
       <section className="mx-auto max-w-[1440px] px-6 py-16 lg:px-10 lg:py-24">
-        <p className="max-w-2xl text-base leading-relaxed text-muted lg:text-lg">
-          Download product specifications from{" "}
-          <Link href="/datasheets" className="text-sage underline-offset-2 hover:underline">
-            Datasheets
-          </Link>
-          , or read{" "}
-          <Link href="/insights" className="text-sage underline-offset-2 hover:underline">
-            News & Insights
-          </Link>{" "}
-          for updates from the field. For a tailored briefing,{" "}
-          <Link href="/contact" className="text-sage underline-offset-2 hover:underline">
-            Request a Briefing
-          </Link>
-          .
-        </p>
+        <Reveal variant="up">
+          <p className="max-w-2xl text-base leading-relaxed text-muted lg:text-lg">
+            Download product specifications from{" "}
+            <Link href="/datasheets" className="text-sage underline-offset-2 hover:underline">
+              Datasheets
+            </Link>
+            , or read{" "}
+            <Link href="/insights" className="text-sage underline-offset-2 hover:underline">
+              News & Insights
+            </Link>{" "}
+            for updates from the field. For a tailored briefing,{" "}
+            <Link href="/contact" className="text-sage underline-offset-2 hover:underline">
+              Request a Briefing
+            </Link>
+            .
+          </p>
+        </Reveal>
       </section>
     </>
   );

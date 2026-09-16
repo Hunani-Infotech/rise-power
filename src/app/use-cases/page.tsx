@@ -257,7 +257,7 @@ export default function UseCasesPage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="hero-animate-media object-cover object-center"
           />
         ) : null}
 
@@ -274,8 +274,7 @@ export default function UseCasesPage() {
 
         {/* Content */}
         <div className="relative mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 pt-28 pb-20 sm:min-h-[780px] lg:min-h-[850px] lg:px-10">
-          <Reveal variant="up">
-            <div className="max-w-[700px]">
+          <div className="hero-animate-copy max-w-[700px]">
               <SectionEyebrow>Use Cases</SectionEyebrow>
 
               <h1 className="mt-7 font-display text-[48px] leading-[0.9] font-bold tracking-tight uppercase sm:text-[64px] lg:text-[82px] xl:text-[94px]">
@@ -309,7 +308,6 @@ export default function UseCasesPage() {
                 </a>
               </div>
             </div>
-          </Reveal>
         </div>
       </section>
 

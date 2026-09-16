@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Investors",
@@ -189,7 +190,7 @@ export default function InvestorsPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="hero-animate-media object-cover object-center"
         />
 
         {/* Dark gradient for text readability */}
@@ -205,7 +206,7 @@ export default function InvestorsPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] items-center px-6 pb-20 pt-36 lg:min-h-[850px] lg:px-10">
 
-          <div className="max-w-[700px]">
+          <div className="hero-animate-copy max-w-[700px]">
 
             {/* Eyebrow */}
             <div className="flex items-center gap-4">
@@ -278,20 +279,22 @@ export default function InvestorsPage() {
 
         <div className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-10">
 
-          <SectionHeading
-            eyebrow="Investor Materials"
-            title="Investor Materials."
-            description={
-              <>
-                Download the deck and company one-pager. For full data room
-                access,
-                <br className="hidden sm:block" />
-                financial models, and references, request a briefing.
-              </>
-            }
-          />
+          <Reveal variant="up">
+            <SectionHeading
+              eyebrow="Investor Materials"
+              title="Investor Materials."
+              description={
+                <>
+                  Download the deck and company one-pager. For full data room
+                  access,
+                  <br className="hidden sm:block" />
+                  financial models, and references, request a briefing.
+                </>
+              }
+            />
+          </Reveal>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <RevealStagger className="mt-12 grid gap-6 lg:grid-cols-2" step={100}>
 
             {/* Investor Deck */}
             <article className="group relative min-h-[480px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116]">
@@ -390,7 +393,7 @@ export default function InvestorsPage() {
                 </div>
               </div>
             </article>
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -405,7 +408,7 @@ export default function InvestorsPage() {
         <div className="relative z-10 mx-auto grid max-w-[1440px] gap-6 px-6 lg:grid-cols-[0.9fr_1.25fr] lg:px-10">
 
           {/* Left feature */}
-          <div className="relative min-h-[680px] overflow-hidden rounded-[9px] border border-[#d9dfe3] bg-white p-2">
+          <Reveal variant="left" className="relative min-h-[680px] overflow-hidden rounded-[9px] border border-[#d9dfe3] bg-white p-2">
 
             <div className="relative h-full min-h-[660px] overflow-hidden rounded-[7px]">
 
@@ -448,10 +451,10 @@ export default function InvestorsPage() {
                 <span className="h-px w-24 bg-white/60" />
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right information cards */}
-          <div className="grid gap-5 sm:grid-cols-2">
+          <Reveal variant="right" delay={80} className="grid gap-5 sm:grid-cols-2">
 
             {/* Category */}
             <article className="rounded-[8px] border border-[#d9dfe3] bg-white p-8">
@@ -598,7 +601,7 @@ export default function InvestorsPage() {
                 deployments, and expand commercial programs.
               </p>
             </article>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -615,20 +618,22 @@ export default function InvestorsPage() {
 
         <div className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-10">
 
-          <SectionHeading
-            eyebrow="Press & Updates"
-            title="Latest News & Milestones"
-            description={
-              <>
-                Company news, technology updates, and development milestones.
-                <br className="hidden sm:block" />
-                For press inquiries, contact info@risepower.com.
-              </>
-            }
-          />
+          <Reveal variant="up">
+            <SectionHeading
+              eyebrow="Press & Updates"
+              title="Latest News & Milestones"
+              description={
+                <>
+                  Company news, technology updates, and development milestones.
+                  <br className="hidden sm:block" />
+                  For press inquiries, contact info@risepower.com.
+                </>
+              }
+            />
+          </Reveal>
 
           {/* News cards */}
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <RevealStagger className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4" step={90}>
 
             {/* 01 */}
             <article className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d9dfe3] bg-white">
@@ -846,10 +851,10 @@ export default function InvestorsPage() {
                 </div>
               </div>
             </article>
-          </div>
+          </RevealStagger>
 
           {/* View all */}
-          <div className="mt-9 flex justify-center">
+          <Reveal variant="up" delay={120} className="mt-9 flex justify-center">
             <Link
               href="/resources"
               className="group inline-flex min-h-[58px] items-center justify-center gap-2 rounded-[5px] bg-[#849363] px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:opacity-90"
@@ -857,7 +862,7 @@ export default function InvestorsPage() {
               <span>View All Insights</span>
               <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
     </main>

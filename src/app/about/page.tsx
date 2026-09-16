@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { PageHero } from "@/components/PageHero";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { team, values } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function AboutPage() {
 
       <section className="border-b border-border py-20 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-12">
+          <Reveal variant="up" className="grid gap-12 lg:grid-cols-12">
             <h2 className="font-display text-4xl tracking-tight uppercase lg:col-span-4">
               Mission
             </h2>
@@ -30,18 +31,20 @@ export default function AboutPage() {
               both diesel and lithium with a cartridge based platform that is
               silent, indoor safe, and mission duration.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="border-b border-border py-20 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-          <p className="text-xs font-semibold tracking-[0.22em] text-accent uppercase">
-            Our values
-          </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <Reveal variant="up">
+            <p className="text-xs font-semibold tracking-[0.22em] text-accent uppercase">
+              Our values
+            </p>
+          </Reveal>
+          <RevealStagger className="mt-10 grid gap-6 md:grid-cols-2" step={90}>
             {values.map((value) => (
-              <article key={value.number} className="border border-border bg-surface p-8">
+              <article key={value.number} className="motion-hover-lift border border-border bg-surface p-8">
                 <p className="text-xs tracking-[0.18em] text-accent uppercase">
                   {value.number}
                 </p>
@@ -51,18 +54,20 @@ export default function AboutPage() {
                 <p className="mt-3 text-sm leading-relaxed text-muted">{value.body}</p>
               </article>
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
       <section className="border-b border-border py-20 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-          <h2 className="font-display text-4xl tracking-tight uppercase">
-            The team behind the systems
-          </h2>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <Reveal variant="up">
+            <h2 className="font-display text-4xl tracking-tight uppercase">
+              The team behind the systems
+            </h2>
+          </Reveal>
+          <RevealStagger className="mt-12 grid gap-6 lg:grid-cols-3" step={90}>
             {team.map((member) => (
-              <article key={member.role} className="border border-border p-8">
+              <article key={member.role} className="motion-hover-lift border border-border p-8">
                 <h3 className="font-display text-2xl tracking-wide uppercase">
                   {member.name}
                 </h3>
@@ -72,21 +77,23 @@ export default function AboutPage() {
                 <p className="mt-4 text-sm leading-relaxed text-muted">{member.bio}</p>
               </article>
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
       <section className="py-20 text-center">
-        <h2 className="font-display text-4xl tracking-tight uppercase">
-          Build the future of portable power
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-muted">
-          Whether you are a procurement officer, integration partner, or
-          potential team member — we want to hear from you.
-        </p>
-        <div className="mt-8">
-          <Button href="/contact">Request a Briefing</Button>
-        </div>
+        <Reveal variant="up">
+          <h2 className="font-display text-4xl tracking-tight uppercase">
+            Build the future of portable power
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted">
+            Whether you are a procurement officer, integration partner, or
+            potential team member — we want to hear from you.
+          </p>
+          <div className="mt-8">
+            <Button href="/contact">Request a Briefing</Button>
+          </div>
+        </Reveal>
       </section>
     </>
   );

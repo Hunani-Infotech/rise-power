@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { insights } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -17,7 +18,11 @@ export default function InsightsPage() {
       />
 
       <div className="mx-auto max-w-[1440px] px-6 py-16 lg:px-10 lg:py-24">
-        <div className="divide-y divide-border border-y border-border">
+        <RevealStagger
+          className="divide-y divide-border border-y border-border"
+          step={80}
+          variant="up"
+        >
           {insights.map((article) => (
             <Link
               key={article.slug}
@@ -37,7 +42,7 @@ export default function InsightsPage() {
               </div>
             </Link>
           ))}
-        </div>
+        </RevealStagger>
       </div>
     </>
   );

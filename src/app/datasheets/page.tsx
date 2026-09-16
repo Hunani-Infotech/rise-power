@@ -106,7 +106,7 @@ export default function DatasheetsPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="hero-animate-media object-cover object-center"
         />
 
         {/* Dark gradient */}
@@ -123,7 +123,7 @@ export default function DatasheetsPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 py-28 sm:min-h-[760px] lg:min-h-[820px] lg:px-10">
 
-          <Reveal variant="up" className="max-w-[780px]">
+          <div className="hero-animate-copy max-w-[780px]">
 
             {/* Eyebrow */}
             <div className="flex items-center gap-4">
@@ -166,7 +166,7 @@ export default function DatasheetsPage() {
 
             </div>
 
-          </Reveal>
+          </div>
         </div>
       </section>
 

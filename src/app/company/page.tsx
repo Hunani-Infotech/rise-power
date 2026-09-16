@@ -163,7 +163,7 @@ export default function CompanyPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="hero-animate-media object-cover object-center"
         />
 
         {/* Dark cinematic gradient */}
@@ -178,8 +178,7 @@ export default function CompanyPage() {
 
         {/* Content */}
         <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] items-center px-6 pb-20 pt-32 sm:min-h-[820px] lg:min-h-[900px] lg:px-10">
-          <Reveal variant="up">
-            <div className="max-w-[820px]">
+          <div className="hero-animate-copy max-w-[820px]">
 
               <SectionEyebrow>
                 Company
@@ -233,7 +232,6 @@ export default function CompanyPage() {
                 </a>
               </div>
             </div>
-          </Reveal>
         </div>
       </section>
 

@@ -16,19 +16,21 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
         aria-hidden="true"
       />
       <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
-        {eyebrow ? (
-          <p className="mb-4 text-xs font-semibold tracking-[0.22em] text-accent uppercase">
-            {eyebrow}
-          </p>
-        ) : null}
-        <h1 className="max-w-4xl font-display text-5xl leading-[0.95] font-bold tracking-tight uppercase sm:text-6xl lg:text-7xl">
-          {title}
-        </h1>
-        {description ? (
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted lg:text-lg">
-            {description}
-          </p>
-        ) : null}
+        <div className="hero-animate-copy">
+          {eyebrow ? (
+            <p className="mb-4 text-xs font-semibold tracking-[0.22em] text-accent uppercase">
+              {eyebrow}
+            </p>
+          ) : null}
+          <h1 className="max-w-4xl font-display text-5xl leading-[0.95] font-bold tracking-tight uppercase sm:text-6xl lg:text-7xl">
+            {title}
+          </h1>
+          {description ? (
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted lg:text-lg">
+              {description}
+            </p>
+          ) : null}
+        </div>
       </div>
     </section>
   );
