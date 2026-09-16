@@ -178,7 +178,7 @@ export const hero = {
   headlineLine2: "for operators.",
   body: "Silent hydrogen power systems engineered for defense, critical infrastructure, and off-grid operations.",
   primaryCta: { label: "Watch Mission Video", href: "#demo" } satisfies Cta,
-  secondaryCta: { label: "See Capabilities", href: "/capabilities" } satisfies Cta,
+  secondaryCta: { label: "Explore Products", href: "/products" } satisfies Cta,
   chips: [
     { title: "Systems Active", subtitle: "Field-ready deployments" },
     { title: "Zero Emissions", subtitle: "At point of use" },
