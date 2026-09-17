@@ -248,8 +248,8 @@ export default function ProductsPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[720px] overflow-hidden bg-[#07100d] text-white sm:min-h-[780px] lg:min-h-screen">
-        <Image
+      <section className="relative min-h-[480px] overflow-hidden bg-[#07100d] text-white sm:min-h-[560px] lg:min-h-[680px]">
+        {/* <Image
           src="/media/products/products-hero.png"
           alt="Rise Power hydrogen product systems"
           fill
@@ -260,7 +260,7 @@ export default function ProductsPage() {
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#06100d]/80 via-[#06100d]/35 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06100d]/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#06100d]/60 via-transparent to-transparent" /> */}
 
         <div className="relative overflow-hidden">
           {/* Background Image */}
@@ -270,7 +270,7 @@ export default function ProductsPage() {
             fill
             priority
             sizes="100vw"
-            className="hero-animate-media object-cover"
+            className="hero-animate-media object-cover object-[center_40%]"
           />
 
           {/* Dark Overlay */}
@@ -286,7 +286,7 @@ export default function ProductsPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#050b0d]/45 via-transparent to-transparent" />
 
           {/* Content */}
-          <div className="relative mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 pt-24 pb-16 sm:min-h-[780px] lg:min-h-screen lg:px-10">
+          <div className="relative mx-auto flex min-h-[480px] max-w-[1440px] items-center px-6 pt-24 pb-16 sm:min-h-[560px] lg:min-h-[760px] lg:px-10">
 
             <div className="hero-animate-copy w-full max-w-[620px]">
 
@@ -381,7 +381,7 @@ export default function ProductsPage() {
                 <article
                   key={product.slug}
                   id={product.slug}
-                  className="group flex min-w-0 scroll-mt-24 flex-col overflow-hidden rounded-lg border border-[#d9d8d0] bg-[#07151b] text-white shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
+                  className="group flex h-full min-w-0 scroll-mt-24 flex-col overflow-hidden rounded-lg border border-[#d9d8d0] bg-[#07151b] text-white shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
                 >
                   {/* CARD IMAGE */}
                   <div className="relative aspect-[1.12/1] overflow-hidden">
@@ -417,12 +417,12 @@ export default function ProductsPage() {
                       {product.tagline}
                     </p>
 
-                    <p className="mt-4 min-h-[72px] text-[13px] leading-relaxed text-white/65">
+                    <p className="mt-4 mb-3 min-h-[72px] text-[13px] leading-relaxed text-white/65">
                       {product.description}
                     </p>
 
                     {/* STATS */}
-                    <div className="mt-4 grid grid-cols-3 border-y border-white/15 py-4">
+                    <div className="mt-auto grid grid-cols-3 border-y border-white/15 py-4">
                       {meta.stats.map(([Icon, value, label]) => {
                         const StatIcon = Icon as typeof Zap;
 
@@ -511,7 +511,7 @@ export default function ProductsPage() {
 
 
           {/* SYSTEM FLOW */}
-          <RevealStagger className="space-y-3" step={80} variant="right">
+          {/* <RevealStagger className="space-y-3" step={80} variant="right">
             {systemFlow.map((item) => (
               <div
                 key={item.title}
@@ -535,6 +535,47 @@ export default function ProductsPage() {
                     {item.title}
                   </h3>
                   <p className="text-[13px] text-[#706e66]">
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </RevealStagger> */}
+
+                    {/* SYSTEM FLOW */}
+                    <RevealStagger className="flex w-full max-w-md flex-col gap-4" step={80} variant="right">
+            {systemFlow.map((item, index) => (
+              <div
+                key={item.title}
+                className="relative flex items-stretch overflow-visible rounded-md border border-[#dcded8] bg-white/80"
+              >
+                {/* Image */}
+                <div className="relative m-3 h-16 w-16 shrink-0 self-center overflow-hidden rounded-md sm:h-20 sm:w-20">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+
+                {/* Dot + connecting line, between image and text */}
+                <div className="relative w-3 shrink-0">
+                  {index !== 0 && (
+                    <span className="absolute -top-4 bottom-1/2 left-1/2 w-px -translate-x-1/2 bg-[#6e7f42]/50 sm:-top-6" />
+                  )}
+                  {index !== systemFlow.length - 1 && (
+                    <span className="absolute top-1/2 -bottom-4 left-1/2 w-px -translate-x-1/2 bg-[#6e7f42]/50 sm:-bottom-6" />
+                  )}
+                  <span className="absolute top-1/2 left-1/2 z-10 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6e7f42] ring-4 ring-white" />
+                </div>
+
+                {/* Text */}
+                <div className="min-w-0 flex-1 self-center p-3">
+                  <h3 className="text-[15px] font-bold uppercase leading-tight sm:text-[18px]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-[12px] leading-relaxed text-[#5c584e] sm:text-[14px]">
                     {item.body}
                   </p>
                 </div>
@@ -586,11 +627,10 @@ export default function ProductsPage() {
                 {products.slice(0, 4).map((product, index) => (
                   <div
                     key={product.slug}
-                    className={`overflow-hidden border border-b-0 border-[#293a40] bg-[#07151b] shadow-[0_15px_40px_rgba(0,0,0,.08)] ${
-                      index === 0
-                        ? "rounded-tr-lg border-l border-l-white/15"
-                        : "ml-1 rounded-t-lg"
-                    }`}
+                    className={`overflow-hidden border border-b-0 border-[#293a40] bg-[#07151b] shadow-[0_15px_40px_rgba(0,0,0,.08)] ${index === 0
+                      ? "rounded-tr-lg border-l border-l-white/15"
+                      : "ml-1 rounded-t-lg"
+                      }`}
                   >
                     <div className="relative aspect-[1.35/1] overflow-hidden">
                       <Image
@@ -641,11 +681,10 @@ export default function ProductsPage() {
                     {row.values.map((value, index) => (
                       <div
                         key={`${row.label}-${index}`}
-                        className={`flex min-w-0 items-center border-t border-t-white/15 bg-[#07151b] px-5 py-4 text-sm leading-relaxed text-white/85 ${
-                          index === 0
-                            ? "border-r border-[#293a40] border-l border-l-white/15"
-                            : "ml-1 border-x border-[#293a40]"
-                        }`}
+                        className={`flex min-w-0 items-center border-t border-t-white/15 bg-[#07151b] px-5 py-4 text-sm leading-relaxed text-white/85 ${index === 0
+                          ? "border-r border-[#293a40] border-l border-l-white/15"
+                          : "ml-1 border-x border-[#293a40]"
+                          }`}
                       >
                         {value}
                       </div>
@@ -669,11 +708,10 @@ export default function ProductsPage() {
                 {products.slice(0, 4).map((product, index) => (
                   <div
                     key={product.slug}
-                    className={`border border-t-0 border-[#293a40] border-t border-t-white/15 bg-[#07151b] p-4 ${
-                      index === 0
-                        ? "rounded-br-lg border-l border-l-white/15"
-                        : "ml-1 rounded-b-lg"
-                    }`}
+                    className={`border border-t-0 border-[#293a40] border-t border-t-white/15 bg-[#07151b] p-4 ${index === 0
+                      ? "rounded-br-lg border-l border-l-white/15"
+                      : "ml-1 rounded-b-lg"
+                      }`}
                   >
                     <Link
                       href={`#${product.slug}`}

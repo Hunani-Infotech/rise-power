@@ -258,7 +258,7 @@ export function ClosingCta() {
               delay={120}
               className="mt-10 lg:mt-0"
             >
-              <div className="border-l border-white/15 pl-0 lg:pl-10">
+              <div className="border-l-0 border-white/15 pl-0 lg:border-l lg:pl-10">
                 <p
                   className="text-[16px] font-semibold tracking-[0.18em] uppercase"
                   style={{ color: sage }}

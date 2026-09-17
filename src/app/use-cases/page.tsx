@@ -137,7 +137,7 @@ function SectionEyebrow({
 function ProductArrow() {
   return (
     <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#aeb4aa] transition-all duration-300 group-hover:border-[#6e7f42] group-hover:bg-[#6e7f42] group-hover:text-white">
-      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+      <ArrowRight className="size-4 transition-transform duration-300" />
     </span>
   );
 }
@@ -251,7 +251,7 @@ export default function UseCasesPage() {
     <main className="bg-[#fbfaf7] text-[#101713]">
       {/* HERO*/}
 
-      <section className="relative min-h-[720px] overflow-hidden bg-[#0a100e] text-white sm:min-h-[780px] lg:min-h-[850px]">
+      <section className="relative min-h-[480px] overflow-hidden bg-[#0a100e] text-white sm:min-h-[560px] lg:min-h-[640px]">
         {/* Background */}
         {defense?.image ? (
           <Image
@@ -260,7 +260,7 @@ export default function UseCasesPage() {
             fill
             priority
             sizes="100vw"
-            className="hero-animate-media object-cover object-center"
+            className="hero-animate-media object-cover object-[center_15%]"
           />
         ) : null}
 
@@ -276,7 +276,7 @@ export default function UseCasesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/40 via-transparent to-transparent" />
 
         {/* Content */}
-        <div className="relative mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 pt-28 pb-20 sm:min-h-[780px] lg:min-h-[850px] lg:px-10">
+        <div className="relative mx-auto flex min-h-[480px] max-w-[1440px] items-center px-6 pt-28 pb-20 sm:min-h-[560px] lg:min-h-[750px] lg:px-10">
           <div className="hero-animate-copy max-w-[700px]">
               <SectionEyebrow>Use Cases</SectionEyebrow>
 
@@ -357,7 +357,7 @@ export default function UseCasesPage() {
               >
                 <article
                   id={item.slug === defense?.slug ? undefined : item.slug}
-                  className="group relative block aspect-[2.20/1] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713]"
+                  className="group relative block min-h-[340px] sm:min-h-[400px] md:min-h-[360px] lg:min-h-[320px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713]"
                 >
                   {item.image ? (
                     <Image
@@ -410,7 +410,7 @@ export default function UseCasesPage() {
           id={defense.slug}
           className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-0"
         >
-          <div className="mx-auto grid max-w-[1440px] gap-5 px-6 lg:grid-cols-[1fr_0.92fr] lg:px-10">
+          <div className="mx-auto grid max-w-[1440px] items-center gap-5 px-6 lg:grid-cols-[1fr_0.92fr] lg:px-10">
             {/* Image */}
             <Reveal variant="left">
               <div className="relative aspect-[1.03/1] overflow-hidden rounded-xl bg-[#dfe4dc]">
@@ -500,7 +500,7 @@ export default function UseCasesPage() {
                   })}
                 </div>
 
-                <div className="mt-auto flex flex-col gap-6 pt-7 sm:flex-row sm:items-center">
+                <div className="mt-auto flex flex-col gap-6 pt-7 xl:flex-row xl:items-center">
                   <a
                     href="#deployment"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
@@ -589,7 +589,7 @@ export default function UseCasesPage() {
                 })}
               </div>
 
-              <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
+              <div className="mt-auto flex flex-col gap-6 pt-7 xl:flex-row xl:items-center">
                 <a
                   href="/products"
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
