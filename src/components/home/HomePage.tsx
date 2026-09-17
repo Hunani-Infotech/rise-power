@@ -699,41 +699,46 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 5. Featured Products */}
+      {/* 5. Featured Products — compact editorial strips */}
       <section
         id="featured-products"
-        className={`scroll-mt-28 ${sectionY}`}
+        className="scroll-mt-28 py-12 sm:py-14 lg:py-16"
         style={{ background: "#ffffff" }}
       >
         <div className={pageInset}>
           <Reveal variant="up">
-            <p
-              className="text-center font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
-              style={{ color: sage }}
-            >
-              {featuredProducts.eyebrow}
-            </p>
-            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-              {featuredProducts.headingBefore}{" "}
-              <span style={{ color: sage }}>
-                {featuredProducts.headingAccent}
-                {featuredProducts.headingAfter
-                  ? ` ${featuredProducts.headingAfter}`
-                  : ""}
-              </span>
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
-              {featuredProducts.body}
-            </p>
+            <header className="flex flex-col gap-3 border-b border-[#ddd8cc] pb-6 sm:flex-row sm:items-end sm:justify-between sm:gap-8 sm:pb-7">
+              <div>
+                <p
+                  className="font-display text-[13px] font-semibold tracking-[0.22em] uppercase"
+                  style={{ color: sage }}
+                >
+                  {featuredProducts.eyebrow}
+                </p>
+                <h2 className="mt-2 font-display text-3xl leading-[0.95] font-bold tracking-tight text-[#1a1c16] uppercase sm:text-4xl lg:text-[2.75rem]">
+                  {featuredProducts.headingBefore}{" "}
+                  <span style={{ color: sage }}>
+                    {featuredProducts.headingAccent}
+                  </span>
+                </h2>
+              </div>
+              <p className="max-w-sm text-sm leading-relaxed text-[#5c584e] sm:text-right">
+                {featuredProducts.body}
+              </p>
+            </header>
           </Reveal>
 
           <RevealStagger
-            className="mt-12 space-y-6 lg:mt-16 lg:space-y-8"
-            step={100}
+            className="mt-8 space-y-4 lg:mt-10 lg:space-y-5"
+            step={90}
             variant="up"
           >
-            {featuredProducts.products.map((product) => (
-              <FeaturedProductRow key={product.name} {...product} />
+            {featuredProducts.products.map((product, index) => (
+              <FeaturedProductRow
+                key={product.name}
+                {...product}
+                imageRight={index % 2 === 1}
+              />
             ))}
           </RevealStagger>
         </div>

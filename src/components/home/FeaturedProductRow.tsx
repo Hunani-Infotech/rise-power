@@ -1,83 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
-import {
-  ArrowRight,
-  Building2,
-  Construction,
-  Crosshair,
-  Download,
-  Pickaxe,
-  Plane,
-  Radio,
-  RadioTower,
-  Shield,
-  Timer,
-  Weight,
-  Zap,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   productUiLabels,
   type FeaturedProduct,
 } from "@/lib/home-content";
 import { PlaceholderMedia } from "./PlaceholderMedia";
 
-const sage = "#6e7f42";
-
 export type FeaturedProductRowProps = FeaturedProduct & {
   imageSrc?: string;
+  /** Alternate image to the right for editorial rhythm. */
+  imageRight?: boolean;
 };
 
-const fallbackIdealIcons = [Radio, Plane, Crosshair, Shield] as const;
-
-function idealIconFor(item: string, index: number): LucideIcon {
-  const lower = item.toLowerCase();
-  if (lower.includes("comm")) return Radio;
-  if (
-    lower.includes("uav") ||
-    lower.includes("drone") ||
-    lower.includes("flight") ||
-    lower.includes("aerial")
-  ) {
-    return Plane;
-  }
-  if (lower.includes("isr") || lower.includes("surveillance")) return Crosshair;
-  if (lower.includes("command") || lower.includes("border") || lower.includes("security")) {
-    return Shield;
-  }
-  if (lower.includes("construction")) return Construction;
-  if (lower.includes("mining")) return Pickaxe;
-  if (lower.includes("telecom")) return RadioTower;
-  if (lower.includes("remote") || lower.includes("infra")) return Building2;
-  return fallbackIdealIcons[index % fallbackIdealIcons.length];
-}
-
-type SpecRowProps = {
-  icon: LucideIcon;
-  label: string;
-  value: string;
-  note: string;
-  showDivider?: boolean;
-};
-
-function SpecRow({ icon: Icon, label, value, note, showDivider }: SpecRowProps) {
-  return (
-    <div
-      className={`flex flex-col gap-1.5 py-4 first:pt-0 last:pb-0 ${
-        showDivider ? "border-b border-[#ddd8cc]" : ""
-      }`}
-    >
-      <Icon className="size-5" strokeWidth={1.6} style={{ color: sage }} />
-      <p className="text-[10px] font-semibold tracking-[0.16em] text-[#1a1c16] uppercase">
-        {label}
-      </p>
-      <p className="font-display text-2xl leading-none font-bold tracking-tight text-[#1a1c16]">
-        {value}
-      </p>
-      <p className="text-[11px] leading-snug text-[#5c584e]">{note}</p>
-    </div>
-  );
-}
+/** Soft chamfer — lighter than MarketCard, keeps industrial edge. */
+const rowClip =
+  "polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px)";
 
 export function FeaturedProductRow({
   name,
@@ -85,128 +23,106 @@ export function FeaturedProductRow({
   subtitle,
   body,
   runtime,
-  runtimeNote,
   weight,
-  weightNote,
   power,
-  powerNote,
-  idealFor,
   detailsHref,
-  datasheetHref,
   image,
   imageSrc,
+  imageRight = false,
 }: FeaturedProductRowProps) {
-  return (
-    <article
-      id={name.toLowerCase()}
-      className="motion-hover-lift scroll-mt-28 grid gap-0 overflow-hidden border border-[#ddd8cc] bg-white md:grid-cols-2 lg:grid-cols-[0.95fr_1.15fr_0.7fr_0.75fr] rounded-sm"
+  const specs = [
+    { label: productUiLabels.runtime, value: runtime },
+    { label: productUiLabels.weight, value: weight },
+    { label: productUiLabels.power, value: power },
+  ] as const;
+
+  const media = (
+    <div
+      className={`relative aspect-[5/4] overflow-hidden bg-[#f3f0e8] sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[12.5rem] lg:max-h-[14.5rem] ${
+        imageRight
+          ? "border-t border-[#ddd8cc] lg:border-t-0 lg:border-l"
+          : "border-b border-[#ddd8cc] lg:border-r lg:border-b-0"
+      }`}
     >
-      {/* 1. Left copy */}
-      <div className="flex flex-col justify-center border-b border-[#e4e0d6] p-6 sm:p-8 lg:border-r lg:border-b-0 lg:border-[#ddd8cc]">
-        <h3
-          className="font-display text-3xl font-bold tracking-[0.04em] uppercase sm:text-[2rem]"
-          style={{ color: sage }}
-        >
+      {imageSrc ? (
+        <Image
+          src={imageSrc}
+          alt={image}
+          fill
+          quality={75}
+          priority={false}
+          className="object-cover object-center"
+          sizes="(max-width: 1024px) 100vw, 36vw"
+        />
+      ) : (
+        <PlaceholderMedia
+          label={image}
+          className="absolute inset-0 min-h-full"
+        />
+      )}
+    </div>
+  );
+
+  const content = (
+    <div className="flex flex-col justify-center gap-4 p-5 sm:gap-4 sm:p-5 lg:px-7 lg:py-5">
+      <div>
+        <h3 className="font-display text-[1.6rem] leading-none font-bold tracking-[0.06em] text-[#6e7f42] uppercase sm:text-[1.85rem]">
           {name}
-          <span>{trademark}</span>
+          {trademark ? (
+            <span className="align-super text-[0.55em]">{trademark}</span>
+          ) : null}
         </h3>
-        <p className="mt-2 text-xs font-semibold tracking-[0.16em] text-[#1a1c16] uppercase">
+        <p className="mt-1.5 text-[10px] font-semibold tracking-[0.18em] text-[#1a1c16] uppercase">
           {subtitle}
         </p>
-        <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#5c584e]">
+        <p className="mt-2.5 max-w-xl text-sm leading-snug text-[#5c584e] line-clamp-2">
           {body}
         </p>
+      </div>
+
+      <dl className="grid grid-cols-3 divide-x divide-[#ddd8cc] border-y border-[#ddd8cc]">
+        {specs.map((spec) => (
+          <div
+            key={spec.label}
+            className="px-3 py-2.5 first:pl-0 last:pr-0 sm:px-4 sm:py-3"
+          >
+            <dt className="text-[9px] font-semibold tracking-[0.16em] text-[#5c584e] uppercase">
+              {spec.label}
+            </dt>
+            <dd className="mt-1 font-display text-[0.95rem] leading-none font-bold tracking-tight text-[#1a1c16] sm:text-base">
+              {spec.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      <div className="flex justify-end">
         <Link
           href={detailsHref}
-          className="mt-8 inline-flex w-fit min-h-11 items-center justify-center gap-2 border border-[#cfc9bb] bg-transparent px-5 text-sm font-semibold tracking-wide text-[#1a1c16] uppercase transition-colors hover:border-[#1a1c16] rounded-sm"
+          className="inline-flex min-h-9 items-center gap-2 border border-[#cfc9bb] px-3.5 text-[11px] font-semibold tracking-[0.14em] text-[#1a1c16] uppercase transition-colors hover:border-[#1a1c16] rounded-sm"
         >
           {productUiLabels.viewDetails}
-          <ArrowRight className="size-4" strokeWidth={1.8} />
+          <ArrowRight className="size-3.5" strokeWidth={1.8} />
         </Link>
       </div>
+    </div>
+  );
 
-      {/* 2. Product image */}
-      <div className="relative min-h-[12rem] overflow-hidden border-b border-[#e4e0d6] lg:min-h-[22rem] lg:border-r lg:border-b-0 lg:border-[#ddd8cc]">
-        {imageSrc ? (
-          <Image
-            src={imageSrc}
-            alt={image}
-            fill
-            quality={75}
-            priority={false}
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 35vw"
-          />
-        ) : (
-          <PlaceholderMedia
-            label={image}
-            className="absolute inset-0 min-h-full"
-          />
-        )}
-      </div>
-
-      {/* 3. Specs column — stacked rows */}
-      <div className="flex flex-col justify-center border-b border-[#e4e0d6] p-6 sm:p-8 lg:border-r lg:border-b-0 lg:border-[#ddd8cc]">
-        <SpecRow
-          icon={Timer}
-          label={productUiLabels.runtime}
-          value={runtime}
-          note={runtimeNote}
-          showDivider
-        />
-        <SpecRow
-          icon={Weight}
-          label={productUiLabels.weight}
-          value={weight}
-          note={weightNote}
-          showDivider
-        />
-        <SpecRow
-          icon={Zap}
-          label={productUiLabels.power}
-          value={power}
-          note={powerNote}
-        />
-      </div>
-
-      {/* 4. Dark sidebar */}
-      <div className="relative flex flex-col bg-[#141a14] p-6 text-[#f3efe4] sm:p-8">
-        <span
-          className="absolute inset-y-0 right-0 w-0.5"
-          style={{ background: sage }}
-          aria-hidden
-        />
-        <p
-          className="text-[11px] font-semibold tracking-[0.18em] uppercase"
-          style={{ color: sage }}
-        >
-          {productUiLabels.idealFor}
-        </p>
-        <ul className="mt-4 flex-1 space-y-3 text-sm">
-          {idealFor.map((item, index) => {
-            const Icon = idealIconFor(item, index);
-            return (
-              <li key={item} className="flex items-start gap-2.5">
-                <Icon
-                  className="mt-0.5 size-3.5 shrink-0"
-                  strokeWidth={1.7}
-                  style={{ color: sage }}
-                />
-                <span className="leading-snug text-[#f3efe4]/90">{item}</span>
-              </li>
-            );
-          })}
-        </ul>
-        <div className="mt-6 border-t border-[#f3efe4]/15 pt-5">
-          <Link
-            href={datasheetHref}
-            className="inline-flex min-h-11 items-center gap-2 text-[11px] font-semibold tracking-[0.14em] uppercase transition-opacity hover:opacity-80"
-            style={{ color: sage }}
-          >
-            <Download className="size-4 shrink-0" strokeWidth={1.7} />
-            {productUiLabels.downloadSpec}
-          </Link>
-        </div>
+  return (
+    <article
+      id={name.toLowerCase().replace(/\s+/g, "-")}
+      className="motion-hover-lift scroll-mt-28 overflow-hidden border border-[#ddd8cc] bg-white"
+      style={{ clipPath: rowClip }}
+    >
+      <div
+        className={
+          imageRight
+            ? "grid lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.9fr)] lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1"
+            : "grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)]"
+        }
+      >
+        {media}
+        {content}
       </div>
     </article>
   );
