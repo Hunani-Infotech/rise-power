@@ -9,14 +9,13 @@ import { PlaceholderMedia } from "./PlaceholderMedia";
 
 export type FeaturedProductRowProps = FeaturedProduct & {
   imageSrc?: string;
-  /** Alternate image to the right for editorial rhythm. */
-  imageRight?: boolean;
 };
 
-/** Soft chamfer — lighter than MarketCard, keeps industrial edge. */
-const rowClip =
-  "polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px)";
+/** Soft chamfer — industrial edge for column cards. */
+const cardClip =
+  "polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)";
 
+/** Vertical product card for a single-row 4-column featured grid. */
 export function FeaturedProductRow({
   name,
   trademark,
@@ -28,7 +27,6 @@ export function FeaturedProductRow({
   detailsHref,
   image,
   imageSrc,
-  imageRight = false,
 }: FeaturedProductRowProps) {
   const specs = [
     { label: productUiLabels.runtime, value: runtime },
@@ -36,93 +34,70 @@ export function FeaturedProductRow({
     { label: productUiLabels.power, value: power },
   ] as const;
 
-  const media = (
-    <div
-      className={`relative aspect-[5/4] overflow-hidden bg-[#f3f0e8] sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[12.5rem] lg:max-h-[14.5rem] ${
-        imageRight
-          ? "border-t border-[#ddd8cc] lg:border-t-0 lg:border-l"
-          : "border-b border-[#ddd8cc] lg:border-r lg:border-b-0"
-      }`}
+  return (
+    <article
+      id={name.toLowerCase().replace(/\s+/g, "-")}
+      className="motion-hover-lift group scroll-mt-28 flex h-full flex-col overflow-hidden border border-[#ddd8cc] bg-white"
+      style={{ clipPath: cardClip }}
     >
-      {imageSrc ? (
-        <Image
-          src={imageSrc}
-          alt={image}
-          fill
-          quality={75}
-          priority={false}
-          className="object-cover object-center"
-          sizes="(max-width: 1024px) 100vw, 36vw"
-        />
-      ) : (
-        <PlaceholderMedia
-          label={image}
-          className="absolute inset-0 min-h-full"
-        />
-      )}
-    </div>
-  );
-
-  const content = (
-    <div className="flex flex-col justify-center gap-4 p-5 sm:gap-4 sm:p-5 lg:px-7 lg:py-5">
-      <div>
-        <h3 className="font-display text-[1.6rem] leading-none font-bold tracking-[0.06em] text-[#6e7f42] uppercase sm:text-[1.85rem]">
-          {name}
-          {trademark ? (
-            <span className="align-super text-[0.55em]">{trademark}</span>
-          ) : null}
-        </h3>
-        <p className="mt-1.5 text-[10px] font-semibold tracking-[0.18em] text-[#1a1c16] uppercase">
-          {subtitle}
-        </p>
-        <p className="mt-2.5 max-w-xl text-sm leading-snug text-[#5c584e] line-clamp-2">
-          {body}
-        </p>
+      <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-[#f3f0e8]">
+        {imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={image}
+            fill
+            quality={75}
+            priority={false}
+            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+          />
+        ) : (
+          <PlaceholderMedia
+            label={image}
+            className="absolute inset-0 min-h-full"
+          />
+        )}
       </div>
 
-      <dl className="grid grid-cols-3 divide-x divide-[#ddd8cc] border-y border-[#ddd8cc]">
-        {specs.map((spec) => (
-          <div
-            key={spec.label}
-            className="px-3 py-2.5 first:pl-0 last:pr-0 sm:px-4 sm:py-3"
-          >
-            <dt className="text-[9px] font-semibold tracking-[0.16em] text-[#5c584e] uppercase">
-              {spec.label}
-            </dt>
-            <dd className="mt-1 font-display text-[0.95rem] leading-none font-bold tracking-tight text-[#1a1c16] sm:text-base">
-              {spec.value}
-            </dd>
-          </div>
-        ))}
-      </dl>
+      <div className="flex flex-1 flex-col gap-3 px-4 py-4 sm:px-5 sm:py-5">
+        <div>
+          <h3 className="font-display text-[1.15rem] leading-none font-bold tracking-[0.06em] text-[#6e7f42] uppercase sm:text-[1.25rem]">
+            {name}
+            {trademark ? (
+              <span className="align-super text-[0.55em]">{trademark}</span>
+            ) : null}
+          </h3>
+          <p className="mt-1.5 text-[9px] font-semibold tracking-[0.16em] text-[#1a1c16] uppercase">
+            {subtitle}
+          </p>
+          <p className="mt-2 text-[12px] leading-snug text-[#5c584e] line-clamp-2 sm:text-[13px]">
+            {body}
+          </p>
+        </div>
 
-      <div className="flex justify-end">
+        <dl className="mt-auto space-y-2 border-t border-[#ddd8cc] pt-3">
+          {specs.map((spec) => (
+            <div
+              key={spec.label}
+              className="flex items-baseline justify-between gap-2"
+            >
+              <dt className="text-[8px] font-semibold tracking-[0.14em] text-[#5c584e] uppercase">
+                {spec.label}
+              </dt>
+              <dd className="text-right font-display text-[11px] leading-none font-bold tracking-tight text-[#1a1c16] sm:text-xs">
+                {spec.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
         <Link
           href={detailsHref}
-          className="inline-flex min-h-9 items-center gap-2 border border-[#cfc9bb] px-3.5 text-[11px] font-semibold tracking-[0.14em] text-[#1a1c16] uppercase transition-colors hover:border-[#1a1c16] rounded-sm"
+          className="mt-1 inline-flex min-h-9 w-full items-center justify-center gap-1.5 border border-[#cfc9bb] px-3 text-[10px] font-semibold tracking-[0.14em] text-[#1a1c16] uppercase transition-colors hover:border-[#1a1c16] rounded-sm"
         >
           {productUiLabels.viewDetails}
           <ArrowRight className="size-3.5" strokeWidth={1.8} />
         </Link>
-      </div>
-    </div>
-  );
-
-  return (
-    <article
-      id={name.toLowerCase().replace(/\s+/g, "-")}
-      className="motion-hover-lift scroll-mt-28 overflow-hidden border border-[#ddd8cc] bg-white"
-      style={{ clipPath: rowClip }}
-    >
-      <div
-        className={
-          imageRight
-            ? "grid lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.9fr)] lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1"
-            : "grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)]"
-        }
-      >
-        {media}
-        {content}
       </div>
     </article>
   );

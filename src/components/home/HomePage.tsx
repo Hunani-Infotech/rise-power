@@ -660,7 +660,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 5. Featured Products — compact editorial strips */}
+      {/* 5. Featured Products — single-row 4-column grid */}
       <section
         id="featured-products"
         className="scroll-mt-28 py-12 sm:py-14 lg:py-16"
@@ -690,16 +690,12 @@ export function HomePage() {
           </Reveal>
 
           <RevealStagger
-            className="mt-8 space-y-4 lg:mt-10 lg:space-y-5"
-            step={90}
+            className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5"
+            step={80}
             variant="up"
           >
-            {featuredProducts.products.map((product, index) => (
-              <FeaturedProductRow
-                key={product.name}
-                {...product}
-                imageRight={index % 2 === 1}
-              />
+            {featuredProducts.products.map((product) => (
+              <FeaturedProductRow key={product.name} {...product} />
             ))}
           </RevealStagger>
         </div>
