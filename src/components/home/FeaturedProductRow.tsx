@@ -59,32 +59,32 @@ export function FeaturedProductRow({
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 px-4 py-4 sm:px-5 sm:py-5">
+      <div className="flex flex-1 flex-col gap-3.5 px-5 py-5 sm:px-6 sm:py-6">
         <div>
-          <h3 className="font-display text-[1.15rem] leading-none font-bold tracking-[0.06em] text-[#6e7f42] uppercase sm:text-[1.25rem]">
+          <h3 className="font-display text-[1.35rem] leading-none font-bold tracking-[0.05em] text-[#6e7f42] uppercase sm:text-[1.5rem]">
             {name}
             {trademark ? (
               <span className="align-super text-[0.55em]">{trademark}</span>
             ) : null}
           </h3>
-          <p className="mt-1.5 text-[9px] font-semibold tracking-[0.16em] text-[#1a1c16] uppercase">
+          <p className="mt-2 text-[11px] font-semibold tracking-[0.14em] text-[#1a1c16] uppercase sm:text-xs">
             {subtitle}
           </p>
-          <p className="mt-2 text-[12px] leading-snug text-[#5c584e] line-clamp-2 sm:text-[13px]">
+          <p className="mt-3 text-sm leading-relaxed text-[#5c584e] line-clamp-3">
             {body}
           </p>
         </div>
 
-        <dl className="mt-auto space-y-2 border-t border-[#ddd8cc] pt-3">
+        <dl className="mt-auto space-y-2.5 border-t border-[#ddd8cc] pt-4">
           {specs.map((spec) => (
             <div
               key={spec.label}
-              className="flex items-baseline justify-between gap-2"
+              className="flex items-baseline justify-between gap-3"
             >
-              <dt className="text-[8px] font-semibold tracking-[0.14em] text-[#5c584e] uppercase">
+              <dt className="text-[10px] font-semibold tracking-[0.12em] text-[#5c584e] uppercase sm:text-[11px]">
                 {spec.label}
               </dt>
-              <dd className="text-right font-display text-[11px] leading-none font-bold tracking-tight text-[#1a1c16] sm:text-xs">
+              <dd className="text-right font-display text-sm leading-none font-bold tracking-tight text-[#1a1c16] sm:text-[0.95rem]">
                 {spec.value}
               </dd>
             </div>
@@ -93,10 +93,10 @@ export function FeaturedProductRow({
 
         <Link
           href={detailsHref}
-          className="mt-1 inline-flex min-h-9 w-full items-center justify-center gap-1.5 border border-[#cfc9bb] px-3 text-[10px] font-semibold tracking-[0.14em] text-[#1a1c16] uppercase transition-colors hover:border-[#1a1c16] rounded-sm"
+          className="mt-1 inline-flex min-h-10 w-full items-center justify-center gap-2 border border-[#cfc9bb] px-4 text-xs font-semibold tracking-[0.12em] text-[#1a1c16] uppercase transition-colors hover:border-[#1a1c16] rounded-sm"
         >
           {productUiLabels.viewDetails}
-          <ArrowRight className="size-3.5" strokeWidth={1.8} />
+          <ArrowRight className="size-4" strokeWidth={1.8} />
         </Link>
       </div>
     </article>
