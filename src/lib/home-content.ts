@@ -32,6 +32,8 @@ export type PerformanceGauge = {
 
 export type MarketCard = {
   title: string;
+  body: string;
+  theater: string;
   points: readonly string[];
   href: string;
   cta: string;
@@ -228,29 +230,35 @@ export const threeMarkets = {
   eyebrow: "THREE MARKETS. ONE MISSION.",
   headingBefore: "POWERING",
   headingAccent: "EVERY MISSION.",
-  body: "Rise Mission Power systems are engineered to perform in the toughest environments across military, commercial, and consumer applications.",
+  body: "One platform. Three theaters.",
   cards: [
     {
       title: "Military",
-      points: ["Tactical communications", "UAV operations", "ISR systems"],
+      body: "Tactical communications, UAV, and ISR under field constraints.",
+      theater: "DEFENSE",
+      points: ["Tactical Comms", "UAV", "ISR"],
       href: "/use-cases#defense-security",
-      cta: "EXPLORE SOLUTIONS",
+      cta: "View Defense",
       image: "Military market imagery",
       imageSrc: "/media/markets/military.png",
     },
     {
       title: "Commercial",
-      points: ["Construction sites", "Telecom backup", "Mining"],
+      body: "Construction, telecom backup, and mining — without diesel noise.",
+      theater: "INDUSTRIAL",
+      points: ["Construction", "Telecom", "Mining"],
       href: "/use-cases#critical-infrastructure",
-      cta: "EXPLORE SOLUTIONS",
+      cta: "View Industrial",
       image: "Commercial market imagery",
       imageSrc: "/media/markets/commercial.png",
     },
     {
       title: "Consumer",
-      points: ["Camping", "RV power", "Emergency home backup"],
-      href: "/use-cases",
-      cta: "EXPLORE SOLUTIONS",
+      body: "Camping, RV, and emergency home backup — quiet and clean.",
+      theater: "FIELD",
+      points: ["Camping", "RV", "Home Backup"],
+      href: "/use-cases#disaster-response",
+      cta: "View Field Use",
       image: "Consumer market imagery",
       imageSrc: "/media/markets/consumer.png",
     },

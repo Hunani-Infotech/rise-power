@@ -3,23 +3,13 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import {
   ArrowRight,
-  Building2,
-  Caravan,
   ChevronDown,
-  Construction,
   Crosshair,
   Droplets,
-  Home,
-  HousePlug,
   Leaf,
   Mouse,
-  Pickaxe,
-  Plane,
   Play,
-  Radio,
-  RadioTower,
   Shield,
-  Tent,
   AudioLines,
   Volume2,
   Weight,
@@ -39,7 +29,7 @@ import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { EcosystemStepCard } from "./EcosystemStepCard";
 import { FeaturedProductRow } from "./FeaturedProductRow";
 import { FuelCellDiagram } from "./FuelCellDiagram";
-import { MarketCard } from "./MarketCard";
+import { MarketRow } from "./MarketCard";
 import { PerformanceMetricCard } from "./PerformanceMetricCard";
 import { PerformanceWaveBg } from "./PerformanceWaveBg";
 import { SectionSkeleton } from "./SectionSkeleton";
@@ -75,12 +65,6 @@ const sage = "#6e7f42";
 const heroSage = "#849363";
 
 const gaugeIcons = [AudioLines, Leaf, Crosshair, Weight] as const;
-const marketBadgeIcons = [Shield, Building2, Home] as const;
-const marketPointIcons = [
-  [Radio, Plane, Crosshair],
-  [Construction, RadioTower, Pickaxe],
-  [Tent, Caravan, HousePlug],
-] as const;
 const heroChipIcons = [Leaf, Crosshair, Volume2, Shield] as const;
 
 /** Shared page inset + vertical rhythm (content sections — not hero). */
@@ -267,71 +251,48 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 3. Three Markets */}
+      {/* 3. Three Markets — constrained gallery */}
       <section
         id="three-markets"
-        className={`relative overflow-hidden ${sectionY}`}
-        style={{ background: "#f7f5ef" }}
+        className="scroll-mt-28 bg-[#f3f0e8] py-12 sm:py-14 lg:py-16"
       >
-        {/* Faint hex pattern on left/right edges */}
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 w-[18%] opacity-[0.14]"
-          aria-hidden
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='64' viewBox='0 0 56 64'%3E%3Cpath fill='none' stroke='%239a9484' stroke-width='1' d='M28 2 L52 16 V48 L28 62 L4 48 V16 Z'/%3E%3C/svg%3E\")",
-            backgroundSize: "56px 64px",
-            maskImage:
-              "linear-gradient(to right, black 0%, transparent 90%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, black 0%, transparent 90%)",
-          }}
-        />
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 w-[18%] opacity-[0.14]"
-          aria-hidden
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='64' viewBox='0 0 56 64'%3E%3Cpath fill='none' stroke='%239a9484' stroke-width='1' d='M28 2 L52 16 V48 L28 62 L4 48 V16 Z'/%3E%3C/svg%3E\")",
-            backgroundSize: "56px 64px",
-            maskImage:
-              "linear-gradient(to left, black 0%, transparent 90%)",
-            WebkitMaskImage:
-              "linear-gradient(to left, black 0%, transparent 90%)",
-          }}
-        />
-
-        <div className={`relative z-10 ${pageInset}`}>
+        <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
           <Reveal variant="up">
-            <p
-              className="text-center font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
-              style={{ color: sage }}
-            >
-              {threeMarkets.eyebrow}
-            </p>
-            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-              {threeMarkets.headingBefore}{" "}
-              <span style={{ color: sage }}>{threeMarkets.headingAccent}</span>
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
-              {threeMarkets.body}
-            </p>
+            <div className="mx-auto max-w-2xl text-center">
+              <p
+                className="font-display text-[12px] font-semibold tracking-[0.22em] uppercase"
+                style={{ color: sage }}
+              >
+                {threeMarkets.eyebrow}
+              </p>
+              <h2 className="mt-2 font-display text-[1.85rem] leading-[0.95] font-bold tracking-tight text-[#1a1c16] uppercase sm:text-3xl lg:text-[2.5rem]">
+                {threeMarkets.headingBefore}{" "}
+                <span style={{ color: sage }}>
+                  {threeMarkets.headingAccent}
+                </span>
+              </h2>
+              <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[#5c584e]">
+                {threeMarkets.body}
+              </p>
+            </div>
           </Reveal>
+
           <RevealStagger
-            className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8"
-            step={100}
+            className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-5"
+            step={80}
+            variant="up"
           >
             {threeMarkets.cards.map((item, index) => (
-              <MarketCard
+              <MarketRow
                 key={item.title}
+                index={String(index + 1).padStart(2, "0")}
                 title={item.title}
-                points={item.points}
-                pointIcons={[...marketPointIcons[index]]}
+                body={item.body}
+                theater={item.theater}
                 href={item.href}
                 cta={item.cta}
                 imageSrc={item.imageSrc}
                 imageLabel={item.image}
-                badgeIcon={marketBadgeIcons[index] ?? Shield}
               />
             ))}
           </RevealStagger>
