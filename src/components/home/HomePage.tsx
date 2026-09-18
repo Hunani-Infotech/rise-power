@@ -34,7 +34,7 @@ const MissionMap = dynamic(
   () => import("./MissionMap").then((m) => m.MissionMap),
   {
     ssr: true,
-    loading: () => <SectionSkeleton tone="dark" className="min-h-[24rem]" />,
+    loading: () => <SectionSkeleton tone="dark" className="min-h-[20rem]" />,
   },
 );
 
@@ -388,7 +388,7 @@ export function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mt-10 lg:mt-14">
+          <div className="mt-8 lg:mt-10">
             <MissionMap />
           </div>
         </div>

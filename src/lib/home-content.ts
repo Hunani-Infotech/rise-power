@@ -616,8 +616,8 @@ export const missionDeployments = {
   eyebrow: "COMING SOON",
   headingBefore: "Deployments —",
   headingAccent: "Coming Soon",
-  body: "Field deployment tracking is not live yet. Explore the environments Rise systems are engineered for—mission map details will publish as programs go into the field.",
-  mapPrompt: "CLICK A HOTSPOT to explore planned operating environments",
+  body: "Field tracking is not live yet. Explore the climates and theaters Rise systems are engineered for—details publish as programs enter the field.",
+  mapPrompt: "Select a theater to explore planned operating environments.",
   legend: ["PLANNED THEATERS", "COMING SOON"] as const,
   mapImageSrc: "/media/missions/world-map.png",
   mapImageAlt: "Dark satellite view of the world",
@@ -639,7 +639,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "80+", icon: "users" },
       ],
       overview:
-        "Silent, cold-tolerant hydrogen power engineered for polar research posts and remote communications arrays. Live field tracking for this theater is coming soon.",
+        "Cold-tolerant hydrogen power for polar posts and remote communications arrays.",
       image: "Arctic operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Northern Canada — calibrated to world-map.png light/land mass
@@ -660,7 +660,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "200+", icon: "users" },
       ],
       overview:
-        "Zero-emission backup and tactical power engineered for coastal stations and maritime command nodes. Live field tracking for this theater is coming soon.",
+        "Zero-emission backup power for coastal stations and maritime command nodes.",
       image: "Maritime operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Western Iberia / Portugal — on land in this map art
@@ -681,7 +681,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "120+", icon: "users" },
       ],
       overview:
-        "Lightweight hydrogen modules engineered to sustain UAV and ISR missions across arid theaters. Live field tracking for this theater is coming soon.",
+        "Lightweight modules engineered for UAV and ISR missions across arid theaters.",
       image: "Desert operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Algerian Sahara landmass on this map art
@@ -702,7 +702,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "150+", icon: "users" },
       ],
       overview:
-        "Silent, zero-emission power engineered for forward bases and communication relays in high-altitude conditions. Live field tracking for this theater is coming soon.",
+        "Silent power for forward bases and high-altitude communication relays.",
       image: "Mountain operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Swiss Alps cluster on this map art
@@ -723,7 +723,7 @@ export const missionDeployments = {
         { label: "DESIGN SUPPORT", value: "300+", icon: "users" },
       ],
       overview:
-        "Silent, indoor-safe hydrogen power engineered for emergency response and critical infrastructure. Live field tracking for this theater is coming soon.",
+        "Indoor-safe hydrogen power for emergency response and critical infrastructure.",
       image: "Urban operating environment",
       detailImageSrc: "/media/missions/mountain.png",
       // Germany — north of Alps lights on this map art

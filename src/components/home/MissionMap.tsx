@@ -2,20 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Clock3,
-  Crosshair,
-  MapPin,
-  Minus,
-  Package,
-  Plus,
-  Thermometer,
-  Users,
-  X,
-  type LucideIcon,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Minus, Plus } from "lucide-react";
 import { missionDeployments } from "@/lib/home-content";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -39,7 +26,7 @@ function coverSize(
   return { width: stageH * imgRatio, height: stageH };
 }
 
-/** Pan map so the focus pin sits in the visible center (left of the detail panel). */
+/** Pan map so the focus pin sits in the visible center of the stage. */
 function mapPanOffset({
   stageW,
   stageH,
@@ -48,7 +35,6 @@ function mapPanOffset({
   focusXPct,
   focusYPct,
   zoom,
-  hasPanel,
 }: {
   stageW: number;
   stageH: number;
@@ -57,15 +43,13 @@ function mapPanOffset({
   focusXPct: number;
   focusYPct: number;
   zoom: number;
-  hasPanel: boolean;
 }) {
   if (stageW <= 0 || stageH <= 0 || surfaceW <= 0 || surfaceH <= 0) {
     return { x: 0, y: 0 };
   }
 
-  const panelReserve = hasPanel && stageW >= 1024 ? Math.min(400, stageW * 0.32) : 0;
-  const targetX = (stageW - panelReserve) * 0.5;
-  const targetY = stageH * 0.48;
+  const targetX = stageW * 0.5;
+  const targetY = stageH * 0.52;
 
   const focusX = (focusXPct / 100) * surfaceW;
   const focusY = (focusYPct / 100) * surfaceH;
@@ -75,10 +59,10 @@ function mapPanOffset({
 
   const scaledW = surfaceW * zoom;
   const scaledH = surfaceH * zoom;
-  const minX = stageW - scaledW - 40;
-  const maxX = 40;
-  const minY = stageH - scaledH - 40;
-  const maxY = 40;
+  const minX = stageW - scaledW - 24;
+  const maxX = 24;
+  const minY = stageH - scaledH - 24;
+  const maxY = 24;
 
   if (scaledW > stageW) {
     x = Math.min(maxX, Math.max(minX, x));
@@ -94,29 +78,39 @@ function mapPanOffset({
   return { x, y };
 }
 
-const hotspotStatIcons = {
-  clock: Clock3,
-  thermometer: Thermometer,
-  package: Package,
-  users: Users,
-} as const satisfies Record<string, LucideIcon>;
+function formatStatLabel(label: string) {
+  return label
+    .replace(/ CAPABILITY$/i, "")
+    .replace(/^TARGET /i, "")
+    .toLowerCase()
+    .replace(/^\w/, (c) => c.toUpperCase());
+}
+
+const mapFocusRing =
+  "outline-none focus-visible:ring-2 focus-visible:ring-[#8fad4a]/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#12150f]";
+const dockFocusRing =
+  "outline-none focus-visible:ring-2 focus-visible:ring-[#6e7f42]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f3f0e8]";
 
 export function MissionMap() {
-  const [activeId, setActiveId] = useState<string | null>(
+  const [activeId, setActiveId] = useState(
     missionDeployments.defaultHotspotId,
   );
-  const [zoom, setZoom] = useState(1.15);
+  const [zoom, setZoom] = useState(1.12);
+  const [dockOpacity, setDockOpacity] = useState(1);
   const stageRef = useRef<HTMLDivElement>(null);
   const [stage, setStage] = useState({ w: 0, h: 0 });
+  const prevActiveId = useRef(activeId);
+  const reduceMotion = useRef(false);
 
-  const index = activeId
-    ? missionDeployments.hotspots.findIndex((h) => h.id === activeId)
-    : -1;
-  const active = index >= 0 ? missionDeployments.hotspots[index] : null;
+  const resolvedIndex = missionDeployments.hotspots.findIndex(
+    (h) => h.id === activeId,
+  );
+  const index = resolvedIndex >= 0 ? resolvedIndex : 0;
+  const active =
+    missionDeployments.hotspots[index] ?? missionDeployments.hotspots[0];
   const mapAspect = missionDeployments.mapAspect;
   const surface = coverSize(stage.w, stage.h, mapAspect.width, mapAspect.height);
 
-  // Focus the active pin; otherwise hold a Europe/Atlantic overview framing
   const focusPoint = active
     ? { x: active.x, y: active.y }
     : { x: 52, y: 34 };
@@ -129,8 +123,13 @@ export function MissionMap() {
     focusXPct: focusPoint.x,
     focusYPct: focusPoint.y,
     zoom,
-    hasPanel: Boolean(active),
   });
+
+  useEffect(() => {
+    reduceMotion.current = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+  }, []);
 
   useEffect(() => {
     const el = stageRef.current;
@@ -147,11 +146,17 @@ export function MissionMap() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (prevActiveId.current === activeId) return;
+    prevActiveId.current = activeId;
+    if (reduceMotion.current) return;
+
+    setDockOpacity(0.45);
+    const id = window.setTimeout(() => setDockOpacity(1), 40);
+    return () => window.clearTimeout(id);
+  }, [activeId]);
+
   const go = (dir: -1 | 1) => {
-    if (!active) {
-      setActiveId(missionDeployments.defaultHotspotId);
-      return;
-    }
     const next =
       (index + dir + missionDeployments.hotspots.length) %
       missionDeployments.hotspots.length;
@@ -159,274 +164,221 @@ export function MissionMap() {
     if (hotspot) setActiveId(hotspot.id);
   };
 
-  const zoomIn = () => setZoom((value) => Math.min(1.75, value + 0.15));
-  const zoomOut = () => setZoom((value) => Math.max(1, value - 0.15));
+  const zoomIn = () => setZoom((value) => Math.min(1.6, value + 0.12));
+  const zoomOut = () => setZoom((value) => Math.max(1, value - 0.12));
+
+  const dockSpecs = active.stats.slice(0, 3);
 
   return (
     <div>
       <Reveal
         variant="up"
-        className="overflow-hidden rounded-[1.25rem] bg-[#0a0e12] text-[#f3efe4] shadow-[0_28px_70px_rgba(10,14,10,0.2)]"
+        className="overflow-hidden rounded-[1rem] border border-[#1a1c16]/08 bg-[#12150f] text-[#f3efe4] shadow-[0_20px_50px_rgba(18,21,15,0.14)]"
       >
-        <div className="relative lg:min-h-[40rem] xl:min-h-[42rem]">
-          {/* Map plane — cover surface, lat/lon pins, pan to keep active pin centered */}
+        {/* Map stage — shorter editorial plane */}
+        <div
+          ref={stageRef}
+          className="relative h-[16rem] overflow-hidden sm:h-[18rem] lg:h-[20rem]"
+          role="group"
+          aria-label="Planned operating environments map"
+        >
           <div
-            ref={stageRef}
-            className="relative h-[22rem] overflow-hidden sm:h-[28rem] lg:absolute lg:inset-0 lg:h-auto"
+            className="absolute top-0 left-0 origin-top-left will-change-transform motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)]"
+            style={{
+              width: surface.width || "100%",
+              height: surface.height || "100%",
+              transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+            }}
           >
+            <Image
+              src={missionDeployments.mapImageSrc}
+              alt=""
+              fill
+              quality={90}
+              sizes="100vw"
+              className="object-fill"
+              aria-hidden
+            />
             <div
-              className="absolute top-0 left-0 origin-top-left will-change-transform transition-transform duration-500 ease-out"
-              style={{
-                width: surface.width || "100%",
-                height: surface.height || "100%",
-                transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
-              }}
-            >
-              <Image
-                src={missionDeployments.mapImageSrc}
-                alt={missionDeployments.mapImageAlt}
-                fill
-                quality={90}
-                sizes="100vw"
-                className="object-fill"
-              />
-              <div
-                className="absolute inset-0 bg-[#05080c]/20"
-                aria-hidden
-              />
+              className="absolute inset-0 bg-[#0c100a]/30 mix-blend-multiply"
+              aria-hidden
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-[#12150f]/50 via-transparent to-[#12150f]/20"
+              aria-hidden
+            />
 
-              {surface.width > 0
-                ? missionDeployments.hotspots.map((hotspot) => {
-                    const isActive = hotspot.id === active?.id;
-                    return (
-                      <button
-                        key={hotspot.id}
-                        type="button"
-                        onClick={() => setActiveId(hotspot.id)}
-                        className="absolute z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center outline-none"
-                        style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
-                        aria-label={`${hotspot.label} — ${hotspot.location}`}
-                        aria-pressed={isActive}
-                      >
-                        <span className="relative grid size-16 place-items-center">
-                          <span
-                            className={`absolute rounded-full border transition-all duration-300 ${
-                              isActive
-                                ? "size-14 border-[#8fad4a]/55 opacity-100"
-                                : "size-12 border-[#8fad4a]/30 opacity-80"
-                            }`}
-                            aria-hidden
-                          />
-                          <span
-                            className={`absolute rounded-full border transition-all duration-300 ${
-                              isActive
-                                ? "size-8 border-[#8fad4a]/90 opacity-100"
-                                : "size-7 border-[#8fad4a]/50 opacity-90"
-                            }`}
-                            aria-hidden
-                          />
-                          <span
-                            className={`relative block rounded-full transition-all duration-300 ${
-                              isActive ? "size-3" : "size-2.5"
-                            }`}
-                            style={{
-                              background: sageBright,
-                              boxShadow: isActive
-                                ? "0 0 0 4px rgba(143,173,74,0.22), 0 0 18px rgba(143,173,74,0.75)"
-                                : "0 0 12px rgba(143,173,74,0.55)",
-                            }}
-                            aria-hidden
-                          />
-                        </span>
+            {surface.width > 0
+              ? missionDeployments.hotspots.map((hotspot) => {
+                  const isActive = hotspot.id === active.id;
+                  return (
+                    <button
+                      key={hotspot.id}
+                      type="button"
+                      onClick={() => setActiveId(hotspot.id)}
+                      className={`absolute z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center rounded-sm ${mapFocusRing}`}
+                      style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
+                      aria-label={`${hotspot.label}, ${hotspot.location}`}
+                      aria-pressed={isActive}
+                      aria-controls="theater-dock"
+                    >
+                      <span className="relative grid size-10 place-items-center">
                         <span
-                          className={`-mt-0.5 flex flex-col items-center rounded px-2 py-0.5 backdrop-blur-sm transition-colors ${
+                          className={`absolute rounded-full border motion-safe:transition-all motion-safe:duration-300 ${
                             isActive
-                              ? "bg-[#0a0e12]/92 text-white"
-                              : "bg-[#0a0e12]/78 text-white/75"
+                              ? "size-9 border-[#8fad4a]/40 opacity-100"
+                              : "size-7 border-white/20 opacity-65"
                           }`}
-                        >
-                          <span className="text-[10px] font-bold tracking-[0.16em] uppercase">
-                            {hotspot.label}
-                          </span>
-                          <span className="text-[8px] font-semibold tracking-[0.14em] text-white/55 uppercase">
-                            {hotspot.location}
-                          </span>
-                        </span>
-                      </button>
-                    );
-                  })
-                : null}
-            </div>
-
-            {/* Prompt */}
-            <div className="absolute top-4 left-4 z-20 max-w-[15.5rem] rounded-lg border border-white/10 bg-[#0a0e12]/92 px-3.5 py-2.5 shadow-lg backdrop-blur-md sm:top-5 sm:left-5 sm:max-w-[17rem]">
-              <p className="inline-flex items-start gap-2.5 text-[10px] leading-[1.35] font-semibold tracking-[0.14em] text-white/80 uppercase sm:text-[11px]">
-                <Crosshair
-                  className="mt-0.5 size-3.5 shrink-0"
-                  style={{ color: sageBright }}
-                  aria-hidden
-                />
-                {missionDeployments.mapPrompt}
-              </p>
-            </div>
-
-            {/* Zoom */}
-            <div className="absolute bottom-4 left-4 z-20 flex flex-col overflow-hidden rounded-lg border border-white/15 bg-[#0a0e12]/92 shadow-lg backdrop-blur-md sm:bottom-5 sm:left-5">
-              <button
-                type="button"
-                onClick={zoomIn}
-                disabled={zoom >= 1.75}
-                className="grid size-10 place-items-center text-white/70 transition-colors hover:bg-white/5 hover:text-white disabled:opacity-35"
-                aria-label="Zoom in"
-              >
-                <Plus className="size-4" strokeWidth={1.75} aria-hidden />
-              </button>
-              <span className="h-px bg-white/15" aria-hidden />
-              <button
-                type="button"
-                onClick={zoomOut}
-                disabled={zoom <= 1}
-                className="grid size-10 place-items-center text-white/70 transition-colors hover:bg-white/5 hover:text-white disabled:opacity-35"
-                aria-label="Zoom out"
-              >
-                <Minus className="size-4" strokeWidth={1.75} aria-hidden />
-              </button>
-            </div>
-
-            {/* Legend */}
-            <div className="absolute bottom-4 left-[4.25rem] z-20 flex items-center gap-4 rounded-lg border border-white/10 bg-[#0a0e12]/88 px-3.5 py-2.5 text-[10px] tracking-[0.14em] text-white/65 uppercase shadow-lg backdrop-blur-md sm:bottom-5 sm:left-[4.75rem]">
-              {missionDeployments.legend.map((item, i) => (
-                <span key={item} className="inline-flex items-center gap-2">
-                  <span
-                    className={
-                      i === 0
-                        ? "size-2 rounded-full"
-                        : "size-2 rounded-full border bg-transparent"
-                    }
-                    style={
-                      i === 0
-                        ? { background: sageBright }
-                        : { borderColor: "rgba(255,255,255,0.45)" }
-                    }
-                    aria-hidden
-                  />
-                  {item}
-                </span>
-              ))}
-            </div>
+                          aria-hidden
+                        />
+                        <span
+                          className={`relative block rounded-full motion-safe:transition-all motion-safe:duration-300 ${
+                            isActive ? "size-2.5" : "size-2"
+                          }`}
+                          style={{
+                            background: isActive
+                              ? sageBright
+                              : "rgba(243,239,228,0.8)",
+                            boxShadow: isActive
+                              ? "0 0 0 3px rgba(143,173,74,0.16)"
+                              : "none",
+                          }}
+                          aria-hidden
+                        />
+                      </span>
+                      <span
+                        className={`-mt-0.5 text-[9px] font-medium tracking-[0.16em] uppercase motion-safe:transition-opacity motion-safe:duration-300 ${
+                          isActive
+                            ? "text-white opacity-100"
+                            : "text-white/50 opacity-75"
+                        }`}
+                      >
+                        {hotspot.label}
+                      </span>
+                    </button>
+                  );
+                })
+              : null}
           </div>
 
-          {/* Detail panel */}
-          {active ? (
-            <aside className="relative z-30 flex flex-col border-t border-white/10 bg-[#141a20] lg:absolute lg:inset-y-5 lg:right-5 lg:w-[22.5rem] lg:overflow-hidden lg:rounded-xl lg:border lg:border-white/12 lg:bg-[#151b22]/97 lg:shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:backdrop-blur-md xl:w-[24rem]">
-              <div className="flex shrink-0 items-start justify-between gap-3 px-5 pt-4 pb-3">
-                <div className="min-w-0">
-                  <p
-                    className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase"
-                    style={{ color: sageBright }}
-                  >
-                    <MapPin className="size-3.5" aria-hidden />
-                    {active.status}
-                  </p>
-                  <h3 className="mt-1.5 font-display text-[1.65rem] leading-none font-bold tracking-wide uppercase">
-                    {active.title}
-                  </h3>
-                  <p
-                    className="mt-1 text-[11px] font-semibold tracking-[0.16em] uppercase"
-                    style={{ color: sageBright }}
-                  >
-                    {active.location}
-                  </p>
-                  <p className="mt-2 text-[13px] leading-snug text-white/60">
-                    {active.subhead}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setActiveId(null)}
-                  className="grid size-9 shrink-0 place-items-center rounded-md text-white/45 transition-colors hover:bg-white/5 hover:text-white"
-                  aria-label="Close detail panel"
-                >
-                  <X className="size-4" strokeWidth={1.75} aria-hidden />
-                </button>
-              </div>
+          <p className="pointer-events-none absolute top-4 left-4 z-20 max-w-[13rem] text-[10px] leading-relaxed text-white/50 sm:top-5 sm:left-5 sm:max-w-[17rem] sm:text-[11px]">
+            {missionDeployments.mapPrompt}
+          </p>
 
-              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-2 [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.25)_transparent]">
+          <div className="absolute right-3 bottom-3 z-20 flex overflow-hidden rounded-sm border border-white/10 bg-[#12150f]/55 sm:right-4 sm:bottom-4">
+            <button
+              type="button"
+              onClick={zoomOut}
+              disabled={zoom <= 1}
+              className={`grid size-8 place-items-center text-white/50 transition-colors hover:bg-white/5 hover:text-white disabled:opacity-30 ${mapFocusRing}`}
+              aria-label="Zoom out"
+            >
+              <Minus className="size-3.5" strokeWidth={1.5} aria-hidden />
+            </button>
+            <span className="w-px self-stretch bg-white/10" aria-hidden />
+            <button
+              type="button"
+              onClick={zoomIn}
+              disabled={zoom >= 1.6}
+              className={`grid size-8 place-items-center text-white/50 transition-colors hover:bg-white/5 hover:text-white disabled:opacity-30 ${mapFocusRing}`}
+              aria-label="Zoom in"
+            >
+              <Plus className="size-3.5" strokeWidth={1.5} aria-hidden />
+            </button>
+          </div>
+        </div>
+
+        {/* Theater dock — horizontal, compact */}
+        <aside
+          id="theater-dock"
+          className="border-t border-[#1a1c16]/08 bg-[#f3f0e8] text-[#1a1c16]"
+          aria-label="Selected theater details"
+        >
+          <div
+            className="flex flex-col gap-3 px-4 py-3.5 motion-safe:transition-opacity motion-safe:duration-300 motion-safe:ease-out sm:gap-3.5 sm:px-5 sm:py-4 lg:flex-row lg:items-center lg:gap-5 lg:px-6 lg:py-4"
+            style={{ opacity: dockOpacity }}
+          >
+            {/* Identity row: compact image + title (mobile & desktop) */}
+            <div className="flex min-w-0 items-center gap-3 sm:gap-4 lg:w-auto lg:shrink-0">
+              <div className="relative h-[4.75rem] w-[6.75rem] shrink-0 overflow-hidden rounded-sm sm:h-[5.25rem] sm:w-[7.75rem] lg:h-[6.75rem] lg:w-[10rem]">
                 {active.detailImageSrc ? (
-                  <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
-                    <Image
-                      src={active.detailImageSrc}
-                      alt={active.image}
-                      fill
-                      quality={80}
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 24rem"
-                    />
-                  </div>
+                  <Image
+                    src={active.detailImageSrc}
+                    alt={active.image}
+                    fill
+                    quality={80}
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 8rem, 10rem"
+                  />
                 ) : (
-                  <div className="flex aspect-[16/9] items-center justify-center rounded-lg border border-dashed border-white/15 bg-white/5 px-4 text-center text-[10px] tracking-[0.14em] text-white/40 uppercase">
-                    Environment imagery soon
+                  <div className="flex h-full items-center justify-center border border-dashed border-[#1a1c16]/12 bg-[#e8e4d8] text-[9px] tracking-[0.12em] text-[#1a1c16]/35 uppercase">
+                    Imagery soon
                   </div>
                 )}
+              </div>
 
-                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3.5">
-                  {active.stats.map((stat) => {
-                    const Icon = hotspotStatIcons[stat.icon];
-                    return (
-                      <div key={stat.label} className="min-w-0">
-                        <dt className="inline-flex items-center gap-1.5 text-[9px] tracking-[0.12em] text-white/40 uppercase">
-                          <Icon
-                            className="size-3.5 shrink-0"
-                            style={{ color: sageBright }}
-                            aria-hidden
-                          />
-                          {stat.label}
-                        </dt>
-                        <dd className="mt-1 font-display text-[15px] leading-tight tracking-wide uppercase sm:text-base">
-                          {stat.value}
-                        </dd>
-                      </div>
-                    );
-                  })}
-                </dl>
-
+              <div className="min-w-0 lg:w-[10.5rem]">
                 <p
-                  className="mt-4 text-[11px] font-semibold tracking-[0.16em] uppercase"
-                  style={{ color: sageBright }}
+                  className="text-[10px] font-semibold tracking-[0.18em] uppercase"
+                  style={{ color: sage }}
                 >
-                  Mission Overview
+                  {active.status}
                 </p>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-white/65">
-                  {active.overview}
+                <h3 className="mt-1 font-display text-[1.25rem] leading-none font-semibold tracking-wide uppercase sm:text-[1.35rem]">
+                  {active.title}
+                </h3>
+                <p className="mt-1.5 text-[12px] text-[#1a1c16]/50">
+                  {active.location}
                 </p>
               </div>
+            </div>
 
-              <div className="flex shrink-0 items-center justify-between gap-2 border-t border-white/10 px-4 py-3">
-                <button
-                  type="button"
-                  onClick={() => go(-1)}
-                  className="inline-flex min-h-10 items-center gap-1 px-1 text-[11px] font-semibold tracking-[0.16em] uppercase transition-colors hover:text-white"
-                  style={{ color: sageBright }}
-                >
-                  <ChevronLeft className="size-4" aria-hidden />
-                  Previous
-                </button>
-                <span className="text-[11px] tracking-[0.16em] text-white/40">
-                  {index + 1} / {missionDeployments.hotspots.length}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => go(1)}
-                  className="inline-flex min-h-10 items-center gap-1 px-1 text-[11px] font-semibold tracking-[0.16em] uppercase transition-colors hover:text-white"
-                  style={{ color: sageBright }}
-                >
-                  Next
-                  <ChevronRight className="size-4" aria-hidden />
-                </button>
-              </div>
-            </aside>
-          ) : null}
-        </div>
+            <dl className="flex flex-wrap gap-x-4 gap-y-2 sm:gap-x-5 lg:border-l lg:border-[#1a1c16]/10 lg:pl-5">
+              {dockSpecs.map((stat) => (
+                <div key={stat.label} className="min-w-[4.75rem]">
+                  <dt className="text-[10px] tracking-[0.02em] text-[#1a1c16]/40">
+                    {formatStatLabel(stat.label)}
+                  </dt>
+                  <dd className="mt-0.5 font-display text-[14px] leading-tight tracking-wide uppercase sm:text-[15px]">
+                    {stat.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <p
+              className="line-clamp-2 min-w-0 flex-1 text-[13px] leading-relaxed text-[#1a1c16]/55 lg:max-w-xs"
+              title={active.overview}
+            >
+              {active.overview}
+            </p>
+
+            <div className="flex shrink-0 items-center justify-end gap-0.5 border-t border-[#1a1c16]/06 pt-2.5 lg:justify-center lg:border-t-0 lg:border-l lg:border-[#1a1c16]/10 lg:pt-0 lg:pl-4">
+              <button
+                type="button"
+                onClick={() => go(-1)}
+                className={`grid size-9 place-items-center rounded-sm text-[#1a1c16]/40 transition-colors hover:bg-[#1a1c16]/05 hover:text-[#1a1c16] ${dockFocusRing}`}
+                aria-label="Previous theater"
+              >
+                <ChevronLeft className="size-4" strokeWidth={1.5} aria-hidden />
+              </button>
+              <span
+                className="min-w-[2.75rem] text-center text-[11px] tracking-[0.14em] text-[#1a1c16]/35 tabular-nums"
+                aria-live="polite"
+              >
+                {index + 1} / {missionDeployments.hotspots.length}
+              </span>
+              <button
+                type="button"
+                onClick={() => go(1)}
+                className={`grid size-9 place-items-center rounded-sm text-[#1a1c16]/40 transition-colors hover:bg-[#1a1c16]/05 hover:text-[#1a1c16] ${dockFocusRing}`}
+                aria-label="Next theater"
+              >
+                <ChevronRight className="size-4" strokeWidth={1.5} aria-hidden />
+              </button>
+            </div>
+          </div>
+        </aside>
       </Reveal>
     </div>
   );
