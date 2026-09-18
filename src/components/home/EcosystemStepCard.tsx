@@ -31,15 +31,15 @@ export function EcosystemStepCard({
       }`}
     >
       <p
-        className="text-[20px] font-semibold tracking-[0.18em] uppercase"
+        className="type-card-label"
         style={{ color: sage }}
       >
         {step}
       </p>
-      <h3 className="mt-1 font-display text-xl font-bold tracking-wide text-[#161616] uppercase">
+      <h3 className="type-card-title mt-1 text-[#161616]">
         {title}
       </h3>
-      <p className="mt-2 text-sm leading-relaxed text-[#5c584e]">{blurb}</p>
+      <p className="type-card-body mt-2">{blurb}</p>
 
       <div className="relative mt-auto pt-5">
         <div className="relative aspect-[4/3] w-full overflow-hidden">

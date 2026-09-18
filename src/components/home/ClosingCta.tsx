@@ -185,7 +185,7 @@ export function ClosingCta() {
           <div className="grid items-center lg:grid-cols-[1.45fr_0.7fr] lg:gap-8">
             {/* Left */}
             <Reveal variant="up" className="max-w-[780px]">
-              <h2 className="font-display text-[42px] leading-[0.9] font-bold tracking-[-0.025em] uppercase sm:text-5xl md:text-6xl lg:text-[4.4rem] xl:text-[4.8rem]">
+              <h2 className="type-section-h2">
                 {closingCta.headingBefore}
                 <br />
                 <span style={{ color: sage }}>
@@ -193,7 +193,7 @@ export function ClosingCta() {
                 </span>
               </h2>
 
-              <p className="mt-6 max-w-[650px] text-sm leading-7 text-[#f3efe4]/85 sm:text-base lg:text-[17px]">
+              <p className="type-section-body mt-6 max-w-[650px] text-[#f3efe4]/85">
                 {closingCta.body}
               </p>
 
@@ -234,10 +234,10 @@ export function ClosingCta() {
                       </span>
 
                       <div className="min-w-0 pt-0.5">
-                        <p className="font-display text-[12px] font-semibold tracking-[0.14em] text-white uppercase sm:text-[13px]">
+                        <p className="type-card-label text-white">
                           {chip.title}
                         </p>
-                        <p className="mt-1 text-xs leading-[1.45] text-white sm:text-[13px]">
+                        <p className="type-card-body-on-dark mt-1">
                           {chip.subtitle}
                         </p>
                         <span
@@ -260,26 +260,25 @@ export function ClosingCta() {
             >
               <div className="border-l-0 border-white/15 pl-0 lg:border-l lg:pl-10">
                 <p
-                  className="text-[16px] font-semibold tracking-[0.18em] uppercase"
+                  className="type-eyebrow"
                   style={{ color: sage }}
                 >
                   {closingCta.panelEyebrow}
                 </p>
 
-                <h3 className="mt-3 max-w-[430px] font-display text-[28px] leading-[1.05] font-semibold tracking-tight text-white sm:text-3xl lg:text-[2.1rem]">
+                <h3 className="type-card-title-lg mt-3 max-w-[430px] text-white">
                   {closingCta.panelHeading}
                 </h3>
 
-                <p className="mt-4 max-w-[430px] text-sm leading-6 text-[#f3efe4]/75">
+                <p className="type-card-body-on-dark mt-4 max-w-[430px]">
                   {closingCta.panelBody}
                 </p>
 
                 <div className="mt-6 flex max-w-[430px] flex-col gap-3">
                   <Link
                     href={closingCta.primaryCta.href}
-                    className="motion-hover-glow inline-flex min-h-12 items-center justify-center gap-3 px-6 text-sm font-semibold tracking-[0.06em] uppercase transition-transform hover:-translate-y-0.5 rounded-sm bg-[#849363]"
+                    className="type-cta motion-hover-glow inline-flex min-h-12 items-center justify-center gap-3 px-6 transition-transform hover:-translate-y-0.5 rounded-sm bg-[#849363]"
                     style={{
-                      // background: sage,
                       color: cream,
                     }}
                   >
@@ -289,7 +288,7 @@ export function ClosingCta() {
 
                   <Link
                     href={closingCta.secondaryCta.href}
-                    className="inline-flex min-h-12 items-center justify-center gap-3 border border-[#f3efe4]/50 px-6 text-sm font-semibold tracking-[0.06em] text-[#f3efe4] uppercase transition-colors hover:bg-white/10 rounded-sm"
+                    className="type-cta inline-flex min-h-12 items-center justify-center gap-3 border border-[#f3efe4]/50 px-6 text-[#f3efe4] transition-colors hover:bg-white/10 rounded-sm"
                   >
                     {closingCta.secondaryCta.label}
                     <Download className="size-5" />

@@ -61,11 +61,11 @@ export function FeaturedProductRow({
       />
 
       <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-500 ease-out group-hover:-translate-y-2 group-focus-visible:-translate-y-2 sm:p-6 lg:p-7">
-        <p className="text-[10px] font-semibold tracking-[0.18em] text-white/70 uppercase sm:text-[11px]">
+        <p className="type-card-label text-white/70">
           {subtitle}
         </p>
 
-        <h3 className="mt-2 font-display text-[1.65rem] leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-3xl">
+        <h3 className="type-card-title-lg mt-2 text-white">
           {name}
           {trademark ? (
             <span className="align-super text-[0.5em]">{trademark}</span>
@@ -74,7 +74,7 @@ export function FeaturedProductRow({
 
         {/* Details cluster — hidden until hover / keyboard focus; always open on touch */}
         <div className="mt-4 max-h-[18rem] overflow-hidden opacity-100 transition-all duration-500 ease-out [@media(hover:hover)]:mt-0 [@media(hover:hover)]:max-h-0 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:mt-5 [@media(hover:hover)]:group-hover:max-h-[18rem] [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-visible:mt-5 [@media(hover:hover)]:group-focus-visible:max-h-[18rem] [@media(hover:hover)]:group-focus-visible:opacity-100">
-          <p className="max-w-sm text-sm leading-relaxed text-white/80">
+          <p className="type-card-body-on-dark max-w-sm">
             {body}
           </p>
 
@@ -84,17 +84,17 @@ export function FeaturedProductRow({
                 key={spec.label}
                 className="flex items-baseline justify-between gap-3"
               >
-                <dt className="text-[10px] font-semibold tracking-[0.14em] text-white/55 uppercase">
+                <dt className="type-card-label text-white/55">
                   {spec.label}
                 </dt>
-                <dd className="text-right font-display text-sm font-bold tracking-tight text-white sm:text-[0.95rem]">
+                <dd className="text-right font-display text-sm font-bold tracking-tight text-white">
                   {spec.value}
                 </dd>
               </div>
             ))}
           </dl>
 
-          <span className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[11px] font-semibold tracking-[0.14em] text-[#6e7f42] uppercase transition-all duration-500 ease-out [@media(hover:hover)]:rounded-none [@media(hover:hover)]:bg-transparent [@media(hover:hover)]:px-0 [@media(hover:hover)]:py-0 [@media(hover:hover)]:text-white/85 [@media(hover:hover)]:group-hover:rounded-full [@media(hover:hover)]:group-hover:bg-white [@media(hover:hover)]:group-hover:px-5 [@media(hover:hover)]:group-hover:py-2.5 [@media(hover:hover)]:group-hover:text-[#6e7f42] [@media(hover:hover)]:group-focus-visible:rounded-full [@media(hover:hover)]:group-focus-visible:bg-white [@media(hover:hover)]:group-focus-visible:px-5 [@media(hover:hover)]:group-focus-visible:py-2.5 [@media(hover:hover)]:group-focus-visible:text-[#6e7f42] sm:text-xs">
+          <span className="type-cta-ghost mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[#6e7f42] transition-all duration-500 ease-out [@media(hover:hover)]:rounded-none [@media(hover:hover)]:bg-transparent [@media(hover:hover)]:px-0 [@media(hover:hover)]:py-0 [@media(hover:hover)]:text-white/85 [@media(hover:hover)]:group-hover:rounded-full [@media(hover:hover)]:group-hover:bg-white [@media(hover:hover)]:group-hover:px-5 [@media(hover:hover)]:group-hover:py-2.5 [@media(hover:hover)]:group-hover:text-[#6e7f42] [@media(hover:hover)]:group-focus-visible:rounded-full [@media(hover:hover)]:group-focus-visible:bg-white [@media(hover:hover)]:group-focus-visible:px-5 [@media(hover:hover)]:group-focus-visible:py-2.5 [@media(hover:hover)]:group-focus-visible:text-[#6e7f42]">
             {productUiLabels.viewDetails}
             <ArrowUpRight
               className="size-4 shrink-0 transition-transform duration-500 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5"

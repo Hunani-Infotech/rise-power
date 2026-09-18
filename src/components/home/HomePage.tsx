@@ -104,7 +104,7 @@ export function HomePage() {
           <div className="flex flex-col justify-center pt-10 lg:pt-10">
             <div className="hero-animate-copy max-w-xl lg:max-w-4xl">
               <p
-                className="font-display text-[16px] font-semibold tracking-[0.28em] uppercase"
+                className="type-eyebrow"
                 style={{ color: sage }}
               >
                 {hero.eyebrow}
@@ -208,18 +208,18 @@ export function HomePage() {
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-[13px] font-semibold tracking-[0.22em] uppercase sm:text-sm"
+              className="type-eyebrow text-center"
               style={{ color: "#6e7f42" }}
             >
               {performanceMetrics.eyebrow}
             </p>
-            <h2 className="mt-4 text-center font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[5.5rem] xl:text-[6.25rem]">
+            <h2 className="type-section-h2 mt-4 text-center">
               {performanceMetrics.headingBefore}{" "}
               <span style={{ color: "#6e7f42" }}>
                 {performanceMetrics.headingAccent}
               </span>
             </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-[#5c584e] sm:text-lg lg:text-[1.35rem]">
+            <p className="type-section-body mx-auto mt-5 max-w-3xl text-center">
               {performanceMetrics.body}
             </p>
           </Reveal>
@@ -254,18 +254,18 @@ export function HomePage() {
           <Reveal variant="up">
             <header className="max-w-3xl">
               <p
-                className="font-display text-[13px] font-semibold tracking-[0.22em] uppercase"
+                className="type-eyebrow"
                 style={{ color: sage }}
               >
                 {threeMarkets.eyebrow}
               </p>
-              <h2 className="mt-3 font-display text-3xl leading-[0.95] font-bold tracking-tight text-[#1a1c16] uppercase sm:text-4xl lg:text-5xl">
+              <h2 className="type-section-h2 mt-3 text-[#1a1c16]">
                 {threeMarkets.headingBefore}{" "}
                 <span style={{ color: sage }}>
                   {threeMarkets.headingAccent}
                 </span>
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-[#3f3c36]">
+              <p className="type-section-body mt-4 max-w-xl">
                 {threeMarkets.body}
               </p>
             </header>
@@ -302,17 +302,17 @@ export function HomePage() {
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-xs font-semibold tracking-[0.22em] uppercase sm:text-sm lg:text-[1rem]"
+              className="type-eyebrow text-center"
               style={{ color: sage }}
             >
               {productEcosystem.eyebrow}
             </p>
-            <h2 className="mt-4 text-center font-display text-4xl leading-[0.9] font-bold tracking-tight uppercase sm:text-5xl lg:text-[4.25rem] xl:text-[4.75rem]">
+            <h2 className="type-section-h2 mt-4 text-center">
               {productEcosystem.headingBefore}{" "}
               <span style={{ color: sage }}>{productEcosystem.headingAccent}</span>{" "}
               {productEcosystem.headingAfter}
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-[#5c584e] sm:text-lg lg:text-[1.35rem]">
+            <p className="type-section-body mx-auto mt-5 max-w-3xl text-center">
               {productEcosystem.body}
             </p>
           </Reveal>
@@ -356,18 +356,18 @@ export function HomePage() {
           <Reveal variant="up">
             <header className="mx-auto max-w-3xl text-center">
               <p
-                className="font-display text-[13px] font-semibold tracking-[0.28em] uppercase sm:text-[15px]"
+                className="type-eyebrow"
                 style={{ color: sage }}
               >
                 {featuredProducts.eyebrow}
               </p>
-              <h2 className="mt-4 font-display text-4xl leading-[0.95] font-bold tracking-tight text-[#1a1c16] uppercase sm:text-5xl lg:text-[3.25rem]">
+              <h2 className="type-section-h2 mt-4 text-[#1a1c16]">
                 {featuredProducts.headingBefore}{" "}
                 <span style={{ color: sage }}>
                   {featuredProducts.headingAccent}
                 </span>
               </h2>
-              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[#5c584e] sm:text-base">
+              <p className="type-section-body mx-auto mt-5 max-w-xl">
                 {featuredProducts.body}
               </p>
             </header>
@@ -393,16 +393,16 @@ export function HomePage() {
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-[13px] font-semibold tracking-[0.28em] uppercase sm:text-[15px]"
+              className="type-eyebrow text-center"
               style={{ color: sage }}
             >
               {missionDeployments.eyebrow}
             </p>
-            <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-[3.75rem]">
+            <h2 className="type-section-h2 mt-4 text-center">
               {missionDeployments.headingBefore}{" "}
               <span style={{ color: sage }}>{missionDeployments.headingAccent}</span>
             </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
+            <p className="type-section-body mx-auto mt-5 max-w-3xl text-center">
               {missionDeployments.body}
             </p>
           </Reveal>

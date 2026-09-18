@@ -277,18 +277,18 @@ export function CustomersPartners() {
       <div className="mx-auto w-full max-w-[1760px] px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-[76px]">
         <Reveal variant="up">
           <p
-            className="text-center font-display text-[16px] font-bold tracking-[0.24em] uppercase"
+            className="type-eyebrow text-center"
             style={{ color: sage }}
           >
             {eyebrow}
           </p>
 
-          <h2 className="mt-3 text-center font-display text-[38px] leading-[0.9] font-bold tracking-[-0.025em] text-[#080b09] uppercase sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[4.65rem]">
+          <h2 className="type-section-h2 mt-3 text-center text-[#080b09]">
             {headingBefore}{" "}
             <span style={{ color: sage }}>{headingAccent}</span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-[820px] text-center text-[14px] leading-[1.55] text-[#24313a] sm:text-base lg:text-[17px]">
+          <p className="type-section-body mx-auto mt-5 max-w-[820px] text-center">
             {body}
           </p>
         </Reveal>
@@ -363,11 +363,11 @@ export function CustomersPartners() {
                       “
                     </div>
 
-                    <h3 className="mt-0 min-h-[48px] font-display text-[17px] leading-[1.04] font-bold tracking-[-0.01em] text-white uppercase sm:text-[18px] lg:text-[22px]">
+                    <h3 className="type-card-title mt-0 min-h-[48px] text-white">
                       {item.title}
                     </h3>
 
-                    <p className="mt-3 min-h-[68px] text-[12px] leading-[1.5] text-[#e9eeeb]/80 sm:text-[14px]">
+                    <p className="type-card-body-on-dark mt-3 min-h-[68px]">
                       {item.body}
                     </p>
 
@@ -429,7 +429,7 @@ export function CustomersPartners() {
                     className="group/link flex min-h-[48px] items-center justify-between border-t px-4 transition-colors hover:bg-white/[0.035] sm:px-5"
                     style={{ borderColor: "rgba(255,255,255,.13)" }}
                   >
-                    <span className="text-[9px] font-bold tracking-[0.08em] text-white uppercase sm:text-[10px]">
+                    <span className="type-cta-ghost text-white">
                       {productUiLabels.viewSuccessStory}
                     </span>
 

@@ -58,13 +58,13 @@ export function MarketRow({
       </div>
 
       <div className="flex flex-1 flex-col border-t-2 border-[#6e7f42] px-5 py-5 sm:px-6 sm:py-6">
-        <p className="text-[11px] font-semibold tracking-[0.18em] text-[#5c584e] uppercase">
+        <p className="type-card-label text-[#5c584e]">
           {theater}
         </p>
-        <h3 className="mt-2 font-display text-2xl leading-none font-bold tracking-[0.06em] text-[#1a1c16] uppercase">
+        <h3 className="type-card-title mt-2 text-[#1a1c16]">
           {title}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-[#3f3c36] sm:text-[15px]">
+        <p className="type-card-body mt-3">
           {body}
         </p>
 
@@ -88,7 +88,7 @@ export function MarketRow({
         <div className="mt-auto pt-5">
           <Link
             href={href}
-            className="inline-flex min-h-11 w-full items-center justify-center gap-2 border border-[#1a1c16] bg-transparent px-4 text-sm font-semibold tracking-[0.1em] text-[#1a1c16] uppercase transition-colors hover:bg-[#1a1c16] hover:text-white"
+            className="type-cta inline-flex min-h-11 w-full items-center justify-center gap-2 border border-[#1a1c16] bg-transparent px-4 text-[#1a1c16] transition-colors hover:bg-[#1a1c16] hover:text-white"
           >
             {cta}
             <ArrowRight
