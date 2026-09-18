@@ -353,7 +353,7 @@ export function Footer() {
             {footer.tagline}
           </p>
 
-          <p className="mt-5 max-w-[340px] text-mm leading-6 text-cream/65">
+          <p className="mt-5 max-w-[340px] text-mm leading-6 text-white">
             {footer.blurb}
           </p>
 
@@ -411,7 +411,7 @@ export function Footer() {
                   <li key={`${group.heading}-${item.label}`}>
                     <AppLink
                       href={item.href}
-                      className="text-[15px] leading-5 text-cream/70 transition-colors hover:text-cream"
+                      className="text-[15px] leading-5 text-white transition-colors hover:text-sage"
                     >
                       {item.label}
                     </AppLink>
@@ -433,7 +433,7 @@ export function Footer() {
             style={{ background: sage }}
           />
 
-          <p className="mt-5 max-w-[350px] text-mm leading-6 text-cream/65">
+          <p className="mt-5 max-w-[350px] text-mm leading-6 text-white">
             {footer.newsletter.body}
           </p>
 
@@ -464,11 +464,11 @@ export function Footer() {
             </button>
           </form>
 
-          <ul className="mt-6 space-y-4 text-mm text-cream/70">
+          <ul className="mt-6 space-y-4 text-mm text-white">
             <li>
               <a
                 href={`mailto:${footer.contact.email}`}
-                className="flex items-center gap-2 transition-colors hover:text-cream"
+                className="flex items-center gap-2 transition-colors hover:text-sage"
               >
                 <Mail className="size-[18px] shrink-0 text-sage" />
                 <span>{footer.contact.email}</span>
@@ -478,7 +478,7 @@ export function Footer() {
             <li>
               <a
                 href={footer.contact.phoneHref}
-                className="flex items-center gap-2 transition-colors hover:text-cream"
+                className="flex items-center gap-2 transition-colors hover:text-sage"
               >
                 <Phone className="size-[18px] shrink-0 text-sage" />
                 <span>{footer.contact.phone}</span>
@@ -497,7 +497,7 @@ export function Footer() {
       <div className="border-t border-white/15">
         <div className="mx-auto flex w-full max-w-[1716px] flex-col gap-6 px-6 py-6 sm:px-8 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:px-10">
           {/* Copyright */}
-          <p className="text-center text-mm tracking-wide text-cream/55 lg:text-left">
+          <p className="text-center text-mm tracking-wide text-white lg:text-left">
             {footer.copyright}
           </p>
 
@@ -522,7 +522,7 @@ export function Footer() {
 
                 <AppLink
                   href={item.href}
-                  className="text-mm text-cream/55 transition-colors hover:text-cream"
+                  className="text-mm text-white transition-colors hover:text-sage"
                 >
                   {item.label}
                 </AppLink>
@@ -534,7 +534,7 @@ export function Footer() {
           <p className="inline-flex items-center justify-center gap-3 text-center lg:justify-self-end lg:text-left">
             <MissionFlagMark />
 
-            <span className="font-display text-xs font-semibold tracking-wide uppercase sm:text-sm">
+            <span className="font-display text-xs font-semibold tracking-wide text-white uppercase sm:text-sm">
               {footer.badgeBefore}{" "}
               <span style={{ color: sage }}>
                 {footer.badgeAccent}

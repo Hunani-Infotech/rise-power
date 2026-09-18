@@ -7,21 +7,17 @@ import {
   ChevronRight,
   Clock3,
   Crosshair,
-  Flag,
-  Globe2,
   MapPin,
   Minus,
   Package,
   Plus,
-  ShieldCheck,
   Thermometer,
   Users,
   X,
-  Zap,
   type LucideIcon,
 } from "lucide-react";
 import { missionDeployments } from "@/lib/home-content";
-import { Reveal, RevealStagger } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
 
 const sage = "#6e7f42";
 const sageBright = "#7a9148";
@@ -105,14 +101,6 @@ const hotspotStatIcons = {
   users: Users,
 } as const satisfies Record<string, LucideIcon>;
 
-const barStatIcons = {
-  globe: Globe2,
-  "map-pin": MapPin,
-  shield: ShieldCheck,
-  zap: Zap,
-  flag: Flag,
-} as const satisfies Record<string, LucideIcon>;
-
 export function MissionMap() {
   const [activeId, setActiveId] = useState<string | null>(
     missionDeployments.defaultHotspotId,
@@ -175,7 +163,7 @@ export function MissionMap() {
   const zoomOut = () => setZoom((value) => Math.max(1, value - 0.15));
 
   return (
-    <div className="space-y-6 lg:space-y-8">
+    <div>
       <Reveal
         variant="up"
         className="overflow-hidden rounded-[1.25rem] bg-[#0a0e12] text-[#f3efe4] shadow-[0_28px_70px_rgba(10,14,10,0.2)]"
@@ -440,50 +428,6 @@ export function MissionMap() {
           ) : null}
         </div>
       </Reveal>
-
-      {/* Stats bar */}
-      <RevealStagger
-        className="grid grid-cols-2 overflow-hidden rounded-[1.25rem] border border-[#e6e2d8] bg-white shadow-[0_14px_44px_rgba(18,22,18,0.07)] sm:grid-cols-3 lg:grid-cols-5"
-        step={70}
-        variant="up"
-      >
-        {missionDeployments.stats.map((stat, i) => {
-          const Icon = barStatIcons[stat.icon];
-          const isLast = i === missionDeployments.stats.length - 1;
-          return (
-            <div
-              key={stat.label}
-              className={[
-                "flex items-center gap-3.5 px-5 py-6 sm:gap-4 sm:px-6 sm:py-7",
-                "border-[#ece8df]",
-                !isLast ? "max-lg:border-b lg:border-r" : "",
-                i % 2 === 0 && !isLast ? "max-sm:border-r" : "",
-                i === 0 || i === 1 ? "sm:max-lg:border-r" : "",
-                i === 2 ? "sm:max-lg:border-r-0" : "",
-                isLast
-                  ? "col-span-2 justify-center max-sm:border-b-0 sm:col-span-1 sm:justify-start"
-                  : "",
-              ].join(" ")}
-            >
-              <Icon
-                className="size-8 shrink-0 sm:size-9"
-                strokeWidth={1.45}
-                style={{ color: sage }}
-                aria-hidden
-              />
-              <div className="min-w-0">
-                <p className="font-display text-3xl leading-none font-bold tracking-tight text-[#1a1c16] sm:text-[2.35rem]">
-                  {stat.value}
-                </p>
-                <p className="mt-1.5 text-[11px] font-semibold tracking-[0.14em] text-[#1a1c16] uppercase">
-                  {stat.label}
-                </p>
-                <p className="mt-0.5 text-xs text-[#6b675e]">{stat.note}</p>
-              </div>
-            </div>
-          );
-        })}
-      </RevealStagger>
     </div>
   );
 }

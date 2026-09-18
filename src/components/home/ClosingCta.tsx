@@ -237,7 +237,7 @@ export function ClosingCta() {
                         <p className="font-display text-[12px] font-semibold tracking-[0.14em] text-white uppercase sm:text-[13px]">
                           {chip.title}
                         </p>
-                        <p className="mt-1 text-xs leading-[1.45] text-[#f3efe4]/68 sm:text-[13px]">
+                        <p className="mt-1 text-xs leading-[1.45] text-white sm:text-[13px]">
                           {chip.subtitle}
                         </p>
                         <span

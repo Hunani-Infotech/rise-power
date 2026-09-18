@@ -230,7 +230,7 @@ export const threeMarkets = {
   eyebrow: "THREE MARKETS. ONE MISSION.",
   headingBefore: "POWERING",
   headingAccent: "EVERY MISSION.",
-  body: "One platform. Three theaters.",
+  body: "Rise Mission Power systems are engineered for defense, industrial, and field operations — one platform across three theaters.",
   cards: [
     {
       title: "Military",
@@ -310,26 +310,6 @@ export const productEcosystem = {
       caption: "RENEW. REFILL. REDEPLOY.",
     },
   ] satisfies readonly EcosystemStep[],
-  howItWorks: {
-    eyebrow: "HOW IT WORKS",
-    heading: "CLEAN HYDROGEN. ENDLESS POSSIBILITIES.",
-    body: "Hydrogen is converted into electricity through a chemical reaction in the fuel cell—producing only water and heat. Our cartridge-based system makes power simple, scalable, and sustainable.",
-    cta: { label: "SEE CAPABILITIES", href: "/capabilities" } satisfies Cta,
-    diagramTitle: "FUEL CELL STACK",
-    diagramImageSrc: "/media/ecosystem/fuel-cell.png",
-    diagramLabels: [
-      "HYDROGEN IN",
-      "OXYGEN IN",
-      "ELECTRICITY OUT",
-      "WATER OUT",
-      "HEAT",
-    ] as const,
-    sideCard: {
-      title: "ZERO EMISSIONS",
-      subtitle: "At the point of use.",
-      bullets: ["No exhaust", "No noise"] as const,
-    },
-  },
 };
 
 export const featuredProducts = {
@@ -632,13 +612,6 @@ export type DeploymentHotspot = {
   y: number;
 };
 
-export type DeploymentStat = {
-  value: string;
-  label: string;
-  note: string;
-  icon: "globe" | "map-pin" | "shield" | "zap" | "flag";
-};
-
 export const missionDeployments = {
   eyebrow: "COMING SOON",
   headingBefore: "Deployments —",
@@ -758,38 +731,6 @@ export const missionDeployments = {
       y: 28.0,
     },
   ] satisfies readonly DeploymentHotspot[],
-  stats: [
-    {
-      value: "5",
-      label: "Environments",
-      note: "Profiles Ready",
-      icon: "globe",
-    },
-    {
-      value: "0",
-      label: "Field Sites",
-      note: "Coming Soon",
-      icon: "map-pin",
-    },
-    {
-      value: "0",
-      label: "Mission Hours",
-      note: "Coming Soon",
-      icon: "shield",
-    },
-    {
-      value: "Full",
-      label: "Product Line",
-      note: "Systems Ready",
-      icon: "zap",
-    },
-    {
-      value: "24/7",
-      label: "Briefings",
-      note: "Available Now",
-      icon: "flag",
-    },
-  ] satisfies readonly DeploymentStat[],
 };
 
 export const whyHydrogenWins = {
