@@ -349,35 +349,33 @@ export function HomePage() {
       {/* 5. Featured Products — single-row 4-column grid */}
       <section
         id="featured-products"
-        className="scroll-mt-28 py-12 sm:py-14 lg:py-16"
-        style={{ background: "#ffffff" }}
+        className="scroll-mt-28 py-14 sm:py-16 lg:py-20"
+        style={{ background: "#f3f0e8" }}
       >
         <div className={pageInset}>
           <Reveal variant="up">
-            <header className="flex flex-col gap-3 border-b border-[#ddd8cc] pb-6 sm:flex-row sm:items-end sm:justify-between sm:gap-8 sm:pb-7">
-              <div>
-                <p
-                  className="font-display text-[13px] font-semibold tracking-[0.22em] uppercase"
-                  style={{ color: sage }}
-                >
-                  {featuredProducts.eyebrow}
-                </p>
-                <h2 className="mt-2 font-display text-3xl leading-[0.95] font-bold tracking-tight text-[#1a1c16] uppercase sm:text-4xl lg:text-[2.75rem]">
-                  {featuredProducts.headingBefore}{" "}
-                  <span style={{ color: sage }}>
-                    {featuredProducts.headingAccent}
-                  </span>
-                </h2>
-              </div>
-              <p className="max-w-sm text-sm leading-relaxed text-[#5c584e] sm:text-right">
+            <header className="mx-auto max-w-3xl text-center">
+              <p
+                className="font-display text-[13px] font-semibold tracking-[0.28em] uppercase sm:text-[15px]"
+                style={{ color: sage }}
+              >
+                {featuredProducts.eyebrow}
+              </p>
+              <h2 className="mt-4 font-display text-4xl leading-[0.95] font-bold tracking-tight text-[#1a1c16] uppercase sm:text-5xl lg:text-[3.25rem]">
+                {featuredProducts.headingBefore}{" "}
+                <span style={{ color: sage }}>
+                  {featuredProducts.headingAccent}
+                </span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[#5c584e] sm:text-base">
                 {featuredProducts.body}
               </p>
             </header>
           </Reveal>
 
           <RevealStagger
-            className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5"
-            step={80}
+            className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5"
+            step={90}
             variant="up"
           >
             {featuredProducts.products.map((product) => (
