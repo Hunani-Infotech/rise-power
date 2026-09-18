@@ -28,6 +28,8 @@ import { FeaturedProductRow } from "./FeaturedProductRow";
 import { MarketsShowcase } from "./MarketsShowcase";
 import { PerformanceMetricCard } from "./PerformanceMetricCard";
 import { SectionSkeleton } from "./SectionSkeleton";
+import { SnapCarousel } from "./SnapCarousel";
+import { WhyHydrogenWins } from "./WhyHydrogenWins";
 
 const CustomersPartners = dynamic(
   () => import("./CustomersPartners").then((m) => m.CustomersPartners),
@@ -166,29 +168,31 @@ export function HomePage() {
         </a>
       </section>
 
-      {/* Standards strip — live content parity */}
-      {/* <section
+      {/* Standards strip — auto-scroll marquee */}
+      <section
         aria-label="Engineered to standards"
         className="border-y border-[#e4e6e0] bg-[#f3f1eb]"
       >
         <div
-          className={`${pageInset} flex flex-col items-center gap-5 py-6 sm:flex-row sm:justify-between sm:gap-8 sm:py-7`}
+          className={`${pageInset} flex flex-col items-center gap-4 py-5 sm:flex-row sm:gap-8 sm:py-6`}
         >
           <p className="shrink-0 text-xs font-semibold tracking-[0.22em] text-[#59615b] uppercase">
             Engineered To
           </p>
-          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:justify-end sm:gap-x-8">
-            {standards.map((label) => (
-              <li
-                key={label}
-                className="text-xs font-semibold tracking-[0.12em] text-[#252925] uppercase sm:text-[13px]"
-              >
-                {label}
-              </li>
-            ))}
-          </ul>
+          <div className="standards-marquee min-w-0 flex-1">
+            <ul className="standards-marquee__track items-center gap-x-10">
+              {[...standards, ...standards].map((label, index) => (
+                <li
+                  key={`${label}-${index}`}
+                  className="shrink-0 text-xs font-semibold tracking-[0.12em] text-[#252925] uppercase sm:text-[13px]"
+                >
+                  {label}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </section> */}
+      </section>
 
       {/* 2. Performance Metrics — Built to Outperform */}
       <section
@@ -289,8 +293,33 @@ export function HomePage() {
             </p>
           </Reveal>
 
+          {/* Mobile / tablet: horizontal process rail */}
+          <div className="mt-12 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Product ecosystem steps"
+              showArrows
+              showDots
+              itemClassName="w-[min(85vw,18rem)] sm:w-[min(70vw,20rem)]"
+              trackClassName="gap-5 px-1 pb-1"
+            >
+              {productEcosystem.steps.map((step) => (
+                <EcosystemStepCard
+                  key={step.step}
+                  step={step.step}
+                  title={step.title}
+                  blurb={step.blurb}
+                  imageSrc={step.imageSrc}
+                  imageLabel={step.image}
+                  caption={step.caption}
+                  highlighted={step.highlighted}
+                />
+              ))}
+            </SnapCarousel>
+          </div>
+
+          {/* Desktop: full 5-step process with connectors */}
           <RevealStagger
-            className="mt-12 grid gap-8 sm:grid-cols-2 xl:mt-16 xl:grid-cols-5 xl:gap-6"
+            className="mt-16 hidden gap-6 xl:grid xl:grid-cols-5"
             step={100}
           >
             {productEcosystem.steps.map((step, index) => (
@@ -306,7 +335,7 @@ export function HomePage() {
                 />
                 {index < productEcosystem.steps.length - 1 ? (
                   <ArrowRight
-                    className="absolute top-[4.55rem] -right-5 z-10 hidden size-6 rounded-full border border-[#7b963f] bg-[#fbfaf7] p-1 xl:block"
+                    className="absolute top-[4.55rem] -right-5 z-10 size-6 rounded-full border border-[#7b963f] bg-[#fbfaf7] p-1"
                     strokeWidth={2.4}
                     style={{ color: "#1a1c16" }}
                     aria-hidden
@@ -318,7 +347,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 5. Featured Products — single-row 4-column grid */}
+      {/* 5. Featured Products — snap carousel on mobile, grid on desktop */}
       <section
         id="featured-products"
         className="scroll-mt-28 py-14 sm:py-16 lg:py-20"
@@ -345,8 +374,23 @@ export function HomePage() {
             </header>
           </Reveal>
 
+          <div className="mt-10 sm:mt-12 lg:hidden">
+            <SnapCarousel
+              ariaLabel="Featured products"
+              showArrows
+              showDots
+              autoPlayMs={5500}
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {featuredProducts.products.map((product) => (
+                <FeaturedProductRow key={product.name} {...product} />
+              ))}
+            </SnapCarousel>
+          </div>
+
           <RevealStagger
-            className="mt-10 grid items-stretch gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5"
+            className="mt-10 hidden items-stretch gap-4 sm:mt-12 sm:grid-cols-2 lg:grid lg:grid-cols-4 lg:gap-5"
             step={90}
             variant="up"
           >
@@ -357,15 +401,18 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* 6. Why Hydrogen Wins */}
+      <div className="cv-auto">
+        <WhyHydrogenWins />
+      </div>
+
       {/* 7. Customers & Partners */}
       <div className="cv-auto">
         <CustomersPartners />
       </div>
 
-      {/* 10. Businesses & Companies */}
+      {/* 8. Businesses & Companies */}
       <BusinessesCompanies />
-
-
     </div>
   );
 }

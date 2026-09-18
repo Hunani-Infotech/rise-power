@@ -1,246 +1,3 @@
-// import Image from "next/image";
-// import type { LucideIcon } from "lucide-react";
-// import {
-//   Droplets,
-//   Globe,
-//   Leaf,
-//   Lock,
-//   RefreshCw,
-//   ShieldCheck,
-//   Timer,
-//   TrendingUp,
-//   VolumeX,
-//   Wrench,
-// } from "lucide-react";
-// import { whyHydrogenWins } from "@/lib/home-content";
-// import { Reveal, RevealStagger } from "@/components/motion/Reveal";
-// import { PlaceholderMedia } from "./PlaceholderMedia";
-
-// const sage = "#6e7f42";
-// const cream = "#f7f5ef";
-// const charcoal = "#141a14";
-
-// const rowIcons: LucideIcon[] = [VolumeX, Leaf, Wrench, RefreshCw, Timer];
-// const benefitIcons: LucideIcon[] = [Leaf, VolumeX, Wrench, Timer];
-// const iconBarIcons: LucideIcon[] = [
-//   ShieldCheck,
-//   TrendingUp,
-//   Droplets,
-//   Globe,
-//   Lock,
-// ];
-
-// function CircledIcon({ icon: Icon }: { icon: LucideIcon }) {
-//   return (
-//     <span
-//       className="grid size-10 shrink-0 place-items-center rounded-full border"
-//       style={{ borderColor: sage, color: sage }}
-//       aria-hidden
-//     >
-//       <Icon className="size-[18px]" strokeWidth={1.6} />
-//     </span>
-//   );
-// }
-
-// export function WhyHydrogenWins() {
-//   const {
-//     eyebrow,
-//     headingBefore,
-//     headingAccent,
-//     headingAfter,
-//     body,
-//     tableHeading,
-//     columns,
-//     rows,
-//     benefits,
-//     iconBar,
-//     image,
-//     imageSrc,
-//   } = whyHydrogenWins;
-
-//   return (
-//     <section
-//       id="why-hydrogen-wins"
-//       className="w-full py-16 sm:py-20 lg:py-24"
-//       style={{ background: cream }}
-//     >
-//       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-//         {/* Header */}
-//         <Reveal variant="up">
-//           <p
-//             className="text-center font-display text-[11px] font-semibold tracking-[0.28em] uppercase sm:text-xs"
-//             style={{ color: sage }}
-//           >
-//             {eyebrow}
-//           </p>
-//           <h2 className="mt-4 text-center font-display text-4xl leading-[0.95] font-bold tracking-tight text-[#141a14] uppercase sm:text-5xl lg:text-6xl">
-//             {headingBefore}{" "}
-//             <span style={{ color: sage }}>{headingAccent}</span> {headingAfter}
-//           </h2>
-//           <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-[#5c584e] sm:text-base">
-//             {body}
-//           </p>
-//         </Reveal>
-
-//         {/* Main grid */}
-//         <div className="mt-12 grid gap-8 lg:mt-16 lg:grid-cols-2 lg:items-start lg:gap-10">
-//           {/* Comparison table */}
-//           <Reveal variant="left" className="min-w-0 w-full">
-//             <div
-//               className="overflow-hidden rounded-md p-5 sm:p-6"
-//               style={{ background: charcoal }}
-//             >
-//               <h3
-//                 className="text-center text-sm font-bold tracking-[0.18em] uppercase sm:text-base"
-//                 style={{ color: sage }}
-//               >
-//                 {tableHeading}
-//               </h3>
-
-//               <div className="mt-5 overflow-x-auto">
-//                 <div className="min-w-[32rem]">
-//                   <div className="grid grid-cols-[1.2fr_1fr_1fr] gap-0 text-[11px] font-semibold tracking-[0.14em] uppercase">
-//                     {columns.map((col, i) => (
-//                       <div
-//                         key={col}
-//                         className={`px-2 py-3 sm:px-3 ${
-//                           i === 1
-//                             ? "rounded-t-lg border border-b-0"
-//                             : "text-[#f3efe4]/55"
-//                         }`}
-//                         style={
-//                           i === 1
-//                             ? {
-//                                 color: sage,
-//                                 borderColor: sage,
-//                                 boxShadow: `0 0 18px ${sage}33, inset 0 0 12px ${sage}14`,
-//                               }
-//                             : undefined
-//                         }
-//                       >
-//                         {col}
-//                       </div>
-//                     ))}
-//                   </div>
-
-//                   {rows.map((row, index) => {
-//                     const Icon = rowIcons[index] ?? Leaf;
-//                     const isLast = index === rows.length - 1;
-//                     return (
-//                       <div
-//                         key={row.metric}
-//                         className="grid grid-cols-[1.2fr_1fr_1fr] border-t border-[#2a3228]"
-//                       >
-//                         <div className="flex items-center gap-2.5 px-2 py-3.5 text-sm text-[#f3efe4] sm:gap-3 sm:px-3 sm:py-4">
-//                           <Icon
-//                             className="hidden size-4 shrink-0 sm:block sm:size-[18px]"
-//                             strokeWidth={1.6}
-//                             style={{ color: sage }}
-//                             aria-hidden
-//                           />
-//                           <span className="font-medium">{row.metric}</span>
-//                         </div>
-//                         <div
-//                           className={`flex items-center gap-2 px-2 py-3.5 text-sm font-semibold sm:px-3 sm:py-4 ${
-//                             isLast ? "rounded-b-lg border border-t-0" : "border-x"
-//                           }`}
-//                           style={{
-//                             color: sage,
-//                             borderColor: sage,
-//                             boxShadow: `0 0 18px ${sage}22, inset 0 0 10px ${sage}10`,
-//                           }}
-//                         >
-//                           <span
-//                             className="size-1.5 shrink-0 rounded-full"
-//                             style={{ background: sage }}
-//                             aria-hidden
-//                           />
-//                           {row.hydrogen}
-//                         </div>
-//                         <div className="flex items-center px-2 py-3.5 text-sm text-[#f3efe4]/45 sm:px-3 sm:py-4">
-//                           {row.diesel}
-//                         </div>
-//                       </div>
-//                     );
-//                   })}
-//                 </div>
-//               </div>
-//             </div>
-//           </Reveal>
-
-//           {/* Image + benefits */}
-//           <Reveal variant="right" delay={100} className="min-w-0 w-full">
-//             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-md">
-//               {imageSrc ? (
-//                 <Image
-//                   src={imageSrc}
-//                   alt={image}
-//                   fill
-//                   quality={75}
-//                   className="object-cover"
-//                   sizes="(max-width: 1024px) 100vw, 45vw"
-//                 />
-//               ) : (
-//                 <PlaceholderMedia
-//                   label={image}
-//                   className="absolute inset-0 min-h-full"
-//                 />
-//               )}
-//             </div>
-
-//             <ul className="mt-6 space-y-5">
-//               {benefits.map((benefit, index) => {
-//                 const Icon = benefitIcons[index] ?? Leaf;
-//                 return (
-//                   <li key={benefit.title} className="flex gap-3.5">
-//                     <CircledIcon icon={Icon} />
-//                     <div>
-//                       <p className="text-sm font-semibold tracking-[0.12em] text-[#141a14] uppercase">
-//                         {benefit.title}
-//                       </p>
-//                       <p className="mt-1 text-sm leading-relaxed text-[#5c584e]">
-//                         {benefit.body}
-//                       </p>
-//                     </div>
-//                   </li>
-//                 );
-//               })}
-//             </ul>
-//           </Reveal>
-//         </div>
-
-//         {/* Bottom icon bar */}
-//         <RevealStagger
-//           className="mt-12 grid grid-cols-2 gap-6 border-t border-[#ddd8cc] pt-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4 [&>*:last-child]:col-span-2 [&>*:last-child]:justify-self-center sm:[&>*:last-child]:col-span-1 sm:[&>*:last-child]:justify-self-auto"
-//           step={80}
-//           variant="up"
-//         >
-//           {iconBar.map((item, index) => {
-//             const Icon = iconBarIcons[index] ?? ShieldCheck;
-//             return (
-//               <div
-//                 key={item.title}
-//                 className="flex flex-col items-center text-center"
-//               >
-//                 <CircledIcon icon={Icon} />
-//                 <p className="mt-3 text-[11px] font-semibold tracking-[0.16em] text-[#141a14] uppercase">
-//                   {item.title}
-//                 </p>
-//                 <p className="mt-1.5 max-w-[12rem] text-xs leading-relaxed text-[#5c584e]">
-//                   {item.body}
-//                 </p>
-//               </div>
-//             );
-//           })}
-//         </RevealStagger>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
 import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 
@@ -458,7 +215,66 @@ export function WhyHydrogenWins() {
                   </span>
                 </h3>
 
-                <div className="mt-5 overflow-x-auto">
+                {/* Mobile: stacked comparison cards */}
+                <ul className="mt-5 space-y-3 md:hidden">
+                  {rows.map((row, index) => {
+                    const Icon = rowIcons[index] ?? Leaf;
+
+                    return (
+                      <li
+                        key={row.metric}
+                        className="rounded-lg border border-[#29343a] px-4 py-3.5"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Icon
+                            className="size-[18px] shrink-0"
+                            strokeWidth={1.55}
+                            style={{ color: "#91b642" }}
+                            aria-hidden
+                          />
+                          <p className="text-[13px] font-semibold tracking-[0.08em] text-[#bfc4c0] uppercase">
+                            {row.metric}
+                          </p>
+                        </div>
+
+                        <div className="mt-3 grid grid-cols-2 gap-3">
+                          <div
+                            className="rounded-md border px-3 py-2.5"
+                            style={{
+                              borderColor: sage,
+                              background: "rgba(110,127,66,.12)",
+                            }}
+                          >
+                            <p
+                              className="text-[10px] font-bold tracking-[0.14em] uppercase"
+                              style={{ color: sage }}
+                            >
+                              {columns[1]}
+                            </p>
+                            <p
+                              className="mt-1 text-[15px] font-semibold"
+                              style={{ color: sage }}
+                            >
+                              {row.hydrogen}
+                            </p>
+                          </div>
+
+                          <div className="rounded-md border border-[#29343a] px-3 py-2.5">
+                            <p className="text-[10px] font-bold tracking-[0.14em] text-[#aeb5b1] uppercase">
+                              {columns[2]}
+                            </p>
+                            <p className="mt-1 text-[15px] font-medium text-[#edf0ed]/70">
+                              {row.diesel}
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                {/* Desktop: comparison table */}
+                <div className="mt-5 hidden overflow-x-auto md:block">
                   <div className="min-w-[560px]">
                     {/* TABLE HEADER */}
                     <div className="grid grid-cols-[1.18fr_1fr_1fr]">

@@ -144,6 +144,7 @@ export const sectionOrder = [
   "three-markets",
   "product-ecosystem",
   "featured-products",
+  "why-hydrogen-wins",
   "customer-partners",
   "businesses-companies",
   "closing-cta",

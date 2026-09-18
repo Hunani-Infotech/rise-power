@@ -512,6 +512,46 @@ h4 {
   contain-intrinsic-size: 1px 720px;
 }
 
+/* Home carousels & marquees */
+.snap-carousel-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.snap-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.partner-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.partner-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: partner-marquee-scroll 40s linear infinite;
+}
+.partner-marquee:hover .partner-marquee__track,
+.partner-marquee:focus-within .partner-marquee__track {
+  animation-play-state: paused;
+}
+@keyframes partner-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.standards-marquee {
+  overflow: hidden;
+}
+.standards-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 2.5rem;
+  animation: partner-marquee-scroll 35s linear infinite;
+}
+.standards-marquee:hover .standards-marquee__track {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -556,5 +596,14 @@ h4 {
 
   .market-card img {
     transition: none !important;
+  }
+
+  .partner-marquee__track,
+  .standards-marquee__track {
+    animation: none !important;
+    transform: none !important;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
   }
 }
