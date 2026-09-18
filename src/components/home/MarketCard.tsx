@@ -13,11 +13,15 @@ export type MarketRowProps = {
   cta: string;
   imageSrc?: string;
   imageLabel: string;
+  /** Featured horizontal layout (desktop). Compact = stacked image/content. */
+  expanded?: boolean;
+  /** Called when the panel should become featured (hover / focus). */
+  onActivate?: () => void;
 };
 
 /**
- * Standard market panel — image-led card with readable copy,
- * use-case points, and a clear CTA to the full use-cases page.
+ * Market panel — expands into a horizontal image + copy layout when featured,
+ * otherwise stacks image over content (compact).
  */
 export function MarketRow({
   index,
@@ -29,10 +33,29 @@ export function MarketRow({
   cta,
   imageSrc,
   imageLabel,
+  expanded = false,
+  onActivate,
 }: MarketRowProps) {
   return (
-    <article className="motion-hover-lift group flex h-full flex-col overflow-hidden border border-[#ddd8cc] bg-white">
-      <div className="relative aspect-[5/3] w-full overflow-hidden bg-[#e8e4d8]">
+    <article
+      className={[
+        "group flex h-full min-h-[22rem] overflow-hidden border bg-white transition-[flex-grow,border-color,box-shadow] duration-500 ease-out lg:min-h-[26rem]",
+        expanded
+          ? "flex-col border-[#6e7f42] shadow-[0_12px_40px_-24px_rgba(26,28,22,0.45)] lg:flex-row"
+          : "flex-col border-[#ddd8cc] hover:border-[#c4bfb0]",
+      ].join(" ")}
+      onMouseEnter={onActivate}
+      onFocusCapture={onActivate}
+    >
+      {/* Media */}
+      <div
+        className={[
+          "relative overflow-hidden bg-[#e8e4d8]",
+          expanded
+            ? "aspect-[5/3] w-full shrink-0 lg:aspect-auto lg:h-auto lg:min-h-0 lg:w-[62%] lg:flex-1"
+            : "aspect-[5/3] w-full shrink-0 lg:aspect-auto lg:min-h-0 lg:flex-[1.15]",
+        ].join(" ")}
+      >
         {imageSrc ? (
           <Image
             src={imageSrc}
@@ -40,7 +63,11 @@ export function MarketRow({
             fill
             quality={75}
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes={
+              expanded
+                ? "(max-width: 1024px) 100vw, 55vw"
+                : "(max-width: 1024px) 100vw, 22vw"
+            }
           />
         ) : (
           <PlaceholderMedia
@@ -48,25 +75,30 @@ export function MarketRow({
             className="absolute inset-0 min-h-full"
           />
         )}
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a1c16]/55 via-transparent to-transparent"
-          aria-hidden
-        />
-        <span className="absolute top-4 left-4 inline-flex min-w-10 items-center justify-center border border-white/35 bg-[#1a1c16]/45 px-2.5 py-1 font-display text-sm font-bold tracking-[0.12em] text-white tabular-nums backdrop-blur-[2px]">
+        <span className="absolute top-3 left-3 z-10 inline-flex min-w-9 items-center justify-center bg-[#2a2c26] px-2 py-1.5 font-display text-xs font-bold tracking-[0.14em] text-white tabular-nums sm:top-4 sm:left-4 sm:min-w-10 sm:text-sm">
           {index}
         </span>
       </div>
 
-      <div className="flex flex-1 flex-col border-t-2 border-[#6e7f42] px-5 py-5 sm:px-6 sm:py-6">
-        <p className="type-card-label text-[#5c584e]">
-          {theater}
-        </p>
-        <h3 className="type-card-title mt-2 text-[#1a1c16]">
+      {/* Copy */}
+      <div
+        className={[
+          "flex flex-1 flex-col bg-white",
+          expanded
+            ? "border-t border-[#ddd8cc] px-5 py-5 sm:px-6 sm:py-6 lg:w-[38%] lg:border-t-0 lg:border-l lg:border-[#ddd8cc] lg:px-6 lg:py-7"
+            : "border-t border-[#ddd8cc] px-5 py-5 sm:px-5 sm:py-5",
+        ].join(" ")}
+      >
+        <p className="type-card-label text-[#8a8578]">{theater}</p>
+        <h3
+          className={[
+            "mt-2 text-[#1a1c16]",
+            expanded ? "type-card-title-lg" : "type-card-title",
+          ].join(" ")}
+        >
           {title}
         </h3>
-        <p className="type-card-body mt-3">
-          {body}
-        </p>
+        <p className="type-card-body mt-3">{body}</p>
 
         {points.length > 0 ? (
           <ul className="mt-4 space-y-2 border-t border-[#ddd8cc] pt-4">
@@ -76,7 +108,7 @@ export function MarketRow({
                 className="flex items-center gap-2.5 text-sm text-[#1a1c16]"
               >
                 <span
-                  className="size-1.5 shrink-0 rounded-full bg-[#6e7f42]"
+                  className="size-1.5 shrink-0 rounded-full bg-[#1a1c16]"
                   aria-hidden
                 />
                 {point}
@@ -85,10 +117,18 @@ export function MarketRow({
           </ul>
         ) : null}
 
-        <div className="mt-auto pt-5">
+        <div
+          className={[
+            "mt-auto pt-5",
+            expanded ? "flex justify-start lg:justify-start" : "",
+          ].join(" ")}
+        >
           <Link
             href={href}
-            className="type-cta inline-flex min-h-11 w-full items-center justify-center gap-2 border border-[#1a1c16] bg-transparent px-4 text-[#1a1c16] transition-colors hover:bg-[#1a1c16] hover:text-white"
+            className={[
+              "type-cta inline-flex min-h-11 items-center justify-center gap-2 border border-[#1a1c16] bg-transparent px-4 text-[#1a1c16] transition-colors hover:bg-[#1a1c16] hover:text-white",
+              expanded ? "w-full lg:w-auto lg:min-w-[11.5rem]" : "w-full",
+            ].join(" ")}
           >
             {cta}
             <ArrowRight

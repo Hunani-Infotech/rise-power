@@ -193,7 +193,7 @@ export function ClosingCta() {
                 </span>
               </h2>
 
-              <p className="type-section-body mt-6 max-w-[650px] text-[#f3efe4]/85">
+              <p className="type-section-body mt-6 max-w-[650px] !text-white/90">
                 {closingCta.body}
               </p>
 
@@ -259,10 +259,7 @@ export function ClosingCta() {
               className="mt-10 lg:mt-0"
             >
               <div className="border-l-0 border-white/15 pl-0 lg:border-l lg:pl-10">
-                <p
-                  className="type-eyebrow"
-                  style={{ color: sage }}
-                >
+                <p className="type-eyebrow text-white/90">
                   {closingCta.panelEyebrow}
                 </p>
 

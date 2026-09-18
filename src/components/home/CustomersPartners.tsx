@@ -294,7 +294,7 @@ export function CustomersPartners() {
         </Reveal>
 
         <RevealStagger
-          className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-6 lg:gap-4 xl:grid-cols-4 2xl:gap-5"
+          className="mt-9 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:mt-6 lg:gap-4 xl:grid-cols-4 2xl:gap-5"
           step={80}
           variant="up"
         >
@@ -305,7 +305,7 @@ export function CustomersPartners() {
             return (
               <article
                 key={item.category}
-                className="group flex min-w-0 flex-col overflow-hidden rounded-[12px] border transition-transform duration-300 hover:-translate-y-1"
+                className="group flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden rounded-[12px] border transition-transform duration-300 hover:-translate-y-1"
                 style={{
                   background: charcoal,
                   borderColor: "#23323a",
@@ -353,26 +353,28 @@ export function CustomersPartners() {
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-1 flex-col">
+                <div className="flex min-h-0 flex-1 flex-col">
                   <div className="flex flex-1 flex-col p-4 sm:p-5">
                     <div
-                      className="font-display text-[50px] font-bold leading-[0.5]"
+                      className="shrink-0 font-display text-[50px] font-bold leading-[0.5]"
                       style={{ color: "#8bb52e" }}
                       aria-hidden
                     >
                       “
                     </div>
 
-                    <h3 className="type-card-title mt-0 min-h-[48px] text-white">
+                    <h3
+                      className="type-card-title mt-0 line-clamp-3 min-h-[4.5rem] text-white"
+                    >
                       {item.title}
                     </h3>
 
-                    <p className="type-card-body-on-dark mt-3 min-h-[68px]">
+                    <p className="type-card-body-on-dark mt-3 line-clamp-3 min-h-[4.5rem] !text-white">
                       {item.body}
                     </p>
 
-                    {/* Stats */}
-                    <div className="mt-5 grid min-w-0 grid-cols-[repeat(3,minmax(0,1fr))] border-t border-white/15 pt-4">
+                    {/* Stats — pinned so all cards share the same bottom edge */}
+                    <div className="mt-auto grid min-w-0 grid-cols-[repeat(3,minmax(0,1fr))] border-t border-white/15 pt-4">
                       {item.stats.map((stat, statIndex) => {
                         const StatIcon = icons[statIndex];
 
@@ -405,7 +407,7 @@ export function CustomersPartners() {
                                 </p>
 
                                 <p
-                                  className="mt-1 max-w-full text-[7px] font-semibold leading-[1.2] tracking-[0.01em] text-[#e7ebe8]/80 uppercase sm:text-[8px]"
+                                  className="mt-1 max-w-full text-[7px] font-semibold leading-[1.2] tracking-[0.01em] text-white/85 uppercase sm:text-[8px]"
                                   style={{
                                     display: "-webkit-box",
                                     WebkitBoxOrient: "vertical",
@@ -426,7 +428,7 @@ export function CustomersPartners() {
                   {/* CTA */}
                   <Link
                     href={item.href}
-                    className="group/link flex min-h-[48px] items-center justify-between border-t px-4 transition-colors hover:bg-white/[0.035] sm:px-5"
+                    className="group/link flex min-h-[48px] shrink-0 items-center justify-between border-t px-4 transition-colors hover:bg-white/[0.035] sm:px-5"
                     style={{ borderColor: "rgba(255,255,255,.13)" }}
                   >
                     <span className="type-cta-ghost text-white">

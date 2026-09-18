@@ -26,7 +26,7 @@ import { standards } from "@/lib/content";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { EcosystemStepCard } from "./EcosystemStepCard";
 import { FeaturedProductRow } from "./FeaturedProductRow";
-import { MarketRow } from "./MarketCard";
+import { MarketsShowcase } from "./MarketsShowcase";
 import { PerformanceMetricCard } from "./PerformanceMetricCard";
 import { SectionSkeleton } from "./SectionSkeleton";
 
@@ -202,7 +202,7 @@ export function HomePage() {
       {/* 2. Performance Metrics — Built to Outperform */}
       <section
         id="performance-metrics"
-        className={`scroll-mt-28 ${sectionY}`}
+        className="scroll-mt-28 py-10 sm:py-12 lg:py-14"
         style={{ background: "#fafaf8" }}
       >
         <div className={pageInset}>
@@ -213,19 +213,19 @@ export function HomePage() {
             >
               {performanceMetrics.eyebrow}
             </p>
-            <h2 className="type-section-h2 mt-4 text-center">
+            <h2 className="type-section-h2 mt-3 text-center">
               {performanceMetrics.headingBefore}{" "}
               <span style={{ color: "#6e7f42" }}>
                 {performanceMetrics.headingAccent}
               </span>
             </h2>
-            <p className="type-section-body mx-auto mt-5 max-w-3xl text-center">
+            <p className="type-section-body mx-auto mt-3 max-w-2xl text-center">
               {performanceMetrics.body}
             </p>
           </Reveal>
           <RevealStagger
-            className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-6"
-            step={100}
+            className="mx-auto mt-8 grid w-full max-w-5xl grid-cols-1 items-stretch gap-4 sm:mt-9 sm:grid-cols-2 sm:gap-4 lg:mt-10 lg:max-w-none lg:grid-cols-4 lg:gap-5"
+            step={80}
           >
             {performanceMetrics.gauges.map((item, index) => {
               const Icon = gaugeIcons[index] ?? Crosshair;
@@ -271,26 +271,7 @@ export function HomePage() {
             </header>
           </Reveal>
 
-          <RevealStagger
-            className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
-            step={90}
-            variant="up"
-          >
-            {threeMarkets.cards.map((item, index) => (
-              <MarketRow
-                key={item.title}
-                index={String(index + 1).padStart(2, "0")}
-                title={item.title}
-                body={item.body}
-                theater={item.theater}
-                points={item.points}
-                href={item.href}
-                cta={item.cta}
-                imageSrc={item.imageSrc}
-                imageLabel={item.image}
-              />
-            ))}
-          </RevealStagger>
+          <MarketsShowcase />
         </div>
       </section>
 
@@ -374,7 +355,7 @@ export function HomePage() {
           </Reveal>
 
           <RevealStagger
-            className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5"
+            className="mt-10 grid items-stretch gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5"
             step={90}
             variant="up"
           >

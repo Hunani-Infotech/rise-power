@@ -13,8 +13,8 @@ type PerformanceMetricCardProps = {
 const PRIMARY_GREEN = "#6e7f42";
 
 /**
- * Beveled tech card — chamfered corners + gauge with divider icon.
- * Matches Frame “Built to Outperform” metrics mockup.
+ * Compact beveled metric card — gauge + divider icon + title/body.
+ * Sized for even 2×2 / 4-col grids across breakpoints.
  */
 export function PerformanceMetricCard({
   icon: Icon,
@@ -26,33 +26,32 @@ export function PerformanceMetricCard({
 }: PerformanceMetricCardProps) {
   return (
     <div
-      className="motion-hover-lift h-full"
+      className="motion-hover-lift h-full w-full"
       style={{
-        filter: "drop-shadow(0 12px 28px rgba(22, 28, 22, 0.09))",
+        filter: "drop-shadow(0 8px 18px rgba(22, 28, 22, 0.08))",
       }}
     >
       <article
-        className="relative flex h-full min-h-[22rem] flex-col items-center bg-white px-5 pt-8 pb-8 sm:px-6 sm:pt-9 sm:pb-9 lg:min-h-[28rem] lg:px-6 lg:pt-10 lg:pb-10"
+        className="relative flex h-full flex-col items-center bg-white px-4 pt-5 pb-5 sm:px-5 sm:pt-6 sm:pb-6"
         style={{
           clipPath:
-            "polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 16px)",
+            "polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 12px)",
           boxShadow: "inset 0 0 0 1px #e6e3da",
         }}
       >
-        <div className="mx-auto w-full max-w-[220px] lg:max-w-[240px]">
-          <StatGauge value={value} unit={unit} percent={percent} size={240} />
+        <div className="mx-auto aspect-square w-full max-w-[140px] sm:max-w-[156px]">
+          <StatGauge value={value} unit={unit} percent={percent} size={156} />
         </div>
 
-        {/* Divider — large icon on the rule, no circular frame */}
-        <div className="relative mt-6 mb-1 flex w-[72%] max-w-[15rem] items-center justify-center">
+        <div className="relative mt-4 mb-0.5 flex w-[78%] max-w-[12rem] shrink-0 items-center justify-center">
           <div
             className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2"
             style={{ background: "#d8d4ca" }}
             aria-hidden
           />
-          <div className="relative z-[1] bg-white px-3">
+          <div className="relative z-[1] bg-white px-2.5">
             <Icon
-              className="size-7 sm:size-8 lg:size-9"
+              className="size-5 sm:size-6"
               strokeWidth={1.7}
               style={{ color: PRIMARY_GREEN }}
               aria-hidden
@@ -60,10 +59,10 @@ export function PerformanceMetricCard({
           </div>
         </div>
 
-        <h3 className="type-card-title-sm mt-4 max-w-[16rem] text-center text-[#1a1c16]">
+        <h3 className="type-card-title-sm mt-3 flex min-h-[2.6em] max-w-[14rem] items-start justify-center text-center text-[0.8rem] leading-snug text-[#1a1c16] sm:min-h-[2.8em] sm:text-[0.85rem]">
           {title}
         </h3>
-        <p className="type-card-body mt-2.5 max-w-[15rem] text-center">
+        <p className="type-card-body mt-1.5 min-h-[2.4em] max-w-[13.5rem] text-center text-[0.8rem] leading-snug sm:text-[0.85rem]">
           {body}
         </p>
       </article>
