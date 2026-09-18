@@ -144,7 +144,6 @@ export const sectionOrder = [
   "three-markets",
   "product-ecosystem",
   "featured-products",
-  "mission-deployments",
   "customer-partners",
   "businesses-companies",
   "closing-cta",
@@ -593,146 +592,6 @@ export const capabilities = {
   diagramImageSrc: "/media/capabilities/engineering.png",
 };
 
-export type DeploymentHotspot = {
-  id: string;
-  label: string;
-  location: string;
-  status: string;
-  title: string;
-  subhead: string;
-  stats: readonly { label: string; value: string; icon: "clock" | "thermometer" | "package" | "users" }[];
-  overview: string;
-  image: string;
-  detailImageSrc?: string;
-  /**
-   * Pin position as % of world-map.png (image-calibrated — this art is not
-   * equirectangular / WGS84-aligned).
-   */
-  x: number;
-  y: number;
-};
-
-export const missionDeployments = {
-  eyebrow: "COMING SOON",
-  headingBefore: "Deployments —",
-  headingAccent: "Coming Soon",
-  body: "Field tracking is not live yet. Explore the climates and theaters Rise systems are engineered for—details publish as programs enter the field.",
-  mapPrompt: "Select a theater to explore planned operating environments.",
-  legend: ["PLANNED THEATERS", "COMING SOON"] as const,
-  mapImageSrc: "/media/missions/world-map.png",
-  mapImageAlt: "Dark satellite view of the world",
-  /** Intrinsic pixel size of world-map.png — keeps pins aligned to geography */
-  mapAspect: { width: 1672, height: 941 },
-  defaultHotspotId: "mountain",
-  hotspots: [
-    {
-      id: "arctic",
-      label: "ARCTIC",
-      location: "Canada",
-      status: "COMING SOON",
-      title: "ARCTIC REGION",
-      subhead: "Cold-weather operations in extreme polar conditions.",
-      stats: [
-        { label: "RUNTIME CAPABILITY", value: "96+ HOURS", icon: "clock" },
-        { label: "ENVIRONMENT", value: "-40°C to 10°C", icon: "thermometer" },
-        { label: "TARGET SYSTEM", value: "SENTINEL™", icon: "package" },
-        { label: "DESIGN SUPPORT", value: "80+", icon: "users" },
-      ],
-      overview:
-        "Cold-tolerant hydrogen power for polar posts and remote communications arrays.",
-      image: "Arctic operating environment",
-      detailImageSrc: "/media/missions/mountain.png",
-      // Northern Canada — calibrated to world-map.png light/land mass
-      x: 29.5,
-      y: 15.0,
-    },
-    {
-      id: "maritime",
-      label: "MARITIME",
-      location: "Portugal",
-      status: "COMING SOON",
-      title: "MARITIME REGION",
-      subhead: "Shipboard and coastal power for austere maritime missions.",
-      stats: [
-        { label: "RUNTIME CAPABILITY", value: "120+ HOURS", icon: "clock" },
-        { label: "ENVIRONMENT", value: "Salt-air, humidity", icon: "thermometer" },
-        { label: "TARGET SYSTEM", value: "TITAN™", icon: "package" },
-        { label: "DESIGN SUPPORT", value: "200+", icon: "users" },
-      ],
-      overview:
-        "Zero-emission backup power for coastal stations and maritime command nodes.",
-      image: "Maritime operating environment",
-      detailImageSrc: "/media/missions/mountain.png",
-      // Western Iberia / Portugal — on land in this map art
-      x: 51.0,
-      y: 37.5,
-    },
-    {
-      id: "desert",
-      label: "DESERT",
-      location: "Algeria",
-      status: "COMING SOON",
-      title: "DESERT REGION",
-      subhead: "High-heat desert operations with dust and thermal stress.",
-      stats: [
-        { label: "RUNTIME CAPABILITY", value: "60+ HOURS", icon: "clock" },
-        { label: "ENVIRONMENT", value: "5°C to 50°C", icon: "thermometer" },
-        { label: "TARGET SYSTEM", value: "FALCON™", icon: "package" },
-        { label: "DESIGN SUPPORT", value: "120+", icon: "users" },
-      ],
-      overview:
-        "Lightweight modules engineered for UAV and ISR missions across arid theaters.",
-      image: "Desert operating environment",
-      detailImageSrc: "/media/missions/mountain.png",
-      // Algerian Sahara landmass on this map art
-      x: 53.0,
-      y: 46.5,
-    },
-    {
-      id: "mountain",
-      label: "MOUNTAIN",
-      location: "Switzerland",
-      status: "COMING SOON",
-      title: "MOUNTAIN REGION",
-      subhead: "High-altitude operations in extreme terrain.",
-      stats: [
-        { label: "RUNTIME CAPABILITY", value: "72+ HOURS", icon: "clock" },
-        { label: "ENVIRONMENT", value: "-25°C to 45°C", icon: "thermometer" },
-        { label: "TARGET SYSTEM", value: "TITAN™", icon: "package" },
-        { label: "DESIGN SUPPORT", value: "150+", icon: "users" },
-      ],
-      overview:
-        "Silent power for forward bases and high-altitude communication relays.",
-      image: "Mountain operating environment",
-      detailImageSrc: "/media/missions/mountain.png",
-      // Swiss Alps cluster on this map art
-      x: 53.0,
-      y: 31.5,
-    },
-    {
-      id: "urban",
-      label: "URBAN",
-      location: "Germany",
-      status: "COMING SOON",
-      title: "URBAN REGION",
-      subhead: "Dense urban operations with strict emissions and noise limits.",
-      stats: [
-        { label: "RUNTIME CAPABILITY", value: "48+ HOURS", icon: "clock" },
-        { label: "ENVIRONMENT", value: "Indoor / outdoor", icon: "thermometer" },
-        { label: "TARGET SYSTEM", value: "SENTINEL™", icon: "package" },
-        { label: "DESIGN SUPPORT", value: "300+", icon: "users" },
-      ],
-      overview:
-        "Indoor-safe hydrogen power for emergency response and critical infrastructure.",
-      image: "Urban operating environment",
-      detailImageSrc: "/media/missions/mountain.png",
-      // Germany — north of Alps lights on this map art
-      x: 54.2,
-      y: 28.0,
-    },
-  ] satisfies readonly DeploymentHotspot[],
-};
-
 export const whyHydrogenWins = {
   eyebrow: "WHY HYDROGEN WINS",
   headingBefore: "CLEANER.",
@@ -920,7 +779,6 @@ export const footer = {
         { label: "Featured Products", href: "/#featured-products" },
         { label: "Use Cases", href: "/use-cases" },
         { label: "Capabilities", href: "/capabilities" },
-        { label: "Deployments", href: "/#mission-deployments" },
       ],
     },
     {

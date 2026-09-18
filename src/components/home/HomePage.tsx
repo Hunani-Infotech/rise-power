@@ -17,7 +17,6 @@ import {
   featuredProducts,
   hero,
   heroImageSrc,
-  missionDeployments,
   performanceMetrics,
   productEcosystem,
   threeMarkets,
@@ -29,14 +28,6 @@ import { FeaturedProductRow } from "./FeaturedProductRow";
 import { MarketsShowcase } from "./MarketsShowcase";
 import { PerformanceMetricCard } from "./PerformanceMetricCard";
 import { SectionSkeleton } from "./SectionSkeleton";
-
-const MissionMap = dynamic(
-  () => import("./MissionMap").then((m) => m.MissionMap),
-  {
-    ssr: true,
-    loading: () => <SectionSkeleton tone="dark" className="min-h-[20rem]" />,
-  },
-);
 
 const CustomersPartners = dynamic(
   () => import("./CustomersPartners").then((m) => m.CustomersPartners),
@@ -363,34 +354,6 @@ export function HomePage() {
               <FeaturedProductRow key={product.name} {...product} />
             ))}
           </RevealStagger>
-        </div>
-      </section>
-
-      {/* 6. Deployments — Coming Soon */}
-      <section
-        id="mission-deployments"
-        className={`cv-auto scroll-mt-28 bg-[#f3f0e8] text-[#1a1c16] ${sectionY}`}
-      >
-        <div className={pageInset}>
-          <Reveal variant="up">
-            <p
-              className="type-eyebrow text-center"
-              style={{ color: sage }}
-            >
-              {missionDeployments.eyebrow}
-            </p>
-            <h2 className="type-section-h2 mt-4 text-center">
-              {missionDeployments.headingBefore}{" "}
-              <span style={{ color: sage }}>{missionDeployments.headingAccent}</span>
-            </h2>
-            <p className="type-section-body mx-auto mt-5 max-w-3xl text-center">
-              {missionDeployments.body}
-            </p>
-          </Reveal>
-
-          <div className="mt-8 lg:mt-10">
-            <MissionMap />
-          </div>
         </div>
       </section>
 
