@@ -202,29 +202,29 @@ export function HomePage() {
       {/* 2. Performance Metrics — Built to Outperform */}
       <section
         id="performance-metrics"
-        className="py-10 sm:py-12 lg:py-14"
+        className={`scroll-mt-28 ${sectionY}`}
         style={{ background: "#fafaf8" }}
       >
         <div className={pageInset}>
           <Reveal variant="up">
             <p
-              className="text-center font-display text-xs font-semibold tracking-[0.22em] uppercase sm:text-sm lg:text-base"
+              className="text-center font-display text-[13px] font-semibold tracking-[0.22em] uppercase sm:text-sm"
               style={{ color: "#6e7f42" }}
             >
               {performanceMetrics.eyebrow}
             </p>
-            <h2 className="mt-3 text-center font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[5.5rem] xl:text-[6.25rem]">
+            <h2 className="mt-4 text-center font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[5.5rem] xl:text-[6.25rem]">
               {performanceMetrics.headingBefore}{" "}
               <span style={{ color: "#6e7f42" }}>
                 {performanceMetrics.headingAccent}
               </span>
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-center text-base leading-relaxed text-[#5c584e] sm:text-lg lg:text-[1.35rem]">
+            <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-[#5c584e] sm:text-lg lg:text-[1.35rem]">
               {performanceMetrics.body}
             </p>
           </Reveal>
           <RevealStagger
-            className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:mt-10 lg:grid-cols-4 lg:gap-4"
+            className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-6"
             step={100}
           >
             {performanceMetrics.gauges.map((item, index) => {
