@@ -215,7 +215,7 @@ function GalleryCard({
 }
 
 export default function CapabilitiesPage() {
-  const { hero, proof, tabs, atmosphere, gallery } =
+  const { hero, proof, tabs, gallery } =
     capabilities;
 
   return (
@@ -300,34 +300,6 @@ export default function CapabilitiesPage() {
               <PillarRow key={tab.id} tab={tab} index={index} />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ATMOSPHERE STRIP */}
-      <section className="relative min-h-[300px] overflow-hidden bg-[#0a100e] text-white sm:min-h-[380px] lg:min-h-[480px]">
-        <Image
-          src={atmosphere.imageSrc}
-          alt={atmosphere.imageAlt}
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/25 via-[#07100d]/10 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/12 via-transparent to-transparent" />
-
-        <div className="relative mx-auto flex min-h-[300px] max-w-[1440px] items-end px-6 py-12 sm:min-h-[380px] sm:py-14 lg:min-h-[480px] lg:px-10 lg:py-20">
-          <Reveal variant="up">
-            <div className="max-w-[640px]">
-              <SectionEyebrow light>{atmosphere.eyebrow}</SectionEyebrow>
-              <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-                {atmosphere.headingBefore}{" "}
-                <span style={{ color: sage }}>{atmosphere.headingAccent}</span>
-              </h2>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-white sm:text-lg">
-                {atmosphere.body}
-              </p>
-            </div>
-          </Reveal>
         </div>
       </section>
 

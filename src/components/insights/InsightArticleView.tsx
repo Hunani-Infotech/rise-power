@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import type { InsightArticle, InsightBlock } from "@/lib/insights";
@@ -22,7 +21,6 @@ export type InsightArticleViewProps = {
 const SAGE_ACCENT = "#849363";
 const SAGE = "#6e7f42";
 const CREAM = "#fbfaf7";
-const INK = "#101820";
 const MUTED = "#66717d";
 
 function SectionEyebrow({ children }: { children: React.ReactNode }) {
@@ -289,44 +287,6 @@ export function InsightArticleView({
           </div>
         </section>
       ) : null}
-
-      {/* Local CTA */}
-      <section
-        className="py-14 sm:py-16 lg:py-20"
-        style={{ background: INK }}
-      >
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 sm:flex-row sm:items-end sm:justify-between lg:px-10">
-          <Reveal variant="up">
-            <p
-              className="text-xs font-semibold tracking-[0.2em] uppercase"
-              style={{ color: SAGE_ACCENT }}
-            >
-              Next step
-            </p>
-            <h2 className="mt-3 max-w-xl font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl lg:text-5xl">
-              Request a Briefing
-            </h2>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-white/80">
-              Bring your operating environment and load profile. We respond with
-              specs, runtime data, and a deployment summary.
-            </p>
-          </Reveal>
-
-          <Reveal variant="fade" delay={80}>
-            <div className="flex flex-wrap gap-4">
-              <Button href="/contact" variant="primary">
-                Request a Briefing
-              </Button>
-              <Link
-                href="/insights"
-                className="inline-flex min-h-12 items-center justify-center border border-white/35 px-7 text-sm font-semibold tracking-normal text-white/90 transition-colors duration-200 hover:border-white hover:text-white"
-              >
-                Browse Insights
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </article>
   );
 }
