@@ -9,6 +9,8 @@ type StackedPageHeroProps = {
   tone?: string;
   /** Shorter desktop height for article / detail heroes. */
   compact?: boolean;
+  /** Max width for the copy column (default 1440px). */
+  contentMaxWidthClassName?: string;
   children: React.ReactNode;
 };
 
@@ -22,6 +24,7 @@ export function StackedPageHero({
   imageClassName = "object-cover object-center",
   tone = "#0a100e",
   compact = false,
+  contentMaxWidthClassName = "max-w-[1440px]",
   children,
 }: StackedPageHeroProps) {
   const desktopMinH = compact
@@ -52,7 +55,7 @@ export function StackedPageHero({
       </div>
 
       <div
-        className={`relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-14 lg:px-10 ${desktopMinH} ${copyPad} [&_p]:!text-white`}
+        className={`relative z-10 mx-auto flex w-full ${contentMaxWidthClassName} flex-1 flex-col justify-center px-6 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-14 lg:px-10 ${desktopMinH} ${copyPad} [&_p]:!text-white`}
       >
         {children}
       </div>

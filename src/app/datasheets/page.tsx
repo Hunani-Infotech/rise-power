@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-import { Button } from "@/components/Button";
 import {
   DatasheetProductSection,
   type DatasheetProduct,
 } from "@/components/datasheets/DatasheetProductSection";
-import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { pageMetadata } from "@/lib/seo";
 
@@ -185,43 +183,6 @@ export default function DatasheetsPage() {
           index={index}
         />
       ))}
-
-      {/* CLOSING CTA */}
-      <section className="bg-[#101820] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-          <Reveal variant="up">
-            <SectionEyebrow onDark>Next step</SectionEyebrow>
-
-            <h2 className="mt-4 max-w-[720px] font-display text-[32px] leading-[0.94] font-bold tracking-tight text-white uppercase sm:mt-5 sm:text-[44px] lg:text-[52px]">
-              Request certified datasheets
-            </h2>
-
-            <p className="mt-4 max-w-[560px] text-base leading-[1.55] text-[#b7c1c9] sm:mt-5 sm:text-lg">
-              Share your mission profile and we will send the latest engineering
-              packages with briefing support.
-            </p>
-
-            <div className="mt-7 flex flex-wrap items-center gap-4 sm:mt-8">
-              <Button
-                href="/contact"
-                className="rounded-sm bg-[#849363] text-white hover:bg-[#849363]/90 hover:text-white active:bg-[#6e7f42]"
-              >
-                <span className="flex items-center gap-2 uppercase tracking-wide">
-                  Request a Briefing
-                  <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
-                </span>
-              </Button>
-              <Link
-                href="/resources"
-                className="inline-flex min-h-12 items-center gap-2 text-sm font-semibold tracking-wide text-[#849363] uppercase transition-opacity hover:opacity-80"
-              >
-                Browse resources
-                <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </main>
   );
 }
