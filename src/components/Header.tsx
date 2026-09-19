@@ -211,7 +211,9 @@ export function Header() {
       return `fixed top-0 right-0 left-0 z-50 will-change-transform transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${visibilityClass} ${backgroundClass}`;
     }
 
-    return `fixed top-0 right-0 left-0 z-50 will-change-transform border-b border-border bg-cream text-ink shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-transform duration-300 ease-out ${visibilityClass}`;
+    // Drop border-b while mega is open so the panel sits flush with the nav bar.
+    const borderClass = megaOpen ? "" : "border-b border-border";
+    return `fixed top-0 right-0 left-0 z-50 will-change-transform ${borderClass} bg-cream text-ink shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-transform duration-300 ease-out ${visibilityClass}`;
   })();
 
   const closeMega = () => setActiveKey(null);

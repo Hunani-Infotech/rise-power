@@ -29,7 +29,7 @@ export function MegaMenuPanel({
       id={id}
       role="region"
       aria-label={`${title} menu`}
-      className="mega-menu-panel absolute top-full right-0 left-0 z-40 border-t border-border bg-cream text-ink shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
+      className="mega-menu-panel absolute top-full right-0 left-0 z-40 bg-cream text-ink shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
     >
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-6 px-6 py-6 lg:grid-cols-[1fr_320px] lg:items-stretch lg:gap-8 lg:px-10 lg:py-7">
         <div className="flex min-w-0 flex-col">
