@@ -353,7 +353,7 @@ export default function InvestorsPage() {
         <div className="hero-animate-copy max-w-[700px]">
           <div className="flex items-center gap-4">
             <p className="font-display text-mm font-semibold tracking-[0.2em] text-white uppercase">
-              Investors
+              Capital Raise
             </p>
           </div>
 
@@ -605,7 +605,7 @@ export default function InvestorsPage() {
                       <div className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3">
                         <span
                           className={`shrink-0 font-display text-lg font-bold tabular-nums tracking-tight sm:text-xl ${
-                            isLast ? "text-[#a8b87a]" : "text-[#6e7f42]"
+                            isLast ? "text-white" : "text-[#6e7f42]"
                           }`}
                         >
                           {item.number}
@@ -622,7 +622,7 @@ export default function InvestorsPage() {
                       </div>
                       <div
                         className={`shrink-0 opacity-65 transition-opacity duration-300 group-hover:opacity-100 [&_svg]:h-6 [&_svg]:w-6 sm:[&_svg]:h-7 sm:[&_svg]:w-7 ${
-                          isLast ? "text-[#a8b87a]" : "text-[#101820]"
+                          isLast ? "text-white" : "text-[#101820]"
                         }`}
                       >
                         <Icon />

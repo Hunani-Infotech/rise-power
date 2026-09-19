@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
@@ -15,13 +15,17 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const sage = "#6e7f42";
+const sageOnDark = "#849363";
 const cream = "#fbfaf7";
 const muted = "#66717d";
+const ink = "#101820";
 const border = "#d9dfe3";
 
 const faqGroups = [
   {
+    id: "product-performance",
     title: "Product & Performance",
+    summary: "Runtime, signature, and indoor operation.",
     image: "/media/products/product-titan.png",
     imageAlt: "Rise Titan hydrogen power system",
     items: [
@@ -44,7 +48,9 @@ const faqGroups = [
     ],
   },
   {
+    id: "cartridge-logistics",
     title: "Cartridge Logistics",
+    summary: "Transport, shelf life, and field swap.",
     image: "/media/products/product-hydro-kit.png",
     imageAlt: "Hydrogen cartridge kit for field logistics",
     items: [
@@ -63,7 +69,9 @@ const faqGroups = [
     ],
   },
   {
+    id: "procurement-programs",
     title: "Procurement & Programs",
+    summary: "Evaluation units, lead time, and training.",
     image: "/media/capabilities/system-integration.jpg",
     imageAlt: "Rise Power program and integration evaluation",
     items: [
@@ -94,7 +102,9 @@ const faqGroups = [
     ],
   },
   {
+    id: "compliance-export",
     title: "Compliance & Export",
+    summary: "Certifications, controls, and integration.",
     image: "/media/capabilities/safety-compliance.jpg",
     imageAlt: "Rise Power safety and compliance documentation",
     items: [
@@ -140,7 +150,7 @@ function SectionEyebrow({
         />
       </span>
       <p
-        className={`text-mm font-semibold tracking-[0.18em] uppercase ${onDark ? "text-white" : ""}`}
+        className="text-xs font-semibold tracking-[0.18em] uppercase"
         style={{ color }}
       >
         {children}
@@ -159,48 +169,48 @@ export default function ProcurementFaqPage() {
       >
         <div className="hero-animate-copy max-w-[820px]">
           <SectionEyebrow onDark>Resources</SectionEyebrow>
-          <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight text-white uppercase sm:mt-8 sm:text-[64px] xl:text-[80px] 2xl:text-[88px]">
+          <h1 className="mt-5 font-display text-[42px] leading-[0.9] font-bold tracking-tight text-white uppercase sm:mt-6 sm:text-[64px] xl:text-[80px]">
             Procurement
             <br />
-            <span style={{ color: sage }}>FAQ</span>
+            <span style={{ color: sageOnDark }}>FAQ</span>
           </h1>
-          <p className="mt-6 max-w-[680px] text-base leading-[1.55] text-white sm:mt-8 sm:text-xl xl:text-[22px]">
+          <p className="mt-5 max-w-[640px] text-base leading-[1.55] text-white sm:mt-6 sm:text-xl xl:text-[22px]">
             Common questions from procurement, programs, and integration teams
             evaluating Rise Power systems.
           </p>
-          <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row">
+          <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
             <a
-              href="#faq"
+              href="#answers"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#849363] px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
             >
               Browse Answers
-              <ArrowRight className="size-5" />
+              <ArrowRight className="size-4" aria-hidden="true" />
             </a>
-            <a
+            <Link
               href="/contact"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-white/50 px-7 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-white/45 px-7 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10"
             >
               Request a Briefing
-              <ArrowRight className="size-5" />
-            </a>
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </StackedPageHero>
 
       <section
-        id="faq"
-        className="scroll-mt-28 py-12 sm:py-16 lg:py-24"
-        style={{ backgroundColor: cream }}
+        id="answers"
+        className="scroll-mt-28 border-b py-10 sm:py-12 lg:py-16"
+        style={{ backgroundColor: cream, borderColor: border }}
       >
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
-            <div className="max-w-[720px]">
+            <div className="max-w-[640px]">
               <SectionEyebrow>Answers</SectionEyebrow>
-              <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-[56px]">
+              <h2 className="mt-4 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-[52px]">
                 Straight Answers.
               </h2>
               <p
-                className="mt-5 max-w-[560px] text-base leading-[1.55] sm:text-lg"
+                className="mt-4 max-w-[520px] text-base leading-[1.55] sm:text-lg"
                 style={{ color: muted }}
               >
                 Performance, logistics, procurement, and compliance — organized
@@ -209,89 +219,139 @@ export default function ProcurementFaqPage() {
             </div>
           </Reveal>
 
-          <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-14 lg:space-y-20">
-            {faqGroups.map((group, groupIndex) => (
-              <Reveal key={group.title} variant="up" delay={groupIndex * 40}>
-                <div className="grid gap-8 lg:grid-cols-[300px_1fr] lg:gap-14 xl:gap-16">
-                  <div>
-                    <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-[7px] bg-[#101820]">
-                      <Image
-                        src={group.image}
-                        alt={group.imageAlt}
-                        fill
-                        sizes="(min-width: 1024px) 300px, 100vw"
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/45 via-transparent to-transparent" />
-                    </div>
-                    <p
-                      className="font-display text-2xl font-bold tracking-tight uppercase sm:text-3xl"
-                      style={{ color: sage }}
-                    >
-                      {String(groupIndex + 1).padStart(2, "0")}
-                    </p>
-                    <h3 className="mt-3 font-display text-2xl font-bold tracking-tight uppercase sm:text-3xl">
-                      {group.title}
-                    </h3>
-                  </div>
-
-                  <RevealStagger className="space-y-0" step={70}>
-                    {group.items.map((item) => (
-                      <div
-                        key={item.q}
-                        className="border-b py-7 first:pt-0 last:border-b-0"
-                        style={{ borderColor: border }}
-                      >
-                        <h4 className="text-lg font-semibold text-[#101820] sm:text-xl">
-                          {item.q}
-                        </h4>
-                        <p
-                          className="mt-3 max-w-3xl text-base leading-[1.6]"
-                          style={{ color: muted }}
-                        >
-                          {item.a}
-                        </p>
-                      </div>
-                    ))}
-                  </RevealStagger>
-                </div>
-              </Reveal>
+          <nav
+            aria-label="FAQ categories"
+            className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t pt-5 sm:mt-10"
+            style={{ borderColor: border }}
+          >
+            {faqGroups.map((group, index) => (
+              <a
+                key={group.id}
+                href={`#${group.id}`}
+                className="text-xs font-semibold tracking-[0.12em] uppercase transition-colors hover:text-[#101820]"
+                style={{ color: muted }}
+              >
+                <span className="mr-1.5 tabular-nums" style={{ color: sage }}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                {group.title}
+              </a>
             ))}
-          </div>
+          </nav>
+        </div>
+      </section>
 
-          <Reveal variant="up" delay={80}>
-            <div
-              className="mt-16 flex flex-col gap-6 border-t pt-12 sm:flex-row sm:items-center sm:justify-between"
-              style={{ borderColor: border }}
-            >
-              <div className="max-w-[560px]">
-                <h3 className="font-display text-3xl font-bold tracking-tight uppercase">
-                  Question not answered here?
-                </h3>
-                <p className="mt-3 text-base leading-[1.55]" style={{ color: muted }}>
-                  Tell us your operating environment and we&apos;ll respond with
-                  the specific information your evaluation needs.
-                </p>
-              </div>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#849363] px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
-                >
-                  Request a Briefing
-                  <ArrowRight className="size-5" />
-                </Link>
-                <Link
-                  href="/datasheets"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border px-7 text-sm font-semibold tracking-wide text-[#101820] uppercase transition-colors hover:border-[#6e7f42]"
-                  style={{ borderColor: border }}
-                >
-                  See Datasheets
-                  <ArrowRight className="size-5" />
-                </Link>
-              </div>
+      {faqGroups.map((group, groupIndex) => (
+        <section
+          key={group.id}
+          id={group.id}
+          className="scroll-mt-28 border-b py-10 sm:py-12 lg:py-14"
+          style={{
+            backgroundColor: groupIndex % 2 === 0 ? cream : "#ffffff",
+            borderColor: border,
+          }}
+        >
+          <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
+            <div className="grid gap-8 lg:grid-cols-[240px_1fr] lg:gap-12 xl:grid-cols-[280px_1fr] xl:gap-16">
+              <Reveal variant="up">
+                <aside className="lg:sticky lg:top-28 lg:self-start">
+                  <div className="relative mb-5 aspect-[4/3] overflow-hidden bg-[#101820]">
+                    <Image
+                      src={group.image}
+                      alt={group.imageAlt}
+                      fill
+                      sizes="(min-width: 1280px) 280px, (min-width: 1024px) 240px, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <p
+                    className="font-display text-sm font-bold tracking-wide"
+                    style={{ color: sage }}
+                  >
+                    {String(groupIndex + 1).padStart(2, "0")}
+                  </p>
+                  <h3
+                    className="mt-2 font-display text-2xl leading-[0.95] font-bold tracking-tight uppercase sm:text-[28px]"
+                    style={{ color: ink }}
+                  >
+                    {group.title}
+                  </h3>
+                  <p
+                    className="mt-2 text-sm leading-[1.55]"
+                    style={{ color: muted }}
+                  >
+                    {group.summary}
+                  </p>
+                </aside>
+              </Reveal>
+
+              <RevealStagger
+                className="divide-y divide-[#d9dfe3] border-t border-[#d9dfe3]"
+                step={45}
+                variant="up"
+              >
+                {group.items.map((item, itemIndex) => (
+                  <details
+                    key={item.q}
+                    className="group/item"
+                    open={groupIndex === 0 && itemIndex === 0}
+                  >
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 outline-none sm:py-6 [&::-webkit-details-marker]:hidden">
+                      <h4
+                        className="max-w-3xl text-base font-semibold leading-snug text-[#101820] transition-colors group-open/item:text-[#6e7f42] sm:text-lg"
+                      >
+                        {item.q}
+                      </h4>
+                      <span
+                        aria-hidden="true"
+                        className="mt-0.5 flex size-7 shrink-0 items-center justify-center border transition-colors duration-300 group-open/item:border-[#6e7f42] group-open/item:bg-[#6e7f42] group-open/item:text-white"
+                        style={{ borderColor: border, color: ink }}
+                      >
+                        <Plus className="size-3.5 transition-transform duration-300 group-open/item:rotate-45" />
+                      </span>
+                    </summary>
+                    <div className="pb-6 pr-10 sm:pr-14">
+                      <p
+                        className="max-w-3xl text-[15px] leading-[1.65] sm:text-base"
+                        style={{ color: muted }}
+                      >
+                        {item.a}
+                      </p>
+                    </div>
+                  </details>
+                ))}
+              </RevealStagger>
             </div>
-          </Reveal>
+          </div>
+        </section>
+      ))}
+
+      <section
+        className="border-t py-10 sm:py-12"
+        style={{ backgroundColor: cream, borderColor: border }}
+      >
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-5 px-6 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+          <p className="max-w-[480px] text-base leading-[1.55]" style={{ color: muted }}>
+            Still have a question? Share your operating environment and we&apos;ll
+            send the specifics your evaluation needs.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.12em] text-[#101820] uppercase transition-colors hover:text-[#6e7f42]"
+            >
+              Request a Briefing
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+            <Link
+              href="/datasheets"
+              className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.12em] uppercase transition-colors hover:text-[#101820]"
+              style={{ color: muted }}
+            >
+              See Datasheets
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
     </main>

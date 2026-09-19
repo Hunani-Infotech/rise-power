@@ -7,6 +7,8 @@ type StackedPageHeroProps = {
   imageClassName?: string;
   /** Section background when copy sits below the photo (below xl). */
   tone?: string;
+  /** Shorter desktop height for article / detail heroes. */
+  compact?: boolean;
   children: React.ReactNode;
 };
 
@@ -19,11 +21,19 @@ export function StackedPageHero({
   imageAlt,
   imageClassName = "object-cover object-center",
   tone = "#0a100e",
+  compact = false,
   children,
 }: StackedPageHeroProps) {
+  const desktopMinH = compact
+    ? "xl:min-h-[min(62svh,520px)]"
+    : "xl:min-h-[min(100svh,800px)]";
+  const copyPad = compact
+    ? "xl:pt-28 xl:pb-12"
+    : "xl:pt-32 xl:pb-20";
+
   return (
     <section
-      className="relative flex w-full flex-col overflow-hidden text-white xl:min-h-[min(100svh,800px)]"
+      className={`relative flex w-full flex-col overflow-hidden text-white ${desktopMinH}`}
       style={{ backgroundColor: tone }}
     >
       <div className="relative aspect-[3/2] w-full shrink-0 sm:aspect-[16/10] lg:aspect-[21/9] xl:absolute xl:inset-0 xl:aspect-auto">
@@ -41,7 +51,9 @@ export function StackedPageHero({
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-14 lg:px-10 xl:min-h-[min(100svh,800px)] xl:pt-32 xl:pb-20 [&_p]:!text-white">
+      <div
+        className={`relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-14 lg:px-10 ${desktopMinH} ${copyPad} [&_p]:!text-white`}
+      >
         {children}
       </div>
     </section>

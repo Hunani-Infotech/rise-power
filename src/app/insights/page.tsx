@@ -20,7 +20,6 @@ const sage = "#6e7f42";
 const sageOnDark = "#849363";
 const cream = "#fbfaf7";
 const muted = "#66717d";
-const ink = "#101820";
 const border = "#d9dfe3";
 
 function SectionEyebrow({
@@ -180,74 +179,115 @@ export default function InsightsPage() {
         </section>
       ) : null}
 
-      {/* ARCHIVE — remaining articles as hairline rows */}
+      {/* ARCHIVE — compact editorial index */}
       {archive.length > 0 ? (
         <section
-          className="py-12 sm:py-16 lg:py-24"
+          className="relative overflow-hidden py-10 sm:py-14 lg:py-16"
           style={{ backgroundColor: cream }}
         >
           <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
             <Reveal variant="up">
-              <div className="max-w-[640px]">
-                <SectionEyebrow>Archive</SectionEyebrow>
-                <h2 className="mt-4 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-[56px]">
-                  All Field Notes.
-                </h2>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+                <div className="max-w-[560px]">
+                  <SectionEyebrow>Archive</SectionEyebrow>
+                  <h2 className="mt-3 font-display text-3xl leading-[0.95] font-bold tracking-tight uppercase sm:text-4xl lg:text-[2.75rem]">
+                    All Field{" "}
+                    <span style={{ color: sage }}>Notes.</span>
+                  </h2>
+                </div>
                 <p
-                  className="mt-3 max-w-[520px] text-base leading-[1.55] sm:mt-4 sm:text-lg"
+                  className="shrink-0 text-[11px] font-semibold tracking-[0.16em] uppercase"
                   style={{ color: muted }}
                 >
-                  Milestones, validation reports, and defense power analysis —
-                  newest first.
+                  <span className="font-display text-lg font-bold tabular-nums tracking-tight" style={{ color: sage }}>
+                    {String(archive.length).padStart(2, "0")}
+                  </span>
+                  <span className="ml-2">Entries · Newest first</span>
                 </p>
               </div>
             </Reveal>
 
             <RevealStagger
-              className="mt-10 divide-y divide-[#d9dfe3] border-y border-[#d9dfe3] sm:mt-12"
-              step={60}
+              className="mt-8 border-t border-[#d9dfe3] sm:mt-10"
+              step={50}
               variant="up"
             >
-              {archive.map((article) => {
-                const { category, readTime } = articleMeta(article);
+              {archive.map((article, index) => {
+                const { category, hero, readTime } = articleMeta(article);
+                const indexLabel = String(index + 1).padStart(2, "0");
 
                 return (
                   <Link
                     key={article.slug}
                     href={`/insights/${article.slug}`}
-                    className="group grid gap-3 px-2 py-8 transition-colors duration-200 hover:bg-[#f3f2ed] sm:px-4 sm:py-9 lg:grid-cols-[200px_minmax(0,1.1fr)_minmax(0,0.9fr)_110px] lg:items-baseline lg:gap-8"
+                    className="group grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-4 border-b py-5 pl-3 transition-colors duration-300 hover:bg-[#f3f2ed] sm:grid-cols-[3.25rem_minmax(0,1fr)_5.5rem_auto] sm:gap-x-6 sm:py-6 sm:pl-5 lg:gap-x-8 lg:pl-6"
+                    style={{ borderColor: border }}
                   >
-                    <p
-                      className="text-[11px] font-semibold tracking-[0.16em] uppercase"
-                      style={{ color: muted }}
+                    <span
+                      className="font-display text-lg font-bold tabular-nums tracking-tight transition-colors duration-300 group-hover:text-[#6e7f42] sm:text-xl"
+                      style={{ color: sage }}
                     >
-                      <span style={{ color: sage }}>{category}</span>
-                      <span className="mx-2 text-[#c5ccd2]" aria-hidden="true">
-                        ·
-                      </span>
-                      {article.displayDate}
-                    </p>
+                      {indexLabel}
+                    </span>
 
-                    <h3
-                      className="font-display text-xl leading-[1.05] font-bold tracking-tight uppercase transition-colors group-hover:text-[#6e7f42] sm:text-2xl"
-                      style={{ color: ink }}
-                    >
-                      {article.title}
-                    </h3>
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                        <p
+                          className="text-[10px] font-semibold tracking-[0.16em] uppercase sm:text-[11px]"
+                          style={{ color: sage }}
+                        >
+                          {category}
+                        </p>
+                        <span className="text-[#c5ccd2]" aria-hidden="true">
+                          ·
+                        </span>
+                        <p
+                          className="text-[10px] font-semibold tracking-[0.12em] uppercase sm:text-[11px]"
+                          style={{ color: muted }}
+                        >
+                          {article.displayDate}
+                        </p>
+                        <span className="text-[#c5ccd2]" aria-hidden="true">
+                          ·
+                        </span>
+                        <p
+                          className="text-[10px] font-semibold tracking-[0.12em] uppercase sm:text-[11px]"
+                          style={{ color: muted }}
+                        >
+                          {readTime}
+                        </p>
+                      </div>
 
-                    <p
-                      className="max-w-xl text-sm leading-relaxed sm:text-[15px]"
-                      style={{ color: muted }}
-                    >
-                      {article.excerpt}
-                    </p>
+                      <h3
+                        className="mt-1.5 font-display text-base leading-[1.15] font-bold tracking-tight uppercase transition-colors duration-300 group-hover:text-[#6e7f42] sm:text-lg lg:text-xl"
+                      >
+                        {article.title}
+                      </h3>
 
-                    <p
-                      className="text-[11px] font-semibold tracking-[0.14em] uppercase lg:text-right"
-                      style={{ color: muted }}
+                      <p
+                        className="mt-1.5 line-clamp-1 max-w-[54ch] text-sm leading-snug"
+                        style={{ color: muted }}
+                      >
+                        {article.excerpt}
+                      </p>
+                    </div>
+
+                    <div className="relative hidden size-[5.5rem] shrink-0 overflow-hidden bg-[#101820] sm:block">
+                      <Image
+                        src={hero.src}
+                        alt={hero.alt}
+                        fill
+                        sizes="88px"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
+                      />
+                    </div>
+
+                    <span
+                      className="flex size-9 shrink-0 items-center justify-center text-[#101820] transition-colors duration-300 group-hover:text-[#6e7f42]"
+                      aria-hidden="true"
                     >
-                      {readTime}
-                    </p>
+                      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </span>
                   </Link>
                 );
               })}

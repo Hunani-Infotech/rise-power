@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import type { InsightArticle, InsightBlock } from "@/lib/insights";
@@ -172,6 +173,7 @@ export function InsightArticleView({
         imageSrc={article.hero.src}
         imageAlt={article.hero.alt}
         tone="#101820"
+        compact
       >
         <div className="hero-animate-copy max-w-[720px]">
           <p className="text-xs font-semibold tracking-[0.2em] text-[#c5d4a8] uppercase sm:text-[13px]">
@@ -182,27 +184,32 @@ export function InsightArticleView({
             {article.displayDate}
           </p>
 
-          <h1 className="mt-5 font-display text-[42px] leading-[0.92] font-bold tracking-tight text-white uppercase sm:mt-6 sm:text-[56px] xl:text-[68px]">
+          <h1 className="mt-4 font-display text-[36px] leading-[0.95] font-bold tracking-tight text-white uppercase sm:mt-5 sm:text-[48px] xl:text-[56px]">
             <TitleWithAccent
               title={article.title}
               accentPhrase={article.accentPhrase}
             />
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/90 sm:mt-7 sm:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
             {article.excerpt}
           </p>
 
-          <p className="mt-6 border-t border-white/20 pt-4 text-xs tracking-[0.16em] text-white/70 uppercase">
+          <p className="mt-5 border-t border-white/20 pt-4 text-xs tracking-[0.16em] text-white/70 uppercase">
             {article.readTime}
           </p>
 
-          <div className="mt-8">
+          <div className="mt-7">
             <Link
               href="/insights"
-              className="inline-flex min-h-10 items-center text-sm font-semibold tracking-wide text-white/80 uppercase transition-colors hover:text-white"
+              className="group inline-flex min-h-11 items-center justify-center gap-2.5 rounded-sm border border-white/45 px-6 text-xs font-semibold tracking-[0.12em] text-white uppercase transition-colors hover:border-white hover:bg-white/10 sm:min-h-12 sm:px-7"
             >
-              ← All Insights
+              <ArrowLeft
+                className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+                strokeWidth={2}
+                aria-hidden
+              />
+              All Insights
             </Link>
           </div>
         </div>
