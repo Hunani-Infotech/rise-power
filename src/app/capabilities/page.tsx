@@ -502,6 +502,29 @@ export default function CapabilitiesPage() {
           </RevealStagger>
         </div>
       </section>
+
+      {/* CLOSING CTA — live copy */}
+      <section className="bg-[#101820] py-12 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-[900px] px-6 text-center lg:px-10">
+          <Reveal variant="up">
+            <h2 className="font-display text-4xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-5xl">
+              Ready to discuss your requirements?
+            </h2>
+            <p className="mx-auto mt-5 max-w-[560px] text-base leading-relaxed text-white/75 sm:text-lg">
+              Our engineering team is ready to explore how hydrogen power can
+              support your mission.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+              style={{ background: heroCta }}
+            >
+              Contact Us
+              <ArrowRight className="size-5" aria-hidden />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
     </main>
   );
 }

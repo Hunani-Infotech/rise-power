@@ -296,7 +296,7 @@ export default function CompanyPage() {
               </div>
 
               <h2 className="mt-7 font-display text-4xl leading-[0.92] font-bold tracking-tight uppercase sm:text-[48px] lg:text-[62px] xl:text-[76px]">
-                Built on What Matters.
+                Our Values
               </h2>
             </div>
           </Reveal>
@@ -352,50 +352,104 @@ export default function CompanyPage() {
             </div>
           </Reveal>
 
-          <div className="mx-auto mt-12 max-w-4xl">
+          <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
             <Reveal variant="up">
               <article className="overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-6 lg:p-8">
-                <div className="grid items-center gap-8 md:grid-cols-[0.9fr_1.1fr] md:gap-10 lg:gap-12">
-                  <div className="relative mx-auto aspect-[0.82/1] w-full max-w-[320px] overflow-hidden rounded-[5px] bg-[#e7e7e4] md:mx-0 md:max-w-none">
+                <div className="grid items-center gap-8 md:grid-cols-1">
+                  <div className="relative mx-auto aspect-[0.82/1] w-full max-w-[280px] overflow-hidden rounded-[5px] bg-[#e7e7e4]">
                     <Image
                       src="/media/company/company-leader.png"
                       alt="Portrait of Dr. Paul Ghotra, Founder and Chief Executive Officer"
                       fill
-                      sizes="(min-width: 768px) 28vw, 320px"
+                      sizes="280px"
                       className="object-cover object-center"
                     />
                   </div>
 
-                  <div className="py-1 text-center md:py-2 md:text-left">
-                    <div
-                      className="mx-auto h-px w-14 md:mx-0"
-                      style={{ backgroundColor: sage }}
-                    />
-
-                    <h3 className="mt-6 font-display text-[31px] leading-[1] font-bold tracking-tight uppercase sm:text-[36px]">
+                  <div className="py-1 text-center">
+                    <p className="text-xs font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
+                      01
+                    </p>
+                    <h3 className="mt-4 font-display text-[28px] leading-[1] font-bold tracking-tight uppercase sm:text-[32px]">
                       Dr. Paul Ghotra
                     </h3>
-
                     <p className="mt-3 text-xs font-semibold leading-[1.55] tracking-[0.18em] text-[#718092] uppercase">
                       Founder &amp; Chief Executive Officer
                     </p>
-
-                    <div className="mx-auto mt-8 max-w-md space-y-5 text-base leading-[1.55] text-[#68727d] md:mx-0 md:max-w-none">
-                      <p>
-                        Two decades scaling Canadian advanced manufacturing and
-                        clean energy.
-                      </p>
-
-                      <p>
-                        Founder of CIMtech Green Energy. Recognized as Surrey
-                        Business Person of the Year for hydrogen leadership.
-                      </p>
-                    </div>
+                    <p className="mx-auto mt-6 max-w-md text-base leading-[1.55] text-[#68727d]">
+                      Two decades scaling Canadian advanced manufacturing and
+                      clean energy. Founder of CIMtech Green Energy. Recognized
+                      as Surrey Business Person of the Year for hydrogen
+                      leadership.
+                    </p>
                   </div>
                 </div>
               </article>
             </Reveal>
+
+            <Reveal variant="up" delay={80}>
+              <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-6 lg:p-8">
+                <p className="text-xs font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
+                  02
+                </p>
+                <h3 className="mt-4 font-display text-[28px] leading-[1] font-bold tracking-tight uppercase sm:text-[32px]">
+                  [Team Member TBA]
+                </h3>
+                <p className="mt-3 text-xs font-semibold leading-[1.55] tracking-[0.18em] text-[#718092] uppercase">
+                  VP Engineering
+                </p>
+                <p className="mt-6 text-base leading-[1.55] text-[#68727d]">
+                  Hydrogen fuel cell systems, power electronics, and ruggedized
+                  field hardware. Bio to be announced.
+                </p>
+              </article>
+            </Reveal>
+
+            <Reveal variant="up" delay={160}>
+              <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-6 lg:p-8">
+                <p className="text-xs font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
+                  03
+                </p>
+                <h3 className="mt-4 font-display text-[28px] leading-[1] font-bold tracking-tight uppercase sm:text-[32px]">
+                  [Team Member TBA]
+                </h3>
+                <p className="mt-3 text-xs font-semibold leading-[1.55] tracking-[0.18em] text-[#718092] uppercase">
+                  VP Programs &amp; Business Development
+                </p>
+                <p className="mt-6 text-base leading-[1.55] text-[#68727d]">
+                  Defense and infrastructure programs, partnerships, and
+                  customer engagement. Bio to be announced.
+                </p>
+              </article>
+            </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* CLOSING CTA                                                         */}
+      {/* ================================================================== */}
+
+      <section className="relative overflow-hidden bg-[#101820] py-12 sm:py-16 lg:py-24">
+        <div className="relative mx-auto max-w-[900px] px-6 text-center lg:px-10">
+          <Reveal variant="up">
+            <h2 className="font-display text-4xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-[48px] lg:text-[56px]">
+              Build the future of portable power with us.
+            </h2>
+            <p className="mx-auto mt-6 max-w-[640px] text-base leading-[1.55] text-white/75 sm:text-lg">
+              Whether you&apos;re a procurement officer, integration partner, or
+              potential team member — we want to hear from you.
+            </p>
+            <div className="mt-9">
+              <a
+                href="/contact"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#849363] px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+              >
+                Request a Briefing
+                <ArrowRight className="size-5" aria-hidden="true" />
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
     </main>

@@ -26,7 +26,7 @@ const destinations = [
     number: "01",
     title: "Datasheets",
     description:
-      "Engineering targets for Sentinel, Falcon, Titan, and the cartridge kit. Beta-stage hardware — certified figures follow the compliance roadmap.",
+      "Technical specifications for Rise Power systems. Beta-stage hardware in active validation — full datasheets available on briefing request.",
     href: "/datasheets",
     cta: "Open Datasheets",
     image: "/media/products/product-sentinal.png",
@@ -36,7 +36,7 @@ const destinations = [
     number: "02",
     title: "Procurement FAQ",
     description:
-      "Straight answers for buying and program teams: evaluation units, indoor use, briefing requests, and platform integration.",
+      "Common questions from procurement, programs, and integration teams evaluating Rise Power portable power systems.",
     href: "/resources/faq",
     cta: "Read FAQ",
     image: "/media/FAQ/FAQ-hero.png",
@@ -54,13 +54,13 @@ const destinations = [
   },
   {
     number: "04",
-    title: "Articles",
+    title: "Investor Materials",
     description:
-      "Technical deep dives on hydrogen fuel cells, portable power, and clean energy for defense and critical infrastructure.",
-    href: "/insights",
-    cta: "Browse Articles",
-    image: "/media/capabilities/engineering.jpg",
-    imageAlt: "Rise Power engineering and technical documentation",
+      "Investor deck and company one-pager. For full data room access, financial models, and references, request a briefing.",
+    href: "/investors",
+    cta: "View Investors",
+    image: "/media/investors/investor-deck.png",
+    imageAlt: "Rise Power investor briefing materials",
   },
 ] as const;
 
@@ -232,16 +232,12 @@ export default function ResourcesPage() {
           <SectionEyebrow onDark>Resource Center</SectionEyebrow>
 
           <h1 className="mt-4 font-display text-[42px] leading-[0.92] font-bold tracking-tight text-white uppercase sm:mt-6 sm:text-[68px] md:text-[78px] xl:text-[88px] 2xl:text-[96px]">
-            Specs.
-            <br />
-            Insights.
-            <br />
-            <span style={{ color: sage }}>Field Notes.</span>
+            Resources
           </h1>
 
           <p className="mt-4 max-w-[720px] text-base leading-[1.55] text-white sm:mt-6 sm:text-xl xl:text-[22px]">
-            Datasheets, procurement guidance, and field updates for programs,
-            integration, and buying teams evaluating Rise Power systems.
+            Datasheets, procurement FAQ, insights, and investor materials for
+            programs, integration, and buying teams evaluating Rise Power systems.
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">

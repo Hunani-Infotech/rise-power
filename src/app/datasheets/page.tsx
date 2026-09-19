@@ -71,14 +71,14 @@ const products: DatasheetProduct[] = [
     image: "/media/datasheets/datasheet-3.png",
     imageAlt: "Rise Titan hydrogen power generator",
     description:
-      "High-output, scalable hydrogen power for demanding missions. Delivers continuous power in a rugged, field-ready form factor with rapid cartridge swap and minimal signature.",
+      "A 3 kW zero emission generator built for sustained field operations. Operates silently across extreme temperature ranges with zero heat signature. Purpose built for defense, disaster response, and remote infrastructure.",
     specs: [
-      ["Continuous Output", "3 kW (target)"],
-      ["Runtime", "Hours with standard cartridges"],
-      ["System Weight", "< 50 lbs (target)"],
+      ["Continuous Output", "3,000 W (target)"],
+      ["Runtime", "Unlimited with cartridge swap"],
+      ["Acoustic Signature @ 1m", "< 65 dBA"],
       ["Operating Temperature", "−20 °C to 50 °C (target)"],
-      ["Ingress Protection", "IP65 (target)"],
-      ["Cartridge Swap", "< 1 min, no tools"],
+      ["Form Factor", "Wheeled, telescoping handle"],
+      ["Output Receptacles", "2x 120 V, USB-A, USB-C, MIL connector"],
     ],
     sectionTitle: "Engineering Targets",
     productHref: "/products#titan",
@@ -91,16 +91,16 @@ const products: DatasheetProduct[] = [
     image: "/media/datasheets/datasheet-4.png",
     imageAlt: "Hydrogen cartridge kit with rugged Rise Power case",
     description:
-      "Rugged, field-ready hydrogen cartridges designed for safe, reliable, and rapid power delivery. Optimized for use with RISE systems in demanding environments.",
+      "Universal fuel cell compatible cartridges with RFID smart monitoring. Leak proof, lightweight, and designed for rapid field replenishment. Swap a cartridge and restore full runtime without tools or specialized training.",
     specs: [
-      ["Cartridge Type", "Replaceable hydrogen cartridge"],
-      ["Hydrogen Capacity", "~300 Wh (target)"],
-      ["Form Factor", "Rugged, field-ready"],
-      ["Operating Temperature", "−20 °C to 50 °C (target)"],
-      ["Storage Temperature", "−40 °C to 60 °C (target)"],
-      ["Compatibility", "RISE systems"],
+      ["Cartridge Diameter", "6 in (152 mm)"],
+      ["Cartridge Height", "24 in (610 mm)"],
+      ["Coupler", "Stainless quick-disconnect, push-to-connect"],
+      ["Shelf Life", "Effectively indefinite"],
+      ["Pack Configuration", "4x cartridges, Pelican 1610 case"],
+      ["Transport", "Ground / air (certification in progress)"],
     ],
-    sectionTitle: "Key Specifications",
+    sectionTitle: "Engineering Targets",
     productHref: "/products#hydrogen-cartridge-kit",
   },
 ];
@@ -153,8 +153,9 @@ export default function DatasheetsPage() {
           </h1>
 
           <p className="mt-5 max-w-[640px] text-base leading-[1.55] text-white sm:mt-6 sm:text-xl xl:text-[22px]">
-            Engineering targets for Rise Power systems. Full certified
-            datasheets available on briefing request.
+            Technical specifications for Rise Power systems. Beta-stage hardware
+            in active validation — full datasheets are available on briefing
+            request as compliance work completes.
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
@@ -180,8 +181,9 @@ export default function DatasheetsPage() {
       <div className="border-y border-[#d9dfe3] bg-[#fbfaf7]">
         <div className="mx-auto max-w-[1440px] px-6 py-4 sm:px-6 sm:py-5 lg:px-10">
           <p className="border-l-2 border-[#849363] pl-4 text-sm leading-[1.55] text-[#66717d] sm:text-[15px]">
-            Values shown are beta engineering targets. Certified figures publish
-            as the compliance roadmap completes.
+            Beta technology notice: target performance values reflect current
+            engineering specifications. Final certified figures will be published
+            as the certification roadmap completes.
           </p>
         </div>
       </div>
