@@ -75,7 +75,7 @@ function PillarCard({
     <Reveal variant="fade" delay={index * 70}>
       <Link
         href={tab.href}
-        className="group relative block min-h-[340px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713] sm:min-h-[380px] lg:min-h-[360px]"
+        className="group relative block min-h-[280px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713] sm:min-h-[320px] lg:min-h-[340px]"
       >
         <Image
           src={tab.imageSrc}
@@ -197,7 +197,7 @@ export default function CapabilitiesPage() {
       {/* FOUR PILLARS */}
       <section
         id="pillars"
-        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-20 sm:py-24 lg:py-32"
+        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24"
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-40"
@@ -255,7 +255,7 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* ATMOSPHERE STRIP */}
-      <section className="relative min-h-[420px] overflow-hidden bg-[#0a100e] text-white sm:min-h-[480px] lg:min-h-[560px]">
+      <section className="relative min-h-[300px] overflow-hidden bg-[#0a100e] text-white sm:min-h-[380px] lg:min-h-[480px]">
         <Image
           src={atmosphere.imageSrc}
           alt={atmosphere.imageAlt}
@@ -266,7 +266,7 @@ export default function CapabilitiesPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/92 via-[#07100d]/55 to-[#07100d]/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/60 via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[420px] max-w-[1440px] items-end px-6 py-16 sm:min-h-[480px] lg:min-h-[560px] lg:px-10 lg:py-20">
+        <div className="relative mx-auto flex min-h-[300px] max-w-[1440px] items-end px-6 py-16 sm:min-h-[380px] lg:min-h-[480px] lg:px-10 lg:py-20">
           <Reveal variant="up">
             <div className="max-w-[640px]">
               <SectionEyebrow light>{atmosphere.eyebrow}</SectionEyebrow>
@@ -302,7 +302,7 @@ export default function CapabilitiesPage() {
               {performanceMetrics.eyebrow}
             </p>
           </Reveal>
-          <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-6">
             {performanceMetrics.gauges.map((gauge, index) => {
               const Icon = metricIcons[index] ?? ShieldCheck;
               return (
@@ -340,8 +340,8 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* FIELD VALIDATION */}
-      <section className="relative overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-28">
-        <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14 lg:px-10">
+      <section className="relative overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto grid max-w-[1440px] items-center gap-8 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:px-10">
           <Reveal variant="left">
             <SectionEyebrow>{proof.eyebrow}</SectionEyebrow>
             <h2 className="mt-7 max-w-3xl font-display text-4xl leading-[0.94] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
@@ -367,7 +367,7 @@ export default function CapabilitiesPage() {
 
           <Reveal variant="right" delay={100}>
             <div className="grid gap-3 sm:grid-cols-[1.15fr_0.85fr]">
-              <div className="relative aspect-[1.05/1] overflow-hidden rounded-xl bg-[#dfe4dc] sm:aspect-auto sm:min-h-[420px]">
+              <div className="relative aspect-[1.05/1] overflow-hidden rounded-xl bg-[#dfe4dc] sm:aspect-auto sm:min-h-[380px]">
                 <Image
                   src={proof.imageSrc}
                   alt={proof.imageAlt}
@@ -377,7 +377,7 @@ export default function CapabilitiesPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
               </div>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-[#dfe4dc] sm:aspect-auto sm:min-h-[420px]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-[#dfe4dc] sm:aspect-auto sm:min-h-[380px]">
                 <Image
                   src={proof.secondaryImageSrc}
                   alt={proof.secondaryImageAlt}
@@ -427,7 +427,7 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* CLOSING BAND */}
-      <section className="relative overflow-hidden bg-[#0a100e] py-20 text-white sm:py-24 lg:py-28">
+      <section className="relative overflow-hidden bg-[#0a100e] py-14 text-white sm:py-16 lg:py-24">
         <Image
           src={closingBand.imageSrc}
           alt={closingBand.imageAlt}

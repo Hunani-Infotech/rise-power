@@ -6,7 +6,7 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, description }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-surface pt-32 pb-16 lg:pt-40 lg:pb-20">
+    <section className="relative overflow-hidden border-b border-border bg-surface pt-24 pb-12 sm:pt-28 sm:pb-14 lg:pt-40 lg:pb-20">
       <div
         className="pointer-events-none absolute inset-0 opacity-30"
         style={{
@@ -22,7 +22,7 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
               {eyebrow}
             </p>
           ) : null}
-          <h1 className="max-w-4xl font-display text-5xl leading-[0.95] font-bold tracking-tight uppercase sm:text-6xl lg:text-7xl">
+          <h1 className="max-w-4xl font-display text-[42px] leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
             {title}
           </h1>
           {description ? (

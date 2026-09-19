@@ -174,7 +174,7 @@ function EnvironmentTile({
       id={
         includeAnchorId && item.slug !== defenseSlug ? item.slug : undefined
       }
-      className="group relative block min-h-[340px] sm:min-h-[400px] md:min-h-[360px] lg:min-h-[320px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713]"
+      className="group relative block min-h-[280px] sm:min-h-[320px] lg:min-h-[340px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713]"
     >
       {item.image ? (
         <Image
@@ -424,7 +424,7 @@ export default function UseCasesPage() {
 
       <section
         id="use-cases"
-        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-20 sm:py-24 lg:py-32"
+        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24"
       >
         {/* Decorative background lines */}
         <div

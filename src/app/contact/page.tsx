@@ -156,12 +156,12 @@ export default function ContactPage() {
       </StackedPageHero>
 
       {/* Facility visual */}
-      <section className="relative overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24">
         <ContourDecoration position="left" />
         <ContourDecoration position="right" />
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
             <Reveal variant="scale">
               <div className="relative aspect-[1.08/1] overflow-hidden rounded-[7px]">
                 <Image
@@ -203,7 +203,7 @@ export default function ContactPage() {
       </section>
 
       {/* Operating environments */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <section className="bg-white py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
             <div className="mb-10 max-w-[640px]">
@@ -272,12 +272,12 @@ export default function ContactPage() {
       {/* Briefing form + channels */}
       <section
         id="briefing"
-        className="relative overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-28"
+        className="relative overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24"
       >
         <ContourDecoration position="left" />
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
-          <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <div className="grid items-start gap-8 sm:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <Reveal variant="left">
               <div>
                 <div className="relative mb-10 aspect-[16/11] overflow-hidden rounded-[7px]">
@@ -367,7 +367,7 @@ export default function ContactPage() {
       </section>
 
       {/* Direct line */}
-      <section className="relative overflow-hidden py-20 sm:py-24 lg:py-28">
+      <section className="relative overflow-hidden py-14 sm:py-16 lg:py-24">
         <Image
           src="/media/products/plug-and-play-cartridge.png"
           alt=""

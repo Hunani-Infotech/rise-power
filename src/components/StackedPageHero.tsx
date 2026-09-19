@@ -23,10 +23,10 @@ export function StackedPageHero({
 }: StackedPageHeroProps) {
   return (
     <section
-      className="relative flex w-full flex-col overflow-hidden text-white xl:min-h-[min(100svh,860px)]"
+      className="relative flex w-full flex-col overflow-hidden text-white xl:min-h-[min(100svh,800px)]"
       style={{ backgroundColor: tone }}
     >
-      <div className="relative aspect-[5/4] w-full shrink-0 sm:aspect-[16/10] lg:aspect-[21/9] xl:absolute xl:inset-0 xl:aspect-auto">
+      <div className="relative aspect-[3/2] w-full shrink-0 sm:aspect-[16/10] lg:aspect-[21/9] xl:absolute xl:inset-0 xl:aspect-auto">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -41,7 +41,7 @@ export function StackedPageHero({
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pt-10 pb-14 sm:px-8 sm:pt-12 sm:pb-16 lg:px-10 xl:min-h-[min(100svh,860px)] xl:pt-32 xl:pb-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-14 lg:px-10 xl:min-h-[min(100svh,800px)] xl:pt-32 xl:pb-20">
         {children}
       </div>
     </section>

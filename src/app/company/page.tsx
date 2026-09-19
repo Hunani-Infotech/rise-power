@@ -243,12 +243,12 @@ export default function CompanyPage() {
       {/* MISSION                                                            */}
       {/* ================================================================== */}
 
-      <section className="relative overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24">
         <ContourDecoration position="left" />
         <ContourDecoration position="right" />
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
 
             {/* Image */}
             <Reveal variant="scale">
@@ -271,7 +271,7 @@ export default function CompanyPage() {
                   Our Mission
                 </SectionEyebrow>
 
-                <h2 className="mt-7 font-display text-[52px] leading-[0.92] font-bold tracking-tight uppercase sm:text-[64px] lg:text-[74px]">
+                <h2 className="mt-7 font-display text-4xl leading-[0.92] font-bold tracking-tight uppercase sm:text-[52px] lg:text-[64px] xl:text-[74px]">
                   Mission.
                 </h2>
 
@@ -325,7 +325,7 @@ export default function CompanyPage() {
       {/* VALUES                                                              */}
       {/* ================================================================== */}
 
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-24">
         <ContourDecoration position="left" />
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
@@ -339,7 +339,7 @@ export default function CompanyPage() {
                 </SectionEyebrow>
               </div>
 
-              <h2 className="mt-7 font-display text-[48px] leading-[0.92] font-bold tracking-tight uppercase sm:text-[62px] lg:text-[76px]">
+              <h2 className="mt-7 font-display text-4xl leading-[0.92] font-bold tracking-tight uppercase sm:text-[48px] lg:text-[62px] xl:text-[76px]">
                 Built on What Matters.
               </h2>
             </div>
@@ -373,7 +373,7 @@ export default function CompanyPage() {
 
       <section
         id="leadership"
-        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-16 sm:py-20 lg:py-28"
+        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24"
       >
         <ContourDecoration position="left" />
         <ContourDecoration position="right" />
@@ -389,7 +389,7 @@ export default function CompanyPage() {
                 </SectionEyebrow>
               </div>
 
-              <h2 className="mt-7 font-display text-[46px] leading-[0.92] font-bold tracking-tight uppercase sm:text-[60px] lg:text-[74px]">
+              <h2 className="mt-7 font-display text-4xl leading-[0.92] font-bold tracking-tight uppercase sm:text-[46px] lg:text-[60px] xl:text-[74px]">
                 The Team Behind the Systems.
               </h2>
             </div>

@@ -187,7 +187,7 @@ export default function ProcurementFaqPage() {
 
       <section
         id="faq"
-        className="scroll-mt-28 py-16 sm:py-20 lg:py-28"
+        className="scroll-mt-28 py-12 sm:py-16 lg:py-24"
         style={{ backgroundColor: cream }}
       >
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
@@ -207,7 +207,7 @@ export default function ProcurementFaqPage() {
             </div>
           </Reveal>
 
-          <div className="mt-14 space-y-16 lg:mt-16 lg:space-y-20">
+          <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-14 lg:space-y-20">
             {faqGroups.map((group, groupIndex) => (
               <Reveal key={group.title} variant="up" delay={groupIndex * 40}>
                 <div className="grid gap-8 lg:grid-cols-[300px_1fr] lg:gap-14 xl:gap-16">

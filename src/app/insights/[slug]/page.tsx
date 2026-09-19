@@ -42,7 +42,7 @@ export default async function InsightArticlePage({ params }: InsightPageProps) {
   if (!article) notFound();
 
   return (
-    <article className="pt-32 pb-20">
+    <article className="pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
       <div className="mx-auto max-w-3xl px-6 lg:px-10">
         <div className="hero-animate-copy">
           <p className="text-xs tracking-[0.18em] text-accent uppercase">

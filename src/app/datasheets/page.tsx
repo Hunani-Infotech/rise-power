@@ -111,7 +111,7 @@ export default function DatasheetsPage() {
             </p>
           </div>
 
-          <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight text-white uppercase sm:mt-7 sm:text-7xl xl:text-[112px]">
+          <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight text-white uppercase sm:mt-7 sm:text-[56px] xl:text-[82px]">
             Datasheets
           </h1>
 
@@ -171,7 +171,7 @@ export default function DatasheetsPage() {
                       {/* IMAGE*/}
 
                       <div
-                        className={`relative min-h-[420px] overflow-hidden rounded-[5px] bg-[#dfe5e4] sm:min-h-[520px] lg:min-h-[640px] ${imageLeft ? "lg:order-1" : "lg:order-2"
+                        className={`relative min-h-[280px] overflow-hidden rounded-[5px] bg-[#dfe5e4] sm:min-h-[360px] md:min-h-[420px] lg:min-h-[560px] ${imageLeft ? "lg:order-1" : "lg:order-2"
                           }`}
                       >
 
@@ -210,8 +210,8 @@ export default function DatasheetsPage() {
                         {/* Product title */}
                         <h2
                           className={`mt-6 font-display font-bold leading-[0.94] tracking-tight uppercase ${product.number === "04"
-                            ? "max-w-[650px] text-[40px] sm:text-[52px] lg:text-[58px]"
-                            : "text-[43px] sm:text-[55px] lg:text-[62px]"
+                            ? "max-w-[650px] text-[32px] sm:text-[44px] lg:text-[58px]"
+                            : "text-[34px] sm:text-[48px] lg:text-[62px]"
                             }`}
                         >
                           {product.number === "04" ? (

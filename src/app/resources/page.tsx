@@ -263,7 +263,7 @@ export default function ResourcesPage() {
       {/* DESTINATIONS */}
       <section
         id="destinations"
-        className="relative scroll-mt-28 overflow-hidden py-16 sm:py-20 lg:py-28"
+        className="relative scroll-mt-28 overflow-hidden py-12 sm:py-16 lg:py-24"
         style={{ backgroundColor: cream }}
       >
         <ContourDecoration position="left" />
@@ -521,7 +521,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* FEATURED INSIGHTS */}
-      <section className="bg-white py-16 sm:py-20 lg:py-28">
+      <section className="bg-white py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -654,7 +654,7 @@ export default function ResourcesPage() {
       {/* DOWNLOADS */}
       <section
         id="downloads"
-        className="relative scroll-mt-28 overflow-hidden py-16 sm:py-20 lg:py-28"
+        className="relative scroll-mt-28 overflow-hidden py-12 sm:py-16 lg:py-24"
         style={{ backgroundColor: cream }}
       >
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
@@ -681,7 +681,7 @@ export default function ResourcesPage() {
             {downloads.map((item) => (
               <article
                 key={item.number}
-                className="group relative min-h-[420px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116] sm:min-h-[460px]"
+                className="group relative min-h-[340px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116] sm:min-h-[400px] lg:min-h-[460px]"
               >
                 <Image
                   src={item.image}
@@ -692,7 +692,7 @@ export default function ResourcesPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#071116]/95 via-[#071116]/80 to-[#071116]/25" />
 
-                <div className="relative z-10 flex min-h-[420px] max-w-[620px] flex-col p-8 sm:min-h-[460px] sm:p-10 lg:p-12">
+                <div className="relative z-10 flex min-h-[340px] max-w-[620px] flex-col p-8 sm:min-h-[400px] sm:p-10 lg:min-h-[460px] lg:p-12">
                   <div className="flex items-center gap-5">
                     <span className="font-display text-4xl font-bold leading-none text-[#6e7f42]">
                       {item.number}

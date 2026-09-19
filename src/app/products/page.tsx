@@ -383,7 +383,7 @@ export default function ProductsPage() {
       {/* PRODUCT SYSTEMS */}
       <section
         id="product-systems"
-        className="scroll-mt-20 bg-[#f7f6f2] py-20 sm:py-24 lg:py-28"
+        className="scroll-mt-20 bg-[#f7f6f2] py-12 sm:py-16 lg:py-24"
       >
         <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-10">
           <Reveal variant="up" className="mx-auto max-w-4xl text-center">
@@ -462,7 +462,7 @@ export default function ProductsPage() {
               ⌁ One Cartridge Ecosystem
             </p>
 
-            <h2 className="mt-5 font-display text-5xl leading-[0.9] font-bold uppercase sm:text-6xl">
+            <h2 className="mt-5 font-display text-4xl leading-[0.9] font-bold uppercase sm:text-5xl lg:text-6xl">
               Engineered
               <br />
               <span className="text-[#6e7f42]">As a System.</span>

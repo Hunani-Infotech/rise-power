@@ -161,7 +161,7 @@ function SectionHeading({
         {eyebrow}
       </p>
 
-      <h2 className="mt-5 font-display text-5xl font-bold leading-[0.95] tracking-tight text-[#101820] uppercase sm:text-6xl lg:text-[64px]">
+      <h2 className="mt-5 font-display text-4xl font-bold leading-[0.95] tracking-tight text-[#101820] uppercase sm:text-5xl lg:text-[64px]">
         {title}
       </h2>
 
@@ -317,7 +317,7 @@ export default function InvestorsPage() {
             </span>
           </div>
 
-          <h1 className="mt-6 font-display text-5xl font-bold leading-[0.9] tracking-tight text-white uppercase sm:mt-7 sm:text-7xl xl:text-[92px]">
+          <h1 className="mt-6 font-display text-[42px] font-bold leading-[0.9] tracking-tight text-white uppercase sm:mt-7 sm:text-[56px] xl:text-[82px]">
             Investors
           </h1>
 
@@ -353,7 +353,7 @@ export default function InvestorsPage() {
 
       <section
         id="investor-materials"
-        className="relative overflow-hidden bg-[#fbfaf7] py-20 sm:py-24 lg:py-28"
+        className="relative overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24"
       >
         <ContourBackground />
 
@@ -377,7 +377,7 @@ export default function InvestorsPage() {
           <RevealStagger className="mt-12 grid gap-6 lg:grid-cols-2" step={100}>
 
             {/* Investor Deck */}
-            <article className="group relative min-h-[480px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116]">
+            <article className="group relative min-h-[340px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116] sm:min-h-[400px] lg:min-h-[460px]">
 
               <Image
                 src="/media/investors/investor-deck.png"
@@ -389,7 +389,7 @@ export default function InvestorsPage() {
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#071116]/95 via-[#071116]/80 to-[#071116]/20" />
 
-              <div className="relative z-10 flex min-h-[480px] max-w-[620px] flex-col p-8 sm:p-10 lg:p-12">
+              <div className="relative z-10 flex min-h-[340px] max-w-[620px] flex-col p-8 sm:min-h-[400px] sm:p-10 lg:min-h-[460px] lg:p-12">
 
                 <div className="flex items-center gap-5">
                   <span className="font-display text-4xl font-bold leading-none text-[#6e7f42]">
@@ -416,7 +416,7 @@ export default function InvestorsPage() {
                   <a
                     href="/media/investors/rise-power-deck.pdf"
                     download="rise-power-deck.pdf"
-                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-2 rounded-[4px] bg-[#849363] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:opacity-90"
+                    className="group/button inline-flex min-h-[60px] w-full min-w-0 items-center justify-center gap-2 rounded-[4px] bg-[#849363] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:opacity-90 sm:w-auto sm:min-w-[240px]"
                   >
                     Download
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
@@ -426,7 +426,7 @@ export default function InvestorsPage() {
             </article>
 
             {/* Company One-Pager */}
-            <article className="group relative min-h-[480px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116]">
+            <article className="group relative min-h-[340px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116] sm:min-h-[400px] lg:min-h-[460px]">
 
               <Image
                 src="/media/investors/investor-onepage.png"
@@ -438,7 +438,7 @@ export default function InvestorsPage() {
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#071116]/95 via-[#071116]/80 to-[#071116]/20" />
 
-              <div className="relative z-10 flex min-h-[480px] max-w-[620px] flex-col p-8 sm:p-10 lg:p-12">
+              <div className="relative z-10 flex min-h-[340px] max-w-[620px] flex-col p-8 sm:min-h-[400px] sm:p-10 lg:min-h-[460px] lg:p-12">
 
                 <div className="flex items-center gap-5">
                   <span className="font-display text-4xl font-bold leading-none text-[#6e7f42]">
@@ -465,7 +465,7 @@ export default function InvestorsPage() {
                   <a
                     href="/media/investors/rise-power-one-pager.pdf"
                     download="rise-power-one-pager.pdf"
-                    className="group/button inline-flex min-h-[60px] min-w-[275px] items-center justify-center gap-2 rounded-[4px] bg-[#849363] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:opacity-90"
+                    className="group/button inline-flex min-h-[60px] w-full min-w-0 items-center justify-center gap-2 rounded-[4px] bg-[#849363] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:opacity-90 sm:w-auto sm:min-w-[240px]"
                   >
                     Download
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
@@ -481,16 +481,16 @@ export default function InvestorsPage() {
       {/* AT A GLANCE                                                           */}
       {/* ==================================================================== */}
 
-      <section className="relative overflow-hidden bg-[#fbfaf7] pt-0 pb-20 sm:pb-24 lg:pb-28">
+      <section className="relative overflow-hidden bg-[#fbfaf7] pt-0 pb-12 sm:pb-16 lg:pb-24">
 
         <ContourBackground />
 
         <div className="relative z-10 mx-auto grid max-w-[1440px] gap-6 px-6 lg:grid-cols-[0.9fr_1.25fr] lg:px-10">
 
           {/* Left feature */}
-          <Reveal variant="left" className="relative min-h-[680px] overflow-hidden rounded-[9px] border border-[#d9dfe3] bg-white p-2">
+          <Reveal variant="left" className="relative min-h-[400px] overflow-hidden rounded-[9px] border border-[#d9dfe3] bg-white p-2 sm:min-h-[520px] lg:min-h-[640px]">
 
-            <div className="relative h-full min-h-[660px] overflow-hidden rounded-[7px]">
+            <div className="relative h-full min-h-[400px] overflow-hidden rounded-[7px] sm:min-h-[520px] lg:min-h-[640px]">
 
               <Image
                 src="/media/investors/investor-why.png"
@@ -508,7 +508,7 @@ export default function InvestorsPage() {
                   At a Glance
                 </p>
 
-                <h2 className="mt-5 max-w-[470px] font-display text-5xl font-bold leading-[0.92] tracking-tight text-[#101820] uppercase sm:text-6xl">
+                <h2 className="mt-5 max-w-[470px] font-display text-4xl font-bold leading-[0.92] tracking-tight text-[#101820] uppercase sm:text-5xl lg:text-6xl">
                   Why Rise
                   <br />
                   Power.
@@ -522,10 +522,10 @@ export default function InvestorsPage() {
               </div>
 
               <div className="absolute bottom-7 left-8 right-8 flex items-end justify-between">
-                <p className="max-w-[250px] text-xs font-medium leading-[1.4] tracking-[0.18em] text-white uppercase">
-                  Clean Power
+                <p className="max-w-[280px] text-xs font-medium leading-[1.4] tracking-[0.18em] text-white uppercase">
+                  Canadian-Engineered.
                   <br />
-                  For A More Resilient World.
+                  Field-Validated.
                 </p>
 
                 <span className="h-px w-24 bg-white/60" />
@@ -691,7 +691,7 @@ export default function InvestorsPage() {
 
       <section
         id="press"
-        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] pt-0 pb-20 sm:pb-24 lg:pb-28"
+        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] pt-0 pb-14 sm:pb-16 lg:pb-24"
       >
 
         <ContourBackground />
