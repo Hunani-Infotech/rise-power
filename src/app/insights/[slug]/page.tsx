@@ -53,7 +53,7 @@ export default async function InsightArticlePage({ params }: InsightPageProps) {
           </h1>
           <p className="mt-8 text-lg leading-relaxed text-muted">{article.excerpt}</p>
         </div>
-        <Reveal variant="up" delay={80}>
+        <Reveal variant="fade" delay={80}>
           <div className="mt-10 space-y-5 text-base leading-relaxed text-foreground/85">
             <p>{article.body}</p>
           </div>

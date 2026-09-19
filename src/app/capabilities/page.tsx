@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import { SnapCarousel } from "@/components/home/SnapCarousel";
-import { Reveal } from "@/components/motion/Reveal";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { capabilities, performanceMetrics } from "@/lib/home-content";
 import { pageMetadata } from "@/lib/seo";
@@ -34,7 +34,7 @@ function SectionEyebrow({
   center?: boolean;
   light?: boolean;
 }) {
-  const color = light ? "#a8b87a" : sage;
+  const color = light ? "#ffffff" : sage;
 
   return (
     <div
@@ -67,12 +67,13 @@ type GalleryItem = (typeof capabilities.gallery)[number];
 function PillarCard({
   tab,
   index,
+  animate = true,
 }: {
   tab: CapabilityTab;
   index: number;
+  animate?: boolean;
 }) {
-  return (
-    <Reveal variant="fade" delay={index * 70}>
+  const card = (
       <Link
         href={tab.href}
         className="group relative block min-h-[280px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713] sm:min-h-[320px] lg:min-h-[340px]"
@@ -110,16 +111,23 @@ function PillarCard({
             </p>
           </div>
 
-          <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] text-white uppercase">
+          <span className="type-cta-ghost mt-8 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[#6e7f42] shadow-[0_8px_24px_rgba(0,0,0,0.28)] transition-all duration-300 ease-out group-hover:bg-[#f3f0e8] group-hover:shadow-[0_10px_28px_rgba(0,0,0,0.34)] group-focus-visible:bg-[#f3f0e8]">
             Learn More
             <ArrowRight
-              className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-              style={{ color: sage }}
+              className="size-4 shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1"
+              strokeWidth={1.8}
               aria-hidden
             />
           </span>
         </div>
       </Link>
+  );
+
+  if (!animate) return card;
+
+  return (
+    <Reveal variant="fade" delay={index * 70}>
+      {card}
     </Reveal>
   );
 }
@@ -127,12 +135,13 @@ function PillarCard({
 function GalleryCard({
   item,
   index,
+  animate = true,
 }: {
   item: GalleryItem;
   index: number;
+  animate?: boolean;
 }) {
-  return (
-    <Reveal variant="fade" delay={index * 70}>
+  const image = (
       <div
         className={`relative overflow-hidden rounded-xl bg-[#101713] ${
           index % 2 === 0 ? "aspect-[4/5]" : "aspect-[4/5] sm:mt-8"
@@ -146,6 +155,13 @@ function GalleryCard({
           className="object-cover transition-transform duration-700 hover:scale-[1.03]"
         />
       </div>
+  );
+
+  if (!animate) return image;
+
+  return (
+    <Reveal variant="fade" delay={index * 70}>
+      {image}
     </Reveal>
   );
 }
@@ -210,7 +226,7 @@ export default function CapabilitiesPage() {
         </div>
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
-          <Reveal variant="fade">
+          <Reveal variant="up">
             <div className="mx-auto max-w-5xl text-center">
               <SectionEyebrow center>{capabilities.eyebrow}</SectionEyebrow>
               <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
@@ -233,7 +249,7 @@ export default function CapabilitiesPage() {
             />
           ))}
 
-          <div className="mt-12 xl:hidden">
+          <Reveal variant="up" delay={80} className="mt-12 xl:hidden">
             <SnapCarousel
               ariaLabel="Capability pillars"
               showArrows
@@ -245,12 +261,16 @@ export default function CapabilitiesPage() {
                 <PillarCard key={tab.id} tab={tab} index={index} />
               ))}
             </SnapCarousel>
-          </div>
-          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-2">
+          </Reveal>
+          <RevealStagger
+            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-2"
+            step={70}
+            variant="fade"
+          >
             {tabs.map((tab, index) => (
-              <PillarCard key={tab.id} tab={tab} index={index} />
+              <PillarCard key={tab.id} tab={tab} index={index} animate={false} />
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -263,8 +283,8 @@ export default function CapabilitiesPage() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/92 via-[#07100d]/55 to-[#07100d]/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/55 via-[#07100d]/28 to-[#07100d]/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/35 via-transparent to-transparent" />
 
         <div className="relative mx-auto flex min-h-[300px] max-w-[1440px] items-end px-6 py-12 sm:min-h-[380px] sm:py-14 lg:min-h-[480px] lg:px-10 lg:py-20">
           <Reveal variant="up">
@@ -283,59 +303,110 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* QUIET METRICS */}
-      <section className="relative overflow-hidden border-y border-[#e4e8e1] py-16 sm:py-20">
+      <section className="relative overflow-hidden border-y border-[#ddd8cc] py-20 sm:py-24 lg:py-28">
         <Image
           src={metricsBand.imageSrc}
           alt={metricsBand.imageAlt}
           fill
           sizes="100vw"
-          className="object-cover object-[center_40%] opacity-[0.18]"
+          className="object-cover object-[center_40%] opacity-[0.12]"
         />
-        <div className="absolute inset-0 bg-[#f3f0e8]/88" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f7f4ec]/94 via-[#f3f0e8]/90 to-[#f7f4ec]/94" />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#6e7f42]/35 to-transparent"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#6e7f42]/25 to-transparent"
+          aria-hidden
+        />
 
-        <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
+        <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
           <Reveal variant="up">
-            <p
-              className="text-center text-[13px] font-semibold tracking-[0.22em] uppercase"
-              style={{ color: sage }}
-            >
-              {performanceMetrics.eyebrow}
-            </p>
+            <div className="flex flex-col items-center text-center">
+              <SectionEyebrow center>
+                {performanceMetrics.eyebrow}
+              </SectionEyebrow>
+              <div
+                className="mt-6 h-px w-14"
+                style={{ background: sage }}
+                aria-hidden
+              />
+            </div>
           </Reveal>
-          <div className="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-6">
+
+          <ul className="mt-14 grid grid-cols-1 sm:mt-16 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
             {performanceMetrics.gauges.map((gauge, index) => {
               const Icon = metricIcons[index] ?? ShieldCheck;
+              const isLast = index === performanceMetrics.gauges.length - 1;
+              const isLeftCol = index % 2 === 0;
+              const isTopRow = index < 2;
+
               return (
-                <Reveal key={gauge.title} variant="fade" delay={index * 80}>
-                  <div className="text-center lg:text-left">
-                    <div
-                      className="mx-auto mb-4 grid size-10 place-items-center rounded-full border bg-white/50 lg:mx-0"
-                      style={{ borderColor: sage }}
+                <Reveal
+                  key={gauge.title}
+                  as="li"
+                  variant="fade"
+                  delay={index * 90}
+                  className={[
+                    "group relative flex flex-col items-center px-4 py-10 text-center sm:px-8 sm:py-12 lg:px-6 lg:py-2 xl:px-10",
+                    !isLast
+                      ? "max-sm:border-b max-sm:border-[#d5d0c4]/90"
+                      : "",
+                    isTopRow
+                      ? "sm:border-b sm:border-[#d5d0c4]/90 lg:border-b-0"
+                      : "",
+                    isLeftCol
+                      ? "sm:border-r sm:border-[#d5d0c4]/90"
+                      : "",
+                    !isLeftCol && !isLast
+                      ? "lg:border-r lg:border-[#d5d0c4]/90"
+                      : "",
+                  ].join(" ")}
+                >
+                  <span
+                    className="mb-5 font-display text-[11px] font-semibold tracking-[0.28em] text-[#8a9186] uppercase transition-colors duration-500 group-hover:text-[#6e7f42]"
+                    aria-hidden
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <div
+                    className="relative mb-6 grid size-14 place-items-center rounded-full border bg-[#fbfaf7]/70 transition-all duration-500 group-hover:scale-[1.04] group-hover:bg-white/90 sm:size-16"
+                    style={{ borderColor: "rgba(110, 127, 66, 0.45)" }}
+                    aria-hidden
+                  >
+                    <span
+                      className="absolute inset-[3px] rounded-full border border-[#6e7f42]/15 transition-opacity duration-500 group-hover:border-[#6e7f42]/35"
                       aria-hidden
-                    >
-                      <Icon
-                        className="size-4"
-                        strokeWidth={1.75}
-                        style={{ color: sage }}
-                      />
-                    </div>
-                    <p className="font-display text-4xl font-bold tracking-tight text-[#101713] sm:text-5xl">
-                      {gauge.value}
-                      <span
-                        className="ml-1.5 font-display text-lg font-semibold tracking-[0.08em] uppercase"
-                        style={{ color: sage }}
-                      >
-                        {gauge.unit}
-                      </span>
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-[#626a63]">
-                      {gauge.title}
-                    </p>
+                    />
+                    <Icon
+                      className="relative size-5 sm:size-[1.35rem]"
+                      strokeWidth={1.5}
+                      style={{ color: sage }}
+                    />
                   </div>
+
+                  <p className="font-display text-[2.65rem] leading-none font-bold tracking-tight text-[#101713] sm:text-5xl lg:text-[3.25rem] xl:text-6xl">
+                    {gauge.value}
+                    <span
+                      className="ml-1.5 align-baseline font-display text-base font-semibold tracking-[0.14em] uppercase sm:text-lg lg:text-xl"
+                      style={{ color: sage }}
+                    >
+                      {gauge.unit}
+                    </span>
+                  </p>
+
+                  <p
+                    className="mt-4 max-w-[14rem] text-[13px] leading-relaxed font-medium tracking-[0.02em] sm:mt-5 sm:text-sm"
+                    style={{ color: "#5f6b52" }}
+                  >
+                    {gauge.title}
+                  </p>
                 </Reveal>
               );
             })}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -395,7 +466,7 @@ export default function CapabilitiesPage() {
       {/* PHOTO GALLERY */}
       <section className="overflow-hidden bg-[#f3f0e8] py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-          <Reveal variant="fade">
+          <Reveal variant="up">
             <div className="mx-auto max-w-3xl text-center">
               <SectionEyebrow center>Visual Proof</SectionEyebrow>
               <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl">
@@ -405,7 +476,7 @@ export default function CapabilitiesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 xl:hidden">
+          <Reveal variant="up" delay={80} className="mt-12 xl:hidden">
             <SnapCarousel
               ariaLabel="Photo gallery"
               showArrows
@@ -417,12 +488,21 @@ export default function CapabilitiesPage() {
                 <GalleryCard key={item.src} item={item} index={index} />
               ))}
             </SnapCarousel>
-          </div>
-          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4">
+          </Reveal>
+          <RevealStagger
+            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4"
+            step={70}
+            variant="fade"
+          >
             {gallery.map((item, index) => (
-              <GalleryCard key={item.src} item={item} index={index} />
+              <GalleryCard
+                key={item.src}
+                item={item}
+                index={index}
+                animate={false}
+              />
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -445,7 +525,7 @@ export default function CapabilitiesPage() {
         </div>
 
         <div className="relative mx-auto max-w-[900px] px-6 text-center lg:px-10">
-          <Reveal variant="fade">
+          <Reveal variant="up">
             <SectionEyebrow center light>
               Ready to discuss your requirements?
             </SectionEyebrow>

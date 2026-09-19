@@ -88,7 +88,7 @@ export function HomePage() {
         <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:px-10 xl:pt-32 xl:pb-14">
           <div className="flex flex-col justify-center xl:pt-10">
             <div className="hero-animate-copy max-w-xl lg:max-w-3xl xl:max-w-4xl">
-              <p className="type-eyebrow" style={{ color: sage }}>
+              <p className="type-eyebrow text-white">
                 {hero.eyebrow}
               </p>
               <h1 className="mt-5 font-display text-[2.25rem] leading-[0.9] font-bold tracking-[-0.02em] uppercase sm:text-5xl md:text-5xl lg:text-6xl xl:text-[5.25rem]">
@@ -204,7 +204,7 @@ export function HomePage() {
           </Reveal>
           <RevealStagger
             className="mx-auto mt-8 grid w-full max-w-5xl grid-cols-1 items-stretch gap-4 sm:mt-9 sm:grid-cols-2 sm:gap-4 xl:mt-10 xl:max-w-none xl:grid-cols-4 xl:gap-5"
-            step={80}
+            step={70}
           >
             {performanceMetrics.gauges.map((item, index) => {
               const Icon = gaugeIcons[index] ?? Crosshair;
@@ -305,7 +305,7 @@ export function HomePage() {
           {/* Desktop: full 5-step process with connectors between cards */}
           <RevealStagger
             className="mt-12 hidden gap-5 xl:grid xl:grid-cols-5 xl:gap-6"
-            step={100}
+            step={70}
           >
             {productEcosystem.steps.map((step, index) => (
               <div key={step.step} className="relative h-full min-w-0">
@@ -377,8 +377,8 @@ export function HomePage() {
 
           <RevealStagger
             className="mt-10 hidden items-stretch gap-4 sm:mt-12 xl:grid xl:grid-cols-2 xl:gap-5 2xl:grid-cols-4"
-            step={90}
-            variant="up"
+            step={70}
+            variant="fade"
           >
             {featuredProducts.products.map((product) => (
               <FeaturedProductRow key={product.name} {...product} />

@@ -87,7 +87,7 @@ import {
 } from "lucide-react";
 
 import { SnapCarousel } from "@/components/home/SnapCarousel";
-import { Reveal } from "@/components/motion/Reveal";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { products, useCases } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
@@ -109,10 +109,14 @@ const cream = "#f7f6f1";
 function SectionEyebrow({
   children,
   center = false,
+  light = false,
 }: {
   children: React.ReactNode;
   center?: boolean;
+  light?: boolean;
 }) {
+  const color = light ? "#ffffff" : sage;
+
   return (
     <div
       className={`flex items-center gap-3 ${center ? "justify-center" : "justify-start"
@@ -120,7 +124,7 @@ function SectionEyebrow({
     >
       <span
         className="font-display text-2xl leading-none"
-        style={{ color: sage }}
+        style={{ color }}
         aria-hidden="true"
       >
         ⌁
@@ -128,7 +132,7 @@ function SectionEyebrow({
 
       <p
         className="text-mm font-semibold tracking-[0.2em] uppercase"
-        style={{ color: sage }}
+        style={{ color }}
       >
         {children}
       </p>
@@ -385,7 +389,7 @@ export default function UseCasesPage() {
         imageClassName="object-cover object-[center_15%]"
       >
         <div className="hero-animate-copy max-w-[700px]">
-          <SectionEyebrow>Use Cases</SectionEyebrow>
+          <SectionEyebrow light>Use Cases</SectionEyebrow>
 
           <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight uppercase sm:mt-7 sm:text-[64px] xl:text-[82px] 2xl:text-[94px]">
             Power Where
@@ -438,7 +442,7 @@ export default function UseCasesPage() {
         </div>
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
-          <Reveal variant="fade">
+          <Reveal variant="up">
             <div className="mx-auto max-w-5xl text-center">
               <SectionEyebrow center>Use Cases</SectionEyebrow>
 
@@ -454,7 +458,7 @@ export default function UseCasesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 xl:hidden">
+          <Reveal variant="up" delay={80} className="mt-12 xl:hidden">
             <SnapCarousel
               ariaLabel="Use case environments"
               showArrows
@@ -470,19 +474,22 @@ export default function UseCasesPage() {
                 />
               ))}
             </SnapCarousel>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-2">
-            {overviewCases.map((item, index) => (
-              <Reveal key={item.slug} variant="fade" delay={index * 70}>
-                <EnvironmentTile
-                  item={item}
-                  defenseSlug={defense?.slug}
-                  includeAnchorId
-                />
-              </Reveal>
+          <RevealStagger
+            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-2"
+            step={70}
+            variant="fade"
+          >
+            {overviewCases.map((item) => (
+              <EnvironmentTile
+                key={item.slug}
+                item={item}
+                defenseSlug={defense?.slug}
+                includeAnchorId
+              />
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -735,7 +742,7 @@ export default function UseCasesPage() {
         </div>
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
-          <Reveal variant="fade">
+          <Reveal variant="up">
             <div className="mx-auto max-w-4xl text-center">
               <SectionEyebrow center>
                 From Use Case to Solution
@@ -754,7 +761,7 @@ export default function UseCasesPage() {
           </Reveal>
 
           {/* Product cards */}
-          <div className="mt-12 xl:hidden">
+          <Reveal variant="up" delay={80} className="mt-12 xl:hidden">
             <SnapCarousel
               ariaLabel="Mission product connections"
               showArrows
@@ -769,20 +776,20 @@ export default function UseCasesPage() {
                 />
               ))}
             </SnapCarousel>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4">
-            {productConnections.map((product, index) => (
-              <Reveal
+          <RevealStagger
+            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4"
+            step={70}
+            variant="fade"
+          >
+            {productConnections.map((product) => (
+              <ProductConnectionCard
                 key={product.eyebrow}
-                variant="fade"
-                delay={index * 70}
-                className="h-full"
-              >
-                <ProductConnectionCard product={product} />
-              </Reveal>
+                product={product}
+              />
             ))}
-          </div>
+          </RevealStagger>
 
           {/* Bottom CTA */}
           {/* <Reveal variant="fade" delay={300}>

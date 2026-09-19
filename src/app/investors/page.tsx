@@ -312,7 +312,7 @@ export default function InvestorsPage() {
       >
         <div className="hero-animate-copy max-w-[700px]">
           <div className="flex items-center gap-4">
-            <span className="font-display text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
+            <span className="font-display text-mm font-semibold tracking-[0.2em] text-white uppercase">
               Investors
             </span>
           </div>
@@ -374,7 +374,7 @@ export default function InvestorsPage() {
             />
           </Reveal>
 
-          <RevealStagger className="mt-12 grid gap-6 lg:grid-cols-2" step={100}>
+          <RevealStagger className="mt-12 grid gap-6 lg:grid-cols-2" step={70}>
 
             {/* Investor Deck */}
             <article className="group relative min-h-[340px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116] sm:min-h-[400px] lg:min-h-[460px]">
@@ -534,7 +534,7 @@ export default function InvestorsPage() {
           </Reveal>
 
           {/* Right information cards */}
-          <Reveal variant="right" delay={80} className="grid gap-5 sm:grid-cols-2">
+          <RevealStagger className="grid gap-5 sm:grid-cols-2" step={70}>
 
             {/* Category */}
             <article className="rounded-[8px] border border-[#d9dfe3] bg-white p-8">
@@ -681,7 +681,7 @@ export default function InvestorsPage() {
                 deployments, and expand commercial programs.
               </p>
             </article>
-          </Reveal>
+          </RevealStagger>
         </div>
       </section>
 
@@ -721,14 +721,16 @@ export default function InvestorsPage() {
               itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
               trackClassName="gap-4 px-1 pb-1"
             >
-              {pressUpdates.map((item) => (
-                <PressCard key={item.number} item={item} />
+              {pressUpdates.map((item, index) => (
+                <Reveal key={item.number} variant="up" delay={index * 70}>
+                  <PressCard item={item} />
+                </Reveal>
               ))}
             </SnapCarousel>
           </div>
           <RevealStagger
             className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4"
-            step={90}
+            step={70}
           >
             {pressUpdates.map((item) => (
               <PressCard key={item.number} item={item} />

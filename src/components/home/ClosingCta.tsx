@@ -52,22 +52,24 @@ export function ClosingCta() {
       <div className="relative mx-auto w-full max-w-[1716px] px-5 py-8 sm:px-8 sm:py-12 lg:px-10 lg:py-16">
         <div className="grid items-center xl:grid-cols-[1.45fr_0.7fr] xl:gap-8">
           {/* Story — shown once */}
-          <Reveal variant="up" className="max-w-[780px]">
-            <h2 className="type-section-h2">
-              {closingCta.headingBefore}
-              <br />
-              <span style={{ color: sage }}>{closingCta.headingAccent}</span>
-            </h2>
+          <div className="max-w-[780px]">
+            <Reveal variant="up">
+              <h2 className="type-section-h2">
+                {closingCta.headingBefore}
+                <br />
+                <span style={{ color: sage }}>{closingCta.headingAccent}</span>
+              </h2>
 
-            <p className="type-section-body mt-4 max-w-[650px] !text-white/90 sm:mt-6">
-              {closingCta.body}
-            </p>
+              <p className="type-section-body mt-4 max-w-[650px] !text-white/90 sm:mt-6">
+                {closingCta.body}
+              </p>
+            </Reveal>
 
             <RevealStagger
               className="mt-7 grid grid-cols-2 gap-x-4 gap-y-4 sm:mt-9 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-6 lg:mt-11"
               step={70}
               variant="up"
-              baseDelay={80}
+              baseDelay={40}
             >
               {closingCta.chips.map((chip, index) => {
                 const Icon = chipIcons[index] ?? ShieldCheck;
@@ -116,7 +118,7 @@ export function ClosingCta() {
                 );
               })}
             </RevealStagger>
-          </Reveal>
+          </div>
 
           {/* Actions only — no repeated headline/body */}
           <Reveal variant="right" delay={120} className="mt-8 sm:mt-10 lg:mt-0">

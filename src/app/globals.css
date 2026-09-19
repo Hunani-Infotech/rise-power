@@ -197,9 +197,9 @@ h4 {
   filter: sepia(0.35) hue-rotate(55deg) saturate(1.15) contrast(1.2) brightness(0.62);
 }
 
-/* —— Scroll / entrance motion —— */
+/* —— Scroll / entrance motion (minimal) —— */
 .reveal-base {
-  --reveal-duration: 750ms;
+  --reveal-duration: 620ms;
   --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
   will-change: transform, opacity;
@@ -209,7 +209,7 @@ h4 {
 }
 
 .reveal-up {
-  transform: translate3d(0, 28px, 0);
+  transform: translate3d(0, 16px, 0);
 }
 
 .reveal-fade {
@@ -217,22 +217,22 @@ h4 {
 }
 
 .reveal-left {
-  transform: translate3d(-28px, 0, 0);
+  transform: translate3d(-16px, 0, 0);
 }
 
 .reveal-right {
-  transform: translate3d(28px, 0, 0);
+  transform: translate3d(16px, 0, 0);
 }
 
 @media (max-width: 639px) {
   .reveal-left,
   .reveal-right {
-    transform: translate3d(0, 22px, 0);
+    transform: translate3d(0, 12px, 0);
   }
 }
 
 .reveal-scale {
-  transform: translate3d(0, 16px, 0) scale(0.96);
+  transform: translate3d(0, 10px, 0) scale(0.985);
 }
 
 .reveal-base.is-visible {
@@ -243,7 +243,7 @@ h4 {
 @keyframes hero-rise {
   from {
     opacity: 0;
-    transform: translate3d(0, 22px, 0);
+    transform: translate3d(0, 14px, 0);
   }
   to {
     opacity: 1;
@@ -271,7 +271,7 @@ h4 {
 
 .hero-animate-copy > * {
   opacity: 0;
-  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .hero-animate-copy > *:nth-child(1) {
@@ -292,7 +292,7 @@ h4 {
 
 .hero-animate-chips {
   opacity: 0;
-  animation: hero-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+  animation: hero-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
 }
 
 .hero-animate-media {

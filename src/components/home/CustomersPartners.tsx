@@ -236,7 +236,7 @@ export function CustomersPartners() {
 
         <RevealStagger
           className="mt-9 hidden items-stretch gap-4 xl:mt-6 xl:grid xl:grid-cols-2 xl:gap-4 2xl:grid-cols-4 2xl:gap-5"
-          step={80}
+          step={70}
           variant="up"
         >
           {cases.map((item, index) => (

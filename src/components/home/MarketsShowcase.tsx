@@ -1,7 +1,7 @@
 "use client";
 
 import { threeMarkets } from "@/lib/home-content";
-import { Reveal } from "@/components/motion/Reveal";
+import { RevealStagger } from "@/components/motion/Reveal";
 import { MarketRow } from "./MarketCard";
 import { SnapCarousel } from "./SnapCarousel";
 
@@ -51,16 +51,17 @@ export function MarketsShowcase() {
         </SnapCarousel>
       </div>
 
-      <Reveal
-        variant="up"
+      <RevealStagger
         className="hidden gap-5 xl:grid xl:grid-cols-3"
+        step={70}
+        variant="fade"
       >
         {threeMarkets.cards.map((item, index) => (
           <div key={item.title} role="listitem" className="min-w-0">
             <MarketCardItem item={item} index={index} />
           </div>
         ))}
-      </Reveal>
+      </RevealStagger>
     </div>
   );
 }

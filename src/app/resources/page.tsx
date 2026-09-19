@@ -147,21 +147,23 @@ function SectionEyebrow({
   children: React.ReactNode;
   onDark?: boolean;
 }) {
+  const color = onDark ? "#ffffff" : sage;
+
   return (
     <div className="flex items-center gap-3">
       <span aria-hidden="true" className="relative block h-[13px] w-[38px]">
         <span
           className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2"
-          style={{ backgroundColor: sage }}
+          style={{ backgroundColor: color }}
         />
         <span
           className="absolute top-1/2 left-0 h-[9px] w-[9px] -translate-y-1/2 rotate-45 border-b border-l"
-          style={{ borderColor: sage }}
+          style={{ borderColor: color }}
         />
       </span>
       <p
         className="text-mm font-semibold tracking-[0.18em] uppercase"
-        style={{ color: onDark ? "#8fa86a" : sage }}
+        style={{ color }}
       >
         {children}
       </p>
@@ -286,7 +288,7 @@ export default function ResourcesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 sm:mt-14 xl:hidden">
+          <Reveal variant="fade" className="mt-12 sm:mt-14 xl:hidden">
             <SnapCarousel
               ariaLabel="Resource destinations"
               showArrows
@@ -345,11 +347,11 @@ export default function ResourcesPage() {
                 </Link>
               ))}
             </SnapCarousel>
-          </div>
+          </Reveal>
 
           <RevealStagger
             className="mt-12 hidden gap-5 sm:mt-14 xl:grid xl:grid-cols-2"
-            step={95}
+            step={70}
           >
             {destinations.map((item) => (
               <Link
@@ -434,7 +436,7 @@ export default function ResourcesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 xl:hidden">
+          <Reveal variant="fade" className="mt-12 xl:hidden">
             <SnapCarousel
               ariaLabel="Systems gallery"
               showArrows
@@ -475,48 +477,45 @@ export default function ResourcesPage() {
                 </Link>
               ))}
             </SnapCarousel>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4">
+          <RevealStagger
+            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4"
+            step={70}
+          >
             {systems.map((system, index) => (
-              <Reveal
+              <Link
                 key={system.name}
-                variant="up"
-                delay={index * 85}
-                className="min-w-0"
+                href={system.href}
+                className="group relative block aspect-[4/5] overflow-hidden rounded-[7px] border border-white/10 bg-[#0a1014]"
               >
-                <Link
-                  href={system.href}
-                  className="group relative block aspect-[4/5] overflow-hidden rounded-[7px] border border-white/10 bg-[#0a1014]"
-                >
-                  <Image
-                    src={system.image}
-                    alt={system.name}
-                    fill
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071016] via-[#071016]/25 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                    <p
-                      className="font-display text-2xl font-bold leading-none"
-                      style={{ color: sage }}
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </p>
-                    <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-white uppercase sm:text-2xl">
-                      {system.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-white/70">{system.label}</p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.1em] text-white uppercase">
-                      View Specs
-                      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
+                <Image
+                  src={system.image}
+                  alt={system.name}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071016] via-[#071016]/25 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                  <p
+                    className="font-display text-2xl font-bold leading-none"
+                    style={{ color: sage }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-white uppercase sm:text-2xl">
+                    {system.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-white/70">{system.label}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.1em] text-white uppercase">
+                    View Specs
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </Link>
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -550,7 +549,7 @@ export default function ResourcesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 xl:hidden">
+          <Reveal variant="fade" className="mt-12 xl:hidden">
             <SnapCarousel
               ariaLabel="Featured insights"
               showArrows
@@ -600,11 +599,11 @@ export default function ResourcesPage() {
                 </Link>
               ))}
             </SnapCarousel>
-          </div>
+          </Reveal>
 
           <RevealStagger
             className="mt-12 hidden gap-5 xl:grid xl:grid-cols-3"
-            step={90}
+            step={70}
           >
             {featuredInsights.map((article) => (
               <Link
@@ -676,7 +675,7 @@ export default function ResourcesPage() {
 
           <RevealStagger
             className="mt-12 grid gap-6 lg:grid-cols-2"
-            step={100}
+            step={70}
           >
             {downloads.map((item) => (
               <article

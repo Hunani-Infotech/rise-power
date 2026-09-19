@@ -125,21 +125,23 @@ function SectionEyebrow({
   children: React.ReactNode;
   onDark?: boolean;
 }) {
+  const color = onDark ? "#ffffff" : sage;
+
   return (
     <div className="flex items-center gap-3">
       <span aria-hidden="true" className="relative block h-[13px] w-[38px]">
         <span
           className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2"
-          style={{ backgroundColor: sage }}
+          style={{ backgroundColor: color }}
         />
         <span
           className="absolute top-1/2 left-0 h-[9px] w-[9px] -translate-y-1/2 rotate-45 border-b border-l"
-          style={{ borderColor: sage }}
+          style={{ borderColor: color }}
         />
       </span>
       <p
         className="text-mm font-semibold tracking-[0.18em] uppercase"
-        style={{ color: onDark ? "#8fa86a" : sage }}
+        style={{ color }}
       >
         {children}
       </p>
@@ -233,7 +235,7 @@ export default function ProcurementFaqPage() {
                     </h3>
                   </div>
 
-                  <RevealStagger className="space-y-0" step={60}>
+                  <RevealStagger className="space-y-0" step={70}>
                     {group.items.map((item) => (
                       <div
                         key={item.q}

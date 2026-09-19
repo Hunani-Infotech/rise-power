@@ -104,7 +104,7 @@ type RevealStaggerProps = {
 export function RevealStagger({
   children,
   className = "",
-  step = 90,
+  step = 70,
   baseDelay = 0,
   variant = "up",
   threshold = 0.12,

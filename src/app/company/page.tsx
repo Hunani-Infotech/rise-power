@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import { SnapCarousel } from "@/components/home/SnapCarousel";
-import { Reveal } from "@/components/motion/Reveal";
+import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { pageMetadata } from "@/lib/seo";
 
@@ -120,7 +120,15 @@ function ContourDecoration({
 /* SECTION EYEBROW                                                            */
 /* -------------------------------------------------------------------------- */
 
-function SectionEyebrow({ children }: { children: React.ReactNode }) {
+function SectionEyebrow({
+  children,
+  light = false,
+}: {
+  children: React.ReactNode;
+  light?: boolean;
+}) {
+  const color = light ? "#ffffff" : sage;
+
   return (
     <div className="flex items-center gap-3">
       <span
@@ -129,17 +137,17 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
       >
         <span
           className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2"
-          style={{ backgroundColor: sage }}
+          style={{ backgroundColor: color }}
         />
         <span
           className="absolute left-0 top-1/2 h-[9px] w-[9px] -translate-y-1/2 rotate-45 border-l border-b"
-          style={{ borderColor: sage }}
+          style={{ borderColor: color }}
         />
       </span>
 
       <p
         className="text-mm font-semibold tracking-[0.18em] uppercase"
-        style={{ color: "#6e7f42"}}
+        style={{ color }}
       >
         {children}
       </p>
@@ -147,46 +155,38 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ValueCard({
-  value,
-  index,
-}: {
-  value: (typeof values)[number];
-  index: number;
-}) {
+function ValueCard({ value }: { value: (typeof values)[number] }) {
   return (
-    <Reveal variant="up" delay={index * 80}>
-      <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-3.5 sm:p-4">
-        <div className="flex items-center gap-4 px-2 pt-2">
-          <span
-            className="font-display text-[30px] font-bold leading-none"
-            style={{ color: sage }}
-          >
-            {value.number}
-          </span>
+    <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-3.5 sm:p-4">
+      <div className="flex items-center gap-4 px-2 pt-2">
+        <span
+          className="font-display text-[30px] font-bold leading-none"
+          style={{ color: sage }}
+        >
+          {value.number}
+        </span>
 
-          <span className="h-px w-14 bg-[#aeb6bd]" />
-        </div>
+        <span className="h-px w-14 bg-[#aeb6bd]" />
+      </div>
 
-        <h3 className="mt-6 whitespace-pre-line px-2 font-display text-[27px] leading-[1.02] font-bold tracking-tight uppercase sm:text-[29px]">
-          {value.title}
-        </h3>
+      <h3 className="mt-6 whitespace-pre-line px-2 font-display text-[27px] leading-[1.02] font-bold tracking-tight uppercase sm:text-[29px]">
+        {value.title}
+      </h3>
 
-        <p className="mt-5 min-h-[88px] px-2 text-base leading-[1.5] text-[#66717d]">
-          {value.description}
-        </p>
+      <p className="mt-5 min-h-[88px] px-2 text-base leading-[1.5] text-[#66717d]">
+        {value.description}
+      </p>
 
-        <div className="relative mt-6 aspect-[1.45/1] overflow-hidden rounded-[5px]">
-          <Image
-            src={value.image}
-            alt={value.title.replace("\n", " ")}
-            fill
-            sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 88vw"
-            className="object-cover"
-          />
-        </div>
-      </article>
-    </Reveal>
+      <div className="relative mt-6 aspect-[1.45/1] overflow-hidden rounded-[5px]">
+        <Image
+          src={value.image}
+          alt={value.title.replace("\n", " ")}
+          fill
+          sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 88vw"
+          className="object-cover"
+        />
+      </div>
+    </article>
   );
 }
 
@@ -204,7 +204,7 @@ export default function CompanyPage() {
         tone="#101820"
       >
         <div className="hero-animate-copy max-w-[820px]">
-          <SectionEyebrow>Company</SectionEyebrow>
+          <SectionEyebrow light>Company</SectionEyebrow>
 
           <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight text-white uppercase sm:mt-8 sm:text-[68px] md:text-[78px] xl:text-[88px] 2xl:text-[96px]">
             Canadian
@@ -251,7 +251,7 @@ export default function CompanyPage() {
           <div className="grid items-center gap-8 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
 
             {/* Image */}
-            <Reveal variant="scale">
+            <Reveal variant="left">
               <div className="relative aspect-[1.08/1] overflow-hidden rounded-[7px]">
                 <Image
                   src="/media/company/company-mission.png"
@@ -264,7 +264,7 @@ export default function CompanyPage() {
             </Reveal>
 
             {/* Content */}
-            <Reveal variant="up" delay={100}>
+            <Reveal variant="right" delay={80}>
               <div className="lg:pl-2">
 
                 <SectionEyebrow>
@@ -355,15 +355,20 @@ export default function CompanyPage() {
               trackClassName="gap-4 px-1 pb-1"
             >
               {values.map((value, index) => (
-                <ValueCard key={value.number} value={value} index={index} />
+                <Reveal key={value.number} variant="up" delay={index * 70}>
+                  <ValueCard value={value} />
+                </Reveal>
               ))}
             </SnapCarousel>
           </div>
-          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4">
-            {values.map((value, index) => (
-              <ValueCard key={value.number} value={value} index={index} />
+          <RevealStagger
+            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4"
+            step={70}
+          >
+            {values.map((value) => (
+              <ValueCard key={value.number} value={value} />
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 

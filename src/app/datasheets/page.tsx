@@ -105,8 +105,8 @@ export default function DatasheetsPage() {
       >
         <div className="hero-animate-copy max-w-[780px]">
           <div className="flex items-center gap-4">
-            <span className="h-[2px] w-12 bg-[#6e7f42]" />
-            <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
+            <span className="h-[2px] w-12 bg-white" />
+            <p className="text-mm font-semibold tracking-[0.18em] text-white uppercase">
               Resources
             </p>
           </div>
@@ -157,9 +157,7 @@ export default function DatasheetsPage() {
 
               <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
 
-                <Reveal variant="up">
-
-                  <article className="overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-5 lg:p-6">
+                <article className="overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-5 lg:p-6">
 
                     <div
                       className={`grid items-stretch gap-8 lg:gap-12 ${imageLeft
@@ -170,7 +168,8 @@ export default function DatasheetsPage() {
 
                       {/* IMAGE*/}
 
-                      <div
+                      <Reveal
+                        variant={imageLeft ? "left" : "right"}
                         className={`relative min-h-[280px] overflow-hidden rounded-[5px] bg-[#dfe5e4] sm:min-h-[360px] md:min-h-[420px] lg:min-h-[560px] ${imageLeft ? "lg:order-1" : "lg:order-2"
                           }`}
                       >
@@ -183,11 +182,13 @@ export default function DatasheetsPage() {
                           className="object-cover"
                         />
 
-                      </div>
+                      </Reveal>
 
                       {/* CONTENT*/}
 
-                      <div
+                      <Reveal
+                        variant={imageLeft ? "right" : "left"}
+                        delay={70}
                         className={`flex flex-col justify-center py-5 sm:px-3 lg:px-4 lg:py-8 ${imageLeft ? "lg:order-2" : "lg:order-1"
                           }`}
                       >
@@ -289,13 +290,11 @@ export default function DatasheetsPage() {
 
                         </div>
 
-                      </div>
+                      </Reveal>
 
                     </div>
 
                   </article>
-
-                </Reveal>
 
               </div>
             </section>

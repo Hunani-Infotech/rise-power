@@ -344,7 +344,7 @@ export default function ProductsPage() {
         tone="#07100d"
       >
         <div className="hero-animate-copy w-full max-w-[620px]">
-          <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
+          <p className="text-mm font-semibold tracking-[0.18em] text-white uppercase">
             ⌁ Product Systems
           </p>
 
@@ -402,7 +402,7 @@ export default function ProductsPage() {
             </p>
           </Reveal>
 
-          <div className="mt-12 xl:hidden lg:mt-14">
+          <Reveal variant="up" delay={80} className="mt-12 xl:hidden lg:mt-14">
             <SnapCarousel
               ariaLabel="Product systems"
               showArrows
@@ -421,11 +421,11 @@ export default function ProductsPage() {
                 );
               })}
             </SnapCarousel>
-          </div>
+          </Reveal>
 
           <RevealStagger
             className="mt-12 hidden gap-5 lg:mt-14 xl:grid xl:grid-cols-4"
-            step={100}
+            step={70}
           >
             {products.slice(0, 4).map((product, index) => {
               const meta = systemMeta[index] ?? systemMeta[0];
@@ -498,39 +498,11 @@ export default function ProductsPage() {
 
 
           {/* SYSTEM FLOW */}
-          {/* <RevealStagger className="space-y-3" step={80} variant="right">
-            {systemFlow.map((item) => (
-              <div
-                key={item.title}
-                className="flex items-center gap-3 rounded-md border border-[#dcded8] bg-white/80 p-3"
-              >
-                <div className="grid size-9 place-items-center rounded-full border border-[#8aa451]">
-                  <span className="size-2.5 rounded-full bg-[#6e7f42]" />
-                </div>
-
-                <div className="relative h-14 w-14">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-
-                <div>
-                  <h3 className="text-[18px] font-bold uppercase">
-                    {item.title}
-                  </h3>
-                  <p className="text-[13px] text-[#706e66]">
-                    {item.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </RevealStagger> */}
-
-                    {/* SYSTEM FLOW */}
-                    <RevealStagger className="flex w-full max-w-md flex-col gap-4" step={80} variant="right">
+          <RevealStagger
+            className="flex w-full max-w-md flex-col gap-4"
+            step={80}
+            variant="right"
+          >
             {systemFlow.map((item, index) => (
               <div
                 key={item.title}

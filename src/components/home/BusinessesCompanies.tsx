@@ -95,8 +95,8 @@ export function BusinessesCompanies() {
 
         <RevealStagger
           className="mt-10 grid gap-5 sm:mt-12 lg:grid-cols-2 lg:gap-6"
-          step={100}
-          variant="up"
+          step={70}
+          variant="fade"
         >
           {companies.map((company) => (
             <CompanyCard key={company.name} {...company} />

@@ -24,7 +24,7 @@ export default function InsightsPage() {
       <div className="mx-auto max-w-[1440px] px-6 py-12 sm:py-16 lg:px-10 lg:py-24">
         <RevealStagger
           className="divide-y divide-border border-y border-border"
-          step={80}
+          step={70}
           variant="up"
         >
           {insights.map((article) => (

@@ -99,7 +99,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-6">
+    <form onSubmit={onSubmit} noValidate className="space-y-4">
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <input type="text" name="website" tabIndex={-1} autoComplete="off" />
       </div>
@@ -147,7 +147,7 @@ export function ContactForm() {
         />
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="role" className={labelClass}>
             Role

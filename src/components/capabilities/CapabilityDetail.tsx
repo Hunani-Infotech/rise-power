@@ -22,7 +22,7 @@ function SectionEyebrow({
   center?: boolean;
   light?: boolean;
 }) {
-  const color = light ? "#a8b87a" : sage;
+  const color = light ? "#ffffff" : sage;
 
   return (
     <div
@@ -164,7 +164,7 @@ export function CapabilityDetail({ tabId }: CapabilityDetailProps) {
       {/* IMAGE GALLERY */}
       <section className="overflow-hidden bg-[#f3f0e8] py-14 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
-          <Reveal variant="fade">
+          <Reveal variant="up">
             <SectionEyebrow>In Focus</SectionEyebrow>
             <h2 className="mt-5 max-w-3xl font-display text-3xl leading-[0.95] font-bold tracking-tight uppercase sm:text-4xl lg:text-5xl">
               Supporting{" "}

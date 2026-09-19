@@ -1,3 +1,5 @@
+"use client";
+
 // import Link from "next/link";
 // import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 // import { Logo } from "./Logo";
@@ -209,7 +211,8 @@
 
 
 
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, ChevronDown, Mail, MapPin, Phone } from "lucide-react";
+import { useState } from "react";
 import { Logo } from "./Logo";
 import { AppLink } from "@/components/nav/AppLink";
 import { footer } from "@/lib/home-content";
@@ -334,6 +337,99 @@ function MissionFlagMark() {
   );
 }
 
+function FooterNavGroups() {
+  const [openHeading, setOpenHeading] = useState<string | null>(null);
+
+  return (
+    <>
+      {/* Mobile / tablet accordion */}
+      <div className="border-t border-white/15 lg:hidden">
+        {footer.groups.map((group) => {
+          const expanded = openHeading === group.heading;
+          const panelId = `footer-nav-${group.heading
+            .toLowerCase()
+            .replace(/\s+/g, "-")}`;
+
+          return (
+            <div
+              key={group.heading}
+              className="border-b border-white/15"
+            >
+              <button
+                type="button"
+                className="flex w-full min-h-12 items-center justify-between gap-3 py-3.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage"
+                aria-expanded={expanded}
+                aria-controls={panelId}
+                onClick={() =>
+                  setOpenHeading(expanded ? null : group.heading)
+                }
+              >
+                <span className="font-display text-lg font-semibold tracking-wide text-white uppercase">
+                  {group.heading}
+                </span>
+                <ChevronDown
+                  className={`size-5 shrink-0 text-cream/70 transition-transform duration-200 ${
+                    expanded ? "rotate-180 text-sage" : ""
+                  }`}
+                  strokeWidth={1.75}
+                  aria-hidden="true"
+                />
+              </button>
+
+              {expanded ? (
+                <ul
+                  id={panelId}
+                  className="mobile-nav-accordion space-y-3 pb-4"
+                >
+                  {group.links.map((item) => (
+                    <li key={`${group.heading}-${item.label}`}>
+                      <AppLink
+                        href={item.href}
+                        className="block text-[15px] leading-5 text-white transition-colors hover:text-sage"
+                      >
+                        {item.label}
+                      </AppLink>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop columns */}
+      <div className="hidden gap-x-6 lg:grid lg:grid-cols-4 lg:px-2">
+        {footer.groups.map((group) => (
+          <div key={group.heading} className="min-w-0">
+            <p className="font-display text-lg font-semibold tracking-wide text-white uppercase">
+              {group.heading}
+            </p>
+
+            <div
+              className="mt-3 h-[2px] w-9"
+              style={{ background: sage }}
+            />
+
+            <ul className="mt-5 space-y-4">
+              {group.links.map((item) => (
+                <li key={`${group.heading}-${item.label}`}>
+                  <AppLink
+                    href={item.href}
+                    className="text-[15px] leading-5 text-white transition-colors hover:text-sage"
+                  >
+                    {item.label}
+                  </AppLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
 export function Footer() {
   return (
     <footer
@@ -394,33 +490,7 @@ export function Footer() {
         </div>
 
         {/* Navigation */}
-        <div className="grid grid-cols-2 gap-x-7 gap-y-10 sm:grid-cols-4 sm:gap-x-6 lg:px-2">
-          {footer.groups.map((group) => (
-            <div key={group.heading} className="min-w-0">
-              <p className="font-display text-lg font-semibold tracking-wide text-white uppercase">
-                {group.heading}
-              </p>
-
-              <div
-                className="mt-3 h-[2px] w-9"
-                style={{ background: sage }}
-              />
-
-              <ul className="mt-5 space-y-4">
-                {group.links.map((item) => (
-                  <li key={`${group.heading}-${item.label}`}>
-                    <AppLink
-                      href={item.href}
-                      className="text-[15px] leading-5 text-white transition-colors hover:text-sage"
-                    >
-                      {item.label}
-                    </AppLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <FooterNavGroups />
 
         {/* Newsletter + Contact */}
         <div className="lg:border-l lg:border-white/15 lg:pl-8 xl:pl-10">
