@@ -52,7 +52,7 @@ export function NavMegaItem({
   return (
     <AppLink
       href={item.href}
-      className={`inline-flex items-center gap-1 ${className}`}
+      className={`inline-flex items-center gap-0.5 2xl:gap-1 ${className}`}
       onMouseEnter={onActivate}
       onFocus={onActivate}
       aria-expanded={isActive}
@@ -61,7 +61,7 @@ export function NavMegaItem({
     >
       <span>{item.label}</span>
       <ChevronDown
-        className={`size-3.5 shrink-0 opacity-70 transition-transform duration-200 ${
+        className={`size-3 shrink-0 opacity-70 transition-transform duration-200 2xl:size-3.5 ${
           isActive ? "rotate-180" : ""
         } ${chevronClassName}`}
         strokeWidth={2}

@@ -391,7 +391,7 @@ export default function UseCasesPage() {
                         {item.title}
                       </h3>
 
-                      <p className="mt-4 max-w-[390px] text-sm leading-relaxed text-white/80 sm:text-base">
+                      <p className="mt-4 max-w-[390px] text-sm leading-relaxed text-white sm:text-base">
                         {item.description}
                       </p>
                     </div>

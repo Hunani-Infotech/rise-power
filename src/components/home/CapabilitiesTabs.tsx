@@ -270,7 +270,7 @@ export function CapabilitiesTabs() {
                     </p>
                     <p
                       className="mt-0.5 text-xs leading-snug"
-                      style={{ color: "rgba(243, 239, 228, 0.75)" }}
+                      style={{ color: "#ffffff" }}
                     >
                       {callout.body}
                     </p>
@@ -294,7 +294,7 @@ export function CapabilitiesTabs() {
                   </p>
                   <p
                     className="mt-1 text-xs leading-snug"
-                    style={{ color: "rgba(243, 239, 228, 0.75)" }}
+                    style={{ color: "#ffffff" }}
                   >
                     {callout.body}
                   </p>

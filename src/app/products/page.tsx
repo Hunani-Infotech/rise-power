@@ -420,7 +420,7 @@ export default function ProductsPage() {
                       {product.tagline}
                     </p>
 
-                    <p className="mt-4 mb-3 min-h-[72px] text-[13px] leading-relaxed text-white/65">
+                    <p className="mt-4 mb-3 min-h-[72px] text-[13px] leading-relaxed text-white">
                       {product.description}
                     </p>
 
@@ -621,7 +621,7 @@ export default function ProductsPage() {
                     Specifications
                   </h3>
 
-                  <p className="mt-3 max-w-[190px] text-sm leading-relaxed text-white/65">
+                  <p className="mt-3 max-w-[190px] text-sm leading-relaxed text-white">
                     Compare key features across the Rise Power product
                     lineup.
                   </p>
@@ -684,7 +684,7 @@ export default function ProductsPage() {
                     {row.values.map((value, index) => (
                       <div
                         key={`${row.label}-${index}`}
-                        className={`flex min-w-0 items-center border-t border-t-white/15 bg-[#07151b] px-5 py-4 text-sm leading-relaxed text-white/85 ${index === 0
+                        className={`flex min-w-0 items-center border-t border-t-white/15 bg-[#07151b] px-5 py-4 text-sm leading-relaxed text-white ${index === 0
                           ? "border-r border-[#293a40] border-l border-l-white/15"
                           : "ml-1 border-x border-[#293a40]"
                           }`}
@@ -703,7 +703,7 @@ export default function ProductsPage() {
                     Explore More
                   </p>
 
-                  <p className="mt-1 max-w-[180px] text-xs leading-relaxed text-white/60">
+                  <p className="mt-1 max-w-[180px] text-xs leading-relaxed text-white">
                     Learn more about each solution and its capabilities.
                   </p>
                 </div>
