@@ -4,9 +4,14 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/Button";
-import { Reveal, RevealStagger } from "@/components/motion/Reveal";
+import { InsightsArchiveList } from "@/components/insights/InsightsArchiveList";
+import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
-import { insights, type InsightArticle } from "@/lib/insights";
+import {
+  insights,
+  toInsightListItem,
+  type InsightArticle,
+} from "@/lib/insights";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -207,91 +212,9 @@ export default function InsightsPage() {
               </div>
             </Reveal>
 
-            <RevealStagger
-              className="mt-8 border-t border-[#d9dfe3] sm:mt-10"
-              step={50}
-              variant="up"
-            >
-              {archive.map((article, index) => {
-                const { category, hero, readTime } = articleMeta(article);
-                const indexLabel = String(index + 1).padStart(2, "0");
-
-                return (
-                  <Link
-                    key={article.slug}
-                    href={`/insights/${article.slug}`}
-                    className="group grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-x-4 border-b py-5 pl-3 transition-colors duration-300 hover:bg-[#f3f2ed] sm:grid-cols-[3.25rem_minmax(0,1fr)_5.5rem_auto] sm:gap-x-6 sm:py-6 sm:pl-5 lg:gap-x-8 lg:pl-6"
-                    style={{ borderColor: border }}
-                  >
-                    <span
-                      className="font-display text-lg font-bold tabular-nums tracking-tight transition-colors duration-300 group-hover:text-[#6e7f42] sm:text-xl"
-                      style={{ color: sage }}
-                    >
-                      {indexLabel}
-                    </span>
-
-                    <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                        <p
-                          className="text-[10px] font-semibold tracking-[0.16em] uppercase sm:text-[11px]"
-                          style={{ color: sage }}
-                        >
-                          {category}
-                        </p>
-                        <span className="text-[#c5ccd2]" aria-hidden="true">
-                          ·
-                        </span>
-                        <p
-                          className="text-[10px] font-semibold tracking-[0.12em] uppercase sm:text-[11px]"
-                          style={{ color: muted }}
-                        >
-                          {article.displayDate}
-                        </p>
-                        <span className="text-[#c5ccd2]" aria-hidden="true">
-                          ·
-                        </span>
-                        <p
-                          className="text-[10px] font-semibold tracking-[0.12em] uppercase sm:text-[11px]"
-                          style={{ color: muted }}
-                        >
-                          {readTime}
-                        </p>
-                      </div>
-
-                      <h3
-                        className="mt-1.5 font-display text-base leading-[1.15] font-bold tracking-tight uppercase transition-colors duration-300 group-hover:text-[#6e7f42] sm:text-lg lg:text-xl"
-                      >
-                        {article.title}
-                      </h3>
-
-                      <p
-                        className="mt-1.5 line-clamp-1 max-w-[54ch] text-sm leading-snug"
-                        style={{ color: muted }}
-                      >
-                        {article.excerpt}
-                      </p>
-                    </div>
-
-                    <div className="relative hidden size-[5.5rem] shrink-0 overflow-hidden bg-[#101820] sm:block">
-                      <Image
-                        src={hero.src}
-                        alt={hero.alt}
-                        fill
-                        sizes="88px"
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
-                      />
-                    </div>
-
-                    <span
-                      className="flex size-9 shrink-0 items-center justify-center text-[#101820] transition-colors duration-300 group-hover:text-[#6e7f42]"
-                      aria-hidden="true"
-                    >
-                      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                    </span>
-                  </Link>
-                );
-              })}
-            </RevealStagger>
+            <InsightsArchiveList
+              articles={archive.map(toInsightListItem)}
+            />
           </div>
         </section>
       ) : null}
