@@ -60,37 +60,10 @@ export const megaNavItems: readonly MegaNavItem[] = [
     },
   },
 
+  /* No links → no desktop chevron / no mobile accordion */
   {
     label: "Markets",
     href: "/use-cases",
-    links: [
-      {
-        label: "Defense & Security",
-        href: "/use-cases#defense-security",
-        description: "Silent portable power for bases, troops, and drones.",
-      },
-      {
-        label: "Critical Infrastructure",
-        href: "/use-cases#critical-infrastructure",
-        description: "Mission-duration backup for facilities that cannot drop.",
-      },
-      {
-        label: "Remote Operations",
-        href: "/use-cases#remote-operations",
-        description: "Sustained power where fuel resupply is difficult.",
-      },
-      {
-        label: "Disaster Response",
-        href: "/use-cases#disaster-response",
-        description: "Indoor-safe emergency power when the grid drops.",
-      },
-    ],
-    feature: {
-      title: "Use Cases",
-      body: "One platform across defense, industrial, and field theaters.",
-      href: "/use-cases",
-      cta: "Explore Use Cases",
-    },
   },
 
   {
