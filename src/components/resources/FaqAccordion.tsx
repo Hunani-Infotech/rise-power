@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 
+import { Reveal } from "@/components/motion/Reveal";
+
 const muted = "#66717d";
 
 type FaqItem = {
@@ -76,69 +78,71 @@ export function FaqAccordion({
   const [openIndex, setOpenIndex] = useState<number | null>(defaultOpenIndex);
 
   return (
-    <>
+    <div className="mt-5 border-t border-[#d9dfe3] sm:mt-6">
       {items.map((item, itemIndex) => {
         const isOpen = openIndex === itemIndex;
 
         return (
-          <div key={item.q} className="border-b border-[#d9dfe3]">
-            <button
-              type="button"
-              aria-expanded={isOpen}
-              onClick={() =>
-                setOpenIndex((current) =>
-                  current === itemIndex ? null : itemIndex,
-                )
-              }
-              className="flex w-full cursor-pointer items-center justify-between gap-6 px-1 py-3.5 text-left outline-none sm:py-4"
-            >
-              <h3
-                className={`text-base font-semibold leading-snug transition-colors duration-300 sm:text-lg ${
-                  isOpen ? "text-[#6e7f42]" : "text-[#101820]"
-                }`}
+          <Reveal key={item.q} variant="up" delay={itemIndex * 40}>
+            <div className="border-b border-[#d9dfe3]">
+              <button
+                type="button"
+                aria-expanded={isOpen}
+                onClick={() =>
+                  setOpenIndex((current) =>
+                    current === itemIndex ? null : itemIndex,
+                  )
+                }
+                className="flex w-full cursor-pointer items-center justify-between gap-6 px-1 py-3.5 text-left outline-none sm:py-4"
               >
-                {item.q}
-              </h3>
-              <span
-                aria-hidden="true"
-                className={`flex size-7 shrink-0 items-center justify-center border transition-colors duration-300 ${
-                  isOpen
-                    ? "border-[#6e7f42] bg-[#6e7f42] text-white"
-                    : "border-[#d9dfe3] text-[#101820]"
-                }`}
-              >
-                <Plus
-                  className={`size-3.5 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    isOpen ? "rotate-45" : "rotate-0"
-                  }`}
-                />
-              </span>
-            </button>
-
-            <div
-              className="grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
-              style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-            >
-              <div className="min-h-0 overflow-hidden">
-                <div
-                  className={`pb-4 pr-12 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:pr-14 ${
-                    isOpen
-                      ? "translate-y-0 opacity-100"
-                      : "-translate-y-1 opacity-0"
+                <h3
+                  className={`text-base font-semibold leading-snug transition-colors duration-300 sm:text-lg ${
+                    isOpen ? "text-[#6e7f42]" : "text-[#101820]"
                   }`}
                 >
-                  <p
-                    className="text-left text-[15px] leading-[1.65] sm:text-base"
-                    style={{ color: muted }}
+                  {item.q}
+                </h3>
+                <span
+                  aria-hidden="true"
+                  className={`flex size-7 shrink-0 items-center justify-center border transition-colors duration-300 ${
+                    isOpen
+                      ? "border-[#6e7f42] bg-[#6e7f42] text-white"
+                      : "border-[#d9dfe3] text-[#101820]"
+                  }`}
+                >
+                  <Plus
+                    className={`size-3.5 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      isOpen ? "rotate-45" : "rotate-0"
+                    }`}
+                  />
+                </span>
+              </button>
+
+              <div
+                className="grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+                style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+              >
+                <div className="min-h-0 overflow-hidden">
+                  <div
+                    className={`pb-4 pr-12 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:pr-14 ${
+                      isOpen
+                        ? "translate-y-0 opacity-100"
+                        : "-translate-y-1 opacity-0"
+                    }`}
                   >
-                    <AnswerBody text={item.a} />
-                  </p>
+                    <p
+                      className="text-left text-[15px] leading-[1.65] sm:text-base"
+                      style={{ color: muted }}
+                    >
+                      <AnswerBody text={item.a} />
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         );
       })}
-    </>
+    </div>
   );
 }

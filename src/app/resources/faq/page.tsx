@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { Reveal, RevealStagger } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
 import { FaqAccordion } from "@/components/resources/FaqAccordion";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { pageMetadata } from "@/lib/seo";
@@ -241,16 +241,10 @@ export default function ProcurementFaqPage() {
               </div>
             </Reveal>
 
-            <RevealStagger
-              className="mt-5 border-t border-[#d9dfe3] sm:mt-6"
-              step={40}
-              variant="up"
-            >
-              <FaqAccordion
-                items={group.items}
-                defaultOpenIndex={groupIndex === 0 ? 0 : null}
-              />
-            </RevealStagger>
+            <FaqAccordion
+              items={group.items}
+              defaultOpenIndex={groupIndex === 0 ? 0 : null}
+            />
           </div>
         </section>
       ))}
