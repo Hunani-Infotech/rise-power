@@ -29,9 +29,13 @@ export default function ResourcesPage() {
             <Link href="/datasheets" className="text-sage underline-offset-2 hover:underline">
               Datasheets
             </Link>
+            , review the{" "}
+            <Link href="/resources/faq" className="text-sage underline-offset-2 hover:underline">
+              Procurement FAQ
+            </Link>
             , or read{" "}
             <Link href="/insights" className="text-sage underline-offset-2 hover:underline">
-              News & Insights
+              Insights
             </Link>{" "}
             for updates from the field. For a tailored briefing,{" "}
             <Link href="/contact" className="text-sage underline-offset-2 hover:underline">

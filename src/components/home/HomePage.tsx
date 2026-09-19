@@ -62,46 +62,36 @@ const sectionY = "py-14 sm:py-18 lg:py-20";
 export function HomePage() {
   return (
     <div className="flex w-full flex-col overflow-x-clip bg-[#f3f0e8] text-[#1a1c16]">
-      {/* 1. HERO */}
+      {/* 1. HERO — image above / copy below below xl; full-bleed overlay on xl+ */}
       <section
         id="hero"
-        className="relative flex min-h-[100svh] w-full flex-col overflow-hidden text-white lg:min-h-[780px]"
+        className="relative flex w-full flex-col overflow-hidden bg-[#060806] text-white xl:min-h-[max(100svh,780px)]"
       >
-        <Image
-          src={heroImageSrc}
-          alt="Rise Power tactical field deployment"
-          fill
-          priority
-          sizes="100vw"
-          quality={85}
-          className="hero-animate-media object-cover object-[58%_center]"
-        />
-        {/* Soft grade + left copy lane so UI text stays readable over the photo */}
-        {/* <div className="absolute inset-0 bg-[#060806]/25" />
-        <div className="absolute inset-0 bg-linear-to-r from-[#060806]/92 via-[#060806]/55 to-transparent lg:w-[58%] lg:via-[#060806]/72" />
-        <div className="absolute inset-y-0 left-0 w-full bg-linear-to-r from-[#060806]/40 via-transparent to-transparent lg:w-[45%]" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-[#060806]/70 via-[#060806]/25 to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[#060806]/55 to-transparent" /> */}
+        <div className="relative aspect-[5/4] w-full shrink-0 sm:aspect-[16/10] lg:aspect-[21/9] xl:absolute xl:inset-0 xl:aspect-auto">
+          <Image
+            src={heroImageSrc}
+            alt="Rise Power tactical field deployment"
+            fill
+            priority
+            sizes="100vw"
+            quality={85}
+            className="hero-animate-media object-cover object-[58%_center]"
+          />
+          {/* Overlays only when copy sits on the photo (xl+) */}
+          <div className="pointer-events-none absolute inset-0 hidden xl:block">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#060806]/95 via-[#060806]/35 to-transparent xl:w-[60%]" />
+            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#060806]/45 via-transparent to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#060806]/25 to-transparent" />
+          </div>
+        </div>
 
-        {/* Left focused cinematic gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#060806]/95 via-[#060806]/35 to-transparent lg:w-[60%]" />
-
-        {/* Bottom subtle cinematic fade */}
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#060806]/45 via-transparent to-transparent" />
-
-        {/* Top soft fade */}
-        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#060806]/25 to-transparent" />
-
-        <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 pt-28 pb-20 lg:px-10 lg:pt-32 lg:pb-14">
-          <div className="flex flex-col justify-center pt-10 lg:pt-10">
-            <div className="hero-animate-copy max-w-xl lg:max-w-4xl">
-              <p
-                className="type-eyebrow"
-                style={{ color: sage }}
-              >
+        <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:px-10 xl:pt-32 xl:pb-14">
+          <div className="flex flex-col justify-center xl:pt-10">
+            <div className="hero-animate-copy max-w-xl lg:max-w-3xl xl:max-w-4xl">
+              <p className="type-eyebrow" style={{ color: sage }}>
                 {hero.eyebrow}
               </p>
-              <h1 className="mt-5 font-display text-[2.75rem] leading-[0.9] font-bold tracking-[-0.02em] uppercase sm:text-7xl md:text-8xl lg:text-[6.75rem]">
+              <h1 className="mt-5 font-display text-[2.25rem] leading-[0.9] font-bold tracking-[-0.02em] uppercase sm:text-5xl md:text-5xl lg:text-6xl xl:text-[5.25rem]">
                 {hero.headlineLine1}
                 <br />
                 <span style={{ color: sage }}>{hero.headlineLine2}</span>
@@ -159,7 +149,7 @@ export function HomePage() {
 
         <a
           href="#performance-metrics"
-          className="absolute bottom-3 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-1 text-white/75 transition-colors hover:text-white lg:flex"
+          className="absolute bottom-3 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-1 text-white/75 transition-colors hover:text-white xl:flex"
           aria-label="Scroll to next section"
         >
           <Mouse className="size-5" strokeWidth={1.4} />
@@ -213,7 +203,7 @@ export function HomePage() {
             </p>
           </Reveal>
           <RevealStagger
-            className="mx-auto mt-8 grid w-full max-w-5xl grid-cols-1 items-stretch gap-4 sm:mt-9 sm:grid-cols-2 sm:gap-4 lg:mt-10 lg:max-w-none lg:grid-cols-4 lg:gap-5"
+            className="mx-auto mt-8 grid w-full max-w-5xl grid-cols-1 items-stretch gap-4 sm:mt-9 sm:grid-cols-2 sm:gap-4 xl:mt-10 xl:max-w-none xl:grid-cols-4 xl:gap-5"
             step={80}
           >
             {performanceMetrics.gauges.map((item, index) => {
@@ -369,14 +359,14 @@ export function HomePage() {
             </header>
           </Reveal>
 
-          <div className="mt-10 sm:mt-12 lg:hidden">
+          <div className="mt-10 sm:mt-12 xl:hidden">
             <SnapCarousel
               ariaLabel="Featured products"
               showArrows
               showDots
               loop
               autoPlayMs={5500}
-              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)]"
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
               trackClassName="gap-4 px-1 pb-1"
             >
               {featuredProducts.products.map((product) => (
@@ -386,7 +376,7 @@ export function HomePage() {
           </div>
 
           <RevealStagger
-            className="mt-10 hidden items-stretch gap-4 sm:mt-12 sm:grid-cols-2 lg:grid lg:grid-cols-4 lg:gap-5"
+            className="mt-10 hidden items-stretch gap-4 sm:mt-12 xl:grid xl:grid-cols-2 xl:gap-5 2xl:grid-cols-4"
             step={90}
             variant="up"
           >

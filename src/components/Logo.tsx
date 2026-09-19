@@ -31,7 +31,7 @@ export function Logo({
         width={573}
         height={150}
         priority={priority}
-        className="h-9 w-auto max-w-[min(72vw,200px)] sm:h-10 sm:max-w-[240px] xl:h-11 xl:max-w-[260px]"
+        className="h-9 w-auto max-w-[min(72vw,210px)] sm:h-10 sm:max-w-[250px] xl:h-[2.75rem] xl:max-w-[270px]"
       />
     </Link>
   );

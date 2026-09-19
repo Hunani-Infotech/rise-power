@@ -9,16 +9,18 @@ export type MarketRowProps = {
   body: string;
   theater: string;
   points: readonly string[];
+  detail: string;
   href: string;
   cta: string;
   imageSrc?: string;
   imageLabel: string;
-  /** Featured horizontal layout (desktop). Compact = stacked image/content. */
+  /** Kept for callers; layout is always stacked for responsive grids. */
   expanded?: boolean;
 };
 
 /**
- * Market panel — stacked image + copy on mobile, side-by-side on desktop.
+ * Market panel — image above / copy below at every breakpoint so cards
+ * stay readable in carousels and multi-column grids.
  */
 export function MarketRow({
   index,
@@ -26,6 +28,7 @@ export function MarketRow({
   body,
   theater,
   points,
+  detail,
   href,
   cta,
   imageSrc,
@@ -35,14 +38,14 @@ export function MarketRow({
   return (
     <article
       data-expanded={expanded ? "true" : "false"}
-      className="market-card group relative flex h-auto w-full flex-col overflow-hidden border border-[#ddd8cc] bg-white lg:h-full lg:min-h-[26rem] lg:flex-row"
+      className="market-card group relative flex h-full w-full flex-col overflow-hidden border border-[#ddd8cc] bg-white"
     >
       <div
-        className="pointer-events-none absolute inset-0 z-[1] hidden bg-[linear-gradient(135deg,rgba(110,127,66,0.06),transparent_55%)] lg:block"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(135deg,rgba(110,127,66,0.06),transparent_55%)]"
         aria-hidden
       />
 
-      <div className="market-card__media relative z-0 aspect-[16/10] w-full shrink-0 overflow-hidden bg-[#e8e4d8] sm:aspect-[5/3] lg:aspect-auto lg:h-auto lg:w-[56%] lg:flex-[1.1]">
+      <div className="market-card__media relative z-0 aspect-[16/10] w-full shrink-0 overflow-hidden bg-[#e8e4d8] sm:aspect-[5/3]">
         {imageSrc ? (
           <Image
             src={imageSrc}
@@ -50,7 +53,7 @@ export function MarketRow({
             fill
             quality={80}
             className="object-cover object-center scale-[1.02]"
-            sizes="(max-width: 1024px) 90vw, 32vw"
+            sizes="(max-width: 1280px) 90vw, 32vw"
           />
         ) : (
           <PlaceholderMedia
@@ -69,9 +72,9 @@ export function MarketRow({
         </span>
       </div>
 
-      <div className="market-card__copy relative z-[2] flex w-full flex-col border-t border-[#ddd8cc] bg-white px-4 py-4 sm:px-5 sm:py-5 lg:w-[44%] lg:flex-1 lg:border-t-0 lg:border-l lg:border-[#e5e1d6] lg:bg-white/95 lg:px-7 lg:py-8 lg:backdrop-blur-[2px]">
+      <div className="market-card__copy relative z-[2] flex w-full flex-1 flex-col border-t border-[#ddd8cc] bg-white px-4 py-4 sm:px-5 sm:py-5 lg:px-6 lg:py-6">
         <p className="type-card-label text-[#6e7f42]">{theater}</p>
-        <h3 className="mt-1.5 text-[#1a1c16] type-card-title-lg tracking-[-0.03em] sm:mt-2">
+        <h3 className="type-card-title-lg mt-1.5 tracking-[-0.03em] text-[#1a1c16] sm:mt-2">
           {title}
         </h3>
         <p className="type-card-body mt-2 sm:mt-3">{body}</p>
@@ -93,15 +96,21 @@ export function MarketRow({
           </ul>
         ) : null}
 
+        {detail ? (
+          <p className="mt-3 text-[0.8125rem] leading-relaxed text-[#5c5f54] sm:mt-4">
+            {detail}
+          </p>
+        ) : null}
+
         <div className="mt-4 pt-0 sm:mt-auto sm:pt-5">
           <Link
             href={href}
-            className="type-cta market-card__cta inline-flex w-full min-h-11 items-center justify-center gap-2 border border-[#1a1c16] bg-transparent px-4 text-[#1a1c16] lg:w-auto lg:min-w-[11.5rem]"
+            className="type-cta market-card__cta inline-flex w-full min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-sm border border-[#1a1c16] bg-transparent px-4 text-[#1a1c16] sm:w-auto sm:min-w-0 sm:px-5"
           >
-            {cta}
+            <span className="whitespace-nowrap">{cta}</span>
             <ArrowRight
-              className="market-card__cta-arrow size-4"
-              strokeWidth={1.8}
+              className="market-card__cta-arrow size-4 shrink-0"
+              strokeWidth={2}
             />
           </Link>
         </div>

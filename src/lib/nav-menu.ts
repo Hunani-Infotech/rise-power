@@ -14,183 +14,21 @@ export type MegaFeature = {
 export type MegaNavItem = {
   label: string;
   href: string;
-  /** Single flat list for the mega drawer — 4 to 6 links max */
+  /** Single flat list for the mega drawer — keep lean */
   links?: readonly MegaLink[];
-  /** Optional one highlight card (NOT extra link columns) */
+  /** Optional one highlight card */
   feature?: MegaFeature;
 };
 
 /**
- * Proposed main navigation:
- * About | Technology | Defense | Commercial | Consumer | Products | Investors | Resources | Company
+ * Primary navigation — client order + full page coverage from risepower.com.
+ *
+ * Products | Markets | Technology | Company | Resources | Investors | Careers
+ *
+ * Naming can differ from live (Markets ≈ Use Cases, Technology ≈ Capabilities)
+ * but every live destination is linked.
  */
 export const megaNavItems: readonly MegaNavItem[] = [
-  {
-    label: "About",
-    href: "/about",
-    links: [
-      {
-        label: "Our Story",
-        href: "/about",
-        description: "The mission behind portable hydrogen power.",
-      },
-      {
-        label: "Company",
-        href: "/company",
-        description: "Canadian engineered. Field validated.",
-      },
-      {
-        label: "Leadership",
-        href: "/company#leadership",
-        description: "The team behind the systems.",
-      },
-      {
-        label: "Contact",
-        href: "/contact",
-        description: "Request a briefing with our team.",
-      },
-    ],
-    feature: {
-      title: "About Rise Power",
-      body: "Canadian-built hydrogen power systems for defense, commercial, and emergency missions.",
-      href: "/about",
-      cta: "Learn More",
-    },
-  },
-
-  {
-    label: "Technology",
-    href: "/capabilities",
-    links: [
-      {
-        label: "Engineering",
-        href: "/capabilities#engineering",
-        description: "From early-stage prototypes to production-ready hardware.",
-      },
-      {
-        label: "Integration",
-        href: "/capabilities#integration",
-        description: "Works with existing platforms and infrastructure.",
-      },
-      {
-        label: "Field",
-        href: "/capabilities#field",
-        description: "Rapid field deployment with end-to-end logistics support.",
-      },
-      {
-        label: "Safety",
-        href: "/capabilities#safety",
-        description: "Safety and compliance engineered in from day one.",
-      },
-    ],
-    feature: {
-      title: "Our Technology",
-      body: "Engineering, integration, field deployment, and safety — built for real operating environments.",
-      href: "/capabilities",
-      cta: "See Technology",
-    },
-  },
-
-  {
-    label: "Defense",
-    href: "/use-cases#defense-security",
-    links: [
-      {
-        label: "Defense & Security",
-        href: "/use-cases#defense-security",
-        description:
-          "Silent portable power for bases, troops, and surveillance drones.",
-      },
-      {
-        label: "Remote Operations",
-        href: "/use-cases#remote-operations",
-        description: "Sustained power where fuel resupply is difficult.",
-      },
-      {
-        label: "Rise Sentinel™",
-        href: "/products#sentinel",
-        description: "Man-portable hydrogen power for forward operations.",
-      },
-      {
-        label: "Rise Falcon™",
-        href: "/products#falcon",
-        description: "Hydrogen range extender for ISR and UAV platforms.",
-      },
-    ],
-    feature: {
-      title: "Defense Solutions",
-      body: "Silent, zero-emission power engineered for contested and austere environments.",
-      href: "/use-cases#defense-security",
-      cta: "Explore Defense",
-    },
-  },
-
-  {
-    label: "Commercial",
-    href: "/use-cases#critical-infrastructure",
-    links: [
-      {
-        label: "Critical Infrastructure",
-        href: "/use-cases#critical-infrastructure",
-        description: "Mission-duration backup for facilities that cannot drop.",
-      },
-      {
-        label: "Remote Operations",
-        href: "/use-cases#remote-operations",
-        description: "Reliable power for construction, mining, and off-grid sites.",
-      },
-      {
-        label: "Rise Titan™",
-        href: "/products#titan",
-        description: "3 kW silent hydrogen generator for sustained ops.",
-      },
-      {
-        label: "Hydrogen Cartridge Kit",
-        href: "/products#cartridge-kit",
-        description: "Universal slim hydrogen cartridges with quick-connect.",
-      },
-    ],
-    feature: {
-      title: "Commercial Power",
-      body: "Clean backup and continuous power for telecom, construction, mining, and industrial sites.",
-      href: "/use-cases#critical-infrastructure",
-      cta: "Explore Commercial",
-    },
-  },
-
-  {
-    label: "Consumer",
-    href: "/use-cases#disaster-response",
-    links: [
-      {
-        label: "Disaster Response",
-        href: "/use-cases#disaster-response",
-        description: "Indoor-safe emergency power when the grid drops.",
-      },
-      {
-        label: "Emergency Backup",
-        href: "/use-cases#disaster-response",
-        description: "Quiet, zero-emission power for homes and shelters.",
-      },
-      {
-        label: "Rise Sentinel™",
-        href: "/products#sentinel",
-        description: "Portable hydrogen power for field and home use.",
-      },
-      {
-        label: "Hydrogen Cartridge Kit",
-        href: "/products#cartridge-kit",
-        description: "Stockpile-ready cartridges with rapid swap.",
-      },
-    ],
-    feature: {
-      title: "Consumer & Emergency",
-      body: "Portable hydrogen power for camping, RV use, and indoor-safe emergency backup.",
-      href: "/use-cases#disaster-response",
-      cta: "Explore Consumer",
-    },
-  },
-
   {
     label: "Products",
     href: "/products",
@@ -203,7 +41,7 @@ export const megaNavItems: readonly MegaNavItem[] = [
       {
         label: "Rise Falcon™",
         href: "/products#falcon",
-        description: "Hydrogen range extender for industrial drones.",
+        description: "Hydrogen range extender for ISR and UAV platforms.",
       },
       {
         label: "Rise Titan™",
@@ -213,70 +51,80 @@ export const megaNavItems: readonly MegaNavItem[] = [
       {
         label: "Hydrogen Cartridge Kit",
         href: "/products#cartridge-kit",
-        description: "Universal slim hydrogen cartridges with quick-connect.",
+        description: "Universal slim cartridges with quick-connect.",
       },
     ],
     feature: {
-      title: "View All Products",
-      body: "Four products. One cartridge ecosystem. Engineered for defense, disaster response, remote operations, and critical backup.",
+      title: "All Products",
+      body: "Four systems. One cartridge ecosystem. Engineered for defense, disaster response, and critical backup.",
       href: "/products",
       cta: "View All Products",
     },
   },
 
   {
-    label: "Investors",
-    href: "/investors",
+    label: "Markets",
+    href: "/use-cases",
     links: [
       {
-        label: "Investor Deck",
-        href: "/media/investors/rise-power-deck.pdf",
-        description: "Download the Rise Power investor briefing (PDF).",
+        label: "Defense & Security",
+        href: "/use-cases#defense-security",
+        description: "Silent portable power for bases, troops, and drones.",
       },
       {
-        label: "Company One-Pager",
-        href: "/media/investors/rise-power-one-pager.pdf",
-        description: "Revenue forecast and company overview (PDF).",
+        label: "Critical Infrastructure",
+        href: "/use-cases#critical-infrastructure",
+        description: "Mission-duration backup for facilities that cannot drop.",
       },
       {
-        label: "Press & Updates",
-        href: "/investors#press",
-        description: "Company news, milestones, and press releases.",
+        label: "Remote Operations",
+        href: "/use-cases#remote-operations",
+        description: "Sustained power where fuel resupply is difficult.",
+      },
+      {
+        label: "Disaster Response",
+        href: "/use-cases#disaster-response",
+        description: "Indoor-safe emergency power when the grid drops.",
       },
     ],
     feature: {
-      title: "Investor Overview",
-      body: "Materials and contact for qualified investors evaluating the round.",
-      href: "/investors",
-      cta: "Investor Overview",
+      title: "Use Cases",
+      body: "One platform across defense, industrial, and field theaters.",
+      href: "/use-cases",
+      cta: "Explore Use Cases",
     },
   },
 
   {
-    label: "Resources",
-    href: "/datasheets",
+    label: "Technology",
+    href: "/capabilities",
     links: [
       {
-        label: "Datasheets",
-        href: "/datasheets",
-        description: "Engineering targets and specifications, beta-stage.",
+        label: "Engineering & Development",
+        href: "/capabilities/engineering-development",
+        description: "From prototypes to production-ready hardware.",
       },
       {
-        label: "News & Insights",
-        href: "/insights",
-        description: "Technical articles and field analysis.",
+        label: "System Integration",
+        href: "/capabilities/system-integration",
+        description: "Works with existing platforms and infrastructure.",
       },
       {
-        label: "Resource Center",
-        href: "/resources",
-        description: "Specs, insights, and field notes.",
+        label: "Field Deployment",
+        href: "/capabilities/field-deployment",
+        description: "Rapid deployment with end-to-end logistics support.",
+      },
+      {
+        label: "Safety & Compliance",
+        href: "/capabilities/safety-compliance",
+        description: "Safety and compliance engineered in from day one.",
       },
     ],
     feature: {
-      title: "View All Resources",
-      body: "Datasheets and insights for procurement, programs, and integration leads.",
-      href: "/datasheets",
-      cta: "Browse Datasheets",
+      title: "Our Capabilities",
+      body: "Engineering, integration, field deployment, and safety — built for real operating environments.",
+      href: "/capabilities",
+      cta: "See Capabilities",
     },
   },
 
@@ -285,7 +133,12 @@ export const megaNavItems: readonly MegaNavItem[] = [
     href: "/company",
     links: [
       {
-        label: "About the Company",
+        label: "About Rise Power",
+        href: "/about",
+        description: "The mission behind portable hydrogen power.",
+      },
+      {
+        label: "Our Company",
         href: "/company",
         description: "Canadian engineered. Field validated.",
       },
@@ -295,21 +148,93 @@ export const megaNavItems: readonly MegaNavItem[] = [
         description: "The team behind the systems.",
       },
       {
-        label: "Careers",
-        href: "/contact",
-        description: "Join the Rise Power team.",
-      },
-      {
         label: "Contact",
         href: "/contact",
         description: "Request a briefing with our team.",
       },
     ],
     feature: {
-      title: "Canadian-Built, Field-Validated",
+      title: "Canadian-Built",
       body: "Engineered, manufactured, and validated in British Columbia. A CIMtech Green Energy company.",
-      href: "/company#leadership",
-      cta: "Meet the Team",
+      href: "/company",
+      cta: "About the Company",
     },
+  },
+
+  {
+    label: "Resources",
+    href: "/resources",
+    links: [
+      {
+        label: "Resource Center",
+        href: "/resources",
+        description: "Specs, insights, and field notes.",
+      },
+      {
+        label: "Datasheets",
+        href: "/resources/datasheets",
+        description: "Engineering targets and specifications.",
+      },
+      {
+        label: "Procurement FAQ",
+        href: "/resources/faq",
+        description: "Answers for procurement and program teams.",
+      },
+      {
+        label: "Insights",
+        href: "/insights",
+        description: "Technical articles and field analysis.",
+      },
+      {
+        label: "Articles",
+        href: "/insights/articles",
+        description: "Full article library and updates.",
+      },
+    ],
+    feature: {
+      title: "Browse Resources",
+      body: "Datasheets, FAQ, and insights for procurement, programs, and integration leads.",
+      href: "/resources",
+      cta: "Open Resource Center",
+    },
+  },
+
+  {
+    label: "Investors",
+    href: "/investors",
+    links: [
+      {
+        label: "Investor Overview",
+        href: "/investors",
+        description: "Materials for qualified investors.",
+      },
+      {
+        label: "Investor Deck",
+        href: "/rise-power-deck.pdf",
+        description: "Download the Rise Power investor briefing (PDF).",
+      },
+      {
+        label: "Company One-Pager",
+        href: "/rise-power-one-pager.pdf",
+        description: "Revenue forecast and company overview (PDF).",
+      },
+      {
+        label: "Press & Updates",
+        href: "/investors#press",
+        description: "Company news, milestones, and press releases.",
+      },
+    ],
+    feature: {
+      title: "Investor Materials",
+      body: "Deck, one-pager, and contact for qualified investors evaluating the round.",
+      href: "/investors",
+      cta: "Investor Overview",
+    },
+  },
+
+  /* No links → no desktop chevron / no mobile accordion */
+  {
+    label: "Careers",
+    href: "/contact",
   },
 ];

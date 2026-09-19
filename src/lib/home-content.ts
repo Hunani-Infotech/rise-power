@@ -35,6 +35,7 @@ export type MarketCard = {
   body: string;
   theater: string;
   points: readonly string[];
+  detail: string;
   href: string;
   cta: string;
   image: string;
@@ -225,6 +226,8 @@ export const threeMarkets = {
       body: "Tactical communications, UAV, and ISR under field constraints.",
       theater: "DEFENSE",
       points: ["Tactical Comms", "UAV", "ISR"],
+      detail:
+        "Silent, continuous power for contested environments — cartridge swaps in minutes, no diesel signature.",
       href: "/use-cases#defense-security",
       cta: "View Defense",
       image: "Military market imagery",
@@ -235,6 +238,8 @@ export const threeMarkets = {
       body: "Construction, telecom backup, and mining — without diesel noise.",
       theater: "INDUSTRIAL",
       points: ["Construction", "Telecom", "Mining"],
+      detail:
+        "Keep remote sites online with zero emissions and far less maintenance than generator fleets.",
       href: "/use-cases#critical-infrastructure",
       cta: "View Industrial",
       image: "Commercial market imagery",
@@ -245,6 +250,8 @@ export const threeMarkets = {
       body: "Camping, RV, and emergency home backup — quiet and clean.",
       theater: "FIELD",
       points: ["Camping", "RV", "Home Backup"],
+      detail:
+        "Off-grid nights and home backup without noise, fumes, or fuel runs — ready when you need it.",
       href: "/use-cases#disaster-response",
       cta: "View Field Use",
       image: "Consumer market imagery",
@@ -702,40 +709,40 @@ export const footer = {
     {
       heading: "Solutions",
       links: [
-        { label: "Product Ecosystem", href: "/#product-ecosystem" },
-        { label: "Featured Products", href: "/#featured-products" },
+        { label: "Products", href: "/products" },
         { label: "Use Cases", href: "/use-cases" },
         { label: "Capabilities", href: "/capabilities" },
+        { label: "Product Ecosystem", href: "/#product-ecosystem" },
       ],
     },
     {
       heading: "Markets",
       links: [
-        { label: "Defense", href: "/use-cases#defense-security" },
-        { label: "Industrial", href: "/use-cases#critical-infrastructure" },
-        { label: "Telecom", href: "/use-cases#critical-infrastructure" },
-        { label: "Emergency Response", href: "/use-cases#disaster-response" },
-        { label: "Engineering", href: "/capabilities#engineering" },
+        { label: "Defense & Security", href: "/use-cases#defense-security" },
+        { label: "Critical Infrastructure", href: "/use-cases#critical-infrastructure" },
+        { label: "Remote Operations", href: "/use-cases#remote-operations" },
+        { label: "Disaster Response", href: "/use-cases#disaster-response" },
       ],
     },
     {
       heading: "Company",
       links: [
-        { label: "About Us", href: "/company" },
-        { label: "Capabilities", href: "/capabilities" },
-        { label: "Sustainability", href: "/company" },
-        { label: "News & Insights", href: "/insights" },
+        { label: "About", href: "/about" },
+        { label: "Company", href: "/company" },
+        { label: "Investors", href: "/investors" },
         { label: "Careers", href: "/contact" },
+        { label: "Contact", href: "/contact" },
       ],
     },
     {
-      heading: "Support",
+      heading: "Resources",
       links: [
         { label: "Resource Center", href: "/resources" },
-        { label: "Documentation", href: "/datasheets" },
-        { label: "Service & Maintenance", href: "/contact" },
-        { label: "FAQs", href: "/resources#faqs" },
-        { label: "Contact Support", href: "/contact" },
+        { label: "Datasheets", href: "/datasheets" },
+        { label: "Procurement FAQ", href: "/resources/faq" },
+        { label: "Insights", href: "/insights" },
+        { label: "Privacy", href: "/privacy" },
+        { label: "Terms", href: "/terms" },
       ],
     },
   ] satisfies readonly FooterGroup[],

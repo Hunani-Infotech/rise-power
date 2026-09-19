@@ -19,6 +19,7 @@ function MarketCardItem({
       body={item.body}
       theater={item.theater}
       points={item.points}
+      detail={item.detail}
       href={item.href}
       cta={item.cta}
       imageSrc={item.imageSrc}
@@ -29,19 +30,19 @@ function MarketCardItem({
 }
 
 /**
- * Three Markets — snap carousel on mobile/tablet, 3-column grid on desktop.
+ * Three Markets — snap carousel below xl, 3-column grid from xl up.
  */
 export function MarketsShowcase() {
   return (
     <div className="mt-10 sm:mt-12">
-      {/* Mobile / tablet — no Reveal wrapper so cards are never opacity-hidden */}
-      <div className="lg:hidden">
+      {/* Mobile / tablet / laptop — carousel until cards have room to breathe */}
+      <div className="xl:hidden">
         <SnapCarousel
           ariaLabel="Market segments"
           showArrows
           showDots
           arrowPlacement="top"
-          itemClassName="w-[min(100%,22.5rem)] sm:w-[min(85vw,26rem)]"
+          itemClassName="w-[min(100%,22.5rem)] sm:w-[min(85vw,26rem)] md:w-[min(70vw,28rem)]"
           trackClassName="gap-4 px-0.5 pb-1"
         >
           {threeMarkets.cards.map((item, index) => (
@@ -52,14 +53,10 @@ export function MarketsShowcase() {
 
       <Reveal
         variant="up"
-        className="hidden gap-4 lg:grid lg:grid-cols-3"
+        className="hidden gap-5 xl:grid xl:grid-cols-3"
       >
         {threeMarkets.cards.map((item, index) => (
-          <div
-            key={item.title}
-            role="listitem"
-            className="min-w-0"
-          >
+          <div key={item.title} role="listitem" className="min-w-0">
             <MarketCardItem item={item} index={index} />
           </div>
         ))}

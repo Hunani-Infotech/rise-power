@@ -166,7 +166,7 @@ export function CapabilitiesTabs() {
           key={active.id}
           variant="fade"
           delay={40}
-          className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch lg:gap-10 lg:p-10"
+          className="grid gap-8 p-6 sm:p-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-stretch xl:gap-10 xl:p-10"
         >
           <div role="tabpanel" className="flex flex-col">
             <p

@@ -13,6 +13,37 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "three"],
   },
+  async redirects() {
+    return [
+      // Live-site resource paths
+      {
+        source: "/resources/datasheets",
+        destination: "/datasheets",
+        permanent: false,
+      },
+      {
+        source: "/insights/articles",
+        destination: "/insights",
+        permanent: false,
+      },
+      // Investor PDF aliases (live root paths → local media)
+      {
+        source: "/rise-power-deck.pdf",
+        destination: "/media/investors/rise-power-deck.pdf",
+        permanent: false,
+      },
+      {
+        source: "/rise-power-one-pager.pdf",
+        destination: "/media/investors/rise-power-one-pager.pdf",
+        permanent: false,
+      },
+      {
+        source: "/careers",
+        destination: "/contact",
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {

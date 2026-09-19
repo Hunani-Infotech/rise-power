@@ -97,7 +97,7 @@ function CaseCard({ item, index }: { item: CaseItem; index: number }) {
       <div className="flex min-h-0 flex-1 flex-col">
         <div className="flex flex-1 flex-col p-4 sm:p-5">
           <div
-            className="shrink-0 font-display text-[50px] font-bold leading-[0.5]"
+            className="shrink-0 font-display text-[2.5rem] font-bold leading-[0.5] sm:text-[3rem] xl:text-[50px]"
             style={{ color: "#8bb52e" }}
             aria-hidden
           >
@@ -219,14 +219,14 @@ export function CustomersPartners() {
           </p>
         </Reveal>
 
-        <div className="mt-9 lg:hidden">
+        <div className="mt-9 xl:hidden">
           <SnapCarousel
             ariaLabel="Customer success cases"
             showArrows
             showDots
             loop
             autoPlayMs={5000}
-            itemClassName="w-[min(100%,22rem)] sm:w-[min(100%,26rem)] shrink-0"
+            itemClassName="w-[min(100%,22rem)] sm:w-[min(100%,26rem)] md:w-[min(70vw,28rem)] shrink-0"
           >
             {cases.map((item, index) => (
               <CaseCard key={item.category} item={item} index={index} />
@@ -235,7 +235,7 @@ export function CustomersPartners() {
         </div>
 
         <RevealStagger
-          className="mt-9 hidden items-stretch gap-4 lg:mt-6 lg:grid lg:grid-cols-2 lg:gap-4 xl:grid-cols-4 2xl:gap-5"
+          className="mt-9 hidden items-stretch gap-4 xl:mt-6 xl:grid xl:grid-cols-2 xl:gap-4 2xl:grid-cols-4 2xl:gap-5"
           step={80}
           variant="up"
         >

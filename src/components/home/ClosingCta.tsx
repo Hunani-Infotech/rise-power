@@ -50,7 +50,7 @@ export function ClosingCta() {
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#061018]/75 via-transparent to-transparent" />
 
       <div className="relative mx-auto w-full max-w-[1716px] px-5 py-10 sm:px-8 sm:py-14 lg:px-10 lg:py-20">
-        <div className="grid items-center lg:grid-cols-[1.45fr_0.7fr] lg:gap-8">
+        <div className="grid items-center xl:grid-cols-[1.45fr_0.7fr] xl:gap-8">
           {/* Story — shown once */}
           <Reveal variant="up" className="max-w-[780px]">
             <h2 className="type-section-h2">
