@@ -146,7 +146,7 @@ function CaseCard({ item, index }: { item: CaseItem; index: number }) {
                       </p>
 
                       <p
-                        className="mt-1 max-w-full text-[9px] font-semibold leading-[1.2] tracking-[0.01em] text-white/85 uppercase sm:text-[10px]"
+                        className="mt-1 max-w-full text-[9px] font-semibold leading-[1.2] tracking-[0.01em] text-white uppercase sm:text-[10px]"
                         style={{
                           display: "-webkit-box",
                           WebkitBoxOrient: "vertical",

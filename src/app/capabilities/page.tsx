@@ -50,7 +50,7 @@ function SectionEyebrow({
         ⌁
       </span>
       <p
-        className="text-mm font-semibold tracking-[0.2em] uppercase"
+        className={`text-mm font-semibold tracking-[0.2em] uppercase ${light ? "text-white" : ""}`}
         style={{ color }}
       >
         {children}
@@ -106,7 +106,7 @@ function PillarCard({
             <h3 className="mt-5 max-w-[360px] font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl">
               {tab.title}
             </h3>
-            <p className="mt-4 max-w-[400px] text-sm leading-relaxed text-white/85 sm:text-base">
+            <p className="mt-4 max-w-[400px] text-sm leading-relaxed text-white sm:text-base">
               {tab.body}
             </p>
           </div>
@@ -167,7 +167,7 @@ function GalleryCard({
 }
 
 export default function CapabilitiesPage() {
-  const { hero, proof, tabs, atmosphere, metricsBand, gallery, closingBand } =
+  const { hero, proof, tabs, atmosphere, metricsBand, gallery } =
     capabilities;
 
   return (
@@ -186,7 +186,7 @@ export default function CapabilitiesPage() {
             <span style={{ color: sage }}>{hero.headlineAccent}</span>
           </h1>
 
-          <p className="mt-6 max-w-[580px] text-base leading-relaxed text-white/80 sm:mt-7 sm:text-lg xl:text-xl">
+          <p className="mt-6 max-w-[580px] text-base leading-relaxed text-white sm:mt-7 sm:text-lg xl:text-xl">
             {hero.body}
           </p>
 
@@ -283,8 +283,8 @@ export default function CapabilitiesPage() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/55 via-[#07100d]/28 to-[#07100d]/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/35 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/25 via-[#07100d]/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/12 via-transparent to-transparent" />
 
         <div className="relative mx-auto flex min-h-[300px] max-w-[1440px] items-end px-6 py-12 sm:min-h-[380px] sm:py-14 lg:min-h-[480px] lg:px-10 lg:py-20">
           <Reveal variant="up">
@@ -294,7 +294,7 @@ export default function CapabilitiesPage() {
                 {atmosphere.headingBefore}{" "}
                 <span style={{ color: sage }}>{atmosphere.headingAccent}</span>
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-white sm:text-lg">
                 {atmosphere.body}
               </p>
             </div>
@@ -503,59 +503,6 @@ export default function CapabilitiesPage() {
               />
             ))}
           </RevealStagger>
-        </div>
-      </section>
-
-      {/* CLOSING BAND */}
-      <section className="relative overflow-hidden bg-[#0a100e] py-14 text-white sm:py-16 lg:py-24">
-        <Image
-          src={closingBand.imageSrc}
-          alt={closingBand.imageAlt}
-          fill
-          sizes="100vw"
-          className="object-cover object-center opacity-35"
-        />
-        <div className="absolute inset-0 bg-[#07100d]/75" />
-        <div
-          className="pointer-events-none absolute inset-0 opacity-30"
-          aria-hidden
-        >
-          <div className="absolute top-1/2 left-1/2 size-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
-          <div className="absolute top-1/2 left-1/2 size-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
-        </div>
-
-        <div className="relative mx-auto max-w-[900px] px-6 text-center lg:px-10">
-          <Reveal variant="up">
-            <SectionEyebrow center light>
-              Ready to discuss your requirements?
-            </SectionEyebrow>
-            <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-              Engineering partnership from{" "}
-              <span style={{ color: sage }}>prototype to deployment.</span>
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
-              Our engineering team is ready to explore how hydrogen power can
-              support your mission. Tell us your operating environment and we
-              will respond with the relevant capability brief.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
-                style={{ background: heroCta }}
-              >
-                Request a Briefing
-                <ArrowRight className="size-5" aria-hidden />
-              </Link>
-              <Link
-                href="/products"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-white/40 px-8 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10"
-              >
-                Review Products
-                <ArrowRight className="size-5" aria-hidden />
-              </Link>
-            </div>
-          </Reveal>
         </div>
       </section>
     </main>

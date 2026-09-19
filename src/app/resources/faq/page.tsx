@@ -140,7 +140,7 @@ function SectionEyebrow({
         />
       </span>
       <p
-        className="text-mm font-semibold tracking-[0.18em] uppercase"
+        className={`text-mm font-semibold tracking-[0.18em] uppercase ${onDark ? "text-white" : ""}`}
         style={{ color }}
       >
         {children}
@@ -164,7 +164,7 @@ export default function ProcurementFaqPage() {
             <br />
             <span style={{ color: sage }}>FAQ</span>
           </h1>
-          <p className="mt-6 max-w-[680px] text-base leading-[1.55] text-white/85 sm:mt-8 sm:text-xl xl:text-[22px]">
+          <p className="mt-6 max-w-[680px] text-base leading-[1.55] text-white sm:mt-8 sm:text-xl xl:text-[22px]">
             Common questions from procurement, programs, and integration teams
             evaluating Rise Power systems.
           </p>

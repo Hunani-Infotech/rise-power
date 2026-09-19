@@ -162,7 +162,7 @@ function SectionEyebrow({
         />
       </span>
       <p
-        className="text-mm font-semibold tracking-[0.18em] uppercase"
+        className={`text-mm font-semibold tracking-[0.18em] uppercase ${onDark ? "text-white" : ""}`}
         style={{ color }}
       >
         {children}
@@ -238,7 +238,7 @@ export default function ResourcesPage() {
             <span style={{ color: sage }}>Field Notes.</span>
           </h1>
 
-          <p className="mt-6 max-w-[720px] text-base leading-[1.55] text-white/85 sm:mt-8 sm:text-xl xl:text-[22px]">
+          <p className="mt-6 max-w-[720px] text-base leading-[1.55] text-white sm:mt-8 sm:text-xl xl:text-[22px]">
             Datasheets, procurement guidance, and field updates for programs,
             integration, and buying teams evaluating Rise Power systems.
           </p>
@@ -429,7 +429,7 @@ export default function ResourcesPage() {
                 <br />
                 <span style={{ color: sage }}>The Hardware.</span>
               </h2>
-              <p className="mt-5 max-w-[540px] text-base leading-[1.55] text-white/75 sm:text-lg">
+              <p className="mt-5 max-w-[540px] text-base leading-[1.55] text-white sm:text-lg">
                 Open any system for engineering targets, form factor notes, and
                 briefing-gated datasheets.
               </p>
@@ -468,7 +468,7 @@ export default function ResourcesPage() {
                     <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-white uppercase sm:text-2xl">
                       {system.name}
                     </h3>
-                    <p className="mt-2 text-sm text-white/70">{system.label}</p>
+                    <p className="mt-2 text-sm text-white">{system.label}</p>
                     <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.1em] text-white uppercase">
                       View Specs
                       <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -507,7 +507,7 @@ export default function ResourcesPage() {
                   <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-white uppercase sm:text-2xl">
                     {system.name}
                   </h3>
-                  <p className="mt-2 text-sm text-white/70">{system.label}</p>
+                  <p className="mt-2 text-sm text-white">{system.label}</p>
                   <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.1em] text-white uppercase">
                     View Specs
                     <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />

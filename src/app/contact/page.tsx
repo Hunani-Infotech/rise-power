@@ -87,7 +87,7 @@ function SectionEyebrow({
         />
       </span>
       <p
-        className="text-mm font-semibold tracking-[0.18em] uppercase"
+        className={`text-mm font-semibold tracking-[0.18em] uppercase ${light ? "text-white" : ""}`}
         style={{ color }}
       >
         {children}
@@ -113,7 +113,7 @@ export default function ContactPage() {
             Briefing
           </h1>
 
-          <p className="mt-4 max-w-[650px] text-base leading-[1.55] text-white/85 sm:mt-5 sm:text-xl xl:text-[22px]">
+          <p className="mt-4 max-w-[650px] text-base leading-[1.55] text-white sm:mt-5 sm:text-xl xl:text-[22px]">
             For procurement, programs, and integration leads. Tell us your
             operating environment and we will respond with specs, runtime data,
             and a deployment summary.

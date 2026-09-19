@@ -115,7 +115,7 @@ export default function DatasheetsPage() {
             Datasheets
           </h1>
 
-          <p className="mt-6 max-w-[760px] text-base leading-[1.55] text-white/85 sm:mt-8 sm:text-xl xl:text-[22px]">
+          <p className="mt-6 max-w-[760px] text-base leading-[1.55] text-white sm:mt-8 sm:text-xl xl:text-[22px]">
             Technical specifications for Rise Power systems. Beta-stage hardware
             in active validation — full datasheets are available on briefing
             request as compliance work completes.
@@ -127,7 +127,7 @@ export default function DatasheetsPage() {
             </div>
 
             <div className="px-5 py-5 sm:px-6 sm:py-6">
-              <p className="text-sm leading-[1.6] text-white/90 sm:text-base">
+              <p className="text-sm leading-[1.6] text-white sm:text-base">
                 <span className="font-semibold text-white">
                   Beta technology notice:
                 </span>{" "}

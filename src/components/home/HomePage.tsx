@@ -87,7 +87,7 @@ export function HomePage() {
 
         <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:px-10 xl:pt-32 xl:pb-14">
           <div className="flex flex-col justify-center xl:pt-10">
-            <div className="hero-animate-copy max-w-xl lg:max-w-3xl xl:max-w-4xl">
+            <div className="hero-animate-copy max-w-xl lg:max-w-3xl xl:max-w-4xl [&_p]:!text-white">
               <p className="type-eyebrow text-white">
                 {hero.eyebrow}
               </p>
@@ -96,7 +96,7 @@ export function HomePage() {
                 <br />
                 <span style={{ color: sage }}>{hero.headlineLine2}</span>
               </h1>
-              <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/85 sm:text-base lg:text-lg">
+              <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white sm:text-base lg:text-lg">
                 {hero.body}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -137,7 +137,7 @@ export function HomePage() {
                     <p className="font-display text-xs font-bold tracking-[0.08em] text-white uppercase sm:text-sm">
                       {chip.title}
                     </p>
-                    <p className="mt-0.5 text-[11px] leading-snug text-white/70 sm:text-xs">
+                    <p className="mt-0.5 text-[11px] leading-snug text-white sm:text-xs">
                       {chip.subtitle}
                     </p>
                   </div>

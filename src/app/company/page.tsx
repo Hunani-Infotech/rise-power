@@ -146,7 +146,7 @@ function SectionEyebrow({
       </span>
 
       <p
-        className="text-mm font-semibold tracking-[0.18em] uppercase"
+        className={`text-mm font-semibold tracking-[0.18em] uppercase ${light ? "text-white" : ""}`}
         style={{ color }}
       >
         {children}
@@ -214,7 +214,7 @@ export default function CompanyPage() {
             <span style={{ color: "#6e7f42" }}>Field Validated.</span>
           </h1>
 
-          <p className="mt-6 max-w-[760px] text-base leading-[1.55] text-white/85 sm:mt-8 sm:text-xl xl:text-[22px]">
+          <p className="mt-6 max-w-[760px] text-base leading-[1.55] text-white sm:mt-8 sm:text-xl xl:text-[22px]">
             Rise Power is engineered, manufactured, and validated in British
             Columbia. A CIMtech Green Energy company.
           </p>

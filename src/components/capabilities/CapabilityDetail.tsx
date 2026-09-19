@@ -38,7 +38,7 @@ function SectionEyebrow({
         ⌁
       </span>
       <p
-        className="text-mm font-semibold tracking-[0.2em] uppercase"
+        className={`text-mm font-semibold tracking-[0.2em] uppercase ${light ? "text-white" : ""}`}
         style={{ color }}
       >
         {children}
@@ -71,7 +71,7 @@ export function CapabilityDetail({ tabId }: CapabilityDetailProps) {
             {tab.title}
           </h1>
 
-          <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white/80 sm:mt-7 sm:text-lg xl:text-xl">
+          <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white sm:mt-7 sm:text-lg xl:text-xl">
             {tab.heroBody}
           </p>
 
@@ -283,7 +283,7 @@ export function CapabilityDetail({ tabId }: CapabilityDetailProps) {
                   <span style={{ color: sage }}>deployment.</span>
                 </h2>
 
-                <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white/70 sm:text-lg">
+                <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white sm:text-lg">
                   Bring your operating environment, load profile, and
                   integration constraints. We respond with engineering scope,
                   deployment guidance, and a capability brief tailored to your

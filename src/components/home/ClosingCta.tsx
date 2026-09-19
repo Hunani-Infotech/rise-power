@@ -60,7 +60,7 @@ export function ClosingCta() {
                 <span style={{ color: sage }}>{closingCta.headingAccent}</span>
               </h2>
 
-              <p className="type-section-body mt-4 max-w-[650px] !text-white/90 sm:mt-6">
+              <p className="type-section-body mt-4 max-w-[650px] !text-white sm:mt-6">
                 {closingCta.body}
               </p>
             </Reveal>
@@ -123,7 +123,7 @@ export function ClosingCta() {
           {/* Actions only — no repeated headline/body */}
           <Reveal variant="right" delay={120} className="mt-8 sm:mt-10 lg:mt-0">
             <div className="border-t border-white/15 pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
-              <p className="type-eyebrow text-white/80">
+              <p className="type-eyebrow text-white">
                 {closingCta.panelEyebrow}
               </p>
 

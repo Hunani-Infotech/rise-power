@@ -295,7 +295,7 @@ function ProductSystemCard({
           <sup className="ml-1 text-[9px]">™</sup>
         </h3>
 
-        <p className="mt-2 text-[12px] font-medium tracking-[0.08em] text-white/80 uppercase">
+        <p className="mt-2 text-[12px] font-medium tracking-[0.08em] text-white uppercase">
           {product.tagline}
         </p>
 
@@ -356,7 +356,7 @@ export default function ProductsPage() {
             Ecosystem.
           </h1>
 
-          <p className="mt-5 max-w-[540px] text-base leading-relaxed text-white/75 sm:text-lg xl:mt-7">
+          <p className="mt-5 max-w-[540px] text-base leading-relaxed text-white sm:text-lg xl:mt-7">
             Portable hydrogen power engineered for defense, disaster response,
             remote operations, and critical infrastructure.
           </p>
@@ -609,7 +609,7 @@ export default function ProductsPage() {
                         <sup className="ml-1 text-[8px]">™</sup>
                       </h3>
 
-                      <p className="mt-1 text-[10px] font-semibold tracking-[0.12em] text-white/75 uppercase">
+                      <p className="mt-1 text-[10px] font-semibold tracking-[0.12em] text-white uppercase">
                         {product.tagline}
                       </p>
                     </div>

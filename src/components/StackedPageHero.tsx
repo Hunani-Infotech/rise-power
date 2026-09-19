@@ -41,7 +41,7 @@ export function StackedPageHero({
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-14 lg:px-10 xl:min-h-[min(100svh,800px)] xl:pt-32 xl:pb-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-14 lg:px-10 xl:min-h-[min(100svh,800px)] xl:pt-32 xl:pb-20 [&_p]:!text-white">
         {children}
       </div>
     </section>

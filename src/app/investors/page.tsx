@@ -312,16 +312,16 @@ export default function InvestorsPage() {
       >
         <div className="hero-animate-copy max-w-[700px]">
           <div className="flex items-center gap-4">
-            <span className="font-display text-mm font-semibold tracking-[0.2em] text-white uppercase">
+            <p className="font-display text-mm font-semibold tracking-[0.2em] text-white uppercase">
               Investors
-            </span>
+            </p>
           </div>
 
           <h1 className="mt-6 font-display text-[42px] font-bold leading-[0.9] tracking-tight text-white uppercase sm:mt-7 sm:text-[56px] xl:text-[82px]">
             Investors
           </h1>
 
-          <p className="mt-4 max-w-[650px] text-base leading-[1.55] text-white/90 sm:text-xl">
+          <p className="mt-4 max-w-[650px] text-base leading-[1.55] text-white sm:text-xl">
             Rise Power is raising to scale manufacturing, complete certification,
             and fulfill pilot deployments across defense, disaster response, and
             critical infrastructure. Materials and contact below for qualified

@@ -131,7 +131,7 @@ function SectionEyebrow({
       </span>
 
       <p
-        className="text-mm font-semibold tracking-[0.2em] uppercase"
+        className={`text-mm font-semibold tracking-[0.2em] uppercase ${light ? "text-white" : ""}`}
         style={{ color }}
       >
         {children}
@@ -399,7 +399,7 @@ export default function UseCasesPage() {
             <span style={{ color: "#6e7f42" }}>Takes You.</span>
           </h1>
 
-          <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white/80 sm:mt-7 sm:text-lg xl:text-xl">
+          <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white sm:mt-7 sm:text-lg xl:text-xl">
             Hydrogen power engineered for the environments where conventional
             generators fall short.
           </p>
