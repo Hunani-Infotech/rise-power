@@ -168,17 +168,12 @@ export function HomePage() {
       </section>
 
       {/* Standards strip — auto-scroll marquee */}
-      <section
+      {/* <section
         aria-label="Engineered to standards"
         className="border-y border-[#e4e6e0] bg-[#f3f1eb]"
       >
-        <div
-          className={`${pageInset} flex flex-col items-center gap-4 py-5 sm:flex-row sm:gap-8 sm:py-6`}
-        >
-          <p className="shrink-0 text-xs font-semibold tracking-[0.22em] text-[#59615b] uppercase">
-            Engineered To
-          </p>
-          <div className="standards-marquee min-w-0 flex-1">
+        <div className={`${pageInset} py-5 sm:py-6`}>
+          <div className="standards-marquee min-w-0">
             <ul className="standards-marquee__track items-center gap-x-10">
               {[...standards, ...standards].map((label, index) => (
                 <li
@@ -191,7 +186,7 @@ export function HomePage() {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 2. Performance Metrics — Built to Outperform */}
       <section
