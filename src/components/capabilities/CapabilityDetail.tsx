@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
@@ -11,7 +11,6 @@ import {
 import { capabilities } from "@/lib/home-content";
 
 const SAGE = "#6e7f42";
-const SAGE_ACCENT = "#849363";
 const CREAM = "#fbfaf7";
 const MUTED = "#66717d";
 const SECTION_PAD = "py-8 sm:py-10 lg:py-12";
@@ -140,16 +139,7 @@ export function CapabilityDetail({ capability }: CapabilityDetailProps) {
             {capability.heroBody}
           </p>
 
-          <div className="mt-7 flex flex-col gap-3.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-            <Link
-              href={capability.cta.href}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
-              style={{ background: SAGE_ACCENT }}
-            >
-              {capability.cta.label}
-              <ArrowRight className="size-5" aria-hidden />
-            </Link>
-
+          <div className="mt-7 sm:mt-8">
             <Link
               href="/capabilities"
               className="group inline-flex min-h-11 items-center justify-center gap-2.5 rounded-sm border border-white/45 px-6 text-xs font-semibold tracking-[0.12em] text-white uppercase transition-colors hover:border-white hover:bg-white/10 sm:min-h-12 sm:px-7"
@@ -415,29 +405,6 @@ export function CapabilityDetail({ capability }: CapabilityDetailProps) {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Closing CTA — live copy */}
-      <section className="bg-[#101820] py-12 sm:py-16">
-        <div className="mx-auto max-w-[900px] px-6 text-center lg:px-10">
-          <Reveal variant="up">
-            <h2 className="font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl lg:text-5xl">
-              Engineering partnership from prototype to deployment.
-            </h2>
-            <p className="mx-auto mt-5 max-w-[560px] text-base leading-relaxed text-white/75 sm:text-lg">
-              Tell us your operating environment and we&apos;ll respond with the
-              relevant capability brief.
-            </p>
-            <Link
-              href={capability.cta.href}
-              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
-              style={{ background: SAGE_ACCENT }}
-            >
-              {capability.cta.label}
-              <ArrowRight className="size-5" aria-hidden />
-            </Link>
-          </Reveal>
         </div>
       </section>
 
