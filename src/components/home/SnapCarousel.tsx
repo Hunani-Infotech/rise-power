@@ -6,13 +6,15 @@ import {
   useEffect,
   useRef,
   useState,
+  type PointerEvent as ReactPointerEvent,
   type ReactNode,
 } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const SAGE = "#6e7f42";
-const INK = "#161616";
-const CREAM = "#f3f0e8";
+
+/** Keep autoplay paused briefly after a touch/pointer gesture so snap can settle. */
+const AUTOPLAY_RESUME_MS = 2500;
 
 export type SnapCarouselProps = {
   children: ReactNode;
@@ -43,19 +45,58 @@ export function SnapCarousel({
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const reduceMotionRef = useRef(false);
   const activeIndexRef = useRef(0);
+  const resumeTimerRef = useRef<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
+  /**
+   * Scroll only the carousel track. Never use element.scrollIntoView —
+   * on mobile that often scrolls the document vertically as well.
+   */
   function scrollToIndex(index: number) {
     if (count === 0) return;
+    const track = trackRef.current;
+    if (!track) return;
+
     const next = ((index % count) + count) % count;
     const el = itemRefs.current[next];
-    el?.scrollIntoView({
+    if (!el) return;
+
+    const trackRect = track.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const delta =
+      elRect.left - trackRect.left - (track.clientWidth - elRect.width) / 2;
+    const left = Math.max(0, track.scrollLeft + delta);
+
+    track.scrollTo({
+      left,
       behavior: reduceMotionRef.current ? "instant" : "smooth",
-      inline: "center",
-      block: "nearest",
     });
+  }
+
+  function clearResumeTimer() {
+    if (resumeTimerRef.current != null) {
+      window.clearTimeout(resumeTimerRef.current);
+      resumeTimerRef.current = null;
+    }
+  }
+
+  function pauseAutoplay() {
+    clearResumeTimer();
+    setPaused(true);
+  }
+
+  function resumeAutoplay(delayMs = 0) {
+    clearResumeTimer();
+    if (delayMs <= 0) {
+      setPaused(false);
+      return;
+    }
+    resumeTimerRef.current = window.setTimeout(() => {
+      setPaused(false);
+      resumeTimerRef.current = null;
+    }, delayMs);
   }
 
   useEffect(() => {
@@ -72,6 +113,10 @@ export function SnapCarousel({
     sync();
     mq.addEventListener("change", sync);
     return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    return () => clearResumeTimer();
   }, []);
 
   useEffect(() => {
@@ -127,91 +172,102 @@ export function SnapCarousel({
     }
 
     const id = window.setInterval(() => {
-      const next = activeIndexRef.current + 1;
-      const el = itemRefs.current[((next % count) + count) % count];
-      el?.scrollIntoView({
-        behavior: reduceMotionRef.current ? "instant" : "smooth",
-        inline: "center",
-        block: "nearest",
-      });
+      scrollToIndex(activeIndexRef.current + 1);
     }, autoPlayMs);
 
     return () => window.clearInterval(id);
+    // scrollToIndex closes over count/refs; interval only needs pause/autoplay gates
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional
   }, [autoPlayMs, count, paused, reduceMotion]);
 
   if (count === 0) return null;
 
   const canNavigate = count > 1;
 
+  function resumeAfterPointer(e: ReactPointerEvent) {
+    // Mouse hover already owns pause/resume via enter/leave.
+    if (e.pointerType === "mouse") return;
+    resumeAutoplay(AUTOPLAY_RESUME_MS);
+  }
+
+  const showTopArrows = canNavigate && showArrows;
+  const showBottomDots = canNavigate && showDots;
+
+  const arrowBtnClass =
+    "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#ddd8cc] bg-white text-[var(--ink,#161616)] shadow-[0_1px_2px_rgba(22,22,22,0.06)] transition-[color,border-color,background-color,box-shadow,transform] hover:border-[var(--sage,#6e7f42)] hover:text-[var(--sage,#6e7f42)] hover:shadow-[0_2px_8px_rgba(22,22,22,0.08)] active:scale-[0.96] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sage,#6e7f42)]";
+
   return (
     <div
       className={`relative ${className}`}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
+      onMouseEnter={pauseAutoplay}
+      onMouseLeave={() => resumeAutoplay(0)}
+      onPointerDown={pauseAutoplay}
+      onPointerUp={resumeAfterPointer}
+      onPointerCancel={resumeAfterPointer}
+      onFocusCapture={pauseAutoplay}
       onBlurCapture={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
-          setPaused(false);
+          resumeAutoplay(0);
         }
       }}
     >
-      <div className="relative">
-        {showArrows && canNavigate ? (
-          <>
-            <button
-              type="button"
-              aria-label="Previous slide"
-              onClick={() => scrollToIndex(activeIndex - 1)}
-              className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-sm border border-[#ddd8cc] bg-[var(--cream,#f3f0e8)]/95 text-[var(--ink,#161616)] shadow-sm transition-colors hover:border-[#6e7f42] hover:text-[#6e7f42] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6e7f42] sm:left-1"
-              style={{ color: INK, backgroundColor: `${CREAM}f2` }}
-            >
-              <ChevronLeft className="h-5 w-5" aria-hidden />
-            </button>
-            <button
-              type="button"
-              aria-label="Next slide"
-              onClick={() => scrollToIndex(activeIndex + 1)}
-              className="absolute top-1/2 right-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-sm border border-[#ddd8cc] bg-[var(--cream,#f3f0e8)]/95 text-[var(--ink,#161616)] shadow-sm transition-colors hover:border-[#6e7f42] hover:text-[#6e7f42] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6e7f42] sm:right-1"
-              style={{ color: INK, backgroundColor: `${CREAM}f2` }}
-            >
-              <ChevronRight className="h-5 w-5" aria-hidden />
-            </button>
-          </>
-        ) : null}
-
+      {showTopArrows ? (
         <div
-          ref={trackRef}
-          role="region"
-          aria-roledescription="carousel"
-          aria-label={ariaLabel}
-          tabIndex={0}
-          className={`snap-carousel-track flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth outline-none focus-visible:ring-2 focus-visible:ring-[#6e7f42]/40 ${trackClassName}`}
+          className="mb-4 flex items-center justify-end gap-2"
+          role="group"
+          aria-label={`${ariaLabel} controls`}
         >
-          {items.map((child, index) => (
-            <div
-              key={
-                typeof child === "object" &&
-                child !== null &&
-                "key" in child &&
-                child.key != null
-                  ? String(child.key)
-                  : `snap-${index}`
-              }
-              ref={(el) => {
-                itemRefs.current[index] = el;
-              }}
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`Slide ${index + 1} of ${count}`}
-              className={`shrink-0 snap-center ${itemClassName}`}
-            >
-              {child}
-            </div>
-          ))}
+          <button
+            type="button"
+            aria-label="Previous slide"
+            onClick={() => scrollToIndex(activeIndex - 1)}
+            className={arrowBtnClass}
+          >
+            <ChevronLeft className="h-4 w-4" strokeWidth={2} aria-hidden />
+          </button>
+          <button
+            type="button"
+            aria-label="Next slide"
+            onClick={() => scrollToIndex(activeIndex + 1)}
+            className={arrowBtnClass}
+          >
+            <ChevronRight className="h-4 w-4" strokeWidth={2} aria-hidden />
+          </button>
         </div>
+      ) : null}
+
+      <div
+        ref={trackRef}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={ariaLabel}
+        tabIndex={0}
+        className={`snap-carousel-track flex snap-x snap-mandatory gap-4 scroll-smooth outline-none focus-visible:ring-2 focus-visible:ring-[#6e7f42]/40 ${trackClassName}`}
+      >
+        {items.map((child, index) => (
+          <div
+            key={
+              typeof child === "object" &&
+              child !== null &&
+              "key" in child &&
+              child.key != null
+                ? String(child.key)
+                : `snap-${index}`
+            }
+            ref={(el) => {
+              itemRefs.current[index] = el;
+            }}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`Slide ${index + 1} of ${count}`}
+            className={`shrink-0 snap-center ${itemClassName}`}
+          >
+            {child}
+          </div>
+        ))}
       </div>
 
-      {showDots && canNavigate ? (
+      {showBottomDots ? (
         <div
           className="mt-5 flex items-center justify-center gap-2"
           role="tablist"
@@ -227,9 +283,9 @@ export function SnapCarousel({
                 aria-selected={isActive}
                 aria-label={`Go to slide ${index + 1}`}
                 onClick={() => scrollToIndex(index)}
-                className="h-1.5 w-4 rounded-[1px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6e7f42]"
+                className="h-1.5 w-4 rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sage,#6e7f42)]"
                 style={{
-                  backgroundColor: isActive ? SAGE : "#ddd8cc",
+                  backgroundColor: isActive ? SAGE : "#cfc9bb",
                 }}
               />
             );

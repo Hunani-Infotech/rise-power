@@ -1,130 +1,3 @@
-// import Image from "next/image";
-// import Link from "next/link";
-// import type { LucideIcon } from "lucide-react";
-// import {
-//   ArrowRight,
-//   Download,
-//   Lock,
-//   RefreshCw,
-//   ShieldCheck,
-//   VolumeX,
-// } from "lucide-react";
-// import { closingCta } from "@/lib/home-content";
-// import { Reveal, RevealStagger } from "@/components/motion/Reveal";
-
-// const sage = "#6e7f42";
-// const cream = "#f3efe4";
-
-// const chipIcons: LucideIcon[] = [ShieldCheck, VolumeX, RefreshCw, Lock];
-
-// export function ClosingCta() {
-//   return (
-//     <section
-//       id="demo"
-//       className="relative w-full overflow-hidden py-16 text-[#f3efe4] sm:py-20 lg:py-24"
-//     >
-//       <Image
-//         src={closingCta.imageSrc ?? "/media/cta/closing.jpg"}
-//         alt={closingCta.image}
-//         fill
-//         quality={75}
-//         className="object-cover object-center"
-//         sizes="100vw"
-//         priority={false}
-//       />
-//       <div className="absolute inset-0 bg-[#0b0e0c]/72" />
-//       <div className="absolute inset-0 bg-linear-to-r from-[#0b0e0c]/85 via-[#0b0e0c]/45 to-[#0b0e0c]/70" />
-//       <div className="absolute inset-0 bg-linear-to-t from-[#0b0e0c]/80 via-transparent to-[#0b0e0c]/35" />
-
-//       <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
-//         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
-//           <Reveal variant="up">
-//             <h2 className="max-w-xl font-display text-4xl leading-[0.92] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
-//               {closingCta.headingBefore}
-//               <br />
-//               <span style={{ color: sage }}>{closingCta.headingAccent}</span>
-//             </h2>
-//             <p className="mt-5 max-w-lg text-sm leading-relaxed text-[#f3efe4]/80 sm:text-base">
-//               {closingCta.body}
-//             </p>
-//           </Reveal>
-
-//           <Reveal
-//             variant="right"
-//             delay={120}
-//             className="border border-white/15 bg-[#0b0e0c]/55 p-6 backdrop-blur-md sm:p-8"
-//           >
-//             <p
-//               className="text-[11px] font-semibold tracking-[0.2em] uppercase"
-//               style={{ color: sage }}
-//             >
-//               {closingCta.panelEyebrow}
-//             </p>
-//             <h3 className="mt-3 font-display text-2xl leading-tight font-semibold tracking-tight text-white sm:text-3xl">
-//               {closingCta.panelHeading}
-//             </h3>
-//             <p className="mt-3 text-sm leading-relaxed text-[#f3efe4]/75">
-//               {closingCta.panelBody}
-//             </p>
-//             <div className="mt-6 flex flex-col gap-3 lg:flex-row">
-//               <Link
-//                 href={closingCta.primaryCta.href}
-//                 className="motion-hover-glow inline-flex min-h-12 items-center justify-center gap-2 px-6 text-sm font-semibold tracking-wide uppercase"
-//                 style={{ background: sage, color: cream }}
-//               >
-//                 {closingCta.primaryCta.label}
-//                 <ArrowRight className="size-4" />
-//               </Link>
-//               <Link
-//                 href={closingCta.secondaryCta.href}
-//                 className="inline-flex min-h-12 items-center justify-center gap-2 border border-[#f3efe4]/70 px-6 text-sm font-semibold tracking-wide text-[#f3efe4] uppercase transition-colors hover:bg-[#f3efe4]/10"
-//               >
-//                 <Download className="size-4" />
-//                 {closingCta.secondaryCta.label}
-//               </Link>
-//             </div>
-//           </Reveal>
-//         </div>
-
-//         <RevealStagger
-//           className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:mt-16"
-//           step={80}
-//           variant="up"
-//           baseDelay={80}
-//         >
-//           {closingCta.chips.map((chip, index) => {
-//             const Icon = chipIcons[index] ?? ShieldCheck;
-//             return (
-//               <div key={chip.title} className="flex flex-col items-start gap-3">
-//                 <span
-//                   className="grid size-11 place-items-center rounded-full border"
-//                   style={{ borderColor: `${sage}99`, color: sage }}
-//                   aria-hidden
-//                 >
-//                   <Icon className="size-5" strokeWidth={1.6} />
-//                 </span>
-//                 <div>
-//                   <p
-//                     className="text-[11px] font-semibold tracking-[0.14em] uppercase"
-//                     style={{ color: sage }}
-//                   >
-//                     {chip.title}
-//                   </p>
-//                   <p className="mt-1 text-[12px] leading-snug text-[#f3efe4]/70">
-//                     {chip.subtitle}
-//                   </p>
-//                 </div>
-//               </div>
-//             );
-//           })}
-//         </RevealStagger>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
 import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
@@ -151,153 +24,129 @@ const chipIcons: LucideIcon[] = [
 
 export function ClosingCta() {
   return (
-    <>
-      <section
-        id="demo"
-        className="relative w-full overflow-hidden text-[#f3efe4]"
-      >
-        <Image
-          src={closingCta.imageSrc ?? "/media/cta/closing.jpg"}
-          alt={closingCta.image}
-          fill
-          quality={85}
-          className="object-cover object-center"
-          sizes="100vw"
-        />
+    <section
+      id="demo"
+      className="relative w-full overflow-hidden text-[#f3efe4]"
+    >
+      <Image
+        src={closingCta.imageSrc ?? "/media/cta/closing.jpg"}
+        alt={closingCta.image}
+        fill
+        quality={85}
+        className="object-cover object-center"
+        sizes="100vw"
+      />
 
-        {/* <div className="absolute inset-0 bg-[#061018]/75" />
-        <div className="absolute inset-0 bg-linear-to-r from-[#061018]/95 via-[#061018]/60 to-[#061018]/35" />
-        <div className="absolute inset-0 bg-linear-to-t from-[#061018]/90 via-transparent to-[#061018]/25" /> */}
+      {/* Overall dark mood */}
+      <div className="absolute inset-0 bg-[#061018]/55" />
 
-        {/* Overall dark mood */}
-        <div className="absolute inset-0 bg-[#061018]/55" />
+      {/* Left text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#061018]/95 via-[#061018]/70 to-transparent" />
 
-        {/* Left text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061018]/95 via-[#061018]/70 to-transparent" />
+      {/* Right side slight dark */}
+      <div className="absolute inset-0 bg-gradient-to-l from-[#061018]/45 via-transparent to-transparent" />
 
-        {/* Right side slight dark */}
-        <div className="absolute inset-0 bg-gradient-to-l from-[#061018]/45 via-transparent to-transparent" />
+      {/* Bottom cinematic fade */}
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#061018]/75 via-transparent to-transparent" />
 
-        {/* Bottom cinematic fade */}
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#061018]/75 via-transparent to-transparent" />
+      <div className="relative mx-auto w-full max-w-[1716px] px-5 py-10 sm:px-8 sm:py-14 lg:px-10 lg:py-20">
+        <div className="grid items-center lg:grid-cols-[1.45fr_0.7fr] lg:gap-8">
+          {/* Story — shown once */}
+          <Reveal variant="up" className="max-w-[780px]">
+            <h2 className="type-section-h2">
+              {closingCta.headingBefore}
+              <br />
+              <span style={{ color: sage }}>{closingCta.headingAccent}</span>
+            </h2>
 
-        <div className="relative mx-auto w-full max-w-[1716px] px-6 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-          <div className="grid items-center lg:grid-cols-[1.45fr_0.7fr] lg:gap-8">
-            {/* Left */}
-            <Reveal variant="up" className="max-w-[780px]">
-              <h2 className="type-section-h2">
-                {closingCta.headingBefore}
-                <br />
-                <span style={{ color: sage }}>
-                  {closingCta.headingAccent}
-                </span>
-              </h2>
+            <p className="type-section-body mt-4 max-w-[650px] !text-white/90 sm:mt-6">
+              {closingCta.body}
+            </p>
 
-              <p className="type-section-body mt-6 max-w-[650px] !text-white/90">
-                {closingCta.body}
-              </p>
+            <RevealStagger
+              className="mt-7 grid grid-cols-2 gap-x-4 gap-y-4 sm:mt-9 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-6 lg:mt-11"
+              step={70}
+              variant="up"
+              baseDelay={80}
+            >
+              {closingCta.chips.map((chip, index) => {
+                const Icon = chipIcons[index] ?? ShieldCheck;
 
-              <RevealStagger
-                className="mt-9 grid grid-cols-2 gap-x-5 gap-y-6 sm:grid-cols-4 sm:gap-x-4 lg:mt-11"
-                step={70}
-                variant="up"
-                baseDelay={80}
-              >
-                {closingCta.chips.map((chip, index) => {
-                  const Icon = chipIcons[index] ?? ShieldCheck;
-
-                  return (
-                    <div
-                      key={chip.title}
-                      className="group relative flex min-w-0 items-start gap-3"
+                return (
+                  <div
+                    key={chip.title}
+                    className="group relative flex min-w-0 items-start gap-2.5 sm:gap-3"
+                  >
+                    <span
+                      className="relative grid size-9 shrink-0 place-items-center rounded-full sm:size-11"
+                      aria-hidden
                     >
                       <span
-                        className="relative grid size-10 shrink-0 place-items-center rounded-full sm:size-11"
+                        className="absolute inset-0 rounded-full opacity-35 transition-opacity duration-300 group-hover:opacity-60"
+                        style={{
+                          background: `radial-gradient(circle, ${sage}40 0%, transparent 72%)`,
+                        }}
+                      />
+                      <span
+                        className="absolute inset-0 rounded-full border"
+                        style={{ borderColor: `${sage}70` }}
+                      />
+                      <span className="absolute inset-[2px] rounded-full border border-white/10 bg-[#061018]/40" />
+                      <Icon
+                        className="relative size-4 sm:size-[18px]"
+                        strokeWidth={1.45}
+                        style={{ color: cream }}
+                      />
+                    </span>
+
+                    <div className="min-w-0 pt-0.5">
+                      <p className="type-card-label text-[10px] leading-tight text-white sm:text-[11px]">
+                        {chip.title}
+                      </p>
+                      <p className="type-card-body-on-dark mt-0.5 hidden sm:block">
+                        {chip.subtitle}
+                      </p>
+                      <span
+                        className="mt-1.5 hidden h-px w-6 origin-left transition-transform duration-300 group-hover:scale-x-125 sm:mt-2 sm:block"
+                        style={{ background: sage }}
                         aria-hidden
-                      >
-                        <span
-                          className="absolute inset-0 rounded-full opacity-35 transition-opacity duration-300 group-hover:opacity-60"
-                          style={{
-                            background: `radial-gradient(circle, ${sage}40 0%, transparent 72%)`,
-                          }}
-                        />
-                        <span
-                          className="absolute inset-0 rounded-full border"
-                          style={{ borderColor: `${sage}70` }}
-                        />
-                        <span className="absolute inset-[2px] rounded-full border border-white/10 bg-[#061018]/40" />
-                        <Icon
-                          className="relative size-[17px] sm:size-[18px]"
-                          strokeWidth={1.45}
-                          style={{ color: cream }}
-                        />
-                      </span>
-
-                      <div className="min-w-0 pt-0.5">
-                        <p className="type-card-label text-white">
-                          {chip.title}
-                        </p>
-                        <p className="type-card-body-on-dark mt-1">
-                          {chip.subtitle}
-                        </p>
-                        <span
-                          className="mt-2 block h-px w-6 origin-left transition-transform duration-300 group-hover:scale-x-125"
-                          style={{ background: sage }}
-                          aria-hidden
-                        />
-                      </div>
+                      />
                     </div>
-                  );
-                })}
-              </RevealStagger>
-            </Reveal>
+                  </div>
+                );
+              })}
+            </RevealStagger>
+          </Reveal>
 
-            {/* Right CTA */}
-            <Reveal
-              variant="right"
-              delay={120}
-              className="mt-10 lg:mt-0"
-            >
-              <div className="border-l-0 border-white/15 pl-0 lg:border-l lg:pl-10">
-                <p className="type-eyebrow text-white/90">
-                  {closingCta.panelEyebrow}
-                </p>
+          {/* Actions only — no repeated headline/body */}
+          <Reveal variant="right" delay={120} className="mt-8 sm:mt-10 lg:mt-0">
+            <div className="border-t border-white/15 pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
+              <p className="type-eyebrow text-white/80">
+                {closingCta.panelEyebrow}
+              </p>
 
-                <h3 className="type-card-title-lg mt-3 max-w-[430px] text-white">
-                  {closingCta.panelHeading}
-                </h3>
+              <div className="mt-4 flex max-w-[430px] flex-col gap-2.5 sm:mt-6 sm:gap-3">
+                <Link
+                  href={closingCta.primaryCta.href}
+                  className="type-cta motion-hover-glow inline-flex min-h-11 items-center justify-center gap-3 rounded-sm bg-[#849363] px-6 transition-transform hover:-translate-y-0.5 sm:min-h-12"
+                  style={{ color: cream }}
+                >
+                  {closingCta.primaryCta.label}
+                  <ArrowRight className="size-5" />
+                </Link>
 
-                <p className="type-card-body-on-dark mt-4 max-w-[430px]">
-                  {closingCta.panelBody}
-                </p>
-
-                <div className="mt-6 flex max-w-[430px] flex-col gap-3">
-                  <Link
-                    href={closingCta.primaryCta.href}
-                    className="type-cta motion-hover-glow inline-flex min-h-12 items-center justify-center gap-3 px-6 transition-transform hover:-translate-y-0.5 rounded-sm bg-[#849363]"
-                    style={{
-                      color: cream,
-                    }}
-                  >
-                    {closingCta.primaryCta.label}
-                    <ArrowRight className="size-5" />
-                  </Link>
-
-                  <Link
-                    href={closingCta.secondaryCta.href}
-                    className="type-cta inline-flex min-h-12 items-center justify-center gap-3 border border-[#f3efe4]/50 px-6 text-[#f3efe4] transition-colors hover:bg-white/10 rounded-sm"
-                  >
-                    {closingCta.secondaryCta.label}
-                    <Download className="size-5" />
-                  </Link>
-                </div>
+                <Link
+                  href={closingCta.secondaryCta.href}
+                  className="type-cta inline-flex min-h-11 items-center justify-center gap-3 rounded-sm border border-[#f3efe4]/50 px-6 text-[#f3efe4] transition-colors hover:bg-white/10 sm:min-h-12"
+                >
+                  {closingCta.secondaryCta.label}
+                  <Download className="size-5" />
+                </Link>
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
-      </section>
-
-      {/* <Footer /> */}
-    </>
+      </div>
+    </section>
   );
 }

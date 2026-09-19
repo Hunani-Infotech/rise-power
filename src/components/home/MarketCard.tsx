@@ -57,16 +57,16 @@ export function MarketRow({
         ) : (
           <PlaceholderMedia
             label={imageLabel}
-            className="absolute inset-0 min-h-full"
+            className="absolute inset-0 min-h-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
           />
         )}
 
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a1c16]/35 via-transparent to-transparent opacity-40"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a1c16]/35 via-transparent to-transparent opacity-40 transition-opacity duration-300 group-hover:opacity-55"
           aria-hidden
         />
 
-        <span className="absolute top-3 left-3 z-10 inline-flex min-w-9 items-center justify-center bg-[#6e7f42] px-2 py-1.5 font-display text-xs font-bold tracking-[0.14em] text-white tabular-nums shadow-[0_8px_20px_-10px_rgba(110,127,66,0.9)] sm:top-4 sm:left-4 sm:min-w-10 sm:text-sm">
+        <span className="market-card__index absolute top-3 left-3 z-10 inline-flex min-w-9 items-center justify-center bg-[#6e7f42] px-2 py-1.5 font-display text-xs font-bold tracking-[0.14em] text-white tabular-nums shadow-[0_8px_20px_-10px_rgba(110,127,66,0.9)] sm:top-4 sm:left-4 sm:min-w-10 sm:text-sm">
           {index}
         </span>
       </div>

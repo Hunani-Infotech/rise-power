@@ -681,9 +681,6 @@ export const closingCta = {
   headingAccent: "CAPABILITY BRIEFING.",
   body: "For procurement, programs, and integration leads evaluating hydrogen power for serious deployments. We will respond with specs, runtime data, and a deployment summary tailored to your operating environment.",
   panelEyebrow: "READY TO DISCUSS YOUR REQUIREMENTS?",
-  panelHeading: "Request a capability briefing.",
-  panelBody:
-    "For procurement, programs, and integration leads evaluating hydrogen power for serious deployments. We will respond with specs, runtime data, and a deployment summary tailored to your operating environment.",
   primaryCta: { label: "REQUEST A BRIEFING", href: "/contact" } satisfies Cta,
   secondaryCta: { label: "SEE USE CASES", href: "/use-cases" } satisfies Cta,
   chips: [

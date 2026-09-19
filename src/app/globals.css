@@ -302,7 +302,10 @@ h4 {
 }
 
 .market-card {
-  transition: none;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.4s ease;
 }
 
 .market-card--expanded {
@@ -310,17 +313,64 @@ h4 {
   z-index: auto;
 }
 
-.market-card__media,
-.market-card__copy {
-  transition: none;
+.market-card__media img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.market-card__index {
+  transition:
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .market-card__cta {
-  transition: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .market-card__cta-arrow {
-  transition: none;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .market-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(110, 127, 66, 0.45);
+    box-shadow:
+      0 18px 40px -28px rgba(26, 28, 22, 0.35),
+      0 8px 16px -12px rgba(110, 127, 66, 0.2);
+  }
+
+  .market-card:hover .market-card__media img {
+    transform: scale(1.06);
+  }
+
+  .market-card:hover .market-card__index {
+    background-color: var(--sage-dark);
+    box-shadow: 0 10px 22px -12px rgba(61, 74, 40, 0.85);
+  }
+
+  .market-card:hover .market-card__cta,
+  .market-card:focus-within .market-card__cta {
+    background-color: var(--ink);
+    border-color: var(--ink);
+    color: var(--cream);
+  }
+
+  .market-card:hover .market-card__cta-arrow,
+  .market-card:focus-within .market-card__cta-arrow {
+    transform: translateX(3px);
+  }
+
+  .market-card__cta:hover,
+  .market-card__cta:focus-visible {
+    background-color: var(--sage);
+    border-color: var(--sage);
+    color: var(--cream);
+  }
 }
 
 .motion-hover-lift {
@@ -464,7 +514,26 @@ h4 {
 .snap-carousel-track {
   scrollbar-width: none;
   -ms-overflow-style: none;
+  overflow-x: auto;
+  /* Contain only horizontal overscroll so swipe stays in-track.
+     Do not set overscroll-behavior-y — it blocks vertical wheel/trackpad
+     scroll chaining to the page when the pointer is over the carousel. */
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
+
+/*
+  Desktop (mouse/trackpad): do not make the track a wheel scrollport.
+  That restores native smooth page scroll while hovering cards.
+  Arrows/dots still move slides via programmatic scrollLeft.
+  Touch devices keep overflow-x: auto for swipe.
+*/
+@media (hover: hover) and (pointer: fine) {
+  .snap-carousel-track {
+    overflow-x: hidden;
+  }
+}
+
 .snap-carousel-track::-webkit-scrollbar {
   display: none;
 }
@@ -531,19 +600,24 @@ h4 {
   .markets-showcase-grid,
   .market-card,
   .market-card__media,
+  .market-card__media img,
   .market-card__copy,
+  .market-card__index,
   .market-card__cta,
   .market-card__cta-arrow {
     transition: none !important;
   }
 
   .motion-hover-lift:hover,
-  .motion-hover-glow:hover {
+  .motion-hover-glow:hover,
+  .market-card:hover {
     transform: none !important;
+    box-shadow: none !important;
   }
 
-  .market-card img {
-    transition: none !important;
+  .market-card:hover .market-card__media img,
+  .market-card:hover .market-card__cta-arrow {
+    transform: none !important;
   }
 
   .partner-marquee__track,
