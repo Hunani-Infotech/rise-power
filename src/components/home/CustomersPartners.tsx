@@ -224,6 +224,8 @@ export function CustomersPartners() {
             ariaLabel="Customer success cases"
             showArrows
             showDots
+            loop
+            autoPlayMs={5000}
             itemClassName="w-[min(100%,22rem)] sm:w-[min(100%,26rem)] shrink-0"
           >
             {cases.map((item, index) => (

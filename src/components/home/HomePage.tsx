@@ -293,6 +293,7 @@ export function HomePage() {
               ariaLabel="Product ecosystem steps"
               showArrows
               showDots
+              arrowPlacement="bottom"
               itemClassName="w-[min(85vw,18rem)] sm:w-[min(70vw,20rem)]"
               trackClassName="gap-5 px-1 pb-1"
             >
@@ -373,6 +374,7 @@ export function HomePage() {
               ariaLabel="Featured products"
               showArrows
               showDots
+              loop
               autoPlayMs={5500}
               itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)]"
               trackClassName="gap-4 px-1 pb-1"
