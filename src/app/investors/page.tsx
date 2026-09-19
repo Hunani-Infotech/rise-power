@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SnapCarousel } from "@/components/home/SnapCarousel";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { pageMetadata } from "@/lib/seo";
@@ -170,6 +171,125 @@ function SectionHeading({
         </p>
       )}
     </div>
+  );
+}
+
+const pressUpdates = [
+  {
+    number: "01",
+    image: "/media/investors/investor-p1.png",
+    imageAlt: "Rise Power hydrogen power system",
+    title: (
+      <>
+        Rise Power Completes
+        <br />
+        Phase II Development
+        <br />
+        Milestone
+      </>
+    ),
+    meta: "2026-02-10",
+    category: "Company News",
+    body: "Rise Power engineering has reached a development milestone on the portable hydrogen power system, validating core performance targets ahead of schedule.",
+  },
+  {
+    number: "02",
+    image: "/media/investors/investor-p2.png",
+    imageAlt: "Rise Power field testing",
+    title: (
+      <>
+        Field Testing Validates
+        <br />
+        Extended Runtime
+        <br />
+        Targets
+      </>
+    ),
+    meta: "2025-12-02",
+    category: "Technology",
+    body: "Recent field testing has validated performance targets for the cartridge based fuel delivery system across a range of environmental conditions.",
+  },
+  {
+    number: "03",
+    image: "/media/investors/investor-p3.png",
+    imageAlt: "Hydrogen power for defense applications",
+    title: (
+      <>
+        Understanding Hydrogen
+        <br />
+        Power for Defense
+        <br />
+        Applications
+      </>
+    ),
+    meta: "2025-11-18",
+    category: "Resources",
+    body: "A primer on hydrogen fuel cell technology for defense power applications, and how it compares to diesel and lithium alternatives.",
+  },
+  {
+    number: "04",
+    image: "/media/investors/investor-p4.png",
+    imageAlt: "Rise Power engineering team and technology",
+    title: (
+      <>
+        Rise Power Expands
+        <br />
+        Engineering Team
+      </>
+    ),
+    meta: "2025-10-05",
+    category: "Company News",
+    body: "Rise Power is expanding the engineering team with additional power electronics and thermal management capacity.",
+  },
+] as const;
+
+function PressCard({ item }: { item: (typeof pressUpdates)[number] }) {
+  return (
+    <article className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d9dfe3] bg-white">
+      <div className="relative aspect-[1.65/1] overflow-hidden">
+        <Image
+          src={item.image}
+          alt={item.imageAlt}
+          fill
+          sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 88vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+        />
+      </div>
+
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <div className="flex items-center gap-4">
+          <span className="font-display text-2xl font-bold text-[#52a526]">
+            {item.number}
+          </span>
+
+          <span className="h-px w-[105px] bg-[#b9c1c7]" />
+        </div>
+
+        <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
+          {item.title}
+        </h3>
+
+        <p className="mt-4 text-[11px] font-semibold tracking-[0.14em] text-[#66727d] uppercase">
+          {item.meta}
+          <span className="mx-2 text-[#aab1b7]">·</span>
+          {item.category}
+        </p>
+
+        <p className="mt-4 text-[16px] leading-[1.4] text-[#65717d]">
+          {item.body}
+        </p>
+
+        <div className="mt-auto pt-7">
+          <Link
+            href="/resources"
+            className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
+          >
+            Read More
+            <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -592,225 +712,27 @@ export default function InvestorsPage() {
             />
           </Reveal>
 
-          {/* News cards */}
-          <RevealStagger className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4" step={90}>
-
-            {/* 01 */}
-            <article className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d9dfe3] bg-white">
-
-              <div className="relative aspect-[1.65/1] overflow-hidden">
-                <Image
-                  src="/media/investors/investor-p1.png"
-                  alt="Rise Power hydrogen power system"
-                  fill
-                  sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-              </div>
-
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
-
-                <div className="flex items-center gap-4">
-                  <span className="font-display text-2xl font-bold text-[#52a526]">
-                    01
-                  </span>
-
-                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
-                </div>
-
-                <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
-                  Rise Power Completes
-                  <br />
-                  Phase II Development
-                  <br />
-                  Milestone
-                </h3>
-
-                <p className="mt-4 text-[11px] font-semibold tracking-[0.14em] text-[#66727d] uppercase">
-                  2026-02-10
-                  <span className="mx-2 text-[#aab1b7]">·</span>
-                  Company News
-                </p>
-
-                <p className="mt-4 text-[16px] leading-[1.4] text-[#65717d]">
-                  Rise Power engineering has reached a development milestone
-                  on the portable hydrogen power system, validating core
-                  performance targets ahead of schedule.
-                </p>
-
-                <div className="mt-auto pt-7">
-                  <Link
-                    href="/resources"
-                    className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
-                  >
-                    Read More
-                    <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
-            </article>
-
-            {/* 02 */}
-            <article className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d9dfe3] bg-white">
-
-              <div className="relative aspect-[1.65/1] overflow-hidden">
-                <Image
-                  src="/media/investors/investor-p2.png"
-                  alt="Rise Power field testing"
-                  fill
-                  sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-              </div>
-
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
-
-                <div className="flex items-center gap-4">
-                  <span className="font-display text-2xl font-bold text-[#52a526]">
-                    02
-                  </span>
-
-                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
-                </div>
-
-                <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
-                  Field Testing Validates
-                  <br />
-                  Extended Runtime
-                  <br />
-                  Targets
-                </h3>
-
-                <p className="mt-4 text-[11px] font-semibold tracking-[0.14em] text-[#66727d] uppercase">
-                  2025-12-02
-                  <span className="mx-2 text-[#aab1b7]">·</span>
-                  Technology
-                </p>
-
-                <p className="mt-4 text-[16px] leading-[1.4] text-[#65717d]">
-                  Recent field testing has validated performance targets for
-                  the cartridge based fuel delivery system across a range of
-                  environmental conditions.
-                </p>
-
-                <div className="mt-auto pt-7">
-                  <Link
-                    href="/resources"
-                    className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
-                  >
-                    Read More
-                    <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
-            </article>
-
-            {/* 03 */}
-            <article className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d9dfe3] bg-white">
-
-              <div className="relative aspect-[1.65/1] overflow-hidden">
-                <Image
-                  src="/media/investors/investor-p3.png"
-                  alt="Hydrogen power for defense applications"
-                  fill
-                  sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-              </div>
-
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
-
-                <div className="flex items-center gap-4">
-                  <span className="font-display text-2xl font-bold text-[#52a526]">
-                    03
-                  </span>
-
-                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
-                </div>
-
-                <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
-                  Understanding Hydrogen
-                  <br />
-                  Power for Defense
-                  <br />
-                  Applications
-                </h3>
-
-                <p className="mt-4 text-[11px] font-semibold tracking-[0.14em] text-[#66727d] uppercase">
-                  2025-11-18
-                  <span className="mx-2 text-[#aab1b7]">·</span>
-                  Resources
-                </p>
-
-                <p className="mt-4 text-[16px] leading-[1.4] text-[#65717d]">
-                  A primer on hydrogen fuel cell technology for defense power
-                  applications, and how it compares to diesel and lithium
-                  alternatives.
-                </p>
-
-                <div className="mt-auto pt-7">
-                  <Link
-                    href="/resources"
-                    className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
-                  >
-                    Read More
-                    <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
-            </article>
-
-            {/* 04 */}
-            <article className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d9dfe3] bg-white">
-
-              <div className="relative aspect-[1.65/1] overflow-hidden">
-                <Image
-                  src="/media/investors/investor-p4.png"
-                  alt="Rise Power engineering team and technology"
-                  fill
-                  sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-              </div>
-
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
-
-                <div className="flex items-center gap-4">
-                  <span className="font-display text-2xl font-bold text-[#52a526]">
-                    04
-                  </span>
-
-                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
-                </div>
-
-                <h3 className="mt-2 font-display text-[25px] font-bold leading-[1.05] tracking-tight text-[#101820]">
-                  Rise Power Expands
-                  <br />
-                  Engineering Team
-                </h3>
-
-                <p className="mt-4 text-[11px] font-semibold tracking-[0.14em] text-[#66727d] uppercase">
-                  2025-10-05
-                  <span className="mx-2 text-[#aab1b7]">·</span>
-                  Company News
-                </p>
-
-                <p className="mt-4 text-[16px] leading-[1.4] text-[#65717d]">
-                  Rise Power is expanding the engineering team with additional
-                  power electronics and thermal management capacity.
-                </p>
-
-                <div className="mt-auto pt-7">
-                  <Link
-                    href="/resources"
-                    className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.06em] text-[#101820] uppercase transition-colors hover:text-[#55a326]"
-                  >
-                    Read More
-                    <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
-            </article>
+          {/* News cards — carousel below xl, 4-col grid from xl */}
+          <div className="mt-12 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Press and updates"
+              showArrows
+              showDots
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {pressUpdates.map((item) => (
+                <PressCard key={item.number} item={item} />
+              ))}
+            </SnapCarousel>
+          </div>
+          <RevealStagger
+            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4"
+            step={90}
+          >
+            {pressUpdates.map((item) => (
+              <PressCard key={item.number} item={item} />
+            ))}
           </RevealStagger>
 
           {/* View all */}

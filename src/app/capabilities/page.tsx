@@ -9,6 +9,7 @@ import {
   Weight,
 } from "lucide-react";
 
+import { SnapCarousel } from "@/components/home/SnapCarousel";
 import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { capabilities, performanceMetrics } from "@/lib/home-content";
@@ -59,6 +60,95 @@ function SectionEyebrow({
 }
 
 const metricIcons = [VolumeX, Leaf, ShieldCheck, Weight] as const;
+
+type CapabilityTab = (typeof capabilities.tabs)[number];
+type GalleryItem = (typeof capabilities.gallery)[number];
+
+function PillarCard({
+  tab,
+  index,
+}: {
+  tab: CapabilityTab;
+  index: number;
+}) {
+  return (
+    <Reveal variant="fade" delay={index * 70}>
+      <Link
+        href={tab.href}
+        className="group relative block min-h-[340px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713] sm:min-h-[380px] lg:min-h-[360px]"
+      >
+        <Image
+          src={tab.imageSrc}
+          alt={tab.imageAlt}
+          fill
+          sizes="(min-width: 1280px) 50vw, (min-width: 640px) 70vw, 100vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/92 via-[#07100d]/55 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/70 via-transparent to-transparent" />
+
+        <div className="absolute inset-0 flex flex-col justify-between p-7 sm:p-8 lg:p-9">
+          <div>
+            <div className="flex items-center gap-4">
+              <span
+                className="font-display text-4xl leading-none font-bold"
+                style={{ color: sage }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span
+                className="h-px w-16"
+                style={{ background: sage }}
+                aria-hidden
+              />
+            </div>
+            <h3 className="mt-5 max-w-[360px] font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl">
+              {tab.title}
+            </h3>
+            <p className="mt-4 max-w-[400px] text-sm leading-relaxed text-white/85 sm:text-base">
+              {tab.body}
+            </p>
+          </div>
+
+          <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] text-white uppercase">
+            Learn More
+            <ArrowRight
+              className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+              style={{ color: sage }}
+              aria-hidden
+            />
+          </span>
+        </div>
+      </Link>
+    </Reveal>
+  );
+}
+
+function GalleryCard({
+  item,
+  index,
+}: {
+  item: GalleryItem;
+  index: number;
+}) {
+  return (
+    <Reveal variant="fade" delay={index * 70}>
+      <div
+        className={`relative overflow-hidden rounded-xl bg-[#101713] ${
+          index % 2 === 0 ? "aspect-[4/5]" : "aspect-[4/5] sm:mt-8"
+        }`}
+      >
+        <Image
+          src={item.src}
+          alt={item.alt}
+          fill
+          sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 88vw"
+          className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+        />
+      </div>
+    </Reveal>
+  );
+}
 
 export default function CapabilitiesPage() {
   const { hero, proof, tabs, atmosphere, metricsBand, gallery, closingBand } =
@@ -133,58 +223,32 @@ export default function CapabilitiesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:gap-4">
+          {/* Deep-link anchors for /capabilities#engineering etc. */}
+          {tabs.map((tab) => (
+            <div
+              key={`anchor-${tab.id}`}
+              id={tab.id}
+              className="h-0 scroll-mt-28"
+              aria-hidden
+            />
+          ))}
+
+          <div className="mt-12 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Capability pillars"
+              showArrows
+              showDots
+              itemClassName="w-[min(100%,22.5rem)] sm:w-[min(85vw,26rem)] md:w-[min(70vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {tabs.map((tab, index) => (
+                <PillarCard key={tab.id} tab={tab} index={index} />
+              ))}
+            </SnapCarousel>
+          </div>
+          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-2">
             {tabs.map((tab, index) => (
-              <Reveal key={tab.id} variant="fade" delay={index * 70}>
-                <Link
-                  id={tab.id}
-                  href={tab.href}
-                  className="group relative block min-h-[340px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713] sm:min-h-[380px] lg:min-h-[360px]"
-                >
-                  <Image
-                    src={tab.imageSrc}
-                    alt={tab.imageAlt}
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/92 via-[#07100d]/55 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/70 via-transparent to-transparent" />
-
-                  <div className="absolute inset-0 flex flex-col justify-between p-7 sm:p-8 lg:p-9">
-                    <div>
-                      <div className="flex items-center gap-4">
-                        <span
-                          className="font-display text-4xl leading-none font-bold"
-                          style={{ color: sage }}
-                        >
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span
-                          className="h-px w-16"
-                          style={{ background: sage }}
-                          aria-hidden
-                        />
-                      </div>
-                      <h3 className="mt-5 max-w-[360px] font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl">
-                        {tab.title}
-                      </h3>
-                      <p className="mt-4 max-w-[400px] text-sm leading-relaxed text-white/85 sm:text-base">
-                        {tab.body}
-                      </p>
-                    </div>
-
-                    <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] text-white uppercase">
-                      Learn More
-                      <ArrowRight
-                        className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-                        style={{ color: sage }}
-                        aria-hidden
-                      />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
+              <PillarCard key={tab.id} tab={tab} index={index} />
             ))}
           </div>
         </div>
@@ -341,23 +405,22 @@ export default function CapabilitiesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+          <div className="mt-12 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Photo gallery"
+              showArrows
+              showDots
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {gallery.map((item, index) => (
+                <GalleryCard key={item.src} item={item} index={index} />
+              ))}
+            </SnapCarousel>
+          </div>
+          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4">
             {gallery.map((item, index) => (
-              <Reveal key={item.src} variant="fade" delay={index * 70}>
-                <div
-                  className={`relative overflow-hidden rounded-xl bg-[#101713] ${
-                    index % 2 === 0 ? "aspect-[4/5]" : "aspect-[4/5] sm:mt-8"
-                  }`}
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-700 hover:scale-[1.03]"
-                  />
-                </div>
-              </Reveal>
+              <GalleryCard key={item.src} item={item} index={index} />
             ))}
           </div>
         </div>

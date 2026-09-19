@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
+import { SnapCarousel } from "@/components/home/SnapCarousel";
 import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { pageMetadata } from "@/lib/seo";
@@ -143,6 +144,49 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
         {children}
       </p>
     </div>
+  );
+}
+
+function ValueCard({
+  value,
+  index,
+}: {
+  value: (typeof values)[number];
+  index: number;
+}) {
+  return (
+    <Reveal variant="up" delay={index * 80}>
+      <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-3.5 sm:p-4">
+        <div className="flex items-center gap-4 px-2 pt-2">
+          <span
+            className="font-display text-[30px] font-bold leading-none"
+            style={{ color: sage }}
+          >
+            {value.number}
+          </span>
+
+          <span className="h-px w-14 bg-[#aeb6bd]" />
+        </div>
+
+        <h3 className="mt-6 whitespace-pre-line px-2 font-display text-[27px] leading-[1.02] font-bold tracking-tight uppercase sm:text-[29px]">
+          {value.title}
+        </h3>
+
+        <p className="mt-5 min-h-[88px] px-2 text-base leading-[1.5] text-[#66717d]">
+          {value.description}
+        </p>
+
+        <div className="relative mt-6 aspect-[1.45/1] overflow-hidden rounded-[5px]">
+          <Image
+            src={value.image}
+            alt={value.title.replace("\n", " ")}
+            fill
+            sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 88vw"
+            className="object-cover"
+          />
+        </div>
+      </article>
+    </Reveal>
   );
 }
 
@@ -301,50 +345,23 @@ export default function CompanyPage() {
             </div>
           </Reveal>
 
-          {/* Cards */}
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          {/* Cards — carousel below xl, 4-col grid from xl */}
+          <div className="mt-12 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Our values"
+              showArrows
+              showDots
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {values.map((value, index) => (
+                <ValueCard key={value.number} value={value} index={index} />
+              ))}
+            </SnapCarousel>
+          </div>
+          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4">
             {values.map((value, index) => (
-              <Reveal
-                key={value.number}
-                variant="up"
-                delay={index * 80}
-              >
-                <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-3.5 sm:p-4">
-
-                  {/* Number */}
-                  <div className="flex items-center gap-4 px-2 pt-2">
-                    <span
-                      className="font-display text-[30px] font-bold leading-none"
-                      style={{ color: sage }}
-                    >
-                      {value.number}
-                    </span>
-
-                    <span className="h-px w-14 bg-[#aeb6bd]" />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="mt-6 whitespace-pre-line px-2 font-display text-[27px] leading-[1.02] font-bold tracking-tight uppercase sm:text-[29px]">
-                    {value.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="mt-5 min-h-[88px] px-2 text-base leading-[1.5] text-[#66717d]">
-                    {value.description}
-                  </p>
-
-                  {/* Image */}
-                  <div className="relative mt-6 aspect-[1.45/1] overflow-hidden rounded-[5px]">
-                    <Image
-                      src={value.image}
-                      alt={value.title.replace("\n", " ")}
-                      fill
-                      sizes="(min-width: 1024px) 25vw, 50vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </article>
-              </Reveal>
+              <ValueCard key={value.number} value={value} index={index} />
             ))}
           </div>
         </div>

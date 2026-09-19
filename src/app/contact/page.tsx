@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import { ContactForm } from "@/components/ContactForm";
+import { SnapCarousel } from "@/components/home/SnapCarousel";
 import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { site } from "@/lib/content";
@@ -19,18 +20,18 @@ const sage = "#6e7f42";
 
 const environments = [
   {
-    src: "/media/cases/defense.png",
-    alt: "Defense and security field operations",
+    src: "/media/markets/defense-military.png",
+    alt: "Defense and military field operations with Rise Power",
     label: "Defense & Security",
   },
   {
-    src: "/media/cases/emergency.png",
-    alt: "Disaster response deployment",
+    src: "/media/capabilities/field-deployment.jpg",
+    alt: "Field deployment for disaster and emergency response",
     label: "Disaster Response",
   },
   {
-    src: "/media/use-cases/uc-deployment.png",
-    alt: "Remote operations power deployment",
+    src: "/media/markets/field-consumer.png",
+    alt: "Field and remote consumer operations",
     label: "Remote Operations",
   },
 ] as const;
@@ -116,7 +117,7 @@ export default function ContactPage() {
   return (
     <main className="overflow-hidden bg-[#fbfaf7] text-[#101820]">
       <StackedPageHero
-        imageSrc="/media/cta/closing.png"
+        imageSrc="/media/contact/hero-banner.png"
         imageAlt="Rise Power field deployment — request a capability briefing"
         tone="#101820"
       >
@@ -164,8 +165,8 @@ export default function ContactPage() {
             <Reveal variant="scale">
               <div className="relative aspect-[1.08/1] overflow-hidden rounded-[7px]">
                 <Image
-                  src="/media/company/company-mission.png"
-                  alt="Rise Power Sentinel hydrogen system prepared for field briefing"
+                  src="/media/company/mission-power.png"
+                  alt="Rise Mission Power system prepared for field briefing"
                   fill
                   sizes="(min-width: 1024px) 52vw, 100vw"
                   className="object-cover"
@@ -188,8 +189,8 @@ export default function ContactPage() {
                 </p>
                 <div className="relative mt-10 aspect-[16/10] overflow-hidden rounded-[7px]">
                   <Image
-                    src="/media/capabilities/engineering.png"
-                    alt="Rise Power engineering and manufacturing in British Columbia"
+                    src="/media/products/hydrogen-cartridge-kit.png"
+                    alt="Rise Power hydrogen cartridge kit"
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="object-cover"
@@ -217,7 +218,36 @@ export default function ContactPage() {
             </div>
           </Reveal>
 
-          <div className="grid gap-4 sm:grid-cols-3 sm:gap-5">
+          <div className="xl:hidden">
+            <SnapCarousel
+              ariaLabel="Operating environments"
+              showArrows
+              showDots
+              itemClassName="w-[min(72vw,18rem)] sm:w-[min(55vw,20rem)] md:w-[min(40vw,22rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {environments.map((item) => (
+                <div
+                  key={item.label}
+                  className="group relative aspect-[4/5] overflow-hidden rounded-[7px] sm:aspect-[3/4]"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(min-width: 640px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/80 via-[#071016]/15 to-transparent" />
+                  <p className="absolute right-5 bottom-5 left-5 font-display text-lg font-bold tracking-wide text-white uppercase sm:text-xl">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
+            </SnapCarousel>
+          </div>
+
+          <div className="hidden gap-5 xl:grid xl:grid-cols-3">
             {environments.map((item, index) => (
               <Reveal key={item.label} variant="up" delay={index * 80}>
                 <div className="group relative aspect-[4/5] overflow-hidden rounded-[7px] sm:aspect-[3/4]">
@@ -229,7 +259,7 @@ export default function ContactPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/80 via-[#071016]/15 to-transparent" />
-                  <p className="absolute bottom-5 left-5 right-5 font-display text-lg font-bold tracking-wide text-white uppercase sm:text-xl">
+                  <p className="absolute right-5 bottom-5 left-5 font-display text-lg font-bold tracking-wide text-white uppercase sm:text-xl">
                     {item.label}
                   </p>
                 </div>
@@ -252,8 +282,8 @@ export default function ContactPage() {
               <div>
                 <div className="relative mb-10 aspect-[16/11] overflow-hidden rounded-[7px]">
                   <Image
-                    src="/media/missions/mountain.png"
-                    alt="Rise Power systems in austere mountain terrain"
+                    src="/media/contact/rise-mission-power.png"
+                    alt="Rise Mission Power systems in the field"
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="object-cover"
@@ -319,8 +349,8 @@ export default function ContactPage() {
               <div className="lg:sticky lg:top-28">
                 <div className="relative mb-5 hidden aspect-[21/9] overflow-hidden rounded-[7px] lg:block">
                   <Image
-                    src="/media/products/product-sentinal.png"
-                    alt="Rise Power Sentinel portable hydrogen power system"
+                    src="/media/products/falcon.png"
+                    alt="Rise Power Falcon portable hydrogen power system"
                     fill
                     sizes="50vw"
                     className="object-cover object-center"
@@ -339,7 +369,7 @@ export default function ContactPage() {
       {/* Direct line */}
       <section className="relative overflow-hidden py-20 sm:py-24 lg:py-28">
         <Image
-          src="/media/company/company-hero.png"
+          src="/media/products/plug-and-play-cartridge.png"
           alt=""
           fill
           sizes="100vw"

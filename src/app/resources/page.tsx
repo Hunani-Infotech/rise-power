@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { SnapCarousel } from "@/components/home/SnapCarousel";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { insights } from "@/lib/content";
@@ -285,8 +286,69 @@ export default function ResourcesPage() {
             </div>
           </Reveal>
 
+          <div className="mt-12 sm:mt-14 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Resource destinations"
+              showArrows
+              showDots
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {destinations.map((item) => (
+                <Link
+                  key={item.number}
+                  href={item.href}
+                  className="group flex h-full flex-col overflow-hidden rounded-[7px] border bg-white transition-shadow duration-500 hover:shadow-[0_18px_50px_rgba(16,24,32,0.08)]"
+                  style={{ borderColor: border }}
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#101820]">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      fill
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/55 via-transparent to-transparent" />
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                    <div className="flex items-center gap-4">
+                      <span
+                        className="font-display text-3xl font-bold leading-none"
+                        style={{ color: sage }}
+                      >
+                        {item.number}
+                      </span>
+                      <span
+                        className="h-px w-16"
+                        style={{ backgroundColor: border }}
+                      />
+                    </div>
+
+                    <h3 className="mt-5 font-display text-3xl font-bold tracking-tight uppercase sm:text-4xl">
+                      {item.title}
+                    </h3>
+
+                    <p
+                      className="mt-4 flex-1 text-base leading-[1.55]"
+                      style={{ color: muted }}
+                    >
+                      {item.description}
+                    </p>
+
+                    <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase">
+                      {item.cta}
+                      <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </SnapCarousel>
+          </div>
+
           <RevealStagger
-            className="mt-12 grid gap-6 sm:mt-14 lg:grid-cols-2 lg:gap-7"
+            className="mt-12 hidden gap-5 sm:mt-14 xl:grid xl:grid-cols-2"
             step={95}
           >
             {destinations.map((item) => (
@@ -372,7 +434,50 @@ export default function ResourcesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          <div className="mt-12 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Systems gallery"
+              showArrows
+              showDots
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {systems.map((system, index) => (
+                <Link
+                  key={system.name}
+                  href={system.href}
+                  className="group relative block aspect-[4/5] overflow-hidden rounded-[7px] border border-white/10 bg-[#0a1014]"
+                >
+                  <Image
+                    src={system.image}
+                    alt={system.name}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071016] via-[#071016]/25 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                    <p
+                      className="font-display text-2xl font-bold leading-none"
+                      style={{ color: sage }}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-white uppercase sm:text-2xl">
+                      {system.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-white/70">{system.label}</p>
+                    <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.1em] text-white uppercase">
+                      View Specs
+                      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </SnapCarousel>
+          </div>
+
+          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4">
             {systems.map((system, index) => (
               <Reveal
                 key={system.name}
@@ -445,8 +550,60 @@ export default function ResourcesPage() {
             </div>
           </Reveal>
 
+          <div className="mt-12 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Featured insights"
+              showArrows
+              showDots
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {featuredInsights.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/insights/${article.slug}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-[7px] border bg-white transition-shadow duration-500 hover:shadow-[0_18px_50px_rgba(16,24,32,0.08)]"
+                  style={{ borderColor: border }}
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#101820]">
+                    <Image
+                      src={article.image.src}
+                      alt={article.image.alt}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, 100vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/40 via-transparent to-transparent" />
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-6 sm:p-7">
+                    <p
+                      className="text-mm font-semibold tracking-[0.16em] uppercase"
+                      style={{ color: sage }}
+                    >
+                      {article.displayDate}
+                    </p>
+                    <h3 className="mt-3 font-display text-2xl leading-[1.05] font-bold tracking-tight uppercase sm:text-[26px]">
+                      {article.title}
+                    </h3>
+                    <p
+                      className="mt-4 flex-1 text-base leading-[1.55]"
+                      style={{ color: muted }}
+                    >
+                      {article.excerpt}
+                    </p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase">
+                      Read
+                      <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </SnapCarousel>
+          </div>
+
           <RevealStagger
-            className="mt-12 grid gap-6 lg:grid-cols-3 lg:gap-7"
+            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-3"
             step={90}
           >
             {featuredInsights.map((article) => (

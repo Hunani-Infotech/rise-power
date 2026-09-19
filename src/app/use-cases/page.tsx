@@ -86,6 +86,7 @@ import {
   VolumeX,
 } from "lucide-react";
 
+import { SnapCarousel } from "@/components/home/SnapCarousel";
 import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { products, useCases } from "@/lib/content";
@@ -140,6 +141,134 @@ function ProductArrow() {
     <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#aeb4aa] transition-all duration-300 group-hover:border-[#6e7f42] group-hover:bg-[#6e7f42] group-hover:text-white">
       <ArrowRight className="size-4 transition-transform duration-300" />
     </span>
+  );
+}
+
+type OverviewCase = {
+  number: string;
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+};
+
+type ProductConnection = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string | undefined;
+  href: string;
+};
+
+function EnvironmentTile({
+  item,
+  defenseSlug,
+  includeAnchorId = false,
+}: {
+  item: OverviewCase;
+  defenseSlug?: string;
+  includeAnchorId?: boolean;
+}) {
+  return (
+    <article
+      id={
+        includeAnchorId && item.slug !== defenseSlug ? item.slug : undefined
+      }
+      className="group relative block min-h-[340px] sm:min-h-[400px] md:min-h-[360px] lg:min-h-[320px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713]"
+    >
+      {item.image ? (
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+        />
+      ) : null}
+
+      <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/90 via-[#07100d]/55 to-transparent" />
+
+      <div className="absolute inset-0 flex flex-col justify-between p-7 sm:p-8 lg:p-9">
+        <div>
+          <div className="flex items-center gap-4">
+            <span
+              className="font-display text-4xl leading-none font-bold"
+              style={{ color: sage }}
+            >
+              {item.number}
+            </span>
+
+            <span className="h-px w-16" style={{ background: sage }} />
+          </div>
+
+          <h3 className="mt-5 max-w-[340px] font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl">
+            {item.title}
+          </h3>
+
+          <p className="mt-4 max-w-[390px] text-sm leading-relaxed text-white sm:text-base">
+            {item.description}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ProductConnectionCard({ product }: { product: ProductConnection }) {
+  return (
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-[#e0e3dd] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(20,30,20,0.08)]">
+      {/* Product image */}
+      <div className="relative aspect-[1.08/1] overflow-hidden bg-[#e6eae4]">
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.eyebrow}
+            fill
+            sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+          />
+        ) : null}
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+      </div>
+
+      {/* Product content */}
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <div className="flex items-center gap-2">
+          <span
+            className="font-display text-xl leading-none"
+            style={{ color: sage }}
+          >
+            ⌁
+          </span>
+
+          <p className="text-mm font-bold tracking-[0.08em] text-[#20251f] uppercase">
+            {product.eyebrow}
+          </p>
+        </div>
+
+        <h3 className="mt-5 font-display text-[26px] leading-[1.02] font-bold tracking-tight text-[#111713] uppercase">
+          {product.title}
+        </h3>
+
+        <p className="mt-4 text-sm leading-relaxed text-[#687068] sm:text-[15px]">
+          {product.description}
+        </p>
+
+        <div className="mt-auto pt-7">
+          <a
+            href={product.href}
+            className="inline-flex items-center gap-4 text-xs font-bold tracking-[0.08em] text-[#20251f] uppercase"
+          >
+            <span className="transition-colors group-hover:text-[#6e7f42]">
+              Learn More
+            </span>
+
+            <ProductArrow />
+          </a>
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -325,55 +454,32 @@ export default function UseCasesPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:gap-4">
+          <div className="mt-12 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Use case environments"
+              showArrows
+              showDots
+              itemClassName="w-[min(100%,22.5rem)] sm:w-[min(85vw,26rem)] md:w-[min(70vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {overviewCases.map((item) => (
+                <EnvironmentTile
+                  key={item.slug}
+                  item={item}
+                  defenseSlug={defense?.slug}
+                />
+              ))}
+            </SnapCarousel>
+          </div>
+
+          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-2">
             {overviewCases.map((item, index) => (
-              <Reveal
-                key={item.slug}
-                variant="fade"
-                delay={index * 70}
-              >
-                <article
-                  id={item.slug === defense?.slug ? undefined : item.slug}
-                  className="group relative block min-h-[340px] sm:min-h-[400px] md:min-h-[360px] lg:min-h-[320px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713]"
-                >
-                  {item.image ? (
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
-                    />
-                  ) : null}
-
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/90 via-[#07100d]/55 to-transparent" />
-
-                  <div className="absolute inset-0 flex flex-col justify-between p-7 sm:p-8 lg:p-9">
-                    <div>
-                      <div className="flex items-center gap-4">
-                        <span
-                          className="font-display text-4xl leading-none font-bold"
-                          style={{ color: sage }}
-                        >
-                          {item.number}
-                        </span>
-
-                        <span
-                          className="h-px w-16"
-                          style={{ background: sage }}
-                        />
-                      </div>
-
-                      <h3 className="mt-5 max-w-[340px] font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl">
-                        {item.title}
-                      </h3>
-
-                      <p className="mt-4 max-w-[390px] text-sm leading-relaxed text-white sm:text-base">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </article>
+              <Reveal key={item.slug} variant="fade" delay={index * 70}>
+                <EnvironmentTile
+                  item={item}
+                  defenseSlug={defense?.slug}
+                  includeAnchorId
+                />
               </Reveal>
             ))}
           </div>
@@ -648,7 +754,24 @@ export default function UseCasesPage() {
           </Reveal>
 
           {/* Product cards */}
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-12 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Mission product connections"
+              showArrows
+              showDots
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {productConnections.map((product) => (
+                <ProductConnectionCard
+                  key={product.eyebrow}
+                  product={product}
+                />
+              ))}
+            </SnapCarousel>
+          </div>
+
+          <div className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4">
             {productConnections.map((product, index) => (
               <Reveal
                 key={product.eyebrow}
@@ -656,59 +779,7 @@ export default function UseCasesPage() {
                 delay={index * 70}
                 className="h-full"
               >
-                <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-[#e0e3dd] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(20,30,20,0.08)]">
-                  {/* Product image */}
-                  <div className="relative aspect-[1.08/1] overflow-hidden bg-[#e6eae4]">
-                    {product.image ? (
-                      <Image
-                        src={product.image}
-                        alt={product.eyebrow}
-                        fill
-                        sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
-                      />
-                    ) : null}
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-                  </div>
-
-                  {/* Product content */}
-                  <div className="flex flex-1 flex-col p-6 sm:p-7">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="font-display text-xl leading-none"
-                        style={{ color: sage }}
-                      >
-                        ⌁
-                      </span>
-
-                      <p className="text-mm font-bold tracking-[0.08em] text-[#20251f] uppercase">
-                        {product.eyebrow}
-                      </p>
-                    </div>
-
-                    <h3 className="mt-5 font-display text-[26px] leading-[1.02] font-bold tracking-tight text-[#111713] uppercase">
-                      {product.title}
-                    </h3>
-
-                    <p className="mt-4 text-sm leading-relaxed text-[#687068] sm:text-[15px]">
-                      {product.description}
-                    </p>
-
-                    <div className="mt-auto pt-7">
-                      <a
-                        href={product.href}
-                        className="inline-flex items-center gap-4 text-xs font-bold tracking-[0.08em] text-[#20251f] uppercase"
-                      >
-                        <span className="transition-colors group-hover:text-[#6e7f42]">
-                          Learn More
-                        </span>
-
-                        <ProductArrow />
-                      </a>
-                    </div>
-                  </div>
-                </article>
+                <ProductConnectionCard product={product} />
               </Reveal>
             ))}
           </div>

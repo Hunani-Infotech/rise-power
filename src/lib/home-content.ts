@@ -252,7 +252,7 @@ export const threeMarkets = {
       href: "/use-cases#defense-security",
       cta: "View Defense",
       image: "Military market imagery",
-      imageSrc: "/media/markets/military.png",
+      imageSrc: "/media/markets/defense-military.png",
     },
     {
       title: "Commercial",
@@ -276,7 +276,7 @@ export const threeMarkets = {
       href: "/use-cases#disaster-response",
       cta: "View Field Use",
       image: "Consumer market imagery",
-      imageSrc: "/media/markets/consumer.png",
+      imageSrc: "/media/markets/field-consumer.png",
     },
   ] satisfies readonly MarketCard[],
 };
@@ -401,7 +401,7 @@ export const featuredProducts = {
       detailsHref: "/products#cartridge-kit",
       datasheetHref: "/datasheets",
       image: "Hydrogen Cartridge Kit with RFID smart monitoring",
-      imageSrc: "/media/products/cartridge-kit.jpg",
+      imageSrc: "/media/products/hydrogen-cartridge-kit.png",
     },
   ] satisfies readonly FeaturedProduct[],
 };
@@ -539,7 +539,7 @@ export const capabilities = {
           alt: "Engineering workstation and hydrogen hardware review",
         },
         {
-          src: "/media/products/cartridge-kit.jpg",
+          src: "/media/products/hydrogen-cartridge-kit.png",
           alt: "Hydrogen cartridge kit used in system development",
         },
       ],
@@ -688,7 +688,7 @@ export const capabilities = {
       imageSrc: "/media/capabilities/field-deployment.jpg",
       imageAlt:
         "Canadian Armed Forces soldiers unloading a Rise Power power cube from a military truck at golden hour.",
-      secondaryImageSrc: "/media/products/cartridge-kit.jpg",
+      secondaryImageSrc: "/media/products/hydrogen-cartridge-kit.png",
       secondaryImageAlt:
         "Hydrogen cartridge kit ready for rapid field replenishment",
       gallery: [

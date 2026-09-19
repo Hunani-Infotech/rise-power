@@ -100,6 +100,7 @@ import {
   Weight,
   Zap,
 } from "lucide-react";
+import { SnapCarousel } from "@/components/home/SnapCarousel";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { products } from "@/lib/content";
@@ -245,6 +246,94 @@ const systemFlow = [
   },
 ];
 
+type ProductItem = (typeof products)[number];
+type SystemMeta = (typeof systemMeta)[number];
+
+function ProductSystemCard({
+  product,
+  meta,
+  includeAnchorId = false,
+}: {
+  product: ProductItem;
+  meta: SystemMeta;
+  includeAnchorId?: boolean;
+}) {
+  const CategoryIcon = meta.icon;
+
+  return (
+    <article
+      id={includeAnchorId ? product.slug : undefined}
+      className="group flex h-full min-w-0 scroll-mt-24 flex-col overflow-hidden rounded-lg border border-[#d9d8d0] bg-[#07151b] text-white shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
+    >
+      {/* CARD IMAGE */}
+      <div className="relative aspect-[1.12/1] overflow-hidden">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
+
+        <div className="absolute top-4 left-4 flex max-w-[85%] items-center gap-2">
+          <span className="grid size-10 shrink-0 place-items-center rounded-full border border-[#b5d13c] bg-[#07120c]/80 text-[#b5d13c] backdrop-blur-sm">
+            <CategoryIcon className="size-5" strokeWidth={1.5} />
+          </span>
+
+          <span className="text-[14px] leading-tight font-bold tracking-[0.08em] text-white uppercase">
+            {meta.category}
+          </span>
+        </div>
+      </div>
+
+      {/* CARD CONTENT */}
+      <div className="flex flex-1 flex-col px-5 pt-5 pb-4">
+        <h3 className="font-display text-2xl leading-none font-bold uppercase sm:text-[25px]">
+          {product.name}
+          <sup className="ml-1 text-[9px]">™</sup>
+        </h3>
+
+        <p className="mt-2 text-[12px] font-medium tracking-[0.08em] text-white/80 uppercase">
+          {product.tagline}
+        </p>
+
+        <p className="mt-4 mb-3 min-h-[72px] text-[13px] leading-relaxed text-white">
+          {product.description}
+        </p>
+
+        {/* STATS */}
+        <div className="mt-auto grid grid-cols-3 border-y border-white/15 py-4">
+          {meta.stats.map(([Icon, value, label]) => {
+            const StatIcon = Icon as typeof Zap;
+
+            return (
+              <div
+                key={`${value}-${label}`}
+                className="min-w-0 border-r border-white/10 px-2 first:pl-0 last:border-r-0 last:pr-0"
+              >
+                <StatIcon
+                  className="mb-2 size-5 text-[#b5d13c]"
+                  strokeWidth={1.5}
+                />
+
+                <p className="truncate text-[12px] font-bold text-white sm:text-[13px]">
+                  {value as string}
+                </p>
+
+                <p className="mt-0.5 text-[8px] leading-tight font-medium tracking-[0.08em] text-white/55 uppercase">
+                  {label as string}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function ProductsPage() {
   return (
     <>
@@ -313,83 +402,40 @@ export default function ProductsPage() {
             </p>
           </Reveal>
 
-          <RevealStagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4" step={100}>
+          <div className="mt-12 xl:hidden lg:mt-14">
+            <SnapCarousel
+              ariaLabel="Product systems"
+              showArrows
+              showDots
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {products.slice(0, 4).map((product, index) => {
+                const meta = systemMeta[index] ?? systemMeta[0];
+                return (
+                  <ProductSystemCard
+                    key={product.slug}
+                    product={product}
+                    meta={meta}
+                  />
+                );
+              })}
+            </SnapCarousel>
+          </div>
+
+          <RevealStagger
+            className="mt-12 hidden gap-5 lg:mt-14 xl:grid xl:grid-cols-4"
+            step={100}
+          >
             {products.slice(0, 4).map((product, index) => {
               const meta = systemMeta[index] ?? systemMeta[0];
-              const CategoryIcon = meta.icon;
-
               return (
-                <article
+                <ProductSystemCard
                   key={product.slug}
-                  id={product.slug}
-                  className="group flex h-full min-w-0 scroll-mt-24 flex-col overflow-hidden rounded-lg border border-[#d9d8d0] bg-[#07151b] text-white shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
-                >
-                  {/* CARD IMAGE */}
-                  <div className="relative aspect-[1.12/1] overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
-
-                    <div className="absolute top-4 left-4 flex max-w-[85%] items-center gap-2">
-                      <span className="grid size-10 shrink-0 place-items-center rounded-full border border-[#b5d13c] bg-[#07120c]/80 text-[#b5d13c] backdrop-blur-sm">
-                        <CategoryIcon className="size-5" strokeWidth={1.5} />
-                      </span>
-
-                      <span className="text-[14px] leading-tight font-bold tracking-[0.08em] text-white uppercase">
-                        {meta.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* CARD CONTENT */}
-                  <div className="flex flex-1 flex-col px-5 pt-5 pb-4">
-                    <h3 className="font-display text-2xl leading-none font-bold uppercase sm:text-[25px]">
-                      {product.name}
-                      <sup className="ml-1 text-[9px]">™</sup>
-                    </h3>
-
-                    <p className="mt-2 text-[12px] font-medium tracking-[0.08em] text-white/80 uppercase">
-                      {product.tagline}
-                    </p>
-
-                    <p className="mt-4 mb-3 min-h-[72px] text-[13px] leading-relaxed text-white">
-                      {product.description}
-                    </p>
-
-                    {/* STATS */}
-                    <div className="mt-auto grid grid-cols-3 border-y border-white/15 py-4">
-                      {meta.stats.map(([Icon, value, label]) => {
-                        const StatIcon = Icon as typeof Zap;
-
-                        return (
-                          <div
-                            key={`${value}-${label}`}
-                            className="min-w-0 border-r border-white/10 px-2 first:pl-0 last:border-r-0 last:pr-0"
-                          >
-                            <StatIcon
-                              className="mb-2 size-5 text-[#b5d13c]"
-                              strokeWidth={1.5}
-                            />
-
-                            <p className="truncate text-[12px] font-bold text-white sm:text-[13px]">
-                              {value as string}
-                            </p>
-
-                            <p className="mt-0.5 text-[8px] leading-tight font-medium tracking-[0.08em] text-white/55 uppercase">
-                              {label as string}
-                            </p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </article>
+                  product={product}
+                  meta={meta}
+                  includeAnchorId
+                />
               );
             })}
           </RevealStagger>

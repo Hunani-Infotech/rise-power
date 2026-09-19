@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
+import { SnapCarousel } from "@/components/home/SnapCarousel";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
 import { team, values } from "@/lib/content";
@@ -46,16 +47,51 @@ export default function AboutPage() {
               Our values
             </p>
           </Reveal>
-          <RevealStagger className="mt-10 grid gap-6 md:grid-cols-2" step={90}>
+          <div className="mt-10 xl:hidden">
+            <SnapCarousel
+              ariaLabel="Our values"
+              showArrows
+              showDots
+              itemClassName="w-[min(88vw,22rem)] sm:w-[min(70vw,26rem)] md:w-[min(55vw,28rem)]"
+              trackClassName="gap-4 px-1 pb-1"
+            >
+              {values.map((value) => (
+                <article
+                  key={value.number}
+                  className="motion-hover-lift h-full border border-border bg-surface p-8"
+                >
+                  <p className="text-xs tracking-[0.18em] text-accent uppercase">
+                    {value.number}
+                  </p>
+                  <h3 className="mt-3 font-display text-2xl tracking-wide uppercase">
+                    {value.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">
+                    {value.body}
+                  </p>
+                </article>
+              ))}
+            </SnapCarousel>
+          </div>
+
+          <RevealStagger
+            className="mt-10 hidden gap-5 xl:grid xl:grid-cols-2"
+            step={90}
+          >
             {values.map((value) => (
-              <article key={value.number} className="motion-hover-lift border border-border bg-surface p-8">
+              <article
+                key={value.number}
+                className="motion-hover-lift border border-border bg-surface p-8"
+              >
                 <p className="text-xs tracking-[0.18em] text-accent uppercase">
                   {value.number}
                 </p>
                 <h3 className="mt-3 font-display text-2xl tracking-wide uppercase">
                   {value.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{value.body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  {value.body}
+                </p>
               </article>
             ))}
           </RevealStagger>
