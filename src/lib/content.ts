@@ -186,54 +186,7 @@ export const team = [
   },
 ];
 
-export const insights = [
-  {
-    slug: "phase-ii-development-milestone",
-    title: "Rise Power Completes Phase II Development Milestone",
-    date: "2026-02-10",
-    displayDate: "Feb 10, 2026",
-    excerpt:
-      "Rise Power engineering has reached a development milestone on the portable hydrogen power system, validating core performance targets ahead of schedule.",
-    body: "Rise Power engineering has reached a development milestone on the portable hydrogen power system, validating core performance targets ahead of schedule. The Phase II work confirms stack output, cartridge swap time, and acoustic signature in representative field conditions across coastal British Columbia.",
-  },
-  {
-    slug: "field-testing-extended-runtime",
-    title: "Field Testing Validates Extended Runtime Targets",
-    date: "2025-12-02",
-    displayDate: "Dec 2, 2025",
-    excerpt:
-      "Recent field testing has validated performance targets for the cartridge based fuel delivery system across a range of environmental conditions.",
-    body: "Recent field testing has validated performance targets for the cartridge based fuel delivery system across a range of environmental conditions. Operators swapped cartridges in under 30 seconds and sustained continuous load without thermal or acoustic compromise.",
-  },
-  {
-    slug: "hydrogen-power-defense-applications",
-    title: "Understanding Hydrogen Power for Defense Applications",
-    date: "2025-11-18",
-    displayDate: "Nov 18, 2025",
-    excerpt:
-      "A primer on hydrogen fuel cell technology for defense power applications, and how it compares to diesel and lithium alternatives.",
-    body: "Diesel generators and lithium packs remain the default for forward power. Both create structural failure modes in contested environments: fuel convoys, acoustic and thermal signature, and indoor exhaust risk. A cartridge-based hydrogen platform removes those constraints while keeping logistics simple for the operator.",
-  },
-  {
-    slug: "engineering-team-expansion",
-    title: "Rise Power Expands Engineering Team",
-    date: "2025-10-05",
-    displayDate: "Oct 5, 2025",
-    excerpt:
-      "Rise Power is expanding the engineering team with additional power electronics and thermal management capacity.",
-    body: "Rise Power is expanding the engineering team with additional power electronics and thermal management capacity as Sentinel, Falcon, and Titan move from prototype toward production-ready hardware.",
-  },
-  {
-    slug: "cartridge-based-hydrogen-logistics",
-    title: "Cartridge Based Fuel: Simplifying Hydrogen Logistics",
-    date: "2025-09-12",
-    displayDate: "Sep 12, 2025",
-    excerpt:
-      "How a modular fuel cartridge approach solves the resupply problem in portable hydrogen deployment.",
-    body: "A modular fuel cartridge approach solves the resupply problem in portable hydrogen deployment. Cartridges stockpile for 15 years, swap without tools, and carry RFID monitoring so units in the field stay visible to program leads.",
-  },
-];
-
+export { insights } from "@/lib/insights";
 export const standards = [
   "Transport Canada",
   "UN 38.3",

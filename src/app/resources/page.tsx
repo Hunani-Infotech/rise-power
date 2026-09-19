@@ -109,7 +109,8 @@ const insightImages: Record<string, { src: string; alt: string }> = {
 const featuredInsights = insights.slice(0, 3).map((article) => ({
   ...article,
   image:
-    insightImages[article.slug] ?? {
+    insightImages[article.slug] ??
+    article.hero ?? {
       src: "/media/capabilities/engineering-development.jpg",
       alt: article.title,
     },
