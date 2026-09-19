@@ -247,23 +247,60 @@ const systemFlow = [
 export default function ProductsPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative min-h-[480px] overflow-hidden bg-[#07100d] text-white sm:min-h-[560px] lg:min-h-[680px]">
-        {/* <Image
-          src="/media/products/products-hero.png"
-          alt="Rise Power hydrogen product systems"
-          fill
-          priority
-          quality={90}
-          sizes="100vw"
-          className="hero-animate-media object-cover object-center"
-        />
+      {/* HERO — mobile: image above, copy below; desktop: cinematic overlay */}
+      <section className="overflow-hidden bg-[#07100d] text-white">
+        {/* Mobile / tablet stacked layout */}
+        <div className="lg:hidden">
+          <div className="relative aspect-[5/4] w-full sm:aspect-[16/10]">
+            <Image
+              src="/media/products/product-hero.png"
+              alt="Rise Falcon, Sentinel, and Titan hydrogen power systems"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-[center_40%]"
+            />
+          </div>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#06100d]/80 via-[#06100d]/35 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06100d]/60 via-transparent to-transparent" /> */}
+          <div className="px-6 pt-10 pb-12 sm:px-8 sm:pt-12 sm:pb-14">
+            <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
+              ⌁ Product Systems
+            </p>
 
-        <div className="relative overflow-hidden">
-          {/* Background Image */}
+            <h1 className="mt-5 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl">
+              Four Systems.
+              <br />
+              <span className="text-[#6e7f42]">One Hydrogen</span>
+              <br />
+              Ecosystem.
+            </h1>
+
+            <p className="mt-5 max-w-[540px] text-base leading-relaxed text-white/75">
+              Portable hydrogen power engineered for defense, disaster response,
+              remote operations, and critical infrastructure.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                href="/contact"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-sm bg-[#849363] px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-opacity hover:opacity-90 sm:w-auto"
+              >
+                Request a Briefing
+                <ArrowRight className="size-4 shrink-0" />
+              </Link>
+              <Link
+                href="#product-systems"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-sm border border-white/35 px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-white/10 sm:w-auto"
+              >
+                See Products
+                <ArrowRight className="size-4 shrink-0" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop cinematic hero */}
+        <div className="relative hidden min-h-[680px] overflow-hidden lg:block lg:min-h-[760px]">
           <Image
             src="/media/products/product-hero.png"
             alt="Rise Power hydrogen systems"
@@ -273,79 +310,45 @@ export default function ProductsPage() {
             className="hero-animate-media object-cover object-[center_40%]"
           />
 
-          {/* Dark Overlay */}
-          {/* <div className="absolute inset-0 bg-black/60" /> */}
-
-          {/* Gradient for better text readability */}
-          {/* <div className="absolute inset-0 bg-gradient-to-r from-[#050b0d]/95 via-[#050b0d]/70 to-[#050b0d]/30" /> */}
-
-          {/* Left focused cinematic gradient */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#050b0d]/95 via-[#050b0d]/35 to-transparent" />
-
-          {/* Bottom subtle gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#050b0d]/45 via-transparent to-transparent" />
 
-          {/* Content */}
-          <div className="relative mx-auto flex min-h-[480px] max-w-[1440px] items-center px-6 pt-24 pb-16 sm:min-h-[560px] lg:min-h-[760px] lg:px-10">
-
+          <div className="relative mx-auto flex min-h-[680px] max-w-[1440px] items-center px-10 py-24 lg:min-h-[760px]">
             <div className="hero-animate-copy w-full max-w-[620px]">
-
               <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
                 ⌁ Product Systems
               </p>
 
-              <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-[76px]">
+              <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight uppercase lg:text-[76px]">
                 Four Systems.
                 <br />
-                <span className="text-[#6e7f42]">
-                  One Hydrogen
-                </span>
+                <span className="text-[#6e7f42]">One Hydrogen</span>
                 <br />
                 Ecosystem.
               </h1>
 
-              <p className="mt-7 max-w-[540px] text-base leading-relaxed text-white/75 sm:text-lg">
+              <p className="mt-7 max-w-[540px] text-lg leading-relaxed text-white/75">
                 Portable hydrogen power engineered for defense, disaster
                 response, remote operations, and critical infrastructure.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-
-                {/* <Link
-                  href="/contact"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 bg-[#91ad46] px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-[#a4c257] rounded-sm"
-                >
-                  Request a Briefing
-                  <ArrowRight className="size-4" />
-                </Link>
-
-                <Link
-                  href="#product-systems"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-white/10 rounded-sm"
-                >
-                  See Products
-                  <ArrowRight className="size-4" />
-                </Link> */}
-
+              <div className="mt-8 flex flex-row gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 bg-[#849363] px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-sm bg-[#849363] px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-opacity hover:opacity-90"
                 >
                   Request a Briefing
-                  <ArrowRight className="size-4" />
+                  <ArrowRight className="size-4 shrink-0" />
                 </Link>
                 <Link
                   href="#product-systems"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/35 px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-sm border border-white/35 px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-white/10"
                 >
                   See Products
-                  <ArrowRight className="size-4" />
+                  <ArrowRight className="size-4 shrink-0" />
                 </Link>
-
               </div>
-
             </div>
-
           </div>
         </div>
       </section>

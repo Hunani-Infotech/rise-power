@@ -277,14 +277,14 @@ export function HomePage() {
             </p>
           </Reveal>
 
-          {/* Mobile / tablet: horizontal process rail */}
-          <div className="mt-12 xl:hidden">
+          {/* Mobile / tablet / laptop: horizontal process rail */}
+          <div className="mt-10 sm:mt-12 xl:hidden">
             <SnapCarousel
               ariaLabel="Product ecosystem steps"
               showArrows
               showDots
               arrowPlacement="bottom"
-              itemClassName="w-[min(85vw,18rem)] sm:w-[min(70vw,20rem)]"
+              itemClassName="w-[min(85vw,17rem)] sm:w-[min(70vw,19rem)] md:w-[min(45vw,20rem)]"
               trackClassName="gap-5 px-1 pb-1"
             >
               {productEcosystem.steps.map((step) => (
@@ -302,13 +302,13 @@ export function HomePage() {
             </SnapCarousel>
           </div>
 
-          {/* Desktop: full 5-step process with connectors */}
+          {/* Desktop: full 5-step process with connectors between cards */}
           <RevealStagger
-            className="mt-16 hidden gap-6 xl:grid xl:grid-cols-5"
+            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-5 xl:gap-6"
             step={100}
           >
             {productEcosystem.steps.map((step, index) => (
-              <div key={step.step} className="relative h-full">
+              <div key={step.step} className="relative h-full min-w-0">
                 <EcosystemStepCard
                   step={step.step}
                   title={step.title}
@@ -320,7 +320,7 @@ export function HomePage() {
                 />
                 {index < productEcosystem.steps.length - 1 ? (
                   <ArrowRight
-                    className="absolute top-[4.55rem] -right-5 z-10 size-6 rounded-full border border-[#7b963f] bg-[#fbfaf7] p-1"
+                    className="absolute top-[7.25rem] -right-4 z-10 size-6 -translate-y-1/2 rounded-full border border-[#7b963f] bg-[#fbfaf7] p-1 xl:-right-5"
                     strokeWidth={2.4}
                     style={{ color: "#1a1c16" }}
                     aria-hidden
