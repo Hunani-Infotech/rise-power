@@ -222,7 +222,7 @@ export function Header() {
       className={headerSurface}
       onMouseLeave={closeMega}
     >
-      <div className="mx-auto flex h-16 w-full max-w-[1600px] items-center justify-between gap-3 px-4 sm:h-[4.5rem] sm:gap-4 sm:px-6 lg:px-8 xl:gap-5 xl:px-10">
+      <div className="mx-auto flex h-16 w-full max-w-[1600px] items-center justify-between gap-2 px-4 sm:h-[4.5rem] sm:gap-3 sm:px-6 lg:px-8 xl:gap-4 xl:px-10">
         {/* Logo */}
         <div className="relative z-10 shrink-0">
           <Logo variant={isHome ? "onDark" : "onLight"} priority />
@@ -233,7 +233,7 @@ export function Header() {
           className="hidden min-w-0 flex-1 items-center justify-center xl:flex"
           aria-label="Primary navigation"
         >
-          <ul className="flex max-w-full items-center justify-center gap-x-0.5 2xl:gap-x-1.5">
+          <ul className="flex max-w-full items-center justify-center gap-x-0">
             {megaNavItems.map((item) => {
               const itemPath = item.href.split("#")[0] || "/";
               const routeActive =
@@ -252,7 +252,7 @@ export function Header() {
                       setActiveKey(item.label);
                       setIsVisible(true);
                     }}
-                    className={`whitespace-nowrap rounded-sm px-1.5 py-2 text-[11px] font-semibold tracking-[0.04em] uppercase transition-colors 2xl:px-2.5 2xl:text-[12px] 2xl:tracking-[0.06em] ${
+                    className={`whitespace-nowrap rounded-sm px-1 py-2 text-[11px] font-semibold tracking-[0.02em] uppercase transition-colors 2xl:px-1.5 2xl:text-[12px] 2xl:tracking-[0.04em] ${
                       highlight ? activeColor : linkColor
                     } ${
                       isMegaActive

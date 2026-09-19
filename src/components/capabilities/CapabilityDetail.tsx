@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 
 import { Reveal } from "@/components/motion/Reveal";
 import { StackedPageHero } from "@/components/StackedPageHero";
+import type { CapabilityDetailPage } from "@/lib/capabilities";
 import { capabilities } from "@/lib/home-content";
 
 const sage = "#6e7f42";
@@ -48,31 +48,27 @@ function SectionEyebrow({
 }
 
 type CapabilityDetailProps = {
-  tabId: string;
+  capability: CapabilityDetailPage;
 };
 
-export function CapabilityDetail({ tabId }: CapabilityDetailProps) {
-  const tab = capabilities.tabs.find((item) => item.id === tabId);
-  if (!tab) notFound();
-
+export function CapabilityDetail({ capability }: CapabilityDetailProps) {
   const roadmap = capabilities.certificationRoadmap;
-  const showRoadmap = tabId === "safety";
 
   return (
     <main className="bg-[#fbfaf7] text-[#101713]">
       <StackedPageHero
-        imageSrc={tab.imageSrc}
-        imageAlt={tab.imageAlt}
+        imageSrc={capability.images.hero.src}
+        imageAlt={capability.images.hero.alt}
       >
         <div className="hero-animate-copy max-w-[720px]">
           <SectionEyebrow light>Capability</SectionEyebrow>
 
           <h1 className="mt-6 font-display text-[42px] leading-[0.92] font-bold tracking-tight uppercase sm:mt-7 sm:text-[56px] xl:text-[72px] 2xl:text-[82px]">
-            {tab.title}
+            {capability.title}
           </h1>
 
           <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white sm:mt-7 sm:text-lg xl:text-xl">
-            {tab.heroBody}
+            {capability.heroBody}
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center">
@@ -121,11 +117,11 @@ export function CapabilityDetail({ tabId }: CapabilityDetailProps) {
               className="mt-6 max-w-[560px] text-base leading-relaxed sm:text-lg"
               style={{ color: muted }}
             >
-              {tab.deliverablesIntro}
+              {capability.deliverablesIntro}
             </p>
 
             <ol className="mt-10 space-y-5">
-              {tab.deliverables.map((item, index) => (
+              {capability.deliverables.map((item, index) => (
                 <li
                   key={item}
                   className="flex gap-5 border-b border-[#e0e3dd] pb-5 last:border-b-0 last:pb-0"
@@ -148,8 +144,8 @@ export function CapabilityDetail({ tabId }: CapabilityDetailProps) {
             <div className="grid gap-3">
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-[#dfe4dc] sm:aspect-[5/6] lg:aspect-[4/5]">
                 <Image
-                  src={tab.secondaryImageSrc}
-                  alt={tab.secondaryImageAlt}
+                  src={capability.images.secondary.src}
+                  alt={capability.images.secondary.alt}
                   fill
                   sizes="(min-width: 1024px) 45vw, 100vw"
                   className="object-cover"
@@ -173,7 +169,7 @@ export function CapabilityDetail({ tabId }: CapabilityDetailProps) {
           </Reveal>
 
           <div className="mt-10 grid gap-3 sm:grid-cols-3 lg:gap-4">
-            {tab.gallery.map((item, index) => (
+            {capability.gallery.map((item, index) => (
               <Reveal key={item.src} variant="fade" delay={index * 70}>
                 <div
                   className={`relative overflow-hidden rounded-xl bg-[#101713] ${
@@ -201,7 +197,7 @@ export function CapabilityDetail({ tabId }: CapabilityDetailProps) {
       </section>
 
       {/* CERTIFICATION ROADMAP — safety only */}
-      {showRoadmap ? (
+      {capability.showRoadmap ? (
         <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28">
           <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
             <Reveal variant="up">
@@ -256,7 +252,7 @@ export function CapabilityDetail({ tabId }: CapabilityDetailProps) {
         style={{ background: dark, color: cream }}
       >
         <Image
-          src={tab.imageSrc}
+          src={capability.images.hero.src}
           alt=""
           fill
           sizes="100vw"

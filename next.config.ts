@@ -42,6 +42,11 @@ const nextConfig: NextConfig = {
         destination: "/contact",
         permanent: false,
       },
+      {
+        source: "/company",
+        destination: "/about",
+        permanent: true,
+      },
     ];
   },
   async headers() {

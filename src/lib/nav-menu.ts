@@ -23,9 +23,7 @@ export type MegaNavItem = {
 /**
  * Primary navigation — client order + full page coverage from risepower.com.
  *
- * Products | Markets | Technology | Company | Resources | Investors | Careers
- *
- * Naming can differ from live (Markets ≈ Use Cases, Technology ≈ Capabilities)
+ * Products | Markets | Capabilities | Company | Resources | Investors | Careers
  * but every live destination is linked.
  */
 export const megaNavItems: readonly MegaNavItem[] = [
@@ -96,7 +94,7 @@ export const megaNavItems: readonly MegaNavItem[] = [
   },
 
   {
-    label: "Technology",
+    label: "Capabilities",
     href: "/capabilities",
     links: [
       {
@@ -130,7 +128,7 @@ export const megaNavItems: readonly MegaNavItem[] = [
 
   {
     label: "Company",
-    href: "/company",
+    href: "/about",
     links: [
       {
         label: "About Rise Power",
@@ -138,13 +136,8 @@ export const megaNavItems: readonly MegaNavItem[] = [
         description: "The mission behind portable hydrogen power.",
       },
       {
-        label: "Our Company",
-        href: "/company",
-        description: "Canadian engineered. Field validated.",
-      },
-      {
         label: "Leadership",
-        href: "/company#leadership",
+        href: "/about#leadership",
         description: "The team behind the systems.",
       },
       {
@@ -156,8 +149,8 @@ export const megaNavItems: readonly MegaNavItem[] = [
     feature: {
       title: "Canadian-Built",
       body: "Engineered, manufactured, and validated in British Columbia. A CIMtech Green Energy company.",
-      href: "/company",
-      cta: "About the Company",
+      href: "/about",
+      cta: "About Rise Power",
     },
   },
 
@@ -184,11 +177,6 @@ export const megaNavItems: readonly MegaNavItem[] = [
         label: "Insights",
         href: "/insights",
         description: "Technical articles and field analysis.",
-      },
-      {
-        label: "Articles",
-        href: "/insights/articles",
-        description: "Full article library and updates.",
       },
     ],
     feature: {

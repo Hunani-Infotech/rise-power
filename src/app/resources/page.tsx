@@ -46,7 +46,7 @@ const destinations = [
     number: "03",
     title: "Insights",
     description:
-      "Milestones, field validation, and defense power analysis from the Rise Power engineering team.",
+      "Guides and comparisons on hydrogen power, field logistics, and defense applications from Rise Power.",
     href: "/insights",
     cta: "View Insights",
     image: "/media/capabilities/field-deployment.jpg",
@@ -57,7 +57,7 @@ const destinations = [
     title: "Articles",
     description:
       "Technical deep dives on hydrogen fuel cells, portable power, and clean energy for defense and critical infrastructure.",
-    href: "/insights/articles",
+    href: "/insights",
     cta: "Browse Articles",
     image: "/media/capabilities/engineering.jpg",
     imageAlt: "Rise Power engineering and technical documentation",
@@ -92,17 +92,17 @@ const systems = [
 ] as const;
 
 const insightImages: Record<string, { src: string; alt: string }> = {
-  "phase-ii-development-milestone": {
-    src: "/media/products/product-sentinal.png",
-    alt: "Rise Sentinel during Phase II development validation",
+  "hydrogen-fuel-cell-vs-diesel-generator": {
+    src: "/media/why-hydrogen/comparison.png",
+    alt: "Hydrogen fuel cell compared with diesel generators",
   },
-  "field-testing-extended-runtime": {
-    src: "/media/use-cases/uc-deployment.png",
-    alt: "Field testing of Rise Power cartridge systems",
+  "what-is-a-hydrogen-fuel-cell": {
+    src: "/media/ecosystem/fuel-cell.png",
+    alt: "How a hydrogen fuel cell works",
   },
-  "hydrogen-power-defense-applications": {
-    src: "/media/use-cases/defense-security.jpg",
-    alt: "Hydrogen power systems for defense applications",
+  "silent-generator-for-military-operations": {
+    src: "/media/markets/defense-military.png",
+    alt: "Silent generators for military operations",
   },
 };
 

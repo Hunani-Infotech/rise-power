@@ -12,7 +12,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "News & Insights",
   description:
-    "Technical notes, runtime data, and development milestones from the Rise Power engineering team.",
+    "Guides and comparisons on hydrogen fuel cells, portable power, and field logistics from Rise Power.",
   path: "/insights",
 });
 
@@ -77,15 +77,15 @@ export default function InsightsPage() {
           <SectionEyebrow onDark>News & Insights</SectionEyebrow>
 
           <h1 className="mt-4 font-display text-[42px] leading-[0.92] font-bold tracking-tight text-white uppercase sm:mt-6 sm:text-[68px] md:text-[78px] xl:text-[88px] 2xl:text-[96px]">
-            Field notes.
+            Field power.
             <br />
-            Engineering{" "}
-            <span style={{ color: sageOnDark }}>milestones.</span>
+            Clear{" "}
+            <span style={{ color: sageOnDark }}>answers.</span>
           </h1>
 
           <p className="mt-4 max-w-[640px] text-base leading-[1.55] text-white sm:mt-6 sm:text-xl xl:text-[22px]">
-            Technical notes, runtime data, and development updates from the Rise
-            Power engineering team.
+            Guides and comparisons on hydrogen fuel cells, silent generators,
+            and portable power for defense and critical operations.
           </p>
 
           <div className="mt-7 sm:mt-8">

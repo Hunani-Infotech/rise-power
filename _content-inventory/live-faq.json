@@ -1,0 +1,62 @@
+{
+  "url": "https://risepower.com/resources/faq",
+  "title": "Procurement FAQ",
+  "items": [
+    {
+      "q": "What is the runtime?",
+      "a": "Runtime: unlimited power with cartridge swap. Operators perform a 30 second cartridge exchange to extend mission duration indefinitely — no tools, no spillage, no recharge cycle. Final certified per cartridge output figures will be published as field validation completes."
+    },
+    {
+      "q": "What is the acoustic signature?",
+      "a": "Target acoustic output is below 65 dBA at one meter under full load. Quieter than a normal conversation and lower than the ambient noise floor of most operational environments. Operators can sleep beside an active unit."
+    },
+    {
+      "q": "What is the thermal signature?",
+      "a": "Hydrogen fuel cells produce no combustion exhaust and minimal waste heat. There is no visible IR plume and no surface temperature high enough to register on standard thermal imagers from typical observation distances."
+    },
+    {
+      "q": "Can the systems run indoors?",
+      "a": "Yes. The only emissions from a hydrogen fuel cell are warm air and water vapour, with no carbon monoxide, no NOx, and no particulates. Indoor operation in shelters, server halls, command facilities, and field tents is the design intent. CSA and NFPA 2 indoor use compliance work is in progress."
+    },
+    {
+      "q": "How are cartridges transported and stored?",
+      "a": "Cartridges are sealed pressure vessels engineered for ground and air transport. Transport Canada, UN 38.3, and DOT-39 compliance work is in progress. Once certified, cartridges will be transportable by standard freight and air cargo channels with no special handling beyond normal pressure vessel protocols."
+    },
+    {
+      "q": "What is the shelf life?",
+      "a": "Hydrogen cartridges have effectively indefinite shelf life under normal storage conditions. No stabilizers, no degradation, no winterization, no rotation requirements. Pre position cartridges at depots and forget them until needed."
+    },
+    {
+      "q": "How long does a cartridge swap take?",
+      "a": "Target swap time is under 30 seconds with no tools, gloves on, in any conditions. The quick disconnect coupler is a single action mate and lock fitting designed for one handed field exchange."
+    },
+    {
+      "q": "What is the lead time?",
+      "a": "Rise Power is beta stage technology in active development and validation. Lead times for evaluation units, pilot deployments, and production orders are confirmed during the briefing process based on configuration and program timeline. Request a briefing for a specific quote."
+    },
+    {
+      "q": "What is the minimum order quantity?",
+      "a": "Evaluation programs typically begin with single units or small lots for technical validation. Production volumes are scoped per program. There is no fixed minimum. We engage with serious technical evaluators at any volume."
+    },
+    {
+      "q": "What is the warranty?",
+      "a": "Warranty terms are program specific and confirmed during contracting. As beta stage technology in active validation, units shipped to evaluation partners include direct engineering support throughout the program."
+    },
+    {
+      "q": "Is operator training included?",
+      "a": "Yes. Standard deployment includes operator training on cartridge handling, system operation, basic diagnostics, and field maintenance. Train the trainer programs are available for organizations standing up larger fleets."
+    },
+    {
+      "q": "What certifications are in process?",
+      "a": "Transport Canada hydrogen cartridge transport, UN 38.3, DOT-39, MIL-STD-810 environmental, MIL-STD-461 EMI and EMC, ISO 9001 quality management, and CSA and NFPA 2 indoor use are all currently in progress. See the safety and compliance capability page for the full roadmap."
+    },
+    {
+      "q": "What is the export control posture?",
+      "a": "Rise Power is designed and manufactured in Canada and is subject to Canadian export controls. Controlled Goods Program compliance is in place. Specific export determinations are made program by program based on customer destination and end use."
+    },
+    {
+      "q": "Where are the systems built?",
+      "a": "Engineered, manufactured, and validated in Surrey, British Columbia. Rise Power is a CIMtech Green Energy company. A Canadian advanced manufacturing operation with a multi decade track record."
+    }
+  ]
+}

@@ -52,7 +52,7 @@ export function NavMegaItem({
   return (
     <AppLink
       href={item.href}
-      className={`inline-flex items-center gap-0.5 2xl:gap-1 ${className}`}
+      className={`inline-flex items-center gap-0.5 ${className}`}
       onMouseEnter={onActivate}
       onFocus={onActivate}
       aria-expanded={isActive}
