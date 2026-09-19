@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
+import { FaqAccordion } from "@/components/resources/FaqAccordion";
 import { StackedPageHero } from "@/components/StackedPageHero";
 import { pageMetadata } from "@/lib/seo";
 
@@ -164,58 +165,6 @@ function SectionEyebrow({
   );
 }
 
-function AnswerBody({ text }: { text: string }) {
-  if (text.includes("listed on Datasheets")) {
-    return (
-      <>
-        Rise Sentinel™, Rise Falcon™, Rise Titan™, and the Hydrogen Cartridge
-        Kit. Specs and engineering targets are listed on{" "}
-        <Link
-          href="/datasheets"
-          className="font-medium text-[#101820] underline decoration-[#d9dfe3] underline-offset-4 transition-colors hover:text-[#6e7f42] hover:decoration-[#6e7f42]"
-        >
-          Datasheets
-        </Link>
-        .
-      </>
-    );
-  }
-
-  if (text.includes("Contact page")) {
-    return (
-      <>
-        Use Request a Briefing on the{" "}
-        <Link
-          href="/contact"
-          className="font-medium text-[#101820] underline decoration-[#d9dfe3] underline-offset-4 transition-colors hover:text-[#6e7f42] hover:decoration-[#6e7f42]"
-        >
-          Contact
-        </Link>{" "}
-        page. Include mission profile, power draw, and deployment environment so
-        we can tailor runtime and logistics guidance.
-      </>
-    );
-  }
-
-  if (text.includes("System Integration covers")) {
-    return (
-      <>
-        Yes.{" "}
-        <Link
-          href="/capabilities/system-integration"
-          className="font-medium text-[#101820] underline decoration-[#d9dfe3] underline-offset-4 transition-colors hover:text-[#6e7f42] hover:decoration-[#6e7f42]"
-        >
-          System Integration
-        </Link>{" "}
-        covers electronics, mounts, and field interfaces for drones, generators,
-        and facility backup loads.
-      </>
-    );
-  }
-
-  return <>{text}</>;
-}
-
 export default function ProcurementFaqPage() {
   return (
     <main className="bg-[#fbfaf7] text-[#101820]">
@@ -297,34 +246,10 @@ export default function ProcurementFaqPage() {
               step={40}
               variant="up"
             >
-              {group.items.map((item, itemIndex) => (
-                <details
-                  key={item.q}
-                  name={group.id}
-                  className="group/item border-b border-[#d9dfe3]"
-                  open={groupIndex === 0 && itemIndex === 0}
-                >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-1 py-3.5 outline-none sm:py-4 [&::-webkit-details-marker]:hidden">
-                    <h3 className="text-left text-base font-semibold leading-snug text-[#101820] transition-colors group-open/item:text-[#6e7f42] sm:text-lg">
-                      {item.q}
-                    </h3>
-                    <span
-                      aria-hidden="true"
-                      className="flex size-7 shrink-0 items-center justify-center border border-[#d9dfe3] text-[#101820] transition-colors duration-300 group-open/item:border-[#6e7f42] group-open/item:bg-[#6e7f42] group-open/item:text-white"
-                    >
-                      <Plus className="size-3.5 transition-transform duration-300 group-open/item:rotate-45" />
-                    </span>
-                  </summary>
-                  <div className="pb-4 pr-12 sm:pr-14">
-                    <p
-                      className="text-left text-[15px] leading-[1.65] sm:text-base"
-                      style={{ color: muted }}
-                    >
-                      <AnswerBody text={item.a} />
-                    </p>
-                  </div>
-                </details>
-              ))}
+              <FaqAccordion
+                items={group.items}
+                defaultOpenIndex={groupIndex === 0 ? 0 : null}
+              />
             </RevealStagger>
           </div>
         </section>
