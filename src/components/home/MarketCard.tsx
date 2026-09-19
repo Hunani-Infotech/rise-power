@@ -18,9 +18,7 @@ export type MarketRowProps = {
 };
 
 /**
- * Market panel — expands into a horizontal image + copy layout when featured,
- * otherwise stacks image over content (compact). Motion is handled via CSS
- * so hover swaps feel continuous and refined.
+ * Market panel — stacked image + copy on mobile, side-by-side on desktop.
  */
 export function MarketRow({
   index,
@@ -37,22 +35,22 @@ export function MarketRow({
   return (
     <article
       data-expanded={expanded ? "true" : "false"}
-      className="market-card group relative flex h-full min-h-[22rem] overflow-hidden border border-[#ddd8cc] bg-white lg:min-h-[26rem] lg:flex-row"
+      className="market-card group relative flex h-auto w-full flex-col overflow-hidden border border-[#ddd8cc] bg-white lg:h-full lg:min-h-[26rem] lg:flex-row"
     >
       <div
-        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(135deg,rgba(110,127,66,0.06),transparent_55%)] opacity-100"
+        className="pointer-events-none absolute inset-0 z-[1] hidden bg-[linear-gradient(135deg,rgba(110,127,66,0.06),transparent_55%)] lg:block"
         aria-hidden
       />
 
-      <div className="market-card__media relative z-0 w-full shrink-0 overflow-hidden bg-[#e8e4d8] aspect-[5/3] lg:aspect-auto lg:h-auto lg:w-[56%] lg:flex-[1.1]">
+      <div className="market-card__media relative z-0 aspect-[16/10] w-full shrink-0 overflow-hidden bg-[#e8e4d8] sm:aspect-[5/3] lg:aspect-auto lg:h-auto lg:w-[56%] lg:flex-[1.1]">
         {imageSrc ? (
           <Image
             src={imageSrc}
             alt={imageLabel}
             fill
             quality={80}
-            className="object-cover scale-[1.02]"
-            sizes="(max-width: 1024px) 100vw, 32vw"
+            className="object-cover object-center scale-[1.02]"
+            sizes="(max-width: 1024px) 90vw, 32vw"
           />
         ) : (
           <PlaceholderMedia
@@ -62,7 +60,7 @@ export function MarketRow({
         )}
 
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a1c16]/35 via-transparent to-transparent opacity-40 transition-opacity duration-300 group-hover:opacity-55"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a1c16]/45 via-transparent to-transparent opacity-50"
           aria-hidden
         />
 
@@ -71,34 +69,40 @@ export function MarketRow({
         </span>
       </div>
 
-      <div className="market-card__copy relative z-[2] flex flex-1 flex-col border-t border-[#ddd8cc] bg-white/95 px-5 py-5 backdrop-blur-[2px] sm:px-6 sm:py-6 lg:w-[44%] lg:border-t-0 lg:border-l lg:border-[#e5e1d6] lg:px-7 lg:py-8">
+      <div className="market-card__copy relative z-[2] flex w-full flex-col border-t border-[#ddd8cc] bg-white px-4 py-4 sm:px-5 sm:py-5 lg:w-[44%] lg:flex-1 lg:border-t-0 lg:border-l lg:border-[#e5e1d6] lg:bg-white/95 lg:px-7 lg:py-8 lg:backdrop-blur-[2px]">
         <p className="type-card-label text-[#6e7f42]">{theater}</p>
-        <h3 className="mt-2 text-[#1a1c16] type-card-title-lg tracking-[-0.03em]">
+        <h3 className="mt-1.5 text-[#1a1c16] type-card-title-lg tracking-[-0.03em] sm:mt-2">
           {title}
         </h3>
-        <p className="type-card-body mt-3 opacity-100">{body}</p>
+        <p className="type-card-body mt-2 sm:mt-3">{body}</p>
 
         {points.length > 0 ? (
-          <ul className="mt-4 space-y-2.5 border-t border-[#ddd8cc] pt-4">
+          <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-2 border-t border-[#ddd8cc] pt-3 sm:mt-4 sm:block sm:space-y-2.5 sm:pt-4">
             {points.slice(0, 3).map((point) => (
               <li
                 key={point}
-                className="flex items-center gap-2.5 text-sm text-[#1a1c16]"
+                className="flex items-center gap-2 text-sm text-[#1a1c16] sm:gap-2.5"
               >
-                <span className="size-1.5 shrink-0 rounded-full bg-[#6e7f42]" aria-hidden />
+                <span
+                  className="size-1.5 shrink-0 rounded-full bg-[#6e7f42]"
+                  aria-hidden
+                />
                 {point}
               </li>
             ))}
           </ul>
         ) : null}
 
-        <div className="mt-auto pt-5">
+        <div className="mt-4 pt-0 sm:mt-auto sm:pt-5">
           <Link
             href={href}
             className="type-cta market-card__cta inline-flex w-full min-h-11 items-center justify-center gap-2 border border-[#1a1c16] bg-transparent px-4 text-[#1a1c16] lg:w-auto lg:min-w-[11.5rem]"
           >
             {cta}
-            <ArrowRight className="market-card__cta-arrow size-4" strokeWidth={1.8} />
+            <ArrowRight
+              className="market-card__cta-arrow size-4"
+              strokeWidth={1.8}
+            />
           </Link>
         </div>
       </div>

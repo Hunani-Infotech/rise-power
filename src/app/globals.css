@@ -523,14 +523,19 @@ h4 {
 }
 
 /*
-  Desktop (mouse/trackpad): do not make the track a wheel scrollport.
-  That restores native smooth page scroll while hovering cards.
-  Arrows/dots still move slides via programmatic scrollLeft.
-  Touch devices keep overflow-x: auto for swipe.
+  Fine pointer + hover: hide overflow so vertical wheel scrolls the page
+  (arrows/dots still move slides programmatically).
+  Coarse pointer (phones): keep overflow-x auto for swipe — must win over the rule above.
 */
 @media (hover: hover) and (pointer: fine) {
   .snap-carousel-track {
     overflow-x: hidden;
+  }
+}
+
+@media (pointer: coarse) {
+  .snap-carousel-track {
+    overflow-x: auto;
   }
 }
 
