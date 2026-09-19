@@ -9,7 +9,13 @@ export type InsightArticleViewProps = {
   article: InsightArticle;
   related: Pick<
     InsightArticle,
-    "slug" | "title" | "displayDate" | "excerpt"
+    | "slug"
+    | "title"
+    | "displayDate"
+    | "excerpt"
+    | "hero"
+    | "category"
+    | "readTime"
   >[];
 };
 
@@ -17,6 +23,30 @@ const SAGE_ACCENT = "#849363";
 const SAGE = "#6e7f42";
 const CREAM = "#fbfaf7";
 const INK = "#101820";
+const MUTED = "#66717d";
+
+function SectionEyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3">
+      <span aria-hidden="true" className="relative block h-[13px] w-[38px]">
+        <span
+          className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2"
+          style={{ backgroundColor: SAGE }}
+        />
+        <span
+          className="absolute top-1/2 left-0 h-[9px] w-[9px] -translate-y-1/2 rotate-45 border-b border-l"
+          style={{ borderColor: SAGE }}
+        />
+      </span>
+      <p
+        className="text-xs font-semibold tracking-[0.18em] uppercase"
+        style={{ color: SAGE }}
+      >
+        {children}
+      </p>
+    </div>
+  );
+}
 
 function TitleWithAccent({
   title,
@@ -86,11 +116,11 @@ function BlockRenderer({
     case "takeaways":
       return (
         <Reveal variant="up" delay={Math.min(index * 40, 200)}>
-          <ol className="my-10 space-y-0 sm:my-12">
+          <ol className="mt-8 mb-0 space-y-0 sm:mt-10">
             {block.items.map((item, i) => (
               <li
                 key={item}
-                className="flex gap-5 border-b border-[#e0e3dd] py-5 first:pt-0 last:border-b-0"
+                className="flex gap-5 border-b border-[#e0e3dd] py-5 first:pt-0 last:border-b-0 last:pb-0"
               >
                 <span
                   className="w-10 shrink-0 font-display text-2xl leading-none font-bold"
@@ -182,7 +212,7 @@ export function InsightArticleView({
 
       {/* Body */}
       <section
-        className="relative py-16 sm:py-20 lg:py-28"
+        className="relative pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14"
         style={{ background: CREAM }}
       >
         <div className="mx-auto max-w-3xl space-y-6 px-6 sm:space-y-7 lg:px-10">
@@ -198,34 +228,58 @@ export function InsightArticleView({
 
       {/* Related */}
       {related.length > 0 ? (
-        <section className="border-t border-[#e0e3dd] bg-white py-14 sm:py-16 lg:py-20">
+        <section
+          className="border-t pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20"
+          style={{ background: CREAM, borderColor: "#e0e3dd" }}
+        >
           <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
             <Reveal variant="up">
-              <p
-                className="text-xs font-semibold tracking-[0.2em] uppercase"
-                style={{ color: SAGE }}
-              >
-                Related
-              </p>
+              <SectionEyebrow>Related</SectionEyebrow>
               <h2 className="mt-3 font-display text-3xl leading-[0.95] font-bold tracking-tight uppercase sm:text-4xl">
                 Continue reading
               </h2>
             </Reveal>
 
-            <div className="mt-10 divide-y divide-[#e0e3dd] border-y border-[#e0e3dd]">
+            <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-8 lg:mt-12 lg:gap-12">
               {related.map((item, index) => (
-                <Reveal key={item.slug} variant="up" delay={index * 60}>
+                <Reveal key={item.slug} variant="up" delay={index * 80}>
                   <Link
                     href={`/insights/${item.slug}`}
-                    className="group grid gap-2 py-6 transition-colors sm:grid-cols-[140px_1fr] sm:gap-8 lg:grid-cols-[160px_1.1fr_1fr] lg:gap-10"
+                    className="group block"
                   >
-                    <p className="text-xs font-semibold tracking-[0.14em] text-[#626a63] uppercase">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-[#101820]">
+                      <Image
+                        src={item.hero.src}
+                        alt={item.hero.alt}
+                        fill
+                        sizes="(min-width: 768px) 45vw, 100vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      />
+                    </div>
+
+                    <p
+                      className="mt-5 text-[11px] font-semibold tracking-[0.16em] uppercase"
+                      style={{ color: MUTED }}
+                    >
+                      <span style={{ color: SAGE }}>{item.category}</span>
+                      <span className="mx-2 text-[#c5ccd2]" aria-hidden="true">
+                        ·
+                      </span>
                       {item.displayDate}
+                      <span className="mx-2 text-[#c5ccd2]" aria-hidden="true">
+                        ·
+                      </span>
+                      {item.readTime}
                     </p>
-                    <h3 className="font-display text-xl leading-snug font-bold tracking-tight text-[#101820] uppercase transition-colors group-hover:text-[#6e7f42] sm:text-2xl">
+
+                    <h3 className="mt-3 font-display text-xl leading-[1.05] font-bold tracking-tight text-[#101820] uppercase transition-colors group-hover:text-[#6e7f42] sm:text-2xl">
                       {item.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-[#626a63] sm:text-base lg:pt-1">
+
+                    <p
+                      className="mt-3 line-clamp-3 text-sm leading-relaxed sm:text-[15px]"
+                      style={{ color: MUTED }}
+                    >
                       {item.excerpt}
                     </p>
                   </Link>
