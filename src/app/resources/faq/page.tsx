@@ -243,7 +243,7 @@ export default function ProcurementFaqPage() {
 
           <div className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
             <a
-              href="#answers"
+              href="#product-performance"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#849363] px-7 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
             >
               Browse Answers
@@ -259,27 +259,6 @@ export default function ProcurementFaqPage() {
           </div>
         </div>
       </StackedPageHero>
-
-      {/* Jump nav */}
-      <nav
-        id="answers"
-        aria-label="FAQ categories"
-        className="scroll-mt-28 border-b bg-[#fbfaf7]"
-        style={{ borderColor: border }}
-      >
-        <div className="mx-auto flex max-w-[760px] flex-wrap items-center justify-center gap-x-6 gap-y-2 px-6 py-2.5 lg:px-10">
-          {faqGroups.map((group) => (
-            <a
-              key={group.id}
-              href={`#${group.id}`}
-              className="text-xs font-semibold tracking-[0.12em] uppercase transition-colors hover:text-[#101820]"
-              style={{ color: muted }}
-            >
-              {group.title}
-            </a>
-          ))}
-        </div>
-      </nav>
 
       {/* FAQ groups */}
       {faqGroups.map((group, groupIndex) => (

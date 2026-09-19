@@ -224,7 +224,10 @@ export function Header() {
       className={headerSurface}
       onMouseLeave={closeMega}
     >
-      <div className="mx-auto flex h-16 w-full max-w-[1600px] items-center justify-between gap-2 px-4 sm:h-[4.5rem] sm:gap-3 sm:px-6 lg:px-8 xl:gap-4 xl:px-10">
+      <div
+        data-site-header-bar
+        className="mx-auto flex h-16 w-full max-w-[1600px] items-center justify-between gap-2 px-4 sm:h-[4.5rem] sm:gap-3 sm:px-6 lg:px-8 xl:gap-4 xl:px-10"
+      >
         {/* Logo */}
         <div className="relative z-10 shrink-0">
           <Logo variant={isHome ? "onDark" : "onLight"} priority />

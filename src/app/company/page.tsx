@@ -332,12 +332,13 @@ export default function CompanyPage() {
       {/* LEADERSHIP                                                          */}
       {/* ================================================================== */}
 
-      <section
-        id="leadership"
-        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24"
-      >
-        <ContourDecoration position="left" />
-        <ContourDecoration position="right" />
+      <section className="relative bg-[#fbfaf7] py-12 sm:py-16 lg:py-24">
+        {/* Anchor lives outside overflow-hidden so scroll-margin / offset scroll work. */}
+        <div id="leadership" className="pointer-events-none absolute top-0 h-0 w-0 scroll-mt-28" />
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <ContourDecoration position="left" />
+          <ContourDecoration position="right" />
+        </div>
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
@@ -352,74 +353,47 @@ export default function CompanyPage() {
             </div>
           </Reveal>
 
-          <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
+          <div className="mx-auto mt-12 max-w-4xl">
             <Reveal variant="up">
               <article className="overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-6 lg:p-8">
-                <div className="grid items-center gap-8 md:grid-cols-1">
-                  <div className="relative mx-auto aspect-[0.82/1] w-full max-w-[280px] overflow-hidden rounded-[5px] bg-[#e7e7e4]">
+                <div className="flex flex-col items-center gap-8 text-center md:gap-10">
+                  <div className="relative aspect-[0.82/1] w-full max-w-[320px] overflow-hidden rounded-[5px] bg-[#e7e7e4]">
                     <Image
                       src="/media/company/company-leader.png"
                       alt="Portrait of Dr. Paul Ghotra, Founder and Chief Executive Officer"
                       fill
-                      sizes="280px"
+                      sizes="320px"
                       className="object-cover object-center"
                     />
                   </div>
 
-                  <div className="py-1 text-center">
-                    <p className="text-xs font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
-                      01
-                    </p>
-                    <h3 className="mt-4 font-display text-[28px] leading-[1] font-bold tracking-tight uppercase sm:text-[32px]">
+                  <div className="w-full max-w-xl py-1">
+                    <div
+                      className="mx-auto h-px w-14"
+                      style={{ backgroundColor: sage }}
+                    />
+
+                    <h3 className="mt-6 font-display text-[31px] leading-[1] font-bold tracking-tight uppercase sm:text-[36px]">
                       Dr. Paul Ghotra
                     </h3>
+
                     <p className="mt-3 text-xs font-semibold leading-[1.55] tracking-[0.18em] text-[#718092] uppercase">
                       Founder &amp; Chief Executive Officer
                     </p>
-                    <p className="mx-auto mt-6 max-w-md text-base leading-[1.55] text-[#68727d]">
-                      Two decades scaling Canadian advanced manufacturing and
-                      clean energy. Founder of CIMtech Green Energy. Recognized
-                      as Surrey Business Person of the Year for hydrogen
-                      leadership.
-                    </p>
+
+                    <div className="mx-auto mt-8 max-w-md space-y-5 text-base leading-[1.55] text-[#68727d]">
+                      <p>
+                        Two decades scaling Canadian advanced manufacturing and
+                        clean energy.
+                      </p>
+
+                      <p>
+                        Founder of CIMtech Green Energy. Recognized as Surrey
+                        Business Person of the Year for hydrogen leadership.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </article>
-            </Reveal>
-
-            <Reveal variant="up" delay={80}>
-              <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-6 lg:p-8">
-                <p className="text-xs font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
-                  02
-                </p>
-                <h3 className="mt-4 font-display text-[28px] leading-[1] font-bold tracking-tight uppercase sm:text-[32px]">
-                  [Team Member TBA]
-                </h3>
-                <p className="mt-3 text-xs font-semibold leading-[1.55] tracking-[0.18em] text-[#718092] uppercase">
-                  VP Engineering
-                </p>
-                <p className="mt-6 text-base leading-[1.55] text-[#68727d]">
-                  Hydrogen fuel cell systems, power electronics, and ruggedized
-                  field hardware. Bio to be announced.
-                </p>
-              </article>
-            </Reveal>
-
-            <Reveal variant="up" delay={160}>
-              <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-6 lg:p-8">
-                <p className="text-xs font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
-                  03
-                </p>
-                <h3 className="mt-4 font-display text-[28px] leading-[1] font-bold tracking-tight uppercase sm:text-[32px]">
-                  [Team Member TBA]
-                </h3>
-                <p className="mt-3 text-xs font-semibold leading-[1.55] tracking-[0.18em] text-[#718092] uppercase">
-                  VP Programs &amp; Business Development
-                </p>
-                <p className="mt-6 text-base leading-[1.55] text-[#68727d]">
-                  Defense and infrastructure programs, partnerships, and
-                  customer engagement. Bio to be announced.
-                </p>
               </article>
             </Reveal>
           </div>

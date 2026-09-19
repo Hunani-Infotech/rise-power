@@ -323,15 +323,17 @@ export default function CapabilitiesPage() {
 
         <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
           <Reveal variant="up">
-            <div className="max-w-2xl">
-              <SectionEyebrow>{performanceMetrics.eyebrow}</SectionEyebrow>
-              <h2 className="mt-4 max-w-[12ch] font-display text-4xl leading-[0.9] font-bold tracking-tight text-[#101820] uppercase sm:mt-5 sm:text-5xl lg:text-[3.25rem]">
+            <div className="mx-auto max-w-2xl text-center">
+              <SectionEyebrow center>
+                {performanceMetrics.eyebrow}
+              </SectionEyebrow>
+              <h2 className="mx-auto mt-4 max-w-[18ch] font-display text-4xl leading-[0.9] font-bold tracking-tight text-[#101820] uppercase sm:mt-5 sm:text-5xl lg:text-[3.25rem]">
                 {performanceMetrics.headingBefore}{" "}
                 <span style={{ color: sage }}>
                   {performanceMetrics.headingAccent}
                 </span>
               </h2>
-              <p className="mt-3 max-w-[40ch] text-base leading-[1.5] text-[#5c6560] sm:mt-4 sm:text-lg">
+              <p className="mx-auto mt-3 max-w-[42ch] text-base leading-[1.5] text-[#5c6560] sm:mt-4 sm:text-lg">
                 {performanceMetrics.body}
               </p>
             </div>
@@ -356,7 +358,7 @@ export default function CapabilitiesPage() {
                   <article
                     key={gauge.title}
                     className={[
-                      "group relative px-0 py-6 sm:px-5 sm:py-7 lg:px-6 lg:py-8",
+                      "group relative px-0 py-6 text-center sm:px-5 sm:py-7 lg:px-6 lg:py-8",
                       isOdd ? "sm:border-l sm:border-[#c9c4b8]" : "",
                       isBottomRow ? "sm:border-t sm:border-[#c9c4b8] lg:border-t-0" : "",
                       index > 0 ? "lg:border-l lg:border-[#c9c4b8]" : "",
@@ -366,7 +368,7 @@ export default function CapabilitiesPage() {
                       {String(index + 1).padStart(2, "0")}
                     </span>
 
-                    <div className="mt-4 flex flex-wrap items-end gap-x-2.5 gap-y-1 sm:mt-5">
+                    <div className="mt-4 flex flex-wrap items-end justify-center gap-x-2.5 gap-y-1 sm:mt-5">
                       <p className="font-display text-[3.25rem] leading-[0.85] font-bold tracking-[-0.04em] text-[#101820] transition-transform duration-700 ease-out group-hover:-translate-y-0.5 sm:text-[3.75rem] lg:text-[4.25rem] xl:text-[4.75rem]">
                         {gauge.value}
                       </p>
@@ -379,7 +381,7 @@ export default function CapabilitiesPage() {
                     </div>
 
                     <div
-                      className="mt-4 h-px w-full max-w-[8rem] overflow-hidden bg-[#d8d2c6] sm:mt-5"
+                      className="mx-auto mt-4 h-px w-full max-w-[8rem] overflow-hidden bg-[#d8d2c6] sm:mt-5"
                       aria-hidden
                     >
                       <span
@@ -388,10 +390,10 @@ export default function CapabilitiesPage() {
                       />
                     </div>
 
-                    <p className="mt-3 max-w-[20ch] text-sm leading-[1.4] font-medium text-[#2a333c] sm:mt-4">
+                    <p className="mx-auto mt-3 max-w-[20ch] text-sm leading-[1.4] font-medium text-[#2a333c] sm:mt-4">
                       {gauge.title}
                     </p>
-                    <p className="mt-1 max-w-[24ch] text-sm leading-[1.45] text-[#6b746c]">
+                    <p className="mx-auto mt-1 max-w-[24ch] text-sm leading-[1.45] text-[#6b746c]">
                       {gauge.body}
                     </p>
                   </article>
@@ -500,29 +502,6 @@ export default function CapabilitiesPage() {
               />
             ))}
           </RevealStagger>
-        </div>
-      </section>
-
-      {/* CLOSING CTA — live copy */}
-      <section className="bg-[#101820] py-12 sm:py-16 lg:py-20">
-        <div className="mx-auto max-w-[900px] px-6 text-center lg:px-10">
-          <Reveal variant="up">
-            <h2 className="font-display text-4xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-5xl">
-              Ready to discuss your requirements?
-            </h2>
-            <p className="mx-auto mt-5 max-w-[560px] text-base leading-relaxed text-white/75 sm:text-lg">
-              Our engineering team is ready to explore how hydrogen power can
-              support your mission.
-            </p>
-            <Link
-              href="/contact"
-              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
-              style={{ background: heroCta }}
-            >
-              Contact Us
-              <ArrowRight className="size-5" aria-hidden />
-            </Link>
-          </Reveal>
         </div>
       </section>
     </main>
