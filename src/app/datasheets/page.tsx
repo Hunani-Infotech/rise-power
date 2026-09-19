@@ -177,35 +177,6 @@ export default function DatasheetsPage() {
         </div>
       </StackedPageHero>
 
-      {/* BETA STRIP */}
-      <div className="border-y border-[#d9dfe3] bg-[#fbfaf7]">
-        <div className="mx-auto max-w-[1440px] px-6 py-4 sm:px-6 sm:py-5 lg:px-10">
-          <p className="border-l-2 border-[#849363] pl-4 text-sm leading-[1.55] text-[#66717d] sm:text-[15px]">
-            Beta technology notice: target performance values reflect current
-            engineering specifications. Final certified figures will be published
-            as the certification roadmap completes.
-          </p>
-        </div>
-      </div>
-
-      {/* JUMP NAV */}
-      <nav
-        aria-label="Datasheet sections"
-        className="border-b border-[#d9dfe3] bg-[#fbfaf7]"
-      >
-        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-6 gap-y-2 px-6 py-3 lg:px-10">
-          {products.map((product) => (
-            <a
-              key={product.id}
-              href={`#${product.id}`}
-              className="text-xs font-semibold tracking-[0.12em] text-[#66717d] uppercase transition-colors hover:text-[#101820]"
-            >
-              {product.name.replace("™", "")}
-            </a>
-          ))}
-        </div>
-      </nav>
-
       {/* PRODUCTS */}
       {products.map((product, index) => (
         <DatasheetProductSection
