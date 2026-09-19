@@ -145,7 +145,7 @@ function BlockRenderer({
                 src={block.src}
                 alt={block.alt}
                 fill
-                sizes="(min-width: 768px) 48rem, 100vw"
+                sizes="(min-width: 768px) 991px, 100vw"
                 className="object-cover"
               />
             </div>
@@ -174,8 +174,9 @@ export function InsightArticleView({
         imageAlt={article.hero.alt}
         tone="#101820"
         compact
+        contentMaxWidthClassName="max-w-[991px]"
       >
-        <div className="hero-animate-copy max-w-[720px]">
+        <div className="hero-animate-copy">
           <p className="text-xs font-semibold tracking-[0.2em] text-[#c5d4a8] uppercase sm:text-[13px]">
             {article.category}
             <span className="mx-2 text-white/40" aria-hidden>
@@ -191,7 +192,7 @@ export function InsightArticleView({
             />
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
+          <p className="mt-5 text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
             {article.excerpt}
           </p>
 
@@ -220,7 +221,7 @@ export function InsightArticleView({
         className="relative pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14"
         style={{ background: CREAM }}
       >
-        <div className="mx-auto max-w-3xl space-y-6 px-6 sm:space-y-7 lg:px-10">
+        <div className="mx-auto max-w-[991px] space-y-6 px-6 sm:space-y-7 lg:px-10">
           {article.body.map((block, index) => (
             <BlockRenderer
               key={`${block.type}-${index}`}

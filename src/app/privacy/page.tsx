@@ -89,7 +89,7 @@ export default function PrivacyPage() {
   return (
     <>
       <PageHero eyebrow="Legal" title="Privacy Policy" />
-      <div className="mx-auto max-w-3xl px-6 py-16 text-sm leading-relaxed text-muted lg:px-10">
+      <div className="mx-auto max-w-[991px] px-6 py-16 text-sm leading-relaxed text-muted lg:px-10">
         <Reveal variant="up">
           <p className="text-foreground/80">Effective Date: April 1, 2026</p>
           <div className="mt-10 space-y-10">
