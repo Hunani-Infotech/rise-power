@@ -300,6 +300,7 @@ export default function ProcurementFaqPage() {
               {group.items.map((item, itemIndex) => (
                 <details
                   key={item.q}
+                  name={group.id}
                   className="group/item border-b border-[#d9dfe3]"
                   open={groupIndex === 0 && itemIndex === 0}
                 >

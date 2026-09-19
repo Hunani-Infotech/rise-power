@@ -130,11 +130,11 @@ export const megaNavItems: readonly MegaNavItem[] = [
     label: "Company",
     href: "/company",
     links: [
-      {
-        label: "About Rise Power",
-        href: "/company",
-        description: "The mission behind portable hydrogen power.",
-      },
+      // {
+      //   label: "About Rise Power",
+      //   href: "/company",
+      //   description: "The mission behind portable hydrogen power.",
+      // },
       {
         label: "Leadership",
         href: "/company#leadership",
