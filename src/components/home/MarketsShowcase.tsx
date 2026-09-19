@@ -57,7 +57,7 @@ export function MarketsShowcase() {
         variant="fade"
       >
         {threeMarkets.cards.map((item, index) => (
-          <div key={item.title} role="listitem" className="min-w-0">
+          <div key={item.title} role="listitem" className="min-w-0 h-full">
             <MarketCardItem item={item} index={index} />
           </div>
         ))}

@@ -97,7 +97,7 @@ export function MarketRow({
         ) : null}
 
         {detail ? (
-          <p className="mt-3 text-[0.8125rem] leading-relaxed text-[#5c5f54] sm:mt-4">
+          <p className="mt-3 line-clamp-1 text-[0.8125rem] leading-relaxed text-[#5c5f54] sm:mt-4">
             {detail}
           </p>
         ) : null}

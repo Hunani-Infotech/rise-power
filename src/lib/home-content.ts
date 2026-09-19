@@ -248,7 +248,7 @@ export const threeMarkets = {
       theater: "DEFENSE",
       points: ["Bases", "Troops", "ISR"],
       detail:
-        "Reduces reliance on fuel convoys. Eliminates the acoustic, thermal, and emissions signatures that compromise operational security.",
+        "Cuts fuel-convoy dependence and eliminates acoustic, thermal, and emissions signatures.",
       href: "/use-cases#defense-security",
       cta: "View Defense",
       image: "Defense and security market imagery",
@@ -260,7 +260,7 @@ export const threeMarkets = {
       theater: "REMOTE",
       points: ["Austere Sites", "Pre-positioned Fuel", "Days of Runtime"],
       detail:
-        "Pre position cartridges and operate for days without intervention across minus 20 to plus 50 degrees C.",
+        "Pre-position cartridges and operate for days from −20 to +50 °C.",
       href: "/use-cases#remote-operations",
       cta: "View Remote",
       image: "Remote operations market imagery",
@@ -272,7 +272,7 @@ export const threeMarkets = {
       theater: "RESPONSE",
       points: ["Shelters", "Medical", "Comms"],
       detail:
-        "Zero exhaust enables indoor operation. Cartridges stockpile indefinitely. Crews swap them in seconds without tools.",
+        "Indoor-safe zero exhaust. Cartridges stockpile indefinitely; swap in seconds.",
       href: "/use-cases#disaster-response",
       cta: "View Disaster Response",
       image: "Disaster response market imagery",
