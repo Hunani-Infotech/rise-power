@@ -96,17 +96,6 @@ export type CapabilityTab = {
   };
 };
 
-export type ComparisonRow = {
-  metric: string;
-  hydrogen: string;
-  diesel: string;
-};
-
-export type BenefitItem = {
-  title: string;
-  body: string;
-};
-
 export type CaseCard = {
   category: string;
   title: string;
@@ -144,7 +133,6 @@ export const sectionOrder = [
   "three-markets",
   "product-ecosystem",
   "featured-products",
-  "why-hydrogen-wins",
   "customer-partners",
   "businesses-companies",
   "closing-cta",
@@ -591,65 +579,6 @@ export const capabilities = {
   ] satisfies readonly CapabilityTab[],
   diagramImage: "Capabilities engineering diagram",
   diagramImageSrc: "/media/capabilities/engineering.png",
-};
-
-export const whyHydrogenWins = {
-  eyebrow: "WHY HYDROGEN WINS",
-  headingBefore: "CLEANER.",
-  headingAccent: "QUIETER.",
-  headingAfter: "STRONGER.",
-  body: "Hydrogen fuel cells provide silent, zero-emission power while reducing maintenance and enabling rapid cartridge refueling for mission-critical operations.",
-  tableHeading: "HYDROGEN VS DIESEL",
-  columns: ["METRIC", "HYDROGEN", "DIESEL"] as const,
-  rows: [
-    { metric: "Noise", hydrogen: "<65 dB", diesel: ">90 dB" },
-    { metric: "Emissions", hydrogen: "Water only", diesel: "CO₂ + NOₓ" },
-    { metric: "Maintenance", hydrogen: "Low", diesel: "High" },
-    { metric: "Runtime", hydrogen: "Unlimited swap", diesel: "Fuel logistics" },
-    { metric: "Refueling", hydrogen: "30 sec", diesel: "Minutes" },
-  ] satisfies readonly ComparisonRow[],
-  benefits: [
-    {
-      title: "Zero Emissions",
-      body: "Produces only water vapor—no harmful exhaust, no carbon footprint.",
-    },
-    {
-      title: "Ultra-Quiet Operation",
-      body: "Operates at <65 dB for stealth and low acoustic signature.",
-    },
-    {
-      title: "Low Maintenance",
-      body: "Fewer moving parts mean lower wear, less downtime, and reduced lifecycle costs.",
-    },
-    {
-      title: "Rapid Cartridge Refueling",
-      body: "Swap cartridges in 30 seconds and stay powered without long refueling delays.",
-    },
-  ] satisfies readonly BenefitItem[],
-  iconBar: [
-    {
-      title: "Mission Ready",
-      body: "Reliable power in any environment.",
-    },
-    {
-      title: "High Efficiency",
-      body: "Maximum power, minimal waste.",
-    },
-    {
-      title: "Sustainable",
-      body: "Clean energy today for a better tomorrow.",
-    },
-    {
-      title: "Future-Proof",
-      body: "Scalable technology for a changing world.",
-    },
-    {
-      title: "Secure Power",
-      body: "Resilient systems for critical missions and operations.",
-    },
-  ] satisfies readonly BenefitItem[],
-  image: "Hydrogen vs diesel comparison",
-  imageSrc: "/media/why-hydrogen/comparison.png",
 };
 
 export const customerPartners = {

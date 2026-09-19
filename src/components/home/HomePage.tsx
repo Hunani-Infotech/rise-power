@@ -29,7 +29,6 @@ import { MarketsShowcase } from "./MarketsShowcase";
 import { PerformanceMetricCard } from "./PerformanceMetricCard";
 import { SectionSkeleton } from "./SectionSkeleton";
 import { SnapCarousel } from "./SnapCarousel";
-import { WhyHydrogenWins } from "./WhyHydrogenWins";
 
 const CustomersPartners = dynamic(
   () => import("./CustomersPartners").then((m) => m.CustomersPartners),
@@ -401,12 +400,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 6. Why Hydrogen Wins */}
-      <div className="cv-auto">
-        <WhyHydrogenWins />
-      </div>
-
-      {/* 7. Customers & Partners */}
+      {/* 6. Customers & Partners */}
       <div className="cv-auto">
         <CustomersPartners />
       </div>
