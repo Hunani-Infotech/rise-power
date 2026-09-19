@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Button } from "./Button";
+import { ArrowRight } from "lucide-react";
 
 const roles = [
   "Procurement / Contracting",
@@ -25,8 +25,11 @@ const useCases = [
   "Other",
 ];
 
+const labelClass =
+  "text-[11px] font-semibold tracking-[0.16em] text-[#66717d] uppercase";
+
 const fieldClass =
-  "mt-2 block w-full border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted/50 focus:border-accent focus:outline-none";
+  "mt-2 block w-full rounded-sm border border-[#d9dfe3] bg-[#fbfaf7] px-4 py-3 text-sm text-[#101820] placeholder:text-[#66717d]/50 focus:border-[#849363] focus:outline-none";
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -79,11 +82,15 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="border border-accent/30 bg-accent/5 p-10 text-center">
-        <h3 className="font-display text-2xl tracking-wide uppercase">
+      <div className="border border-[#849363]/35 bg-[#fbfaf7] px-6 py-12 text-center sm:px-10">
+        <div
+          aria-hidden="true"
+          className="mx-auto mb-6 h-px w-16 bg-[#849363]"
+        />
+        <h3 className="font-display text-2xl tracking-wide text-[#101820] uppercase sm:text-3xl">
           Message Received
         </h3>
-        <p className="mt-3 text-sm text-muted">
+        <p className="mt-3 text-sm leading-relaxed text-[#626e7a] sm:text-base">
           Thank you for reaching out. We will respond with specs, runtime data,
           and a deployment summary.
         </p>
@@ -98,15 +105,22 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="name" className="text-xs tracking-[0.16em] text-muted uppercase">
+        <label htmlFor="name" className={labelClass}>
           Name
         </label>
-        <input id="name" name="name" className={fieldClass} placeholder="Your name" />
-        {errors.name ? <p className="mt-1 text-xs text-red-400">{errors.name}</p> : null}
+        <input
+          id="name"
+          name="name"
+          className={fieldClass}
+          placeholder="Your name"
+        />
+        {errors.name ? (
+          <p className="mt-1 text-xs text-red-500">{errors.name}</p>
+        ) : null}
       </div>
 
       <div>
-        <label htmlFor="email" className="text-xs tracking-[0.16em] text-muted uppercase">
+        <label htmlFor="email" className={labelClass}>
           Email
         </label>
         <input
@@ -116,11 +130,13 @@ export function ContactForm() {
           className={fieldClass}
           placeholder="you@company.com"
         />
-        {errors.email ? <p className="mt-1 text-xs text-red-400">{errors.email}</p> : null}
+        {errors.email ? (
+          <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+        ) : null}
       </div>
 
       <div>
-        <label htmlFor="company" className="text-xs tracking-[0.16em] text-muted uppercase">
+        <label htmlFor="company" className={labelClass}>
           Organization
         </label>
         <input
@@ -133,7 +149,7 @@ export function ContactForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="role" className="text-xs tracking-[0.16em] text-muted uppercase">
+          <label htmlFor="role" className={labelClass}>
             Role
           </label>
           <select id="role" name="role" defaultValue="" className={fieldClass}>
@@ -148,10 +164,15 @@ export function ContactForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="useCase" className="text-xs tracking-[0.16em] text-muted uppercase">
+          <label htmlFor="useCase" className={labelClass}>
             Use Case
           </label>
-          <select id="useCase" name="useCase" defaultValue="" className={fieldClass}>
+          <select
+            id="useCase"
+            name="useCase"
+            defaultValue=""
+            className={fieldClass}
+          >
             <option value="" disabled>
               Primary use case
             </option>
@@ -165,7 +186,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="text-xs tracking-[0.16em] text-muted uppercase">
+        <label htmlFor="message" className={labelClass}>
           Message
         </label>
         <textarea
@@ -176,15 +197,24 @@ export function ContactForm() {
           placeholder="Operating environment, runtime requirements, deployment timeline, integration needs."
         />
         {errors.message ? (
-          <p className="mt-1 text-xs text-red-400">{errors.message}</p>
+          <p className="mt-1 text-xs text-red-500">{errors.message}</p>
         ) : null}
       </div>
 
-      {errors.form ? <p className="text-xs text-red-400">{errors.form}</p> : null}
+      {errors.form ? (
+        <p className="text-xs text-red-500">{errors.form}</p>
+      ) : null}
 
-      <Button type="submit" className="w-full sm:w-auto">
+      <button
+        type="submit"
+        disabled={pending}
+        className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm bg-[#849363] px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 disabled:opacity-60 sm:w-auto"
+      >
         {pending ? "Sending..." : "Request Briefing"}
-      </Button>
+        {!pending ? (
+          <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+        ) : null}
+      </button>
     </form>
   );
 }

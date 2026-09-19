@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
+import { StackedPageHero } from "@/components/StackedPageHero";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -184,90 +185,47 @@ export default function InvestorsPage() {
       {/* HERO                                                                  */}
       {/* ==================================================================== */}
 
-      <section className="relative min-h-[760px] overflow-hidden bg-[#101820] lg:min-h-[850px]">
-
-        <Image
-          src="/media/investors/investor-hero.png"
-          alt="Rise Power hydrogen power system in a mountain environment"
-          fill
-          priority
-          sizes="100vw"
-          className="hero-animate-media object-cover object-center"
-        />
-
-        {/* Dark gradient for text readability */}
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/75 to-transparent" />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/80 via-transparent to-[#071016]/20" /> */}
-
-        {/* Left focused cinematic gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/35 to-transparent" />
-
-        {/* Bottom subtle gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/45 via-transparent to-transparent" />
-
-        <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] items-center px-6 pb-20 pt-36 lg:min-h-[850px] lg:px-10">
-
-          <div className="hero-animate-copy max-w-[700px]">
-
-            {/* Eyebrow */}
-            <div className="flex items-center gap-4">
-              <span className="font-display text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
-                Investors
-              </span>
-            </div>
-
-            {/* Heading */}
-            <h1 className="mt-7 font-display text-6xl font-bold leading-[0.9] tracking-tight text-white uppercase sm:text-7xl lg:text-[92px]">
+      <StackedPageHero
+        imageSrc="/media/investors/investor-hero.png"
+        imageAlt="Rise Power hydrogen power system in a mountain environment"
+        tone="#101820"
+      >
+        <div className="hero-animate-copy max-w-[700px]">
+          <div className="flex items-center gap-4">
+            <span className="font-display text-mm font-semibold tracking-[0.2em] text-[#6e7f42] uppercase">
               Investors
-            </h1>
+            </span>
+          </div>
 
-            {/* Description */}
-            <p className="mt-4 max-w-[650px] text-lg leading-[1.55] text-white/90 sm:text-xl">
-              Rise Power is raising to scale manufacturing, complete
-              certification, and fulfill pilot deployments across defense,
-              disaster response, and critical infrastructure. Materials and
-              contact below for qualified investors.
-            </p>
+          <h1 className="mt-6 font-display text-5xl font-bold leading-[0.9] tracking-tight text-white uppercase sm:mt-7 sm:text-7xl xl:text-[92px]">
+            Investors
+          </h1>
 
-            {/* Buttons */}
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+          <p className="mt-4 max-w-[650px] text-base leading-[1.55] text-white/90 sm:text-xl">
+            Rise Power is raising to scale manufacturing, complete certification,
+            and fulfill pilot deployments across defense, disaster response, and
+            critical infrastructure. Materials and contact below for qualified
+            investors.
+          </p>
 
-              {/* <Link
-                href="/contact"
-                className="group inline-flex min-h-[64px] items-center justify-center gap-7 rounded-[5px] bg-[#58a926] px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:bg-[#4b9220] hover:shadow-xl"
-              >
-                <span>Request a Briefing</span>
-                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-
-              <Link
-                href="#investor-materials"
-                className="group inline-flex min-h-[64px] items-center justify-center gap-7 rounded-[5px] border border-white/80 bg-transparent px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-all duration-300 hover:bg-white hover:text-[#101820]"
-              >
-                <span>Download the Deck</span>
-                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link> */}
-
-              <Link
-                href="/contact"
-                className="group inline-flex min-h-[64px] items-center justify-center gap-2 px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-opacity hover:opacity-90 rounded-sm bg-[#849363]"
-              >
-                <span>Request a Briefing</span>
-                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="#investor-materials"
-                className="group inline-flex min-h-[64px] items-center justify-center gap-2 border border-white/80 px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
-              >
-                <span>Download the Deck</span>
-                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-
-            </div>
+          <div className="mt-8 flex flex-col gap-4 sm:mt-9 sm:flex-row">
+            <Link
+              href="/contact"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#849363] px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-opacity hover:opacity-90 sm:min-h-[64px]"
+            >
+              <span>Request a Briefing</span>
+              <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+            <Link
+              href="#investor-materials"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-white/80 px-9 text-sm font-semibold tracking-[0.04em] text-white uppercase transition-colors hover:bg-white/10 sm:min-h-[64px]"
+            >
+              <span>Download the Deck</span>
+              <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
-      </section>
+      </StackedPageHero>
 
       {/* ==================================================================== */}
       {/* INVESTOR MATERIALS                                                     */}

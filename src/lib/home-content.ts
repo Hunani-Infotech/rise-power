@@ -81,12 +81,27 @@ export type CapabilityCallout = {
   body: string;
 };
 
+export type CapabilityMedia = {
+  src: string;
+  alt: string;
+};
+
 export type CapabilityTab = {
   id: string;
   label: string;
+  title: string;
   eyebrow: string;
   heading: string;
   body: string;
+  heroBody: string;
+  href: string;
+  imageSrc: string;
+  imageAlt: string;
+  secondaryImageSrc: string;
+  secondaryImageAlt: string;
+  gallery: readonly CapabilityMedia[];
+  deliverablesIntro: string;
+  deliverables: readonly string[];
   cta: Cta;
   stats: readonly CapabilityStat[];
   callouts: readonly CapabilityCallout[];
@@ -95,6 +110,12 @@ export type CapabilityTab = {
     name: string;
     role: string;
   };
+};
+
+export type CertificationRoadmapItem = {
+  status: string;
+  standard: string;
+  description: string;
 };
 
 export type CaseCard = {
@@ -390,13 +411,147 @@ export const capabilities = {
   headingBefore: "OUR",
   headingAccent: "CAPABILITIES.",
   body: "From early-stage prototypes to production-ready hardware, our engineering team delivers hydrogen power systems designed for the environment where they will actually operate.",
+  hero: {
+    eyebrow: "CAPABILITIES",
+    headlineLine1: "End to End",
+    headlineAccent: "Hydrogen Power.",
+    body: "Engineering, integration, field deployment, and safety — systems built for the environments where they will actually operate.",
+    imageSrc: "/media/capabilities/engineering-development.jpg",
+    primaryCta: { label: "Explore Capabilities", href: "#pillars" } satisfies Cta,
+    secondaryCta: { label: "Request a Briefing", href: "/contact" } satisfies Cta,
+  },
+  atmosphere: {
+    eyebrow: "IN THE FIELD",
+    headingBefore: "BUILT FOR",
+    headingAccent: "REAL THEATERS.",
+    body: "From alpine ridges to forward operating bases, Rise Power systems are photographed and proven where operators actually work.",
+    imageSrc: "/media/hero.png",
+    imageAlt: "Rise Power hydrogen system in a tactical field deployment",
+  },
+  metricsBand: {
+    imageSrc: "/media/missions/mountain.png",
+    imageAlt: "Mountain deployment environment for portable hydrogen power",
+  },
+  gallery: [
+    {
+      src: "/media/use-cases/defense-security.jpg",
+      alt: "Defense and security power deployment with communications hardware",
+    },
+    {
+      src: "/media/use-cases/uc-deployment.png",
+      alt: "Field shelter powered by Rise Power systems at dusk",
+    },
+    {
+      src: "/media/cases/mining.png",
+      alt: "Remote industrial and mining power operations",
+    },
+    {
+      src: "/media/company/company-v1.png",
+      alt: "Operator with Rise Power portable hydrogen hardware",
+    },
+  ] satisfies readonly CapabilityMedia[],
+  proof: {
+    eyebrow: "FIELD VALIDATION",
+    headingBefore: "ENGINEERED FOR THE FIELD.",
+    headingAccent: "VALIDATED IN IT.",
+    body: "Rise Power systems are designed from operator requirements outward. Sealed against dust and salt spray. Validated across coastal British Columbia, arctic, and high altitude conditions. Built for mission duration in environments where commercial hardware fails.",
+    imageSrc: "/media/capabilities/field-deployment.jpg",
+    imageAlt: "Engineered for the field. Validated in it.",
+    secondaryImageSrc: "/media/cta/closing.png",
+    secondaryImageAlt: "Mission landscape supporting field-validated hydrogen power",
+  },
+  closingBand: {
+    imageSrc: "/media/use-cases/uc-defence.png",
+    imageAlt: "Defense operations powered by Rise Mission Power",
+  },
+  certificationRoadmap: {
+    eyebrow: "CERTIFICATION ROADMAP",
+    heading: "Standards in active development.",
+    body: "Rise Power is beta-stage technology. The standards below are in active compliance and testing work. Final certification status will be published as each program completes. Defense and infrastructure procurement teams can request the current compliance brief during a capability review.",
+    items: [
+      {
+        status: "IN PROGRESS",
+        standard: "Transport Canada. Hydrogen Cartridge Transport",
+        description:
+          "Ground and air transport of pressurized hydrogen cartridges within Canada.",
+      },
+      {
+        status: "IN PROGRESS",
+        standard: "UN 38.3. Lithium / Pressure Vessel Transport",
+        description:
+          "International transport qualification for cartridge assemblies.",
+      },
+      {
+        status: "IN PROGRESS",
+        standard: "DOT-39. Non Refillable Pressure Vessel",
+        description:
+          "United States DOT compliance for non refillable hydrogen cartridges.",
+      },
+      {
+        status: "IN PROGRESS",
+        standard: "MIL-STD-810. Environmental Engineering",
+        description:
+          "Shock, vibration, temperature, humidity, dust, and altitude qualification for field deployment.",
+      },
+      {
+        status: "IN PROGRESS",
+        standard: "MIL-STD-461. Electromagnetic Interference",
+        description:
+          "EMI and EMC qualification for collocated military electronics and comms equipment.",
+      },
+      {
+        status: "IN PROGRESS",
+        standard: "ISO 9001. Quality Management System",
+        description: "Manufacturing quality system for production scaling.",
+      },
+      {
+        status: "IN PROGRESS",
+        standard: "CSA and NFPA 2. Hydrogen Indoor Use",
+        description:
+          "Indoor operation safety for data center, shelter, and command facility deployment.",
+      },
+    ] satisfies readonly CertificationRoadmapItem[],
+  },
   tabs: [
     {
       id: "engineering",
       label: "Engineering",
+      title: "Engineering & Development",
       eyebrow: "CONCEPT TO DEPLOYMENT",
       heading: "Engineering & development from concept to deployment",
       body: "From early-stage prototypes to production-ready hardware, our engineering team delivers hydrogen power systems designed for the environment where they will actually operate.",
+      heroBody:
+        "Hydrogen fuel cell design, power electronics, and ruggedized system development from concept through production.",
+      href: "/capabilities/engineering-development",
+      imageSrc: "/media/capabilities/engineering-development.jpg",
+      imageAlt:
+        "Rise Power engineers reviewing a fuel cell stack and CAD exploded view.",
+      secondaryImageSrc: "/media/company/company-v2.png",
+      secondaryImageAlt:
+        "Rise Power enclosure and harnessing during engineering development",
+      gallery: [
+        {
+          src: "/media/capabilities/engineering.png",
+          alt: "Engineering diagram of Rise Power hydrogen system architecture",
+        },
+        {
+          src: "/media/company/company-v3.png",
+          alt: "Engineering workstation and hydrogen hardware review",
+        },
+        {
+          src: "/media/products/cartridge-kit.jpg",
+          alt: "Hydrogen cartridge kit used in system development",
+        },
+      ],
+      deliverablesIntro:
+        "Rise Power engineering covers hydrogen fuel cell systems, power electronics, and ruggedized system design. We work from early stage concepts through detailed engineering, prototyping, and production readiness, with the operating environment defined up front.",
+      deliverables: [
+        "Hydrogen fuel cell system design and optimization",
+        "Power electronics and control system development",
+        "Ruggedized enclosure and thermal management design",
+        "Prototype fabrication and iterative testing",
+        "Production engineering and manufacturing support",
+      ],
       cta: { label: "Request a Briefing", href: "/contact" },
       stats: [
         {
@@ -442,9 +597,42 @@ export const capabilities = {
     {
       id: "integration",
       label: "Integration",
+      title: "System Integration",
       eyebrow: "PLATFORMS. NETWORKS. INFRASTRUCTURE.",
       heading: "System integration with existing platforms and infrastructure",
       body: "Our systems are designed from the start to work within existing vehicle platforms, communications systems, and facility power networks — not as standalone replacements.",
+      heroBody:
+        "Integration with existing vehicle platforms, communications systems, and facility power networks.",
+      href: "/capabilities/system-integration",
+      imageSrc: "/media/capabilities/system-integration.jpg",
+      imageAlt:
+        "Gloved hands mating a stainless quick-disconnect coupler into a control cabinet.",
+      secondaryImageSrc: "/media/use-cases/uc-deployment.png",
+      secondaryImageAlt:
+        "Rise Sentinel integrated with field shelter and communications rack",
+      gallery: [
+        {
+          src: "/media/use-cases/defense-security.jpg",
+          alt: "Platform integration with communications and field power",
+        },
+        {
+          src: "/media/products/product-ecosystem.png",
+          alt: "Rise Power product ecosystem for system integration",
+        },
+        {
+          src: "/media/ecosystem/02.png",
+          alt: "Integrated hydrogen power components for vehicle and facility use",
+        },
+      ],
+      deliverablesIntro:
+        "Rise Power systems are designed from the start to work within existing infrastructure. Integration covers vehicle platforms, communications systems, facility power networks, and legacy power management hardware.",
+      deliverables: [
+        "Platform specific integration engineering",
+        "Power management and load balancing",
+        "Communications and control interface design",
+        "Hybrid power system architecture",
+        "Legacy system compatibility assessment",
+      ],
       cta: { label: "Request a Briefing", href: "/contact" },
       stats: [
         {
@@ -490,9 +678,42 @@ export const capabilities = {
     {
       id: "field",
       label: "Field",
+      title: "Field Deployment",
       eyebrow: "LOGISTICS. TRAINING. SUPPORT.",
       heading: "Rapid field deployment with end-to-end logistics support",
       body: "Getting a system from the lab to the field requires more than good engineering. We provide logistics planning, operator training, and field service so your team can rely on hydrogen power where it matters.",
+      heroBody:
+        "Logistics planning, operator training, and field service for deployed hydrogen power systems.",
+      href: "/capabilities/field-deployment",
+      imageSrc: "/media/capabilities/field-deployment.jpg",
+      imageAlt:
+        "Canadian Armed Forces soldiers unloading a Rise Power power cube from a military truck at golden hour.",
+      secondaryImageSrc: "/media/products/cartridge-kit.jpg",
+      secondaryImageAlt:
+        "Hydrogen cartridge kit ready for rapid field replenishment",
+      gallery: [
+        {
+          src: "/media/missions/mountain.png",
+          alt: "Alpine field deployment for portable hydrogen power",
+        },
+        {
+          src: "/media/use-cases/uc-defence.png",
+          alt: "Defense field operations with Rise Power systems",
+        },
+        {
+          src: "/media/cases/defense.png",
+          alt: "Defense case deployment of Rise Mission Power",
+        },
+      ],
+      deliverablesIntro:
+        "Deployment is end to end. Rise Power provides logistics planning, operator training, field service, and cartridge supply chain management for every fielded system.",
+      deliverables: [
+        "Deployment planning and logistics support",
+        "Operator and maintainer training programs",
+        "Field service and technical support",
+        "Spare parts and cartridge supply chain management",
+        "Performance monitoring and optimization",
+      ],
       cta: { label: "Request a Briefing", href: "/contact" },
       stats: [
         {
@@ -538,9 +759,42 @@ export const capabilities = {
     {
       id: "safety",
       label: "Safety",
+      title: "Safety & Compliance",
       eyebrow: "ENGINEERED IN FROM DAY ONE",
       heading: "Safety & compliance engineered in from day one",
       body: "Pressure vessels, leak detection, and thermal management are designed in from the start. We work directly with the regulatory bodies relevant to defense, transport, and indoor industrial deployment.",
+      heroBody:
+        "Safety engineered in from day one. Active certification across defense, transport, and indoor industrial standards.",
+      href: "/capabilities/safety-compliance",
+      imageSrc: "/media/capabilities/safety-compliance.jpg",
+      imageAlt:
+        "Safety technician in nitrile gloves testing a hydrogen cartridge with a handheld leak detector.",
+      secondaryImageSrc: "/media/use-cases/disaster-response.jpg",
+      secondaryImageAlt:
+        "Disaster response deployment with safety-first hydrogen power",
+      gallery: [
+        {
+          src: "/media/cases/emergency.png",
+          alt: "Emergency response power with safety and compliance focus",
+        },
+        {
+          src: "/media/company/company-v4.png",
+          alt: "Quality and compliance review of Rise Power hardware",
+        },
+        {
+          src: "/media/products/product-hydro-kit.png",
+          alt: "Hydrogen kit designed with safety systems engineered in",
+        },
+      ],
+      deliverablesIntro:
+        "Pressure vessels, leak detection, and thermal management are designed in from the start. Rise Power works directly with the regulatory bodies and standards organizations relevant to defense, transport, and indoor industrial deployment.",
+      deliverables: [
+        "Safety by design engineering methodology",
+        "Regulatory compliance assessment and documentation",
+        "Hazard analysis and risk mitigation",
+        "Environmental testing and qualification",
+        "Certification support documentation",
+      ],
       cta: { label: "Request a Briefing", href: "/contact" },
       stats: [
         {

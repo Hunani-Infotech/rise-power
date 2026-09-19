@@ -87,6 +87,7 @@ import {
 } from "lucide-react";
 
 import { Reveal } from "@/components/motion/Reveal";
+import { StackedPageHero } from "@/components/StackedPageHero";
 import { products, useCases } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
@@ -249,70 +250,46 @@ export default function UseCasesPage() {
 
   return (
     <main className="bg-[#fbfaf7] text-[#101713]">
-      {/* HERO*/}
+      <StackedPageHero
+        imageSrc={defense?.image ?? "/media/use-cases/uc-hero.png"}
+        imageAlt="Hydrogen power supporting mission operations"
+        imageClassName="object-cover object-[center_15%]"
+      >
+        <div className="hero-animate-copy max-w-[700px]">
+          <SectionEyebrow>Use Cases</SectionEyebrow>
 
-      <section className="relative min-h-[480px] overflow-hidden bg-[#0a100e] text-white sm:min-h-[560px] lg:min-h-[640px]">
-        {/* Background */}
-        {defense?.image ? (
-          <Image
-            src={defense.image}
-            alt="Hydrogen power supporting mission operations"
-            fill
-            priority
-            sizes="100vw"
-            className="hero-animate-media object-cover object-[center_15%]"
-          />
-        ) : null}
+          <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight uppercase sm:mt-7 sm:text-[64px] xl:text-[82px] 2xl:text-[94px]">
+            Power Where
+            <br />
+            <span style={{ color: "#6e7f42" }}>The Mission</span>
+            <br />
+            <span style={{ color: "#6e7f42" }}>Takes You.</span>
+          </h1>
 
-        {/* Dark cinematic overlays */}
-        {/* <div className="absolute inset-0 bg-[#07100d]/45" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/95 via-[#07100d]/70 to-[#07100d]/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/80 via-transparent to-[#07100d]/20" /> */}
+          <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white/80 sm:mt-7 sm:text-lg xl:text-xl">
+            Hydrogen power engineered for the environments where conventional
+            generators fall short.
+          </p>
 
-        {/* Left focused cinematic gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/95 via-[#07100d]/35 to-transparent" />
+          <div className="mt-8 flex flex-col gap-4 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center">
+            <a
+              href="#use-cases"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#849363] px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+            >
+              Explore Use Cases
+              <ArrowRight className="size-5" />
+            </a>
 
-        {/* Bottom subtle gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/40 via-transparent to-transparent" />
-
-        {/* Content */}
-        <div className="relative mx-auto flex min-h-[480px] max-w-[1440px] items-center px-6 pt-28 pb-20 sm:min-h-[560px] lg:min-h-[750px] lg:px-10">
-          <div className="hero-animate-copy max-w-[700px]">
-              <SectionEyebrow>Use Cases</SectionEyebrow>
-
-              <h1 className="mt-7 font-display text-[48px] leading-[0.9] font-bold tracking-tight uppercase sm:text-[64px] lg:text-[82px] xl:text-[94px]">
-                Power Where
-                <br />
-                <span style={{ color: "#6e7f42" }}>The Mission</span>
-                <br />
-                <span style={{ color: "#6e7f42" }}>Takes You.</span>
-              </h1>
-
-              <p className="mt-7 max-w-[600px] text-base leading-relaxed text-white/80 sm:text-lg lg:text-xl">
-                Hydrogen power engineered for the environments where
-                conventional generators fall short.
-              </p>
-
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <a
-                  href="#use-cases"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 bg-[#849363]"
-                >
-                  Explore Use Cases
-                  <ArrowRight className="size-5" />
-                </a>
-
-                <a
-                  href="#products"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/50 px-8 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
-                >
-                  View Products
-                  <ArrowRight className="size-5" />
-                </a>
-              </div>
-            </div>
+            <a
+              href="#products"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-white/50 px-8 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10"
+            >
+              View Products
+              <ArrowRight className="size-5" />
+            </a>
+          </div>
         </div>
-      </section>
+      </StackedPageHero>
 
       {/* FOUR ENVIRONMENTS*/}
 
@@ -737,7 +714,7 @@ export default function UseCasesPage() {
           </div>
 
           {/* Bottom CTA */}
-          <Reveal variant="fade" delay={300}>
+          {/* <Reveal variant="fade" delay={300}>
             <div className="mt-10 flex justify-center">
               <a
                 href="/products"
@@ -749,7 +726,7 @@ export default function UseCasesPage() {
                 <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>
-          </Reveal>
+          </Reveal> */}
         </div>
       </section>
     </main>

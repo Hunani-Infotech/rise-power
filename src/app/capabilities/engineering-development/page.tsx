@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CapTabRedirect } from "../CapTabRedirect";
+import { CapabilityDetail } from "@/components/capabilities/CapabilityDetail";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -10,5 +10,5 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function EngineeringDevelopmentPage() {
-  return <CapTabRedirect tab="engineering" />;
+  return <CapabilityDetail tabId="engineering" />;
 }

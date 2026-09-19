@@ -4,6 +4,7 @@ import { ArrowRight, Info } from "lucide-react";
 
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/motion/Reveal";
+import { StackedPageHero } from "@/components/StackedPageHero";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 
@@ -97,80 +98,47 @@ export default function DatasheetsPage() {
   return (
     <main className="bg-[#fbfaf7] text-[#101820]">
 
-      {/* HERO*/}
+      <StackedPageHero
+        imageSrc="/media/datasheets/datasheet-hero.png"
+        imageAlt="Rise Power hydrogen systems in a field environment"
+        tone="#0a0f10"
+      >
+        <div className="hero-animate-copy max-w-[780px]">
+          <div className="flex items-center gap-4">
+            <span className="h-[2px] w-12 bg-[#6e7f42]" />
+            <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
+              Resources
+            </p>
+          </div>
 
-      <section className="relative min-h-[720px] overflow-hidden bg-[#0a0f10] sm:min-h-[760px] lg:min-h-[820px]">
+          <h1 className="mt-6 font-display text-5xl leading-[0.9] font-bold tracking-tight text-white uppercase sm:mt-7 sm:text-7xl xl:text-[112px]">
+            Datasheets
+          </h1>
 
-        {/* Background image */}
-        <Image
-          src="/media/datasheets/datasheet-hero.png"
-          alt="Rise Power hydrogen systems in a field environment"
-          fill
-          priority
-          sizes="100vw"
-          className="hero-animate-media object-cover object-center"
-        />
+          <p className="mt-6 max-w-[760px] text-base leading-[1.55] text-white/85 sm:mt-8 sm:text-xl xl:text-[22px]">
+            Technical specifications for Rise Power systems. Beta-stage hardware
+            in active validation — full datasheets are available on briefing
+            request as compliance work completes.
+          </p>
 
-        {/* Dark gradient */}
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#071013]/95 via-[#071013]/75 to-[#071013]/20" /> */}
+          <div className="mt-8 flex max-w-[720px] overflow-hidden rounded-[5px] border border-[#6d9633] bg-[#111914]/75 backdrop-blur-sm sm:mt-9">
+            <div className="flex w-16 shrink-0 items-center justify-center border-r border-[#6d9633]/40 bg-[#182116]/80 sm:w-20">
+              <Info className="size-7 text-[#8fbd42] sm:size-8" />
+            </div>
 
-        {/* Additional bottom gradient */}
-        {/* <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#071013]/80 to-transparent" /> */}
-
-        {/* Left focused cinematic gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071013]/95 via-[#071013]/35 to-transparent" />
-
-        {/* Additional bottom subtle gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#071013]/45 to-transparent" />
-
-        <div className="relative z-10 mx-auto flex min-h-[720px] max-w-[1440px] items-center px-6 py-28 sm:min-h-[760px] lg:min-h-[820px] lg:px-10">
-
-          <div className="hero-animate-copy max-w-[780px]">
-
-            {/* Eyebrow */}
-            <div className="flex items-center gap-4">
-              <span className="h-[2px] w-12 bg-[#6e7f42]" />
-
-              <p className="text-mm font-semibold tracking-[0.18em] text-[#6e7f42] uppercase">
-                Resources
+            <div className="px-5 py-5 sm:px-6 sm:py-6">
+              <p className="text-sm leading-[1.6] text-white/90 sm:text-base">
+                <span className="font-semibold text-white">
+                  Beta technology notice:
+                </span>{" "}
+                target performance values reflect current engineering
+                specifications. Final certified figures will be published as the
+                certification roadmap completes.
               </p>
             </div>
-
-            {/* Heading */}
-            <h1 className="mt-7 font-display text-6xl leading-[0.9] font-bold tracking-tight text-white uppercase sm:text-7xl lg:text-[112px]">
-              Datasheets
-            </h1>
-
-            {/* Description */}
-            <p className="mt-8 max-w-[760px] text-lg leading-[1.55] text-white/85 sm:text-xl lg:text-[22px]">
-              Technical specifications for Rise Power systems. Beta-stage
-              hardware in active validation — full datasheets are available
-              on briefing request as compliance work completes.
-            </p>
-
-            {/* Beta notice */}
-            <div className="mt-9 flex max-w-[720px] overflow-hidden rounded-[5px] border border-[#6d9633] bg-[#111914]/75 backdrop-blur-sm">
-
-              <div className="flex w-20 shrink-0 items-center justify-center border-r border-[#6d9633]/40 bg-[#182116]/80">
-                <Info className="size-8 text-[#8fbd42]" />
-              </div>
-
-              <div className="px-5 py-5 sm:px-6 sm:py-6">
-                <p className="text-sm leading-[1.6] text-white/90 sm:text-base">
-                  <span className="font-semibold text-white">
-                    Beta technology notice:
-                  </span>{" "}
-                  target performance values reflect current engineering
-                  specifications. Final certified figures will be published
-                  as the certification roadmap completes.
-                </p>
-              </div>
-
-            </div>
-
           </div>
         </div>
-      </section>
+      </StackedPageHero>
 
       {/* PRODUCT DATASHEETS*/}
 

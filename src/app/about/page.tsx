@@ -69,16 +69,18 @@ export default function AboutPage() {
               The team behind the systems
             </h2>
           </Reveal>
-          <RevealStagger className="mt-12 grid gap-6 lg:grid-cols-3" step={90}>
+          <RevealStagger className="mt-12 mx-auto max-w-2xl" step={90}>
             {team.map((member) => (
-              <article key={member.role} className="motion-hover-lift border border-border p-8">
-                <h3 className="font-display text-2xl tracking-wide uppercase">
+              <article key={member.role} className="motion-hover-lift border border-border p-8 sm:p-10">
+                <h3 className="font-display text-2xl tracking-wide uppercase sm:text-3xl">
                   {member.name}
                 </h3>
                 <p className="mt-2 text-xs tracking-[0.16em] text-accent uppercase">
                   {member.role}
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-muted">{member.bio}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
+                  {member.bio}
+                </p>
               </article>
             ))}
           </RevealStagger>

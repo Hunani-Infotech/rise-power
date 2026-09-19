@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
-import { Button } from "@/components/Button";
 import { Reveal } from "@/components/motion/Reveal";
+import { StackedPageHero } from "@/components/StackedPageHero";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -154,88 +154,46 @@ export default function CompanyPage() {
   return (
     <main className="overflow-hidden bg-[#fbfaf7] text-[#101820]">
 
-      {/* ================================================================== */}
-      {/* HERO                                                               */}
-      {/* ================================================================== */}
+      <StackedPageHero
+        imageSrc="/media/company/company-hero.png"
+        imageAlt="Rise Power systems deployed in a remote operating environment"
+        tone="#101820"
+      >
+        <div className="hero-animate-copy max-w-[820px]">
+          <SectionEyebrow>Company</SectionEyebrow>
 
-      <section className="relative min-h-[760px] overflow-hidden bg-[#101820] sm:min-h-[820px] lg:min-h-[900px]">
-        <Image
-          src="/media/company/company-hero.png"
-          alt="Rise Power systems deployed in a remote operating environment"
-          fill
-          priority
-          sizes="100vw"
-          className="hero-animate-media object-cover object-center"
-        />
+          <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight text-white uppercase sm:mt-8 sm:text-[68px] md:text-[78px] xl:text-[88px] 2xl:text-[96px]">
+            Canadian
+            <br />
+            Engineered.
+            <br />
+            <span style={{ color: "#6e7f42" }}>Field Validated.</span>
+          </h1>
 
-        {/* Dark cinematic gradient */}
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/70 to-[#071016]/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/65 via-transparent to-[#071016]/20" /> */}
+          <p className="mt-6 max-w-[760px] text-base leading-[1.55] text-white/85 sm:mt-8 sm:text-xl xl:text-[22px]">
+            Rise Power is engineered, manufactured, and validated in British
+            Columbia. A CIMtech Green Energy company.
+          </p>
 
-        {/* Left focused cinematic gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/30 to-transparent" />
+          <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row">
+            <a
+              href="/contact"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#849363] px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+            >
+              Request a Briefing
+              <ArrowRight className="size-5" />
+            </a>
 
-        {/* Bottom subtle gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/35 via-transparent to-transparent" />
-
-        {/* Content */}
-        <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] items-center px-6 pb-20 pt-32 sm:min-h-[820px] lg:min-h-[900px] lg:px-10">
-          <div className="hero-animate-copy max-w-[820px]">
-
-              <SectionEyebrow>
-                Company
-              </SectionEyebrow>
-
-              <h1 className="mt-8 font-display text-[52px] leading-[0.9] font-bold tracking-tight text-white uppercase sm:text-[68px] md:text-[78px] lg:text-[88px] xl:text-[96px]">
-                Canadian
-                <br />
-                Engineered.
-                <br />
-                <span style={{ color: "#6e7f42" }}>
-                  Field Validated.
-                </span>
-              </h1>
-
-              <p className="mt-8 max-w-[760px] text-lg leading-[1.55] text-white/85 sm:text-xl lg:text-[22px]">
-                Rise Power is engineered, manufactured, and validated in
-                British Columbia. A CIMtech Green Energy company.
-              </p>
-
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                {/* <Button href="/contact">
-                  <span className="flex items-center gap-2">
-                    Request a Briefing
-                    <ArrowRight className="size-5" />
-                  </span>
-                </Button>
-
-                <a
-                  href="#leadership"
-                  className="inline-flex min-h-14 items-center justify-center border border-white/60 px-7 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-white hover:text-[#101820]  rounded-sm"
-                >
-                  Meet the Team
-                  <ArrowRight className="ml-4 size-5" />
-                </a> */}
-
-                <a
-                  href="/contact"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 bg-[#849363]"
-                >
-                  Request a Briefing
-                  <ArrowRight className="size-5" />
-                </a>
-
-                <a
-                  href="#leadership"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/50 px-7 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10 rounded-sm"
-                >
-                  Meet the Team
-                  <ArrowRight className="size-5" />
-                </a>
-              </div>
-            </div>
+            <a
+              href="#leadership"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-white/50 px-7 text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-white/10"
+            >
+              Meet the Team
+              <ArrowRight className="size-5" />
+            </a>
+          </div>
         </div>
-      </section>
+      </StackedPageHero>
 
       {/* ================================================================== */}
       {/* MISSION                                                            */}
@@ -420,54 +378,38 @@ export default function CompanyPage() {
             </div>
           </Reveal>
 
-          {/* Leadership grid */}
-          <div className="mt-12 grid gap-5 lg:grid-cols-[1.45fr_0.575fr_0.575fr]">
-
-            {/* ========================================================== */}
-            {/* PAUL GHOTRA                                                   */}
-            {/* ========================================================== */}
-
+          {/* Leadership profile */}
+          <div className="mx-auto mt-12 max-w-4xl">
             <Reveal variant="up">
-              <article className="h-full overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-5">
-
-                <div className="grid h-full gap-7 md:grid-cols-[1fr_0.95fr] md:items-center">
-
+              <article className="overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-6 lg:p-8">
+                <div className="grid items-center gap-8 md:grid-cols-[0.9fr_1.1fr] md:gap-10 lg:gap-12">
                   {/* Portrait */}
-                  <div className="relative aspect-[0.82/1] overflow-hidden rounded-[5px] bg-[#e7e7e4]">
+                  <div className="relative mx-auto aspect-[0.82/1] w-full max-w-[320px] overflow-hidden rounded-[5px] bg-[#e7e7e4] md:mx-0 md:max-w-none">
                     <Image
                       src="/media/company/company-leader.png"
                       alt="Dr. Paul Ghotra"
                       fill
-                      sizes="(min-width: 1024px) 36vw, 100vw"
+                      sizes="(min-width: 768px) 28vw, 320px"
                       className="object-cover object-center"
                     />
                   </div>
 
                   {/* Information */}
-                  <div className="py-2 md:py-6">
+                  <div className="py-1 text-center md:py-2 md:text-left">
+                    <div
+                      className="mx-auto h-px w-14 md:mx-0"
+                      style={{ backgroundColor: sage }}
+                    />
 
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="font-display text-[30px] font-bold leading-none"
-                        style={{ color: sage }}
-                      >
-                        01
-                      </span>
-
-                      <span className="h-px w-14 bg-[#aeb6bd]" />
-                    </div>
-
-                    <h3 className="mt-7 font-display text-[31px] leading-[1] font-bold tracking-tight uppercase sm:text-[36px]">
+                    <h3 className="mt-6 font-display text-[31px] leading-[1] font-bold tracking-tight uppercase sm:text-[36px]">
                       Dr. Paul Ghotra
                     </h3>
 
-                    <p className="mt-3 max-w-[300px] text-xs font-semibold leading-[1.55] tracking-[0.18em] text-[#718092] uppercase">
-                      Founder &amp; Chief
-                      <br />
-                      Executive Officer
+                    <p className="mt-3 text-xs font-semibold leading-[1.55] tracking-[0.18em] text-[#718092] uppercase">
+                      Founder &amp; Chief Executive Officer
                     </p>
 
-                    <div className="mt-8 space-y-5 text-base leading-[1.55] text-[#68727d]">
+                    <div className="mx-auto mt-8 max-w-md space-y-5 text-base leading-[1.55] text-[#68727d] md:mx-0 md:max-w-none">
                       <p>
                         Two decades scaling Canadian advanced manufacturing
                         and clean energy.
@@ -480,94 +422,6 @@ export default function CompanyPage() {
                     </div>
                   </div>
                 </div>
-              </article>
-            </Reveal>
-
-            {/* ========================================================== */}
-            {/* TEAM MEMBER 02                                                */}
-            {/* ========================================================== */}
-
-            <Reveal variant="up" delay={100}>
-              <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-5">
-
-                <div className="relative aspect-[1.15/0.82] overflow-hidden rounded-[5px] bg-[#dce0df]">
-                  <Image
-                    src="/media/company/company-tm-1.png"
-                    alt="Rise Power team member"
-                    fill
-                    sizes="(min-width: 1024px) 20vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="mt-6 flex items-center gap-2">
-                  <span
-                    className="font-display text-[30px] font-bold leading-none"
-                    style={{ color: sage }}
-                  >
-                    02
-                  </span>
-
-                  <span className="h-px w-14 bg-[#aeb6bd]" />
-                </div>
-
-                <h3 className="mt-5 font-display text-[24px] leading-[1.02] font-bold tracking-tight uppercase">
-                  [ Team Member TBA ]
-                </h3>
-
-                <p className="mt-3 text-xs font-semibold leading-[1.5] tracking-[0.18em] text-[#718092] uppercase">
-                  VP Engineering
-                </p>
-
-                <p className="mt-7 text-base leading-[1.5] text-[#68727d]">
-                  Hydrogen fuel cell systems, power electronics, and
-                  ruggedized field hardware. Bio to be announced.
-                </p>
-              </article>
-            </Reveal>
-
-            {/* ========================================================== */}
-            {/* TEAM MEMBER 03                                                */}
-            {/* ========================================================== */}
-
-            <Reveal variant="up" delay={200}>
-              <article className="flex h-full flex-col overflow-hidden rounded-[7px] border border-[#d9dfe3] bg-white p-4 sm:p-5">
-
-                <div className="relative aspect-[1.15/0.82] overflow-hidden rounded-[5px] bg-[#dce0df]">
-                  <Image
-                    src="/media/company/company-tm-2.png"
-                    alt="Rise Power team member"
-                    fill
-                    sizes="(min-width: 1024px) 20vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="mt-6 flex items-center gap-2">
-                  <span
-                    className="font-display text-[30px] font-bold leading-none"
-                    style={{ color: sage }}
-                  >
-                    03
-                  </span>
-
-                  <span className="h-px w-14 bg-[#aeb6bd]" />
-                </div>
-
-                <h3 className="mt-5 font-display text-[24px] leading-[1.02] font-bold tracking-tight uppercase">
-                  [ Team Member TBA ]
-                </h3>
-
-                <p className="mt-3 text-xs font-semibold leading-[1.5] tracking-[0.18em] text-[#718092] uppercase">
-                  VP Programs &amp;
-                  <br />
-                  Business Development
-                </p>
-
-                <p className="mt-7 text-base leading-[1.5] text-[#68727d]">
-                  Defense and infrastructure programs, partnerships, and
-                  customer engagement. Bio to be announced.
-                </p>
               </article>
             </Reveal>
           </div>

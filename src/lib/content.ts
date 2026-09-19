@@ -184,16 +184,6 @@ export const team = [
     role: "Founder & Chief Executive Officer",
     bio: "Two decades scaling Canadian advanced manufacturing and clean energy. Founder of CIMtech Green Energy. Recognized as Surrey Business Person of the Year for hydrogen leadership.",
   },
-  {
-    name: "Team Member TBA",
-    role: "VP Engineering",
-    bio: "Hydrogen fuel cell systems, power electronics, and ruggedized field hardware. Bio to be announced.",
-  },
-  {
-    name: "Team Member TBA",
-    role: "VP Programs & Business Development",
-    bio: "Defense and infrastructure programs, partnerships, and customer engagement. Bio to be announced.",
-  },
 ];
 
 export const insights = [
