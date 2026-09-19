@@ -406,7 +406,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* SYSTEMS GALLERY */}
-      <section className="relative overflow-hidden bg-[#101820] py-16 sm:py-20 lg:py-24">
+      <section className="relative overflow-hidden bg-[#101820] py-12 sm:py-16 lg:py-24">
         <div className="absolute inset-0">
           <Image
             src="/media/use-cases/uc-hero.png"

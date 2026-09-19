@@ -22,7 +22,7 @@ export default function AboutPage() {
         description="Rise Power is engineered, manufactured, and validated in British Columbia. A CIMtech Green Energy company built on a 20 plus year Canadian advanced manufacturing track record."
       />
 
-      <section className="border-b border-border py-20 lg:py-24">
+      <section className="border-b border-border py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up" className="grid gap-12 lg:grid-cols-12">
             <h2 className="font-display text-4xl tracking-tight uppercase lg:col-span-4">
@@ -40,7 +40,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-border py-20 lg:py-24">
+      <section className="border-b border-border py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
             <p className="text-xs font-semibold tracking-[0.22em] text-accent uppercase">
@@ -98,7 +98,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-border py-20 lg:py-24">
+      <section className="border-b border-border py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
             <h2 className="font-display text-4xl tracking-tight uppercase">
@@ -123,7 +123,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 text-center">
+      <section className="py-12 text-center sm:py-16 lg:py-24">
         <Reveal variant="up">
           <h2 className="font-display text-4xl tracking-tight uppercase">
             Build the future of portable power

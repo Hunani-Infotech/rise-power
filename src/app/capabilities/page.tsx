@@ -266,7 +266,7 @@ export default function CapabilitiesPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/92 via-[#07100d]/55 to-[#07100d]/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/60 via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[300px] max-w-[1440px] items-end px-6 py-16 sm:min-h-[380px] lg:min-h-[480px] lg:px-10 lg:py-20">
+        <div className="relative mx-auto flex min-h-[300px] max-w-[1440px] items-end px-6 py-12 sm:min-h-[380px] sm:py-14 lg:min-h-[480px] lg:px-10 lg:py-20">
           <Reveal variant="up">
             <div className="max-w-[640px]">
               <SectionEyebrow light>{atmosphere.eyebrow}</SectionEyebrow>
