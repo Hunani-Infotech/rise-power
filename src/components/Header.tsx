@@ -42,6 +42,7 @@ export function Header() {
 
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   const isHome = pathname === "/";
   const megaOpen = activeKey !== null;
@@ -127,21 +128,44 @@ export function Header() {
   }, [pathname]);
 
   /*
-   * Escape closes the active mega menu.
+   * Escape closes the active mega / mobile menu.
    */
   useEffect(() => {
-    if (!activeKey) return;
+    if (!activeKey && !open) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setActiveKey(null);
+        setOpen(false);
+        setMobileExpandedKey(null);
       }
     };
 
     document.addEventListener("keydown", onKeyDown);
 
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [activeKey]);
+  }, [activeKey, open]);
+
+  /*
+   * Click / tap outside the header closes open menus.
+   */
+  useEffect(() => {
+    if (!activeKey && !open) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (headerRef.current?.contains(target)) return;
+
+      setActiveKey(null);
+      setOpen(false);
+      setMobileExpandedKey(null);
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [activeKey, open]);
 
   /*
    * Desktop mega menu only exists at xl+. Close it if the viewport shrinks.
@@ -193,7 +217,11 @@ export function Header() {
   const closeMega = () => setActiveKey(null);
 
   return (
-    <header className={headerSurface} onMouseLeave={closeMega}>
+    <header
+      ref={headerRef}
+      className={headerSurface}
+      onMouseLeave={closeMega}
+    >
       <div className="mx-auto flex h-16 w-full max-w-[1600px] items-center justify-between gap-3 px-4 sm:h-[4.5rem] sm:gap-4 sm:px-6 lg:px-8 xl:gap-5 xl:px-10">
         {/* Logo */}
         <div className="relative z-10 shrink-0">

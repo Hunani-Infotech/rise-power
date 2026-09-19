@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Leaf,
-  ShieldCheck,
-  VolumeX,
-  Weight,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { SnapCarousel } from "@/components/home/SnapCarousel";
 import { Reveal, RevealStagger } from "@/components/motion/Reveal";
@@ -59,76 +53,130 @@ function SectionEyebrow({
   );
 }
 
-const metricIcons = [VolumeX, Leaf, ShieldCheck, Weight] as const;
-
 type CapabilityTab = (typeof capabilities.tabs)[number];
 type GalleryItem = (typeof capabilities.gallery)[number];
 
-function PillarCard({
+function PillarRow({
   tab,
   index,
-  animate = true,
 }: {
   tab: CapabilityTab;
   index: number;
-  animate?: boolean;
 }) {
-  const card = (
-      <Link
-        href={tab.href}
-        className="group relative block min-h-[280px] scroll-mt-28 overflow-hidden rounded-xl bg-[#101713] sm:min-h-[320px] lg:min-h-[340px]"
+  const number = String(index + 1).padStart(2, "0");
+  const imageFirst = index % 2 === 0;
+
+  return (
+    <article
+      id={tab.id}
+      className="group scroll-mt-28 grid overflow-hidden rounded-[2px] border border-white/10 bg-[#f7f6f2] lg:grid-cols-2"
+    >
+      {/* Cinematic image */}
+      <Reveal
+        variant={imageFirst ? "left" : "right"}
+        delay={40}
+        className={`relative min-h-[220px] overflow-hidden bg-[#0a1016] sm:min-h-[280px] lg:min-h-[380px] xl:min-h-[400px] ${
+          imageFirst ? "lg:order-1" : "lg:order-2"
+        }`}
       >
         <Image
           src={tab.imageSrc}
           alt={tab.imageAlt}
           fill
-          sizes="(min-width: 1280px) 50vw, (min-width: 640px) 70vw, 100vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#07100d]/92 via-[#07100d]/55 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07100d]/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1016]/55 via-[#0a1016]/15 to-transparent" />
+        <div
+          className={`absolute inset-0 ${
+            imageFirst
+              ? "bg-gradient-to-r from-transparent via-transparent to-[#0a1016]/25"
+              : "bg-gradient-to-l from-transparent via-transparent to-[#0a1016]/25"
+          }`}
+        />
 
-        <div className="absolute inset-0 flex flex-col justify-between p-7 sm:p-8 lg:p-9">
-          <div>
-            <div className="flex items-center gap-4">
-              <span
-                className="font-display text-4xl leading-none font-bold"
-                style={{ color: sage }}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span
-                className="h-px w-16"
-                style={{ background: sage }}
-                aria-hidden
-              />
-            </div>
-            <h3 className="mt-5 max-w-[360px] font-display text-3xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-4xl">
-              {tab.title}
-            </h3>
-            <p className="mt-4 max-w-[400px] text-sm leading-relaxed text-white sm:text-base">
-              {tab.body}
-            </p>
-          </div>
+        {/* Oversized watermark number on image */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -bottom-4 -right-2 font-display text-[7.5rem] leading-none font-bold tracking-tight text-white/[0.08] select-none sm:text-[9rem] lg:text-[11rem]"
+        >
+          {number}
+        </span>
+      </Reveal>
 
-          <span className="type-cta-ghost mt-8 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[#6e7f42] shadow-[0_8px_24px_rgba(0,0,0,0.28)] transition-all duration-300 ease-out group-hover:bg-[#f3f0e8] group-hover:shadow-[0_10px_28px_rgba(0,0,0,0.34)] group-focus-visible:bg-[#f3f0e8]">
-            Learn More
+      {/* Editorial dossier */}
+      <Reveal
+        variant={imageFirst ? "right" : "left"}
+        delay={90}
+        className={`relative flex flex-col justify-center px-5 py-7 sm:px-8 sm:py-8 lg:px-10 lg:py-10 xl:px-11 ${
+          imageFirst ? "lg:order-2" : "lg:order-1"
+        }`}
+      >
+        <div className="flex items-center gap-3.5">
+          <span
+            className="font-display text-3xl leading-none font-bold tabular-nums tracking-tight sm:text-[2rem]"
+            style={{ color: sage }}
+          >
+            {number}
+          </span>
+          <span
+            aria-hidden
+            className="h-px w-10 sm:w-14"
+            style={{ background: "rgba(110, 127, 66, 0.55)" }}
+          />
+          <p className="text-[11px] font-semibold tracking-[0.22em] text-[#8a9186] uppercase sm:text-xs">
+            {tab.eyebrow}
+          </p>
+        </div>
+
+        <h3 className="mt-4 max-w-[16ch] font-display text-[1.7rem] leading-[0.95] font-bold tracking-tight text-[#101820] uppercase sm:mt-5 sm:text-3xl lg:text-[2.35rem]">
+          {tab.title}
+        </h3>
+
+        <p className="mt-3 max-w-[42ch] text-base leading-[1.5] text-[#5c6560] sm:mt-3.5 sm:text-lg">
+          {tab.body}
+        </p>
+
+        {tab.callouts?.length ? (
+          <ul className="mt-5 grid max-w-[34rem] gap-x-6 gap-y-2.5 border-t border-[#ddd8cc] pt-4 sm:mt-6 sm:grid-cols-2 sm:pt-5">
+            {tab.callouts.slice(0, 4).map((callout) => (
+              <li key={callout.title} className="min-w-0">
+                <div className="flex items-start gap-2.5">
+                  <span
+                    aria-hidden
+                    className="mt-1.5 size-1.5 shrink-0 rounded-full"
+                    style={{ background: sage }}
+                  />
+                  <div>
+                    <p className="text-[11px] font-semibold tracking-[0.16em] text-[#101820] uppercase">
+                      {callout.title}
+                    </p>
+                    <p className="mt-0.5 text-sm leading-snug text-[#6b746c]">
+                      {callout.body}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
+        <div className="mt-6 sm:mt-7">
+          <Link
+            href={tab.href}
+            className="group/cta inline-flex min-h-11 items-center justify-center gap-2 rounded-sm px-6 text-sm font-semibold tracking-[0.06em] text-white uppercase transition-opacity hover:opacity-90 sm:min-h-12 sm:px-7"
+            style={{ background: heroCta }}
+          >
+            Explore Capability
             <ArrowRight
-              className="size-4 shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1"
+              className="size-4 shrink-0 transition-transform duration-300 ease-out group-hover/cta:translate-x-1"
               strokeWidth={1.8}
               aria-hidden
             />
-          </span>
+          </Link>
         </div>
-      </Link>
-  );
-
-  if (!animate) return card;
-
-  return (
-    <Reveal variant="fade" delay={index * 70}>
-      {card}
-    </Reveal>
+      </Reveal>
+    </article>
   );
 }
 
@@ -167,7 +215,7 @@ function GalleryCard({
 }
 
 export default function CapabilitiesPage() {
-  const { hero, proof, tabs, atmosphere, metricsBand, gallery } =
+  const { hero, proof, tabs, atmosphere, gallery } =
     capabilities;
 
   return (
@@ -213,64 +261,45 @@ export default function CapabilitiesPage() {
       {/* FOUR PILLARS */}
       <section
         id="pillars"
-        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24"
+        className="relative scroll-mt-28 overflow-hidden bg-[#101820] py-10 sm:py-14 lg:py-20"
       >
         <div
-          className="pointer-events-none absolute inset-0 opacity-40"
-          aria-hidden="true"
-        >
-          <div className="absolute -top-20 -left-24 size-72 rounded-full border border-[#dfe5d8]" />
-          <div className="absolute -top-12 -left-16 size-56 rounded-full border border-[#e5e9df]" />
-          <div className="absolute -right-28 bottom-[-100px] size-80 rounded-full border border-[#dfe5d8]" />
-          <div className="absolute -right-16 bottom-[-60px] size-64 rounded-full border border-[#e5e9df]" />
-        </div>
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.45]"
+          style={{
+            background:
+              "radial-gradient(ellipse 55% 50% at 10% 15%, rgba(110,127,66,0.22), transparent 58%), radial-gradient(ellipse 40% 40% at 92% 85%, rgba(132,147,99,0.12), transparent 55%)",
+          }}
+        />
 
-        <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
+        <div className="relative mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-10">
           <Reveal variant="up">
-            <div className="mx-auto max-w-5xl text-center">
-              <SectionEyebrow center>{capabilities.eyebrow}</SectionEyebrow>
-              <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionEyebrow center light>
+                {capabilities.eyebrow}
+              </SectionEyebrow>
+              <h2 className="mt-4 font-display text-4xl leading-[0.92] font-bold tracking-tight text-white uppercase sm:mt-5 sm:text-5xl lg:text-[3.5rem]">
                 {capabilities.headingBefore}{" "}
-                <span style={{ color: sage }}>{capabilities.headingAccent}</span>
+                <span style={{ color: "#a8b87a" }}>
+                  {capabilities.headingAccent}
+                </span>
               </h2>
-              <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-[#626a63] sm:text-lg">
+              <div
+                className="mx-auto mt-4 h-px w-14 sm:mt-5"
+                style={{ background: "rgba(168, 184, 122, 0.7)" }}
+                aria-hidden
+              />
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-[1.5] text-[#b7c1c9] sm:mt-5 sm:text-lg">
                 {capabilities.body}
               </p>
             </div>
           </Reveal>
 
-          {/* Deep-link anchors for /capabilities#engineering etc. */}
-          {tabs.map((tab) => (
-            <div
-              key={`anchor-${tab.id}`}
-              id={tab.id}
-              className="h-0 scroll-mt-28"
-              aria-hidden
-            />
-          ))}
-
-          <Reveal variant="up" delay={80} className="mt-12 xl:hidden">
-            <SnapCarousel
-              ariaLabel="Capability pillars"
-              showArrows
-              showDots
-              itemClassName="w-[min(100%,22.5rem)] sm:w-[min(85vw,26rem)] md:w-[min(70vw,28rem)]"
-              trackClassName="gap-4 px-1 pb-1"
-            >
-              {tabs.map((tab, index) => (
-                <PillarCard key={tab.id} tab={tab} index={index} />
-              ))}
-            </SnapCarousel>
-          </Reveal>
-          <RevealStagger
-            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-2"
-            step={70}
-            variant="fade"
-          >
+          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:gap-4 lg:mt-12 lg:gap-5">
             {tabs.map((tab, index) => (
-              <PillarCard key={tab.id} tab={tab} index={index} animate={false} />
+              <PillarRow key={tab.id} tab={tab} index={index} />
             ))}
-          </RevealStagger>
+          </div>
         </div>
       </section>
 
@@ -302,111 +331,103 @@ export default function CapabilitiesPage() {
         </div>
       </section>
 
-      {/* QUIET METRICS */}
-      <section className="relative overflow-hidden border-y border-[#ddd8cc] py-20 sm:py-24 lg:py-28">
-        <Image
-          src={metricsBand.imageSrc}
-          alt={metricsBand.imageAlt}
-          fill
-          sizes="100vw"
-          className="object-cover object-[center_40%] opacity-[0.12]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#f7f4ec]/94 via-[#f3f0e8]/90 to-[#f7f4ec]/94" />
+      {/* QUIET METRICS — monumental instrument rail */}
+      <section className="relative overflow-hidden bg-[#f3f0e8] py-10 sm:py-14 lg:py-20">
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#6e7f42]/35 to-transparent"
           aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#6e7f42]/25 to-transparent"
-          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(110,127,66,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(110,127,66,0.06) 1px, transparent 1px)",
+            backgroundSize: "72px 72px",
+            maskImage:
+              "radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%)",
+          }}
         />
 
         <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
           <Reveal variant="up">
-            <div className="flex flex-col items-center text-center">
-              <SectionEyebrow center>
-                {performanceMetrics.eyebrow}
-              </SectionEyebrow>
-              <div
-                className="mt-6 h-px w-14"
-                style={{ background: sage }}
-                aria-hidden
-              />
+            <div className="max-w-2xl">
+              <SectionEyebrow>{performanceMetrics.eyebrow}</SectionEyebrow>
+              <h2 className="mt-4 max-w-[12ch] font-display text-4xl leading-[0.9] font-bold tracking-tight text-[#101820] uppercase sm:mt-5 sm:text-5xl lg:text-[3.25rem]">
+                {performanceMetrics.headingBefore}{" "}
+                <span style={{ color: sage }}>
+                  {performanceMetrics.headingAccent}
+                </span>
+              </h2>
+              <p className="mt-3 max-w-[40ch] text-base leading-[1.5] text-[#5c6560] sm:mt-4 sm:text-lg">
+                {performanceMetrics.body}
+              </p>
             </div>
           </Reveal>
 
-          <ul className="mt-14 grid grid-cols-1 sm:mt-16 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
-            {performanceMetrics.gauges.map((gauge, index) => {
-              const Icon = metricIcons[index] ?? ShieldCheck;
-              const isLast = index === performanceMetrics.gauges.length - 1;
-              const isLeftCol = index % 2 === 0;
-              const isTopRow = index < 2;
+          <div className="relative mt-8 sm:mt-10 lg:mt-12">
+            <div
+              aria-hidden
+              className="absolute inset-x-0 top-0 h-px bg-[#c9c4b8]"
+            />
 
-              return (
-                <Reveal
-                  key={gauge.title}
-                  as="li"
-                  variant="fade"
-                  delay={index * 90}
-                  className={[
-                    "group relative flex flex-col items-center px-4 py-10 text-center sm:px-8 sm:py-12 lg:px-6 lg:py-2 xl:px-10",
-                    !isLast
-                      ? "max-sm:border-b max-sm:border-[#d5d0c4]/90"
-                      : "",
-                    isTopRow
-                      ? "sm:border-b sm:border-[#d5d0c4]/90 lg:border-b-0"
-                      : "",
-                    isLeftCol
-                      ? "sm:border-r sm:border-[#d5d0c4]/90"
-                      : "",
-                    !isLeftCol && !isLast
-                      ? "lg:border-r lg:border-[#d5d0c4]/90"
-                      : "",
-                  ].join(" ")}
-                >
-                  <span
-                    className="mb-5 font-display text-[11px] font-semibold tracking-[0.28em] text-[#8a9186] uppercase transition-colors duration-500 group-hover:text-[#6e7f42]"
-                    aria-hidden
+            <RevealStagger
+              className="grid grid-cols-1 divide-y divide-[#c9c4b8] sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4"
+              step={70}
+              variant="up"
+            >
+              {performanceMetrics.gauges.map((gauge, index) => {
+                const isOdd = index % 2 === 1;
+                const isBottomRow = index >= 2;
+
+                return (
+                  <article
+                    key={gauge.title}
+                    className={[
+                      "group relative px-0 py-6 sm:px-5 sm:py-7 lg:px-6 lg:py-8",
+                      isOdd ? "sm:border-l sm:border-[#c9c4b8]" : "",
+                      isBottomRow ? "sm:border-t sm:border-[#c9c4b8] lg:border-t-0" : "",
+                      index > 0 ? "lg:border-l lg:border-[#c9c4b8]" : "",
+                    ].join(" ")}
                   >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <div
-                    className="relative mb-6 grid size-14 place-items-center rounded-full border bg-[#fbfaf7]/70 transition-all duration-500 group-hover:scale-[1.04] group-hover:bg-white/90 sm:size-16"
-                    style={{ borderColor: "rgba(110, 127, 66, 0.45)" }}
-                    aria-hidden
-                  >
-                    <span
-                      className="absolute inset-[3px] rounded-full border border-[#6e7f42]/15 transition-opacity duration-500 group-hover:border-[#6e7f42]/35"
-                      aria-hidden
-                    />
-                    <Icon
-                      className="relative size-5 sm:size-[1.35rem]"
-                      strokeWidth={1.5}
-                      style={{ color: sage }}
-                    />
-                  </div>
-
-                  <p className="font-display text-[2.65rem] leading-none font-bold tracking-tight text-[#101713] sm:text-5xl lg:text-[3.25rem] xl:text-6xl">
-                    {gauge.value}
-                    <span
-                      className="ml-1.5 align-baseline font-display text-base font-semibold tracking-[0.14em] uppercase sm:text-lg lg:text-xl"
-                      style={{ color: sage }}
-                    >
-                      {gauge.unit}
+                    <span className="font-display text-[11px] font-semibold tracking-[0.28em] text-[#8a9186] uppercase transition-colors duration-500 group-hover:text-[#6e7f42]">
+                      {String(index + 1).padStart(2, "0")}
                     </span>
-                  </p>
 
-                  <p
-                    className="mt-4 max-w-[14rem] text-[13px] leading-relaxed font-medium tracking-[0.02em] sm:mt-5 sm:text-sm"
-                    style={{ color: "#5f6b52" }}
-                  >
-                    {gauge.title}
-                  </p>
-                </Reveal>
-              );
-            })}
-          </ul>
+                    <div className="mt-4 flex flex-wrap items-end gap-x-2.5 gap-y-1 sm:mt-5">
+                      <p className="font-display text-[3.25rem] leading-[0.85] font-bold tracking-[-0.04em] text-[#101820] transition-transform duration-700 ease-out group-hover:-translate-y-0.5 sm:text-[3.75rem] lg:text-[4.25rem] xl:text-[4.75rem]">
+                        {gauge.value}
+                      </p>
+                      <p
+                        className="mb-1 font-display text-sm font-semibold tracking-[0.16em] uppercase sm:mb-1.5 sm:text-base"
+                        style={{ color: sage }}
+                      >
+                        {gauge.unit}
+                      </p>
+                    </div>
+
+                    <div
+                      className="mt-4 h-px w-full max-w-[8rem] overflow-hidden bg-[#d8d2c6] sm:mt-5"
+                      aria-hidden
+                    >
+                      <span
+                        className="block h-full origin-left bg-[#6e7f42] transition-transform duration-700 ease-out group-hover:scale-x-105"
+                        style={{ width: `${gauge.percent}%` }}
+                      />
+                    </div>
+
+                    <p className="mt-3 max-w-[20ch] text-sm leading-[1.4] font-medium text-[#2a333c] sm:mt-4">
+                      {gauge.title}
+                    </p>
+                    <p className="mt-1 max-w-[24ch] text-sm leading-[1.45] text-[#6b746c]">
+                      {gauge.body}
+                    </p>
+                  </article>
+                );
+              })}
+            </RevealStagger>
+
+            <div
+              aria-hidden
+              className="absolute inset-x-0 bottom-0 h-px bg-[#c9c4b8]"
+            />
+          </div>
         </div>
       </section>
 

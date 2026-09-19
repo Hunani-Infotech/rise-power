@@ -39,8 +39,8 @@ function LayersIcon() {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.7"
-      className="h-11 w-11"
+      strokeWidth="1.5"
+      className="h-8 w-8 sm:h-9 sm:w-9"
       aria-hidden="true"
     >
       <path d="m24 7 16 9-16 9-16-9 16-9Z" />
@@ -56,8 +56,8 @@ function SettingsIcon() {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.7"
-      className="h-11 w-11"
+      strokeWidth="1.5"
+      className="h-8 w-8 sm:h-9 sm:w-9"
       aria-hidden="true"
     >
       <circle cx="24" cy="24" r="6" />
@@ -73,8 +73,8 @@ function BuildingIcon() {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.7"
-      className="h-11 w-11"
+      strokeWidth="1.5"
+      className="h-8 w-8 sm:h-9 sm:w-9"
       aria-hidden="true"
     >
       <path d="M9 41V14h17v27M26 41V7h13v34M5 41h38" />
@@ -89,8 +89,8 @@ function LocationIcon() {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.7"
-      className="h-11 w-11"
+      strokeWidth="1.5"
+      className="h-8 w-8 sm:h-9 sm:w-9"
       aria-hidden="true"
     >
       <path d="M38 20c0 10-14 22-14 22S10 30 10 20a14 14 0 1 1 28 0Z" />
@@ -105,8 +105,8 @@ function ChartIcon() {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.7"
-      className="h-11 w-11"
+      strokeWidth="1.5"
+      className="h-8 w-8 sm:h-9 sm:w-9"
       aria-hidden="true"
     >
       <path d="M8 40V27h8v13H8ZM20 40V18h8v22h-8ZM32 40V8h8v32h-8Z" />
@@ -297,6 +297,46 @@ function PressCard({ item }: { item: (typeof pressUpdates)[number] }) {
 /* Investors Page                                                              */
 /* -------------------------------------------------------------------------- */
 
+const glanceItems = [
+  {
+    number: "01",
+    title: "Category",
+    lead: "Portable hydrogen fuel cell power.",
+    detail:
+      "Defense, disaster response, remote operations, critical infrastructure.",
+    icon: LayersIcon,
+  },
+  {
+    number: "02",
+    title: "Stage",
+    lead: "Beta hardware in active field validation.",
+    detail:
+      "Certification roadmap in progress across Transport Canada, UN 38.3, DOT-39, MIL-STD-810 and 461, ISO 9001, CSA and NFPA 2.",
+    icon: SettingsIcon,
+  },
+  {
+    number: "03",
+    title: "Parent",
+    lead: "Subsidiary of CIMtech Green Energy.",
+    detail: "20+ years of Canadian advanced manufacturing.",
+    icon: BuildingIcon,
+  },
+  {
+    number: "04",
+    title: "Location",
+    lead: "Engineered, built, and validated in Surrey, British Columbia.",
+    detail: null,
+    icon: LocationIcon,
+  },
+  {
+    number: "05",
+    title: "Use of Funds",
+    lead: "Scale manufacturing, close certification, complete pilot deployments, and expand commercial programs.",
+    detail: null,
+    icon: ChartIcon,
+  },
+] as const;
+
 export default function InvestorsPage() {
   return (
     <main className="bg-[#fbfaf7] text-[#101820]">
@@ -353,123 +393,117 @@ export default function InvestorsPage() {
 
       <section
         id="investor-materials"
-        className="relative overflow-hidden bg-[#fbfaf7] py-12 sm:py-16 lg:py-24"
+        className="relative overflow-hidden bg-[#fbfaf7] py-8 sm:py-10 lg:py-14"
       >
-        <ContourBackground />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 55% at 8% 0%, rgba(110,127,66,0.07), transparent 55%), radial-gradient(ellipse 50% 40% at 92% 100%, rgba(16,24,32,0.04), transparent 50%)",
+          }}
+        />
 
         <div className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-10">
-
           <Reveal variant="up">
-            <SectionHeading
-              eyebrow="Investor Materials"
-              title="Investor Materials."
-              description={
-                <>
-                  Download the deck and company one-pager. For full data room
-                  access,
-                  <br className="hidden sm:block" />
-                  financial models, and references, request a briefing.
-                </>
-              }
-            />
+            <div className="mx-auto max-w-[720px] text-center">
+              <SectionHeading
+                eyebrow="Investor Materials"
+                title="Investor Materials."
+                description={
+                  <>
+                    Download the deck and company one-pager. For full data room
+                    access, financial models, and references, request a briefing.
+                  </>
+                }
+              />
+            </div>
           </Reveal>
 
-          <RevealStagger className="mt-12 grid gap-6 lg:grid-cols-2" step={70}>
+          <RevealStagger
+            className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-2"
+            step={80}
+          >
+            <article className="group relative flex flex-col overflow-hidden rounded-sm border border-[#e4e1d8] bg-white">
+              <div className="relative aspect-[16/9] overflow-hidden bg-[#0c1210]">
+                <Image
+                  src="/media/investors/investor-deck.png"
+                  alt="Rise Power investor deck"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c1210]/45 via-transparent to-transparent" />
+                <span className="absolute top-4 left-4 font-display text-[11px] font-semibold tracking-[0.28em] text-white/70 uppercase sm:top-5 sm:left-5">
+                  01
+                </span>
+              </div>
 
-            {/* Investor Deck */}
-            <article className="group relative min-h-[340px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116] sm:min-h-[400px] lg:min-h-[460px]">
-
-              <Image
-                src="/media/investors/investor-deck.png"
-                alt="Rise Power investor deck"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-r from-[#071116]/95 via-[#071116]/80 to-[#071116]/20" />
-
-              <div className="relative z-10 flex min-h-[340px] max-w-[620px] flex-col p-8 sm:min-h-[400px] sm:p-10 lg:min-h-[460px] lg:p-12">
-
-                <div className="flex items-center gap-5">
-                  <span className="font-display text-4xl font-bold leading-none text-[#6e7f42]">
-                    01
-                  </span>
-
-                  <span className="h-px w-[130px] bg-white/30" />
-                </div>
-
-                <p className="mt-5 text-mm font-medium tracking-[0.12em] text-[#b9c4ce] uppercase">
+              <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-6">
+                <p className="text-[11px] font-semibold tracking-[0.22em] text-[#6e7f42] uppercase">
                   PDF · Investor Briefing
                 </p>
-
-                <h3 className="mt-6 font-display text-4xl font-bold leading-none text-white sm:text-5xl">
+                <h3 className="mt-2 font-display text-2xl leading-[1.05] font-bold tracking-tight text-[#101820] uppercase sm:text-[28px] lg:text-[32px]">
                   Investor Deck
                 </h3>
-
-                <p className="mt-5 max-w-[430px] text-base leading-[1.5] text-[#b7c1c9]">
-                  Full Rise Power investor briefing. Market sizing,
-                  technology, traction, team, and use of funds.
+                <p className="mt-2 max-w-[420px] flex-1 text-[15px] leading-[1.55] text-[#66717d]">
+                  Full Rise Power investor briefing. Market sizing, technology,
+                  traction, team, and use of funds.
                 </p>
-
-                <div className="mt-auto">
+                <div className="mt-5 flex items-center justify-between gap-4 border-t border-[#ebe7de] pt-4">
                   <a
                     href="/media/investors/rise-power-deck.pdf"
                     download="rise-power-deck.pdf"
-                    className="group/button inline-flex min-h-[60px] w-full min-w-0 items-center justify-center gap-2 rounded-[4px] bg-[#849363] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:opacity-90 sm:w-auto sm:min-w-[240px]"
+                    className="group/button inline-flex items-center gap-3 text-sm font-semibold tracking-[0.14em] text-[#101820] uppercase transition-colors duration-300 hover:text-[#6e7f42]"
                   >
                     Download
-                    <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover/button:translate-x-1" />
                   </a>
+                  <span className="text-[10px] font-medium tracking-[0.2em] text-[#66717d] uppercase">
+                    PDF
+                  </span>
                 </div>
               </div>
             </article>
 
-            {/* Company One-Pager */}
-            <article className="group relative min-h-[340px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116] sm:min-h-[400px] lg:min-h-[460px]">
+            <article className="group relative flex flex-col overflow-hidden rounded-sm border border-[#e4e1d8] bg-white">
+              <div className="relative aspect-[16/9] overflow-hidden bg-[#0c1210]">
+                <Image
+                  src="/media/investors/investor-onepage.png"
+                  alt="Rise Power company one-pager"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c1210]/45 via-transparent to-transparent" />
+                <span className="absolute top-4 left-4 font-display text-[11px] font-semibold tracking-[0.28em] text-white/70 uppercase sm:top-5 sm:left-5">
+                  02
+                </span>
+              </div>
 
-              <Image
-                src="/media/investors/investor-onepage.png"
-                alt="Rise Power company one-pager"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-r from-[#071116]/95 via-[#071116]/80 to-[#071116]/20" />
-
-              <div className="relative z-10 flex min-h-[340px] max-w-[620px] flex-col p-8 sm:min-h-[400px] sm:p-10 lg:min-h-[460px] lg:p-12">
-
-                <div className="flex items-center gap-5">
-                  <span className="font-display text-4xl font-bold leading-none text-[#6e7f42]">
-                    02
-                  </span>
-
-                  <span className="h-px w-[130px] bg-white/30" />
-                </div>
-
-                <p className="mt-5 text-mm font-medium tracking-[0.12em] text-[#b9c4ce] uppercase">
-                  PDF · Revenue Forecast
+              <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-6">
+                <p className="text-[11px] font-semibold tracking-[0.22em] text-[#6e7f42] uppercase">
+                  PDF · Company Overview
                 </p>
-
-                <h3 className="mt-6 font-display text-4xl font-bold leading-none text-white sm:text-5xl">
+                <h3 className="mt-2 font-display text-2xl leading-[1.05] font-bold tracking-tight text-[#101820] uppercase sm:text-[28px] lg:text-[32px]">
                   Company One-Pager
                 </h3>
-
-                <p className="mt-5 max-w-[440px] text-base leading-[1.5] text-[#b7c1c9]">
-                  Revenue forecast and company overview. Quick-reference
-                  summary for sharing with partners and committees.
+                <p className="mt-2 max-w-[440px] flex-1 text-[15px] leading-[1.55] text-[#66717d]">
+                  Revenue forecast and company overview. Quick-reference summary
+                  for sharing with partners and committees.
                 </p>
-
-                <div className="mt-auto pt-8">
+                <div className="mt-5 flex items-center justify-between gap-4 border-t border-[#ebe7de] pt-4">
                   <a
                     href="/media/investors/rise-power-one-pager.pdf"
                     download="rise-power-one-pager.pdf"
-                    className="group/button inline-flex min-h-[60px] w-full min-w-0 items-center justify-center gap-2 rounded-[4px] bg-[#849363] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:opacity-90 sm:w-auto sm:min-w-[240px]"
+                    className="group/button inline-flex items-center gap-3 text-sm font-semibold tracking-[0.14em] text-[#101820] uppercase transition-colors duration-300 hover:text-[#6e7f42]"
                   >
                     Download
-                    <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover/button:translate-x-1" />
                   </a>
+                  <span className="text-[10px] font-medium tracking-[0.2em] text-[#66717d] uppercase">
+                    PDF
+                  </span>
                 </div>
               </div>
             </article>
@@ -481,207 +515,143 @@ export default function InvestorsPage() {
       {/* AT A GLANCE                                                           */}
       {/* ==================================================================== */}
 
-      <section className="relative overflow-hidden bg-[#fbfaf7] pt-0 pb-12 sm:pb-16 lg:pb-24">
+      <section className="relative overflow-hidden bg-[#101820] pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-10 lg:pb-12">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          style={{
+            background:
+              "radial-gradient(ellipse 55% 70% at 12% 20%, rgba(110,127,66,0.28), transparent 60%), radial-gradient(ellipse 45% 55% at 88% 80%, rgba(132,147,99,0.14), transparent 55%)",
+          }}
+        />
 
-        <ContourBackground />
-
-        <div className="relative z-10 mx-auto grid max-w-[1440px] gap-6 px-6 lg:grid-cols-[0.9fr_1.25fr] lg:px-10">
-
-          {/* Left feature */}
-          <Reveal variant="left" className="relative min-h-[400px] overflow-hidden rounded-[9px] border border-[#d9dfe3] bg-white p-2 sm:min-h-[520px] lg:min-h-[640px]">
-
-            <div className="relative h-full min-h-[400px] overflow-hidden rounded-[7px] sm:min-h-[520px] lg:min-h-[640px]">
-
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+          <div className="grid overflow-hidden rounded-[2px] border border-white/10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-stretch">
+            {/* Cinematic feature */}
+            <Reveal
+              variant="left"
+              className="relative aspect-[5/4] min-h-0 w-full sm:aspect-[16/11] lg:aspect-auto lg:h-full lg:min-h-[28rem]"
+            >
               <Image
                 src="/media/investors/investor-why.png"
                 alt="Rise Power hydrogen power system"
                 fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover object-center"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1016] via-[#0a1016]/50 to-[#0a1016]/25" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0a1016]/55 via-transparent to-transparent" />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071116]/90 via-transparent to-transparent" />
+              <div className="absolute inset-0 flex flex-col justify-between gap-4 p-4 sm:p-5 lg:p-6">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span
+                      aria-hidden="true"
+                      className="font-display text-lg leading-none text-white"
+                    >
+                      ⌁
+                    </span>
+                    <p className="text-[11px] font-semibold tracking-[0.2em] text-white uppercase sm:text-mm">
+                      At a Glance
+                    </p>
+                  </div>
 
-              <div className="absolute left-8 top-8 right-8">
+                  <h2 className="mt-3 max-w-[14ch] font-display text-[1.85rem] font-bold leading-[0.92] tracking-tight text-white uppercase sm:mt-4 sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem]">
+                    Why Rise
+                    <br />
+                    <span className="text-[#a8b87a]">Power.</span>
+                  </h2>
 
-                <p className="text-sm font-semibold tracking-[0.16em] text-[#4f9825] uppercase">
-                  At a Glance
-                </p>
-
-                <h2 className="mt-5 max-w-[470px] font-display text-4xl font-bold leading-[0.92] tracking-tight text-[#101820] uppercase sm:text-5xl lg:text-6xl">
-                  Why Rise
-                  <br />
-                  Power.
-                </h2>
-
-                <p className="mt-7 max-w-[400px] text-base font-semibold leading-[1.5] tracking-[0.16em] text-[#4c5a67] uppercase">
-                  Clean Power
-                  <br />
-                  For A More Resilient World.
-                </p>
-              </div>
-
-              <div className="absolute bottom-7 left-8 right-8 flex items-end justify-between">
-                <p className="max-w-[280px] text-xs font-medium leading-[1.4] tracking-[0.18em] text-white uppercase">
-                  Canadian-Engineered.
-                  <br />
-                  Field-Validated.
-                </p>
-
-                <span className="h-px w-24 bg-white/60" />
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Right information cards */}
-          <RevealStagger className="grid gap-5 sm:grid-cols-2" step={70}>
-
-            {/* Category */}
-            <article className="rounded-[8px] border border-[#d9dfe3] bg-white p-8">
-
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-5">
-                  <span className="font-display text-3xl font-bold text-[#52a526]">
-                    01
-                  </span>
-
-                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
+                  <p className="mt-3 max-w-[28ch] text-[11px] font-medium leading-[1.45] tracking-[0.12em] text-white uppercase sm:mt-4 sm:text-sm">
+                    Clean power for a more resilient world.
+                  </p>
                 </div>
 
-                <div className="text-[#101820]">
-                  <LayersIcon />
+                <div className="flex items-end justify-between gap-3 border-t border-white/20 pt-3 sm:gap-4 sm:pt-4">
+                  <p className="min-w-0 text-[10px] font-semibold leading-[1.4] tracking-[0.16em] text-white uppercase sm:text-[11px]">
+                    Canadian-Engineered.
+                    <br />
+                    Field-Validated.
+                  </p>
+                  <span
+                    aria-hidden="true"
+                    className="mb-1 h-px w-10 shrink-0 bg-[#849363] sm:w-16"
+                  />
                 </div>
               </div>
+            </Reveal>
 
-              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
-                Category
-              </h3>
+            {/* Editorial dossier */}
+            <RevealStagger
+              className="flex min-h-0 flex-col bg-[#f7f6f2] text-[#101820]"
+              step={40}
+            >
+              {glanceItems.map((item, index) => {
+                const Icon = item.icon;
+                const isLast = index === glanceItems.length - 1;
 
-              <p className="mt-5 text-lg leading-[1.35] text-[#34424e]">
-                Portable hydrogen fuel cell power.
-              </p>
+                return (
+                  <article
+                    key={item.number}
+                    className={`group relative px-4 py-3.5 transition-colors duration-300 sm:px-5 sm:py-4 lg:px-6 lg:py-[1.05rem] ${
+                      isLast
+                        ? "bg-[#101820] text-white"
+                        : "hover:bg-white"
+                    } ${index > 0 ? "border-t" : ""} ${
+                      isLast ? "border-white/10" : "border-[#e4e1d8]"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3">
+                        <span
+                          className={`shrink-0 font-display text-lg font-bold tabular-nums tracking-tight sm:text-xl ${
+                            isLast ? "text-[#a8b87a]" : "text-[#6e7f42]"
+                          }`}
+                        >
+                          {item.number}
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className={`hidden h-px w-8 shrink-0 sm:block sm:w-10 ${
+                            isLast ? "bg-white/25" : "bg-[#c9c4b8]"
+                          }`}
+                        />
+                        <h3 className="min-w-0 font-display text-base font-bold leading-none tracking-tight uppercase sm:text-lg lg:text-xl">
+                          {item.title}
+                        </h3>
+                      </div>
+                      <div
+                        className={`shrink-0 opacity-65 transition-opacity duration-300 group-hover:opacity-100 [&_svg]:h-6 [&_svg]:w-6 sm:[&_svg]:h-7 sm:[&_svg]:w-7 ${
+                          isLast ? "text-[#a8b87a]" : "text-[#101820]"
+                        }`}
+                      >
+                        <Icon />
+                      </div>
+                    </div>
 
-              <p className="mt-2 text-base leading-[1.4] text-[#66727d]">
-                Defense, disaster response, remote operations, critical
-                infrastructure.
-              </p>
-            </article>
-
-            {/* Stage */}
-            <article className="rounded-[8px] border border-[#d9dfe3] bg-white p-8">
-
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-5">
-                  <span className="font-display text-3xl font-bold text-[#52a526]">
-                    02
-                  </span>
-
-                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
-                </div>
-
-                <div className="text-[#101820]">
-                  <SettingsIcon />
-                </div>
-              </div>
-
-              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
-                Stage
-              </h3>
-
-              <p className="mt-5 text-lg leading-[1.35] text-[#34424e]">
-                Beta hardware in active field validation.
-              </p>
-
-              <p className="mt-2 text-base leading-[1.4] text-[#66727d]">
-                Certification roadmap in progress across Transport Canada,
-                UN 38.3, DOT-39, MIL-STD-810 and 461, ISO 9001, CSA and NFPA
-                2.
-              </p>
-            </article>
-
-            {/* Parent */}
-            <article className="rounded-[8px] border border-[#d9dfe3] bg-white p-8">
-
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-5">
-                  <span className="font-display text-3xl font-bold text-[#52a526]">
-                    03
-                  </span>
-
-                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
-                </div>
-
-                <div className="text-[#101820]">
-                  <BuildingIcon />
-                </div>
-              </div>
-
-              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
-                Parent
-              </h3>
-
-              <p className="mt-5 text-lg leading-[1.35] text-[#34424e]">
-                Subsidiary of CIMtech Green Energy.
-              </p>
-
-              <p className="mt-2 text-base leading-[1.4] text-[#66727d]">
-                20+ years of Canadian advanced manufacturing.
-              </p>
-            </article>
-
-            {/* Location */}
-            <article className="rounded-[8px] border border-[#d9dfe3] bg-white p-8">
-
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-5">
-                  <span className="font-display text-3xl font-bold text-[#52a526]">
-                    04
-                  </span>
-
-                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
-                </div>
-
-                <div className="text-[#101820]">
-                  <LocationIcon />
-                </div>
-              </div>
-
-              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
-                Location
-              </h3>
-
-              <p className="mt-5 text-lg leading-[1.4] text-[#34424e]">
-                Engineered, built, and validated in Surrey, British Columbia.
-              </p>
-            </article>
-
-            {/* Use of Funds */}
-            <article className="rounded-[8px] border border-[#d9dfe3] bg-white p-8 sm:col-span-2">
-
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-5">
-                  <span className="font-display text-3xl font-bold text-[#52a526]">
-                    05
-                  </span>
-
-                  <span className="h-px w-[105px] bg-[#b9c1c7]" />
-                </div>
-
-                <div className="text-[#101820]">
-                  <ChartIcon />
-                </div>
-              </div>
-
-              <h3 className="mt-2 font-display text-3xl font-bold leading-none">
-                Use of Funds
-              </h3>
-
-              <p className="mt-5 max-w-[900px] text-lg leading-[1.45] text-[#34424e]">
-                Scale manufacturing, close certification, complete pilot
-                deployments, and expand commercial programs.
-              </p>
-            </article>
-          </RevealStagger>
+                    <div className="mt-2 min-w-0 sm:mt-2.5 sm:pl-11 lg:pl-12">
+                      <p
+                        className={`text-sm leading-[1.4] sm:text-[15px] ${
+                          isLast ? "text-white" : "text-[#2a333c]"
+                        }`}
+                      >
+                        {item.lead}
+                      </p>
+                      {item.detail ? (
+                        <p
+                          className={`mt-1 text-[13px] leading-[1.4] sm:text-sm ${
+                            isLast ? "text-white" : "text-[#66727d]"
+                          }`}
+                        >
+                          {item.detail}
+                        </p>
+                      ) : null}
+                    </div>
+                  </article>
+                );
+              })}
+            </RevealStagger>
+          </div>
         </div>
       </section>
 
@@ -691,7 +661,7 @@ export default function InvestorsPage() {
 
       <section
         id="press"
-        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] pt-0 pb-14 sm:pb-16 lg:pb-24"
+        className="relative scroll-mt-28 overflow-hidden bg-[#fbfaf7] pt-12 pb-14 sm:pt-16 sm:pb-16 lg:pt-20 lg:pb-24"
       >
 
         <ContourBackground />

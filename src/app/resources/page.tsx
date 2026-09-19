@@ -230,7 +230,7 @@ export default function ResourcesPage() {
         <div className="hero-animate-copy max-w-[820px]">
           <SectionEyebrow onDark>Resource Center</SectionEyebrow>
 
-          <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight text-white uppercase sm:mt-8 sm:text-[68px] md:text-[78px] xl:text-[88px] 2xl:text-[96px]">
+          <h1 className="mt-4 font-display text-[42px] leading-[0.92] font-bold tracking-tight text-white uppercase sm:mt-6 sm:text-[68px] md:text-[78px] xl:text-[88px] 2xl:text-[96px]">
             Specs.
             <br />
             Insights.
@@ -238,12 +238,12 @@ export default function ResourcesPage() {
             <span style={{ color: sage }}>Field Notes.</span>
           </h1>
 
-          <p className="mt-6 max-w-[720px] text-base leading-[1.55] text-white sm:mt-8 sm:text-xl xl:text-[22px]">
+          <p className="mt-4 max-w-[720px] text-base leading-[1.55] text-white sm:mt-6 sm:text-xl xl:text-[22px]">
             Datasheets, procurement guidance, and field updates for programs,
             integration, and buying teams evaluating Rise Power systems.
           </p>
 
-          <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row">
+          <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
             <a
               href="#destinations"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#849363] px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
@@ -265,7 +265,7 @@ export default function ResourcesPage() {
       {/* DESTINATIONS */}
       <section
         id="destinations"
-        className="relative scroll-mt-28 overflow-hidden py-12 sm:py-16 lg:py-24"
+        className="relative scroll-mt-28 overflow-hidden py-10 sm:py-12 lg:py-16"
         style={{ backgroundColor: cream }}
       >
         <ContourDecoration position="left" />
@@ -275,11 +275,11 @@ export default function ResourcesPage() {
           <Reveal variant="up">
             <div className="max-w-[720px]">
               <SectionEyebrow>Destinations</SectionEyebrow>
-              <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-[64px]">
+              <h2 className="mt-4 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:mt-5 sm:text-5xl lg:text-[64px]">
                 Choose Your Brief.
               </h2>
               <p
-                className="mt-5 max-w-[560px] text-base leading-[1.55] sm:text-lg"
+                className="mt-3 max-w-[560px] text-base leading-[1.55] sm:mt-4 sm:text-lg"
                 style={{ color: muted }}
               >
                 Four paths into the Rise Power resource stack — specs,
@@ -288,7 +288,7 @@ export default function ResourcesPage() {
             </div>
           </Reveal>
 
-          <Reveal variant="fade" className="mt-12 sm:mt-14 xl:hidden">
+          <Reveal variant="fade" className="mt-8 sm:mt-10 xl:hidden">
             <SnapCarousel
               ariaLabel="Resource destinations"
               showArrows
@@ -314,7 +314,7 @@ export default function ResourcesPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/55 via-transparent to-transparent" />
                   </div>
 
-                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <div className="flex flex-1 flex-col p-5 sm:p-6">
                     <div className="flex items-center gap-4">
                       <span
                         className="font-display text-3xl font-bold leading-none"
@@ -328,18 +328,18 @@ export default function ResourcesPage() {
                       />
                     </div>
 
-                    <h3 className="mt-5 font-display text-3xl font-bold tracking-tight uppercase sm:text-4xl">
+                    <h3 className="mt-3 font-display text-3xl font-bold tracking-tight uppercase sm:mt-4 sm:text-4xl">
                       {item.title}
                     </h3>
 
                     <p
-                      className="mt-4 flex-1 text-base leading-[1.55]"
+                      className="mt-3 flex-1 text-base leading-[1.55]"
                       style={{ color: muted }}
                     >
                       {item.description}
                     </p>
 
-                    <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase">
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase sm:mt-6">
                       {item.cta}
                       <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
@@ -350,7 +350,7 @@ export default function ResourcesPage() {
           </Reveal>
 
           <RevealStagger
-            className="mt-12 hidden gap-5 sm:mt-14 xl:grid xl:grid-cols-2"
+            className="mt-8 hidden gap-4 sm:mt-10 sm:gap-5 xl:grid xl:grid-cols-2"
             step={70}
           >
             {destinations.map((item) => (
@@ -371,7 +371,7 @@ export default function ResourcesPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/55 via-transparent to-transparent" />
                 </div>
 
-                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <div className="flex items-center gap-4">
                     <span
                       className="font-display text-3xl font-bold leading-none"
@@ -385,18 +385,18 @@ export default function ResourcesPage() {
                     />
                   </div>
 
-                  <h3 className="mt-5 font-display text-3xl font-bold tracking-tight uppercase sm:text-4xl">
+                  <h3 className="mt-3 font-display text-3xl font-bold tracking-tight uppercase sm:mt-4 sm:text-4xl">
                     {item.title}
                   </h3>
 
                   <p
-                    className="mt-4 flex-1 text-base leading-[1.55]"
+                    className="mt-3 flex-1 text-base leading-[1.55]"
                     style={{ color: muted }}
                   >
                     {item.description}
                   </p>
 
-                  <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase">
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase sm:mt-6">
                     {item.cta}
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
@@ -408,35 +408,24 @@ export default function ResourcesPage() {
       </section>
 
       {/* SYSTEMS GALLERY */}
-      <section className="relative overflow-hidden bg-[#101820] py-12 sm:py-16 lg:py-24">
-        <div className="absolute inset-0">
-          <Image
-            src="/media/use-cases/uc-hero.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#071016]/85 via-[#071016]/75 to-[#071016]/95" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-10">
+      <section className="overflow-hidden bg-[#0e1418] py-10 sm:py-12 lg:py-16">
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
             <div className="max-w-[720px]">
               <SectionEyebrow onDark>Systems Library</SectionEyebrow>
-              <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:text-5xl lg:text-[56px]">
+              <h2 className="mt-4 font-display text-4xl leading-[0.95] font-bold tracking-tight text-white uppercase sm:mt-5 sm:text-5xl lg:text-[56px]">
                 Specs Behind
                 <br />
                 <span style={{ color: sage }}>The Hardware.</span>
               </h2>
-              <p className="mt-5 max-w-[540px] text-base leading-[1.55] text-white sm:text-lg">
+              <p className="mt-3 max-w-[540px] text-base leading-[1.55] text-[#b7c1c9] sm:mt-4 sm:text-lg">
                 Open any system for engineering targets, form factor notes, and
                 briefing-gated datasheets.
               </p>
             </div>
           </Reveal>
 
-          <Reveal variant="fade" className="mt-12 xl:hidden">
+          <Reveal variant="fade" className="mt-8 sm:mt-10 xl:hidden">
             <SnapCarousel
               ariaLabel="Systems gallery"
               showArrows
@@ -468,7 +457,7 @@ export default function ResourcesPage() {
                     <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-white uppercase sm:text-2xl">
                       {system.name}
                     </h3>
-                    <p className="mt-2 text-sm text-white">{system.label}</p>
+                    <p className="mt-1.5 text-sm text-white">{system.label}</p>
                     <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.1em] text-white uppercase">
                       View Specs
                       <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -480,7 +469,7 @@ export default function ResourcesPage() {
           </Reveal>
 
           <RevealStagger
-            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-4"
+            className="mt-8 hidden gap-4 sm:mt-10 sm:gap-5 xl:grid xl:grid-cols-4"
             step={70}
           >
             {systems.map((system, index) => (
@@ -507,7 +496,7 @@ export default function ResourcesPage() {
                   <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-white uppercase sm:text-2xl">
                     {system.name}
                   </h3>
-                  <p className="mt-2 text-sm text-white">{system.label}</p>
+                  <p className="mt-1.5 text-sm text-white">{system.label}</p>
                   <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.1em] text-white uppercase">
                     View Specs
                     <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -520,17 +509,17 @@ export default function ResourcesPage() {
       </section>
 
       {/* FEATURED INSIGHTS */}
-      <section className="bg-white py-12 sm:py-16 lg:py-24">
+      <section className="bg-white py-10 sm:py-12 lg:py-16">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex flex-col gap-4 sm:gap-5 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-[720px]">
                 <SectionEyebrow>From the Field</SectionEyebrow>
-                <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-[64px]">
+                <h2 className="mt-4 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:mt-5 sm:text-5xl lg:text-[64px]">
                   Recent Briefings.
                 </h2>
                 <p
-                  className="mt-5 max-w-[520px] text-base leading-[1.55] sm:text-lg"
+                  className="mt-3 max-w-[520px] text-base leading-[1.55] sm:mt-4 sm:text-lg"
                   style={{ color: muted }}
                 >
                   Milestones, validation notes, and primers for teams evaluating
@@ -540,7 +529,7 @@ export default function ResourcesPage() {
 
               <Link
                 href="/insights"
-                className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] uppercase transition-opacity hover:opacity-70"
+                className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold tracking-[0.08em] uppercase transition-opacity hover:opacity-70"
                 style={{ color: sage }}
               >
                 View All Insights
@@ -549,7 +538,7 @@ export default function ResourcesPage() {
             </div>
           </Reveal>
 
-          <Reveal variant="fade" className="mt-12 xl:hidden">
+          <Reveal variant="fade" className="mt-8 sm:mt-10 xl:hidden">
             <SnapCarousel
               ariaLabel="Featured insights"
               showArrows
@@ -575,7 +564,7 @@ export default function ResourcesPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/40 via-transparent to-transparent" />
                   </div>
 
-                  <div className="flex flex-1 flex-col p-6 sm:p-7">
+                  <div className="flex flex-1 flex-col p-5 sm:p-6">
                     <p
                       className="text-mm font-semibold tracking-[0.16em] uppercase"
                       style={{ color: sage }}
@@ -586,12 +575,12 @@ export default function ResourcesPage() {
                       {article.title}
                     </h3>
                     <p
-                      className="mt-4 flex-1 text-base leading-[1.55]"
+                      className="mt-3 flex-1 text-base leading-[1.55]"
                       style={{ color: muted }}
                     >
                       {article.excerpt}
                     </p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase">
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase sm:mt-6">
                       Read
                       <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
@@ -602,7 +591,7 @@ export default function ResourcesPage() {
           </Reveal>
 
           <RevealStagger
-            className="mt-12 hidden gap-5 xl:grid xl:grid-cols-3"
+            className="mt-8 hidden gap-4 sm:mt-10 sm:gap-5 xl:grid xl:grid-cols-3"
             step={70}
           >
             {featuredInsights.map((article) => (
@@ -623,7 +612,7 @@ export default function ResourcesPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#071016]/40 via-transparent to-transparent" />
                 </div>
 
-                <div className="flex flex-1 flex-col p-6 sm:p-7">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <p
                     className="text-mm font-semibold tracking-[0.16em] uppercase"
                     style={{ color: sage }}
@@ -634,12 +623,12 @@ export default function ResourcesPage() {
                     {article.title}
                   </h3>
                   <p
-                    className="mt-4 flex-1 text-base leading-[1.55]"
+                    className="mt-3 flex-1 text-base leading-[1.55]"
                     style={{ color: muted }}
                   >
                     {article.excerpt}
                   </p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase">
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-[#101820] uppercase sm:mt-6">
                     Read
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
@@ -653,18 +642,34 @@ export default function ResourcesPage() {
       {/* DOWNLOADS */}
       <section
         id="downloads"
-        className="relative scroll-mt-28 overflow-hidden py-12 sm:py-16 lg:py-24"
+        className="relative scroll-mt-28 overflow-hidden py-8 sm:py-10 lg:py-14"
         style={{ backgroundColor: cream }}
       >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 55% at 8% 0%, rgba(110,127,66,0.07), transparent 55%), radial-gradient(ellipse 50% 40% at 92% 100%, rgba(16,24,32,0.04), transparent 50%)",
+          }}
+        />
+
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
-            <div className="max-w-[720px]">
-              <SectionEyebrow>Optional Downloads</SectionEyebrow>
-              <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-[64px]">
+            <div className="mx-auto max-w-[720px] text-center">
+              <div className="flex justify-center">
+                <SectionEyebrow>Optional Downloads</SectionEyebrow>
+              </div>
+              <h2 className="mt-3 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:mt-4 sm:text-5xl lg:text-[64px]">
                 Investor Materials.
               </h2>
+              <div
+                className="mx-auto mt-3 h-px w-16"
+                style={{ background: sage }}
+                aria-hidden
+              />
               <p
-                className="mt-5 max-w-[560px] text-base leading-[1.55] sm:text-lg"
+                className="mx-auto mt-3 max-w-[520px] text-base leading-[1.55] sm:text-lg"
                 style={{ color: muted }}
               >
                 Deck and company one-pager for qualified investors. For models,
@@ -674,74 +679,69 @@ export default function ResourcesPage() {
           </Reveal>
 
           <RevealStagger
-            className="mt-12 grid gap-6 lg:grid-cols-2"
-            step={70}
+            className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-2"
+            step={80}
           >
             {downloads.map((item) => (
               <article
                 key={item.number}
-                className="group relative min-h-[340px] overflow-hidden rounded-[7px] border border-[#172128] bg-[#071116] sm:min-h-[400px] lg:min-h-[460px]"
+                className="group relative flex flex-col overflow-hidden rounded-sm border border-[#e4e1d8] bg-white"
               >
-                <Image
-                  src={item.image}
-                  alt={item.imageAlt}
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#071116]/95 via-[#071116]/80 to-[#071116]/25" />
+                <div className="relative aspect-[16/9] overflow-hidden bg-[#0c1210]">
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c1210]/45 via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 font-display text-[11px] font-semibold tracking-[0.28em] text-white/70 uppercase sm:top-5 sm:left-5">
+                    {item.number}
+                  </span>
+                </div>
 
-                <div className="relative z-10 flex min-h-[340px] max-w-[620px] flex-col p-8 sm:min-h-[400px] sm:p-10 lg:min-h-[460px] lg:p-12">
-                  <div className="flex items-center gap-5">
-                    <span className="font-display text-4xl font-bold leading-none text-[#6e7f42]">
-                      {item.number}
-                    </span>
-                    <span className="h-px w-[130px] bg-white/30" />
-                  </div>
-
-                  <p className="mt-5 text-mm font-medium tracking-[0.12em] text-[#b9c4ce] uppercase">
+                <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-6">
+                  <p
+                    className="text-[11px] font-semibold tracking-[0.22em] uppercase"
+                    style={{ color: sage }}
+                  >
                     {item.label}
                   </p>
 
-                  <h3 className="mt-6 font-display text-4xl font-bold leading-none text-white sm:text-5xl">
+                  <h3 className="mt-2 font-display text-2xl leading-[1.05] font-bold tracking-tight text-[#101820] uppercase sm:text-[28px] lg:text-[32px]">
                     {item.title}
                   </h3>
 
-                  <p className="mt-5 max-w-[430px] text-base leading-[1.5] text-[#b7c1c9]">
+                  <p
+                    className="mt-2 max-w-[420px] flex-1 text-[15px] leading-[1.55]"
+                    style={{ color: muted }}
+                  >
                     {item.description}
                   </p>
 
-                  <div className="mt-auto pt-8">
+                  <div className="mt-5 flex items-center justify-between gap-4 border-t border-[#ebe7de] pt-4">
                     <a
                       href={item.href}
                       download={item.download}
-                      className="group/button inline-flex min-h-[56px] min-w-[240px] items-center justify-center gap-2 rounded-[4px] bg-[#849363] px-7 text-sm font-semibold tracking-[0.05em] text-white uppercase transition-all duration-300 hover:opacity-90"
+                      className="group/button inline-flex items-center gap-3 text-sm font-semibold tracking-[0.14em] text-[#101820] uppercase transition-colors duration-300 hover:text-[#6e7f42]"
                     >
                       Download
-                      <ArrowRight className="size-5 transition-transform duration-300 group-hover/button:translate-x-1" />
+                      <ArrowRight className="size-4 transition-transform duration-300 group-hover/button:translate-x-1" />
                     </a>
+                    <span
+                      className="text-[10px] font-medium tracking-[0.2em] uppercase"
+                      style={{ color: muted }}
+                    >
+                      PDF
+                    </span>
                   </div>
                 </div>
               </article>
             ))}
           </RevealStagger>
-
-          <Reveal variant="up" delay={120}>
-            <p className="mt-8 text-sm" style={{ color: muted }}>
-              Looking for the full investor overview?{" "}
-              <Link
-                href="/investors"
-                className="font-semibold underline-offset-2 hover:underline"
-                style={{ color: sage }}
-              >
-                Visit Investors
-              </Link>
-              .
-            </p>
-          </Reveal>
         </div>
       </section>
-
-      </main>
+    </main>
   );
 }
