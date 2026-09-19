@@ -8,10 +8,10 @@ import { StackedPageHero } from "@/components/StackedPageHero";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About",
+  title: "Company",
   description:
     "Rise Power is engineered, manufactured, and validated in British Columbia. A CIMtech Green Energy company built on 20+ years of Canadian advanced manufacturing.",
-  path: "/about",
+  path: "/company",
 });
 
 const sage = "#6e7f42";
@@ -178,7 +178,7 @@ function ValueCard({ value }: { value: (typeof values)[number] }) {
 /* PAGE                                                                       */
 /* -------------------------------------------------------------------------- */
 
-export default function AboutPage() {
+export default function CompanyPage() {
   return (
     <main className="overflow-hidden bg-[#fbfaf7] text-[#101820]">
       <StackedPageHero
@@ -187,7 +187,7 @@ export default function AboutPage() {
         tone="#101820"
       >
         <div className="hero-animate-copy max-w-[820px]">
-          <SectionEyebrow light>About</SectionEyebrow>
+          <SectionEyebrow light>Company</SectionEyebrow>
 
           <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight text-white uppercase sm:mt-8 sm:text-[68px] md:text-[78px] xl:text-[88px] 2xl:text-[96px]">
             Canadian
@@ -199,8 +199,7 @@ export default function AboutPage() {
 
           <p className="mt-6 max-w-[760px] text-base leading-[1.55] text-white sm:mt-8 sm:text-xl xl:text-[22px]">
             Rise Power is engineered, manufactured, and validated in British
-            Columbia. A CIMtech Green Energy company built on 20 plus years of
-            Canadian advanced manufacturing.
+            Columbia. A CIMtech Green Energy company.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row">
@@ -257,24 +256,13 @@ export default function AboutPage() {
                   <p>
                     Rise Power builds portable hydrogen fuel cell power systems
                     for defense, disaster response, remote operations, and
-                    critical infrastructure.
-                  </p>
-
-                  <p>
-                    Incumbent power options carry structural failure modes in
-                    contested or austere environments — diesel convoys that can
-                    be interdicted, lithium packs that degrade under load and
-                    temperature.
-                  </p>
-
-                  <p>
-                    Rise Power replaces both with a cartridge based platform
-                    that is silent, indoor safe, and mission duration.
-                  </p>
-
-                  <p>
-                    The company is a CIMtech Green Energy subsidiary, built on
-                    a 20 plus year Canadian advanced manufacturing track record.
+                    critical infrastructure. Incumbent power options (diesel
+                    generators and lithium battery packs) carry structural
+                    failure modes in contested or austere environments. Rise
+                    Power replaces both with a cartridge based platform that is
+                    silent, indoor safe, and mission duration. The company is a
+                    CIMtech Green Energy subsidiary, built on a 20 plus year
+                    Canadian advanced manufacturing track record.
                   </p>
                 </div>
 

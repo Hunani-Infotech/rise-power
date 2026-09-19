@@ -42,9 +42,20 @@ const nextConfig: NextConfig = {
         destination: "/contact",
         permanent: false,
       },
+      // Legacy About Us paths → Company
       {
-        source: "/company",
-        destination: "/about",
+        source: "/about",
+        destination: "/company",
+        permanent: true,
+      },
+      {
+        source: "/about-us",
+        destination: "/company",
+        permanent: true,
+      },
+      {
+        source: "/aboutus",
+        destination: "/company",
         permanent: true,
       },
     ];

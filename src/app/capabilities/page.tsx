@@ -230,8 +230,12 @@ export default function CapabilitiesPage() {
 
           <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight uppercase sm:mt-7 sm:text-[64px] xl:text-[82px] 2xl:text-[94px]">
             {hero.headlineLine1}
-            <br />
-            <span style={{ color: sage }}>{hero.headlineAccent}</span>
+            {hero.headlineAccent ? (
+              <>
+                <br />
+                <span style={{ color: sage }}>{hero.headlineAccent}</span>
+              </>
+            ) : null}
           </h1>
 
           <p className="mt-6 max-w-[580px] text-base leading-relaxed text-white sm:mt-7 sm:text-lg xl:text-xl">

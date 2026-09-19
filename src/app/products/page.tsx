@@ -345,20 +345,16 @@ export default function ProductsPage() {
       >
         <div className="hero-animate-copy w-full max-w-[620px]">
           <p className="text-mm font-semibold tracking-[0.18em] text-white uppercase">
-            ⌁ Product Systems
+            ⌁ Products
           </p>
 
           <h1 className="mt-5 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl xl:mt-6 xl:text-[76px] xl:leading-[0.9]">
-            Four Systems.
-            <br />
-            <span className="text-[#6e7f42]">One Hydrogen</span>
-            <br />
-            Ecosystem.
+            Products
           </h1>
 
           <p className="mt-5 max-w-[540px] text-base leading-relaxed text-white sm:text-lg xl:mt-7">
-            Portable hydrogen power engineered for defense, disaster response,
-            remote operations, and critical infrastructure.
+            Four products. One cartridge ecosystem. Engineered for defense,
+            disaster response, remote operations, and critical backup.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -370,10 +366,10 @@ export default function ProductsPage() {
               <ArrowRight className="size-4 shrink-0" />
             </Link>
             <Link
-              href="#product-systems"
+              href="/use-cases"
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-sm border border-white/35 px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-white/10 sm:w-auto"
             >
-              See Products
+              See Use Cases
               <ArrowRight className="size-4 shrink-0" />
             </Link>
           </div>
@@ -470,8 +466,9 @@ export default function ProductsPage() {
 
             <p className="mt-6 max-w-[520px] text-sm leading-relaxed text-[#5c584e] sm:text-base">
               Every Rise Power product is designed as a complete system. Power
-              generation, fuel delivery, controls, and ruggedized enclosures work
-              together to deliver reliable performance across demanding environments.
+              generation, fuel delivery, controls, and enclosure working together.
+              Integrated system design delivers better performance and reliability
+              than assembled from parts alternatives.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-5">

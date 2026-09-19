@@ -15,17 +15,17 @@ export const site = {
 
 export const nav = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/company", label: "About" },
   { href: "/products", label: "Products" },
   { href: "/use-cases", label: "Use Cases" },
   { href: "/investors", label: "Investors" },
 ] as const;
 
 export const stats = [
-  { value: "Silent", label: "No acoustic signature" },
-  { value: "0 Emissions", label: "Emissions at point of use" },
-  { value: "Unlimited Runtime", label: "Runtime with cartridge swap" },
-  { value: "50lbs", label: "Portable system weight" },
+  { value: "<65 dBA", label: "Acoustic signature at 1m" },
+  { value: "0 Emissions", label: "Zero exhaust at point of use" },
+  { value: "∞ Runtime", label: "Unlimited with cartridge swap" },
+  { value: "<50 lbs", label: "Portable system weight target" },
 ];
 
 export const products = [

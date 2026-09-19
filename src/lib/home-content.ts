@@ -184,12 +184,12 @@ export const productUiLabels = {
 } as const;
 
 export const hero = {
-  eyebrow: "ZERO EMISSIONS • UNLIMITED RUNTIME",
+  eyebrow: "ENGINEERED TO",
   headlineLine1: "Portable hydrogen power",
   headlineLine2: "for operators.",
-  body: "Silent hydrogen power systems engineered for defense, critical infrastructure, and off-grid operations.",
-  primaryCta: { label: "Watch Mission Video", href: "#demo" } satisfies Cta,
-  secondaryCta: { label: "Explore Products", href: "/products" } satisfies Cta,
+  body: "Silent hydrogen power systems engineered for defense, disaster response, remote operations, and critical infrastructure.",
+  primaryCta: { label: "Request a Briefing", href: "/contact" } satisfies Cta,
+  secondaryCta: { label: "See Capabilities", href: "/capabilities" } satisfies Cta,
   chips: [
     { title: "Mission Ready", subtitle: "Built for the field" },
     { title: "Zero Emissions", subtitle: "At point of use" },
@@ -237,45 +237,45 @@ export const performanceMetrics = {
 };
 
 export const threeMarkets = {
-  eyebrow: "THREE MARKETS. ONE MISSION.",
+  eyebrow: "DEPLOYED WHERE IT MATTERS",
   headingBefore: "POWERING",
   headingAccent: "EVERY MISSION.",
-  body: "Rise Mission Power systems are engineered for defense, industrial, and field operations — one platform across three theaters.",
+  body: "Select a scenario to see how Rise Power systems perform in real-world operations.",
   cards: [
     {
-      title: "Military",
-      body: "Tactical communications, UAV, and ISR under field constraints.",
+      title: "Defense & Security",
+      body: "Silent portable power for bases, troops, and surveillance drones.",
       theater: "DEFENSE",
-      points: ["Tactical Comms", "UAV", "ISR"],
+      points: ["Bases", "Troops", "ISR"],
       detail:
-        "Silent, continuous power for contested environments — cartridge swaps in minutes, no diesel signature.",
+        "Reduces reliance on fuel convoys. Eliminates the acoustic, thermal, and emissions signatures that compromise operational security.",
       href: "/use-cases#defense-security",
       cta: "View Defense",
-      image: "Military market imagery",
+      image: "Defense and security market imagery",
       imageSrc: "/media/markets/defense-military.png",
     },
     {
-      title: "Commercial",
-      body: "Construction, telecom backup, and mining — without diesel noise.",
-      theater: "INDUSTRIAL",
-      points: ["Construction", "Telecom", "Mining"],
+      title: "Remote Operations",
+      body: "Sustained power where fuel resupply is difficult and generator maintenance is impractical.",
+      theater: "REMOTE",
+      points: ["Austere Sites", "Pre-positioned Fuel", "Days of Runtime"],
       detail:
-        "Keep remote sites online with zero emissions and far less maintenance than generator fleets.",
-      href: "/use-cases#critical-infrastructure",
-      cta: "View Industrial",
-      image: "Commercial market imagery",
+        "Pre position cartridges and operate for days without intervention across minus 20 to plus 50 degrees C.",
+      href: "/use-cases#remote-operations",
+      cta: "View Remote",
+      image: "Remote operations market imagery",
       imageSrc: "/media/markets/commercial.png",
     },
     {
-      title: "Consumer",
-      body: "Camping, RV, and emergency home backup — quiet and clean.",
-      theater: "FIELD",
-      points: ["Camping", "RV", "Home Backup"],
+      title: "Disaster Response",
+      body: "Indoor safe emergency power for shelters, medical, and communications when the grid drops.",
+      theater: "RESPONSE",
+      points: ["Shelters", "Medical", "Comms"],
       detail:
-        "Off-grid nights and home backup without noise, fumes, or fuel runs — ready when you need it.",
+        "Zero exhaust enables indoor operation. Cartridges stockpile indefinitely. Crews swap them in seconds without tools.",
       href: "/use-cases#disaster-response",
-      cta: "View Field Use",
-      image: "Consumer market imagery",
+      cta: "View Disaster Response",
+      image: "Disaster response market imagery",
       imageSrc: "/media/markets/field-consumer.png",
     },
   ] satisfies readonly MarketCard[],
@@ -413,9 +413,9 @@ export const capabilities = {
   body: "From early-stage prototypes to production-ready hardware, our engineering team delivers hydrogen power systems designed for the environment where they will actually operate.",
   hero: {
     eyebrow: "CAPABILITIES",
-    headlineLine1: "End to End",
-    headlineAccent: "Hydrogen Power.",
-    body: "Engineering, integration, field deployment, and safety — systems built for the environments where they will actually operate.",
+    headlineLine1: "Capabilities",
+    headlineAccent: "",
+    body: "End to end hydrogen power engineering, from concept to deployment.",
     imageSrc: "/media/capabilities/engineering-development.jpg",
     primaryCta: { label: "Explore Capabilities", href: "#pillars" } satisfies Cta,
     secondaryCta: { label: "Request a Briefing", href: "/contact" } satisfies Cta,
@@ -535,12 +535,12 @@ export const capabilities = {
           alt: "Engineering diagram of Rise Power hydrogen system architecture",
         },
         {
-          src: "/media/company/company-v3.png",
-          alt: "Engineering workstation and hydrogen hardware review",
+          src: "/media/missions/mountain.png",
+          alt: "Mission environment where engineered systems are deployed",
         },
         {
-          src: "/media/products/hydrogen-cartridge-kit.png",
-          alt: "Hydrogen cartridge kit used in system development",
+          src: "/media/use-cases/uc-defence.png",
+          alt: "Fielded Rise Power hardware in operational use",
         },
       ],
       deliverablesIntro:
@@ -599,8 +599,8 @@ export const capabilities = {
       label: "Integration",
       title: "System Integration",
       eyebrow: "PLATFORMS. NETWORKS. INFRASTRUCTURE.",
-      heading: "System integration with existing platforms and infrastructure",
-      body: "Our systems are designed from the start to work within existing vehicle platforms, communications systems, and facility power networks — not as standalone replacements.",
+      heading: "System Integration",
+      body: "Integration with existing vehicle platforms, communications systems, and facility power networks.",
       heroBody:
         "Integration with existing vehicle platforms, communications systems, and facility power networks.",
       href: "/capabilities/system-integration",
@@ -612,15 +612,15 @@ export const capabilities = {
         "Rise Sentinel integrated with field shelter and communications rack",
       gallery: [
         {
-          src: "/media/use-cases/defense-security.jpg",
+          src: "/media/capabilities/system-integration.jpg",
           alt: "Platform integration with communications and field power",
         },
         {
-          src: "/media/products/product-ecosystem.png",
-          alt: "Rise Power product ecosystem for system integration",
+          src: "/media/use-cases/defense-security.jpg",
+          alt: "Integrated power supporting defense communications hardware",
         },
         {
-          src: "/media/ecosystem/02.png",
+          src: "/media/use-cases/uc-grid1.png",
           alt: "Integrated hydrogen power components for vehicle and facility use",
         },
       ],
@@ -680,8 +680,8 @@ export const capabilities = {
       label: "Field",
       title: "Field Deployment",
       eyebrow: "LOGISTICS. TRAINING. SUPPORT.",
-      heading: "Rapid field deployment with end-to-end logistics support",
-      body: "Getting a system from the lab to the field requires more than good engineering. We provide logistics planning, operator training, and field service so your team can rely on hydrogen power where it matters.",
+      heading: "Field Deployment",
+      body: "Logistics planning, operator training, and field service for deployed hydrogen power systems.",
       heroBody:
         "Logistics planning, operator training, and field service for deployed hydrogen power systems.",
       href: "/capabilities/field-deployment",
@@ -701,8 +701,8 @@ export const capabilities = {
           alt: "Defense field operations with Rise Power systems",
         },
         {
-          src: "/media/cases/defense.png",
-          alt: "Defense case deployment of Rise Mission Power",
+          src: "/media/capabilities/field-deployment.jpg",
+          alt: "Field deployment of Rise Mission Power systems",
         },
       ],
       deliverablesIntro:
@@ -761,8 +761,8 @@ export const capabilities = {
       label: "Safety",
       title: "Safety & Compliance",
       eyebrow: "ENGINEERED IN FROM DAY ONE",
-      heading: "Safety & compliance engineered in from day one",
-      body: "Pressure vessels, leak detection, and thermal management are designed in from the start. We work directly with the regulatory bodies relevant to defense, transport, and indoor industrial deployment.",
+      heading: "Safety & Compliance",
+      body: "Safety engineered in from day one. Active certification across defense, transport, and indoor industrial standards.",
       heroBody:
         "Safety engineered in from day one. Active certification across defense, transport, and indoor industrial standards.",
       href: "/capabilities/safety-compliance",
@@ -774,16 +774,16 @@ export const capabilities = {
         "Disaster response deployment with safety-first hydrogen power",
       gallery: [
         {
-          src: "/media/cases/emergency.png",
-          alt: "Emergency response power with safety and compliance focus",
+          src: "/media/capabilities/safety-compliance.jpg",
+          alt: "Safety and compliance focus for Rise Power systems",
         },
         {
           src: "/media/company/company-v4.png",
           alt: "Quality and compliance review of Rise Power hardware",
         },
         {
-          src: "/media/products/product-hydro-kit.png",
-          alt: "Hydrogen kit designed with safety systems engineered in",
+          src: "/media/use-cases/disaster-response.jpg",
+          alt: "Emergency response power with safety systems engineered in",
         },
       ],
       deliverablesIntro:
@@ -850,8 +850,8 @@ export const customerPartners = {
   cases: [
     {
       category: "DEFENSE & SECURITY",
-      title: "Powering Mission Critical Operations",
-      body: "Modular hydrogen generators for tactical communications and ISR operations across remote deployments.",
+      title: "Unlimited silent comms at a forward operating base.",
+      body: "A forward operating base required silent, emission free power for communications and ISR. A Sentinel ran continuously on a stack of pre positioned cartridges, each swapped in 30 seconds. No fuel convoy. No acoustic signature. No thermal signature. Runtime extends indefinitely with additional cartridges.",
       stats: [
         { value: "SILENT", label: "Low Acoustic Signature" },
         { value: "0 EMISSIONS", label: "At Point of Use" },
@@ -943,7 +943,7 @@ export const closingCta = {
   body: "For procurement, programs, and integration leads evaluating hydrogen power for serious deployments. We will respond with specs, runtime data, and a deployment summary tailored to your operating environment.",
   panelEyebrow: "READY TO DISCUSS YOUR REQUIREMENTS?",
   primaryCta: { label: "REQUEST A BRIEFING", href: "/contact" } satisfies Cta,
-  secondaryCta: { label: "SEE USE CASES", href: "/use-cases" } satisfies Cta,
+  secondaryCta: { label: "REVIEW CAPABILITIES", href: "/capabilities" } satisfies Cta,
   chips: [
     { title: "ZERO EMISSIONS", subtitle: "Clean power, no compromise." },
     { title: "ULTRA QUIET", subtitle: "Engineered for stealth operations." },
@@ -981,7 +981,7 @@ export const footer = {
     {
       heading: "Company",
       links: [
-        { label: "About", href: "/about" },
+        { label: "About", href: "/company" },
         { label: "Investors", href: "/investors" },
         { label: "Careers", href: "/contact" },
         { label: "Contact", href: "/contact" },

@@ -1,0 +1,86 @@
+﻿[
+    {
+        "path":  "/",
+        "file":  "home",
+        "status":  "ok",
+        "bytes":  78472
+    },
+    {
+        "path":  "/products",
+        "file":  "products",
+        "status":  "ok",
+        "bytes":  65094
+    },
+    {
+        "path":  "/use-cases",
+        "file":  "use-cases",
+        "status":  "ok",
+        "bytes":  65679
+    },
+    {
+        "path":  "/capabilities",
+        "file":  "capabilities",
+        "status":  "ok",
+        "bytes":  54143
+    },
+    {
+        "path":  "/capabilities/engineering-development",
+        "file":  "capabilities-engineering-development",
+        "status":  "ok",
+        "bytes":  46434
+    },
+    {
+        "path":  "/capabilities/system-integration",
+        "file":  "capabilities-system-integration",
+        "status":  "ok",
+        "bytes":  45996
+    },
+    {
+        "path":  "/capabilities/field-deployment",
+        "file":  "capabilities-field-deployment",
+        "status":  "ok",
+        "bytes":  45898
+    },
+    {
+        "path":  "/capabilities/safety-compliance",
+        "file":  "capabilities-safety-compliance",
+        "status":  "ok",
+        "bytes":  56821
+    },
+    {
+        "path":  "/company",
+        "file":  "company",
+        "status":  "ok",
+        "bytes":  47429
+    },
+    {
+        "path":  "/contact",
+        "file":  "contact",
+        "status":  "ok",
+        "bytes":  40642
+    },
+    {
+        "path":  "/investors",
+        "file":  "investors",
+        "status":  "ok",
+        "bytes":  71896
+    },
+    {
+        "path":  "/resources/datasheets",
+        "file":  "datasheets",
+        "status":  "ok",
+        "bytes":  79334
+    },
+    {
+        "path":  "/privacy",
+        "file":  "privacy",
+        "status":  "ok",
+        "bytes":  41271
+    },
+    {
+        "path":  "/terms",
+        "file":  "terms",
+        "status":  "ok",
+        "bytes":  41102
+    }
+]

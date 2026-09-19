@@ -128,16 +128,16 @@ export const megaNavItems: readonly MegaNavItem[] = [
 
   {
     label: "Company",
-    href: "/about",
+    href: "/company",
     links: [
       {
         label: "About Rise Power",
-        href: "/about",
+        href: "/company",
         description: "The mission behind portable hydrogen power.",
       },
       {
         label: "Leadership",
-        href: "/about#leadership",
+        href: "/company#leadership",
         description: "The team behind the systems.",
       },
       {
@@ -149,7 +149,7 @@ export const megaNavItems: readonly MegaNavItem[] = [
     feature: {
       title: "Canadian-Built",
       body: "Engineered, manufactured, and validated in British Columbia. A CIMtech Green Energy company.",
-      href: "/about",
+      href: "/company",
       cta: "About Rise Power",
     },
   },

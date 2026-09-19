@@ -392,16 +392,11 @@ export default function UseCasesPage() {
           <SectionEyebrow light>Use Cases</SectionEyebrow>
 
           <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight uppercase sm:mt-7 sm:text-[64px] xl:text-[82px] 2xl:text-[94px]">
-            Power Where
-            <br />
-            <span style={{ color: "#6e7f42" }}>The Mission</span>
-            <br />
-            <span style={{ color: "#6e7f42" }}>Takes You.</span>
+            Use Cases
           </h1>
 
           <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white sm:mt-7 sm:text-lg xl:text-xl">
-            Hydrogen power engineered for the environments where conventional
-            generators fall short.
+            Operating environments where Rise Power systems fit.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center">
