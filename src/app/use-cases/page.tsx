@@ -93,7 +93,7 @@ import { products, useCases } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Use Cases",
+  title: "Case Studies",
   description:
     "Explore how Rise Power hydrogen systems support defense, remote operations, disaster response, and critical infrastructure.",
   path: "/use-cases",
@@ -389,10 +389,10 @@ export default function UseCasesPage() {
         imageClassName="object-cover object-[center_15%]"
       >
         <div className="hero-animate-copy max-w-[700px]">
-          <SectionEyebrow light>Use Cases</SectionEyebrow>
+          <SectionEyebrow light>Case Studies</SectionEyebrow>
 
           <h1 className="mt-6 font-display text-[42px] leading-[0.9] font-bold tracking-tight uppercase sm:mt-7 sm:text-[64px] xl:text-[82px] 2xl:text-[94px]">
-            Use Cases
+            Case Studies
           </h1>
 
           <p className="mt-6 max-w-[600px] text-base leading-relaxed text-white sm:mt-7 sm:text-lg xl:text-xl">
@@ -404,7 +404,7 @@ export default function UseCasesPage() {
               href="#use-cases"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#849363] px-8 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
             >
-              Explore Use Cases
+              Explore Case Studies
               <ArrowRight className="size-5" />
             </a>
 
@@ -439,7 +439,7 @@ export default function UseCasesPage() {
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-10">
           <Reveal variant="up">
             <div className="mx-auto max-w-5xl text-center">
-              <SectionEyebrow center>Use Cases</SectionEyebrow>
+              <SectionEyebrow center>Case Studies</SectionEyebrow>
 
               <h2 className="mt-6 font-display text-4xl leading-[0.95] font-bold tracking-tight uppercase sm:text-5xl lg:text-6xl">
                 Four Environments.{" "}

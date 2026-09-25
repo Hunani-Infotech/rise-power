@@ -369,7 +369,7 @@ export default function ProductsPage() {
               href="/use-cases"
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-sm border border-white/35 px-7 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-white/10 sm:w-auto"
             >
-              See Use Cases
+              See Case Studies
               <ArrowRight className="size-4 shrink-0" />
             </Link>
           </div>
@@ -483,7 +483,7 @@ export default function ProductsPage() {
                 href="/use-cases"
                 className="inline-flex items-center gap-2 text-xs font-semibold uppercase"
               >
-                See Use Cases
+                See Case Studies
                 <ArrowRight className="size-4 text-[#6e7f42]" />
               </Link>
             </div>
