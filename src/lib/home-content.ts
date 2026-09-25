@@ -964,7 +964,7 @@ export const footer = {
       heading: "Solutions",
       links: [
         { label: "Products", href: "/products" },
-        { label: "Case Studies", href: "/use-cases" },
+        { label: "Use Cases", href: "/use-cases" },
         { label: "Capabilities", href: "/capabilities" },
         { label: "Product Ecosystem", href: "/#product-ecosystem" },
       ],
